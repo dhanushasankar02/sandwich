@@ -1,0 +1,3007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catering Orders · Deli & Sandwich Shop</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #fdf8f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       DARK MODE
+    ============================================================ */
+    body.dark {
+      background: #1a1612;
+      color: #f0e8de;
+    }
+
+    body.dark .navbar {
+      background: #241e18;
+      border-bottom-color: #3a322a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .logo-text,
+    body.dark .footer-logo-text {
+      color: #f0e8de;
+    }
+
+    body.dark .nav-link {
+      color: #c9bdb0;
+    }
+
+    body.dark .nav-link:hover,
+    body.dark .nav-link.active {
+      color: #e63946;
+      background: rgba(230, 57, 70, 0.12);
+    }
+
+    body.dark .nav-link.home-pill {
+      background: rgba(230, 57, 70, 0.15);
+      color: #e63946;
+    }
+
+    body.dark .dropdown-menu {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark .dropdown-menu a {
+      color: #c9bdb0;
+    }
+
+    body.dark .dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .toggle-btn {
+      border-color: #3a322a;
+      color: #c9bdb0;
+      background: #241e18;
+    }
+
+    body.dark .toggle-btn:hover {
+      background: #3a322a;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    body.dark .mobile-menu {
+      background: #241e18;
+      border-top-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link {
+      color: #c9bdb0;
+      border-bottom-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link:hover {
+      color: #e63946;
+    }
+
+    body.dark .mobile-dropdown-menu {
+      background: #2c241e;
+    }
+
+    body.dark .mobile-dropdown-menu a {
+      color: #c9bdb0;
+    }
+
+    body.dark .mobile-dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .hamburger span {
+      background: #f0e8de;
+    }
+
+    body.dark .footer {
+      background: #241e18;
+      border-top-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .footer-heading {
+      color: #f0e8de;
+    }
+
+    body.dark .footer-description,
+    body.dark .footer-newsletter p {
+      color: #a89888;
+    }
+
+    body.dark .footer-links a {
+      color: #a89888;
+    }
+
+    body.dark .footer-links a:hover {
+      color: #e63946;
+    }
+
+    body.dark .footer-bottom {
+      border-top-color: #3a322a;
+    }
+
+    body.dark .footer-copyright,
+    body.dark .footer-bottom-links a {
+      color: #7a6a5c;
+    }
+
+    body.dark .social-icon {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+    }
+
+    body.dark .newsletter-input {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .newsletter-input::placeholder {
+      color: #7a6a5c;
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 0.6rem 2rem;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid #f0e6d8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      gap: 1rem;
+      white-space: nowrap;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    .logo-text span {
+      color: #e63946;
+    }
+
+    .logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    /* ---------- DESKTOP MENU ---------- */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+
+    .nav-menu > li {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e63946;
+      background: #fdf0f0;
+    }
+
+    .nav-link i.fa-chevron-down {
+      font-size: 0.55rem;
+      transition: transform 0.2s;
+      margin-top: 2px;
+    }
+
+    .dropdown:hover .nav-link i.fa-chevron-down,
+    .dropdown:focus-within .nav-link i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .nav-link.home-pill {
+      background: #fdf0f0;
+      color: #e63946;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: #e63946;
+      color: #ffffff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 30px;
+      margin-left: 3px;
+      letter-spacing: 0.2px;
+      line-height: 1.3;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* ---------- DROPDOWN ---------- */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #f0e6d8;
+      padding: 0.4rem 0;
+      list-style: none;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s, background 0.3s, border-color 0.3s;
+      z-index: 200;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li {
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    /* ---------- RIGHT SIDE ---------- */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    .toggle-btn i {
+      font-size: 0.78rem;
+    }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+    }
+
+    .order-btn:active {
+      transform: scale(0.97);
+    }
+
+    .order-btn i {
+      font-size: 0.8rem;
+    }
+
+    /* ---------- HAMBURGER ---------- */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1.5px solid #f0e6d8;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #2b2b2b;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ---------- MOBILE MENU ---------- */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      overflow-y: auto;
+      padding: 1rem 1.2rem 2rem;
+      z-index: 999;
+      transition: background 0.3s, border-color 0.3s;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .mobile-nav-list > li {
+      border-bottom: 1px solid #f0e6d8;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 0.2rem;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #e63946;
+    }
+
+    .mobile-nav-link .badge {
+      margin-left: auto;
+      margin-right: 0.5rem;
+    }
+
+    .mobile-nav-link i.fa-chevron-down {
+      font-size: 0.7rem;
+      transition: transform 0.25s;
+      color: #888;
+    }
+
+    .mobile-nav-link.open i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-menu {
+      list-style: none;
+      background: #fdf8f0;
+      border-radius: 8px;
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-dropdown-menu.open {
+      max-height: 300px;
+      padding: 0.3rem 0;
+    }
+
+    .mobile-dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+      border-radius: 6px;
+    }
+
+    .mobile-dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .mobile-toggles {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mobile-toggles .toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex: 0 0 42px;
+      min-width: 42px;
+      padding: 0;
+      font-size: 1rem;
+      justify-content: center;
+    }
+
+    .mobile-order-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      margin-top: 0.8rem;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ============================================================
+       MAIN CONTENT
+    ============================================================ */
+    .catering-page {
+      flex: 1;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    .catering-section {
+      margin-bottom: 5rem;
+      position: relative;
+    }
+
+    /* ============================================================
+       SECTION 1 – HERO BANQUET
+    ============================================================ */
+    .catering-hero {
+      position: relative;
+      border-radius: 60px;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.25);
+      border: 3px solid #e6d5c0;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark .catering-hero {
+      border-color: #4d3e32;
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.9);
+    }
+
+    .catering-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .catering-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .catering-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(46, 36, 30, 0.92) 0%, rgba(46, 36, 30, 0.7) 45%, rgba(46, 36, 30, 0.3) 100%);
+      z-index: 1;
+    }
+
+    body.dark .catering-hero-overlay {
+      background: linear-gradient(105deg, rgba(10, 8, 6, 0.95) 0%, rgba(26, 22, 19, 0.85) 45%, rgba(26, 22, 19, 0.4) 100%);
+    }
+
+    .catering-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 3.5rem 3.5rem;
+      max-width: 620px;
+    }
+
+    .catering-hero-content .badge-ribbon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #d48c5e;
+      color: #2e241e;
+      font-weight: 700;
+      padding: 0.45rem 1.3rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 1.6rem;
+    }
+
+    .catering-hero-content h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.08;
+      color: #fff7ed;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    .catering-hero-content h1 span {
+      color: #d48c5e;
+    }
+
+    .catering-hero-content p {
+      font-size: 1.15rem;
+      color: #f0e6dd;
+      opacity: 0.92;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .catering-hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .catering-btn-primary {
+      background: #d48c5e;
+      color: #2e241e;
+      padding: 0.95rem 2.2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: default;
+      box-shadow: 0 10px 24px -8px rgba(212, 140, 94, 0.6);
+    }
+
+    .catering-btn-ghost {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff7ed;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      padding: 0.95rem 2.2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: default;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ============================================================
+       SECTION 2 – STATS RIBBON
+    ============================================================ */
+    .stats-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: #ffffff;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid #f0e2d4;
+      box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark .stats-ribbon {
+      background: #2b221c;
+      border-color: #4d3e32;
+      box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.6);
+    }
+
+    .stat-block {
+      padding: 2.5rem 1.8rem;
+      text-align: center;
+      border-right: 1px solid #f0e2d4;
+      transition: background 0.25s, border-color 0.3s;
+    }
+
+    body.dark .stat-block {
+      border-color: #4d3e32;
+    }
+
+    .stat-block:last-child {
+      border-right: none;
+    }
+
+    .stat-block:hover {
+      background: #fdf8f0;
+    }
+
+    body.dark .stat-block:hover {
+      background: #33281f;
+    }
+
+    .stat-block .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #fdf0e6;
+      color: #b45f3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin: 0 auto 1rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark .stat-block .stat-icon {
+      background: #33281f;
+      color: #d48c5e;
+    }
+
+    .stat-block .stat-number {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #b45f3b;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      letter-spacing: -1px;
+    }
+
+    body.dark .stat-block .stat-number {
+      color: #d48c5e;
+    }
+
+    .stat-block .stat-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #3d2e24;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    body.dark .stat-block .stat-label {
+      color: #cbb9a8;
+    }
+
+    /* ============================================================
+       SECTION 3 – PACKAGE CARDS
+    ============================================================ */
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      align-items: stretch;
+    }
+
+    .package-card {
+      background: #ffffff;
+      border-radius: 36px;
+      padding: 2.5rem 2rem 2rem;
+      border: 1px solid #f0e2d4;
+      box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark .package-card {
+      background: #2b221c;
+      border-color: #4d3e32;
+      box-shadow: 0 14px 36px -14px rgba(0, 0, 0, 0.6);
+    }
+
+    .package-card.featured {
+      border: 3px solid #b45f3b;
+      transform: translateY(-12px);
+      box-shadow: 0 28px 56px -18px rgba(180, 95, 59, 0.35);
+    }
+
+    body.dark .package-card.featured {
+      border-color: #d48c5e;
+    }
+
+    .package-ribbon {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #b45f3b;
+      color: #fff7ed;
+      padding: 0.4rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 20px -6px rgba(180, 95, 59, 0.6);
+      white-space: nowrap;
+    }
+
+    .package-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .package-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #fdf0e6;
+      color: #b45f3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark .package-icon {
+      background: #33281f;
+      color: #d48c5e;
+    }
+
+    .package-head h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #2e241e;
+      line-height: 1.2;
+    }
+
+    body.dark .package-head h3 {
+      color: #f7ede3;
+    }
+
+    .package-head .package-sub {
+      font-size: 0.75rem;
+      color: #b45f3b;
+      font-weight: 600;
+    }
+
+    body.dark .package-head .package-sub {
+      color: #d48c5e;
+    }
+
+    .package-price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #b45f3b;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    body.dark .package-price {
+      color: #d48c5e;
+    }
+
+    .package-price-note {
+      font-size: 0.8rem;
+      color: #3d2e24;
+      opacity: 0.7;
+      margin-bottom: 1.8rem;
+    }
+
+    body.dark .package-price-note {
+      color: #cbb9a8;
+    }
+
+    .package-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      color: #3d2e24;
+      line-height: 1.5;
+    }
+
+    body.dark .package-features li {
+      color: #d9cbbc;
+    }
+
+    .package-features li i {
+      color: #b45f3b;
+      font-size: 0.9rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    body.dark .package-features li i {
+      color: #d48c5e;
+    }
+
+    .package-cta {
+      background: #2e241e;
+      color: #fff7ed;
+      padding: 0.95rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: center;
+      cursor: default;
+      letter-spacing: 0.3px;
+    }
+
+    body.dark .package-cta {
+      background: #b45f3b;
+      color: #fff7ed;
+    }
+
+    .package-card.featured .package-cta {
+      background: #b45f3b;
+      color: #fff7ed;
+    }
+
+    /* ============================================================
+       SECTION 4 – OCCASION MOSAIC
+    ============================================================ */
+    .occasion-mosaic {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.4fr;
+      gap: 1.5rem;
+      grid-auto-rows: 220px;
+    }
+
+    .occasion-tile {
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 14px 32px -14px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    body.dark .occasion-tile {
+      box-shadow: 0 14px 32px -14px rgba(0, 0, 0, 0.7);
+    }
+
+    .occasion-tile:hover {
+      transform: scale(1.02);
+      box-shadow: 0 22px 48px -16px rgba(0, 0, 0, 0.25);
+    }
+
+    .occasion-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .occasion-tile:hover img {
+      transform: scale(1.08);
+    }
+
+    .occasion-tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(46, 36, 30, 0.92) 0%, rgba(46, 36, 30, 0.2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.8rem 1.6rem;
+      transition: background 0.3s;
+    }
+
+    body.dark .occasion-tile-overlay {
+      background: linear-gradient(to top, rgba(10, 8, 6, 0.95) 0%, rgba(10, 8, 6, 0.3) 60%, transparent 100%);
+    }
+
+    .occasion-tile-overlay .occasion-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #d48c5e;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .occasion-tile-overlay h4 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff7ed;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .occasion-tile-overlay p {
+      font-size: 0.82rem;
+      color: #f0e6dd;
+      opacity: 0.85;
+    }
+
+    .occasion-tile.wide {
+      grid-column: span 1;
+    }
+
+    .occasion-tile.tall {
+      grid-row: span 2;
+    }
+
+    .occasion-tile.tall .occasion-tile-overlay h4 {
+      font-size: 1.9rem;
+    }
+
+    /* ============================================================
+       SECTION 5 – PROCESS ROADMAP
+    ============================================================ */
+    .roadmap-wrap {
+      background: #ffffff;
+      border-radius: 48px;
+      padding: 3.5rem 3rem;
+      border: 1px solid #f0e2d4;
+      box-shadow: 0 20px 48px -16px rgba(0, 0, 0, 0.08);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark .roadmap-wrap {
+      background: #2b221c;
+      border-color: #4d3e32;
+      box-shadow: 0 20px 48px -16px rgba(0, 0, 0, 0.6);
+    }
+
+    .roadmap-head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .roadmap-head .roadmap-label {
+      display: inline-block;
+      background: #fdf0e6;
+      color: #b45f3b;
+      padding: 0.35rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      border: 1px solid #f0dcc9;
+    }
+
+    body.dark .roadmap-head .roadmap-label {
+      background: #33281f;
+      border-color: #4d3e32;
+      color: #d48c5e;
+    }
+
+    .roadmap-head h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #2e241e;
+      margin-bottom: 0.5rem;
+    }
+
+    body.dark .roadmap-head h2 {
+      color: #f7ede3;
+    }
+
+    .roadmap-head p {
+      color: #3d2e24;
+      opacity: 0.75;
+      font-size: 1rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    body.dark .roadmap-head p {
+      color: #cbb9a8;
+    }
+
+    .roadmap-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .roadmap-track::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: repeating-linear-gradient(to right, #e6d5c0 0, #e6d5c0 8px, transparent 8px, transparent 16px);
+      z-index: 0;
+    }
+
+    body.dark .roadmap-track::before {
+      background: repeating-linear-gradient(to right, #4d3e32 0, #4d3e32 8px, transparent 8px, transparent 16px);
+    }
+
+    .roadmap-step {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .roadmap-dot {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #fdf0e6;
+      color: #b45f3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      border: 4px solid #ffffff;
+      box-shadow: 0 8px 20px -6px rgba(180, 95, 59, 0.35);
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    body.dark .roadmap-dot {
+      background: #33281f;
+      color: #d48c5e;
+      border-color: #2b221c;
+    }
+
+    .roadmap-step h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2e241e;
+      margin-bottom: 0.4rem;
+    }
+
+    body.dark .roadmap-step h4 {
+      color: #f7ede3;
+    }
+
+    .roadmap-step p {
+      font-size: 0.85rem;
+      color: #3d2e24;
+      opacity: 0.75;
+      line-height: 1.55;
+      max-width: 200px;
+    }
+
+    body.dark .roadmap-step p {
+      color: #cbb9a8;
+    }
+
+    /* ============================================================
+       SECTION 6 – TESTIMONIAL SPOTLIGHT
+    ============================================================ */
+    .testimonial-spotlight {
+      background: #2e241e;
+      border-radius: 36px;
+      padding: 3rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #b45f3b;
+      transition: background 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    body.dark .testimonial-spotlight {
+      background: #1a1613;
+    }
+
+    .testimonial-spotlight .big-quote {
+      font-size: 4.5rem;
+      color: #d48c5e;
+      line-height: 1;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      opacity: 0.95;
+    }
+
+    .testimonial-spotlight blockquote {
+      font-size: 1.35rem;
+      line-height: 1.75;
+      color: #f0e6dd;
+      font-style: italic;
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+      max-width: 780px;
+    }
+
+    .testimonial-spotlight .testimonial-stars {
+      color: #d48c5e;
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-spotlight .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-spotlight .testimonial-author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff7ed;
+      font-weight: 800;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(180, 95, 59, 0.4);
+    }
+
+    .testimonial-spotlight .testimonial-author-info strong {
+      display: block;
+      color: #fff7ed;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+
+    .testimonial-spotlight .testimonial-author-info span {
+      color: #d48c5e;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .testimonial-spotlight .testimonial-photo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #d48c5e;
+      color: #2e241e;
+      padding: 0.55rem 1.3rem;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      align-self: flex-start;
+      box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    .testimonial-spotlight .testimonial-photo-badge i {
+      font-size: 0.9rem;
+    }
+
+    /* ============================================================
+       SECTION 7 – BOOKING CTA
+    ============================================================ */
+    .booking-cta {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.3s;
+    }
+
+    body.dark .booking-cta {
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.8);
+    }
+
+    .booking-cta-left {
+      background: linear-gradient(145deg, #b45f3b 0%, #8b4a2e 100%);
+      padding: 3.5rem 3rem;
+      color: #fff7ed;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark .booking-cta-left {
+      background: linear-gradient(145deg, #8b4a2e 0%, #6b3822 100%);
+    }
+
+    .booking-cta-left::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .booking-cta-left::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .booking-cta-left h2 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .booking-cta-left p {
+      font-size: 1.05rem;
+      opacity: 0.92;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .booking-cta-left .booking-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .booking-btn-solid {
+      background: #fff7ed;
+      color: #8b4a2e;
+      padding: 0.95rem 2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: default;
+    }
+
+    .booking-btn-outline {
+      background: transparent;
+      color: #fff7ed;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      padding: 0.95rem 2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: default;
+    }
+
+    .booking-cta-right {
+      background: #2e241e;
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    body.dark .booking-cta-right {
+      background: #1a1613;
+    }
+
+    .booking-cta-right h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff7ed;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .booking-cta-right h3 i {
+      color: #d48c5e;
+    }
+
+    .booking-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .booking-info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .booking-info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(212, 140, 94, 0.15);
+      color: #d48c5e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .booking-info-item .booking-info-label {
+      font-size: 0.75rem;
+      color: #cbb9a8;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+    }
+
+    .booking-info-item .booking-info-value {
+      font-size: 0.95rem;
+      color: #fff7ed;
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      padding: 3.5rem 2rem 1.5rem;
+      color: #2b2b2b;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo-text span {
+      color: #e63946;
+    }
+
+    .footer-logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .footer-description {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e63946;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #78716c;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #e63946;
+      transform: translateX(3px);
+    }
+
+    .footer-links a i {
+      font-size: 0.55rem;
+      color: #e63946;
+    }
+
+    .footer-newsletter {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-newsletter p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .newsletter-input {
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .newsletter-input::placeholder {
+      color: #a8a29e;
+    }
+
+    .newsletter-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .newsletter-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+      letter-spacing: 0.2px;
+      width: 100%;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .newsletter-btn:active {
+      transform: scale(0.97);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-copyright {
+      font-size: 0.78rem;
+      color: #a8a29e;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-bottom-links a {
+      text-decoration: none;
+      color: #a8a29e;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #e63946;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .navbar {
+        padding: 0.55rem 1.2rem;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-right .toggle-btn,
+      .nav-right .order-btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .logo-text {
+        font-size: 1.05rem;
+      }
+
+      .logo-sub {
+        font-size: 0.5rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .catering-hero-content h1 {
+        font-size: 2.6rem;
+      }
+
+      .stats-ribbon {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-block {
+        border-right: none;
+        border-bottom: 1px solid #f0e2d4;
+      }
+
+      body.dark .stat-block {
+        border-bottom-color: #4d3e32;
+      }
+
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .package-card.featured {
+        transform: translateY(0);
+      }
+
+      .occasion-mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 200px;
+      }
+
+      .occasion-tile.tall {
+        grid-row: span 1;
+      }
+
+      .roadmap-track {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .roadmap-track::before {
+        display: none;
+      }
+
+      .booking-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-spotlight {
+        padding: 2.5rem 2rem;
+      }
+
+      .testimonial-spotlight blockquote {
+        font-size: 1.15rem;
+      }
+
+      .testimonial-spotlight .big-quote {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .navbar {
+        padding: 0.5rem 0.9rem;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .logo-sub {
+        font-size: 0.48rem;
+      }
+
+      .mobile-menu {
+        top: 60px;
+      }
+
+      .catering-page {
+        padding: 1rem 1rem 3rem;
+      }
+
+      .mobile-toggles .toggle-btn {
+        flex: 1 1 100%;
+        min-width: unset;
+      }
+
+      .footer {
+        padding: 2.5rem 1.2rem 1.2rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom-links {
+        justify-content: center;
+      }
+
+      .catering-hero {
+        min-height: 440px;
+      }
+
+      .catering-hero-content {
+        padding: 2.2rem 1.6rem;
+      }
+
+      .catering-hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .stats-ribbon {
+        grid-template-columns: 1fr;
+      }
+
+      .occasion-mosaic {
+        grid-template-columns: 1fr;
+      }
+
+      .roadmap-track {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-cta-left,
+      .booking-cta-right {
+        padding: 2.2rem 1.8rem;
+      }
+
+      .booking-cta-left h2 {
+        font-size: 1.8rem;
+      }
+
+      .roadmap-wrap {
+        padding: 2rem 1.5rem;
+      }
+
+      .testimonial-spotlight {
+        padding: 2rem 1.5rem;
+      }
+
+      .testimonial-spotlight blockquote {
+        font-size: 1.05rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .logo-text-wrapper {
+        display: none;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+      }
+
+      .mobile-menu {
+        top: 56px;
+      }
+
+      .mobile-nav-link {
+        font-size: 0.9rem;
+        padding: 0.85rem 0.2rem;
+      }
+
+      .mobile-dropdown-menu a {
+        font-size: 0.84rem;
+      }
+    }
+
+    /* ---------- FOCUS STATES ---------- */
+    .nav-link:focus-visible,
+    .toggle-btn:focus-visible,
+    .order-btn:focus-visible,
+    .hamburger:focus-visible,
+    .mobile-nav-link:focus-visible,
+    .mobile-order-btn:focus-visible,
+    .dropdown-menu a:focus-visible,
+    .mobile-dropdown-menu a:focus-visible,
+    .newsletter-btn:focus-visible,
+    .newsletter-input:focus-visible,
+    .social-icon:focus-visible,
+    .footer-links a:focus-visible {
+      outline: 2px solid #e63946;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar-thumb {
+      background: #e63946;
+      border-radius: 3px;
+    }
+
+    /* ============================================================
+       RTL SUPPORT
+    ============================================================ */
+    [dir="rtl"] .navbar,
+    [dir="rtl"] .footer {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .nav-menu {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+
+    [dir="rtl"] .nav-link i.fa-chevron-down {
+      margin-top: 0;
+    }
+
+    [dir="rtl"] .badge {
+      margin-left: 0;
+      margin-right: 3px;
+    }
+
+    [dir="rtl"] .footer-links a:hover {
+      transform: translateX(-3px);
+    }
+
+    [dir="rtl"] .footer-links a i.fa-chevron-right {
+      transform: rotate(180deg);
+    }
+
+    [dir="rtl"] .mobile-nav-link {
+      text-align: right;
+    }
+
+    [dir="rtl"] .mobile-nav-link .badge {
+      margin-left: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-menu a {
+      text-align: right;
+    }
+  </style>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+    <!-- ============================================================
+       NAVBAR (IDENTICAL TO INDEX.HTML)
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-text-wrapper">
+        <span class="logo-text">Deli<span>&</span>Sandwich</span>
+        <span class="logo-sub">Fresh • Tasty • Made to Order</span>
+      </span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="dropdown">
+        <a href="index.html" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="nav-link active">Catering</a></li>
+      <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="toggle-btn" id="darkToggleDesktop" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleDesktop" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+      <a href="login.html" class="order-btn">
+        <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <!-- MOBILE MENU (IDENTICAL TO INDEX.HTML) -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li class="mobile-dropdown">
+        <button class="mobile-nav-link" data-dropdown="homeDropdownMobile" aria-expanded="false">
+          Home <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="mobile-dropdown-menu" id="homeDropdownMobile">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="mobile-nav-link active">Catering</a></li>
+      <li><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+        <div class="mobile-toggles">
+      <button class="toggle-btn" id="darkToggleMobile" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleMobile" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+    </div>
+    <a href="login.html" class="mobile-order-btn">
+      <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+    </a>
+  </div><!-- ============================================================
+       MAIN CONTENT – 7 UNIQUE CATERING SECTIONS
+  ============================================================ -->
+  <main class="catering-page">
+
+    <!-- ========== SECTION 1 – HERO BANQUET ========== -->
+    <section class="catering-section" id="section1">
+      <div class="catering-hero" id="cateringHero">
+        <div class="catering-hero-bg">
+          <img src="image/Catering platter.jpg" alt="Catering spread with sandwiches">
+        </div>
+        <div class="catering-hero-overlay"></div>
+        <div class="catering-hero-content">
+          <div class="badge-ribbon"><i class="fas fa-utensils"></i> Feeding 10 to 1,000+</div>
+          <h1>Catering that <span>wows</span> the whole room</h1>
+          <p>From boardroom lunches to wedding receptions — we build custom platters, sandwich towers, and full deli spreads your guests will actually talk about.</p>
+          <div class="catering-hero-actions">
+            <span class="catering-btn-primary"><i class="fas fa-clipboard-list"></i> Request a quote</span>
+            <span class="catering-btn-ghost"><i class="fas fa-phone"></i> Call (555) 012-3456</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 2 – STATS RIBBON ========== -->
+    <section class="catering-section" id="section2">
+      <div class="stats-ribbon" id="statsRibbon">
+        <div class="stat-block">
+          <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-number">2,400+</div>
+          <div class="stat-label">Events Catered</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-number">180K</div>
+          <div class="stat-label">Sandwiches Served</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-icon"><i class="fas fa-star"></i></div>
+          <div class="stat-number">4.9</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-icon"><i class="fas fa-clock"></i></div>
+          <div class="stat-number">24h</div>
+          <div class="stat-label">Booking Notice</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 3 – PACKAGE CARDS ========== -->
+    <section class="catering-section" id="section3">
+      <div class="package-grid" id="packageGrid">
+        <div class="package-card">
+          <div class="package-head">
+            <div class="package-icon"><i class="fas fa-box-open"></i></div>
+            <div>
+              <h3>Starter Spread</h3>
+              <div class="package-sub">10 – 25 people</div>
+            </div>
+          </div>
+          <div class="package-price">$180</div>
+          <div class="package-price-note">starting · $7.20 per person</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> 3 sandwich varieties</li>
+            <li><i class="fas fa-check"></i> Assorted chips & pickles</li>
+            <li><i class="fas fa-check"></i> House-made cookies</li>
+            <li><i class="fas fa-check"></i> Disposable serveware</li>
+          </ul>
+          <div class="package-cta">Select Starter</div>
+        </div>
+
+        <div class="package-card featured">
+          <div class="package-ribbon">Most Popular</div>
+          <div class="package-head">
+            <div class="package-icon"><i class="fas fa-briefcase"></i></div>
+            <div>
+              <h3>Corporate Deluxe</h3>
+              <div class="package-sub">25 – 100 people</div>
+            </div>
+          </div>
+          <div class="package-price">$640</div>
+          <div class="package-price-note">starting · $6.40 per person</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> 6 sandwich varieties</li>
+            <li><i class="fas fa-check"></i> Salad bar + seasonal sides</li>
+            <li><i class="fas fa-check"></i> Beverage station</li>
+            <li><i class="fas fa-check"></i> Compostable serveware</li>
+            <li><i class="fas fa-check"></i> Delivery + setup</li>
+          </ul>
+          <div class="package-cta">Select Corporate</div>
+        </div>
+
+        <div class="package-card">
+          <div class="package-head">
+            <div class="package-icon"><i class="fas fa-glass-cheers"></i></div>
+            <div>
+              <h3>Grand Celebration</h3>
+              <div class="package-sub">100 – 1,000+ people</div>
+            </div>
+          </div>
+          <div class="package-price">$5,500</div>
+          <div class="package-price-note">starting · custom per person</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Full custom menu design</li>
+            <li><i class="fas fa-check"></i> Live sandwich station</li>
+            <li><i class="fas fa-check"></i> Dessert & coffee bar</li>
+            <li><i class="fas fa-check"></i> Uniformed staff & setup</li>
+            <li><i class="fas fa-check"></i> Dedicated coordinator</li>
+          </ul>
+          <div class="package-cta">Select Celebration</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 4 – OCCASION MOSAIC ========== -->
+    <section class="catering-section" id="section4">
+      <div class="occasion-mosaic" id="occasionMosaic">
+        <div class="occasion-tile tall">
+          <img src="image/Wedding catering (2).jpg" alt="Wedding catering">
+          <div class="occasion-tile-overlay">
+            <div class="occasion-tag">Weddings</div>
+            <h4>Reception-worthy</h4>
+            <p>Elegant platters that keep the dance floor full</p>
+          </div>
+        </div>
+        <div class="occasion-tile">
+          <img src="image/Boardroom ready.jpg" alt="Corporate catering">
+          <div class="occasion-tile-overlay">
+            <div class="occasion-tag">Corporate</div>
+            <h4>Boardroom ready</h4>
+            <p>Delivered hot, on time, every time</p>
+          </div>
+        </div>
+        <div class="occasion-tile">
+          <img src="image/Birthday bashes.jpg" alt="Party catering">
+          <div class="occasion-tile-overlay">
+            <div class="occasion-tag">Celebrations</div>
+            <h4>Birthday bashes</h4>
+            <p>Build-your-own sandwich bars</p>
+          </div>
+        </div>
+        <div class="occasion-tile wide">
+          <img src="image/Game-day fuel.jpg" alt="School event catering">
+          <div class="occasion-tile-overlay">
+            <div class="occasion-tag">Schools & Teams</div>
+            <h4>Game-day fuel</h4>
+            <p>Feeding squads, teams, and study groups</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 5 – PROCESS ROADMAP ========== -->
+    <section class="catering-section" id="section5">
+      <div class="roadmap-wrap" id="roadmapWrap">
+        <div class="roadmap-head">
+          <span class="roadmap-label">How it works</span>
+          <h2>From craving to catering</h2>
+          <p>Four simple steps — we handle the heavy lifting so you can enjoy your event.</p>
+        </div>
+        <div class="roadmap-track" id="roadmapTrack">
+          <div class="roadmap-step">
+            <div class="roadmap-dot"><i class="fas fa-comments"></i></div>
+            <h4>Tell us your event</h4>
+            <p>Share guest count, date, and vibe — we'll suggest the perfect spread.</p>
+          </div>
+          <div class="roadmap-step">
+            <div class="roadmap-dot"><i class="fas fa-file-signature"></i></div>
+            <h4>Approve the menu</h4>
+            <p>Review a custom menu with pricing. Tweak until it's just right.</p>
+          </div>
+          <div class="roadmap-step">
+            <div class="roadmap-dot"><i class="fas fa-truck"></i></div>
+            <h4>We deliver & set up</h4>
+            <p>Our team arrives early, arranges everything, and stays if you need us.</p>
+          </div>
+          <div class="roadmap-step">
+            <div class="roadmap-dot"><i class="fas fa-smile"></i></div>
+            <h4>You enjoy the day</h4>
+            <p>We clean up too. All you do is take the credit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 6 – TESTIMONIAL SPOTLIGHT ========== -->
+    <section class="catering-section" id="section6">
+      <div class="testimonial-spotlight" id="testimonialSpotlight">
+        <div class="big-quote">&ldquo;</div>
+        <blockquote>
+          We ordered the Corporate Deluxe for our annual summit — 140 people. The spread was stunning, delivery was early, and three separate coworkers asked for the caterer's number. Worth every penny.
+        </blockquote>
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testimonial-author">
+          <div class="testimonial-author-avatar">M</div>
+          <div class="testimonial-author-info">
+            <strong>Marcus Chen</strong>
+            <span>Operations Director · Northwind Labs</span>
+          </div>
+        </div>
+        <div class="testimonial-photo-badge">
+          <i class="fas fa-check-circle"></i> Verified Event
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 7 – BOOKING CTA ========== -->
+    <section class="catering-section" id="section7">
+      <div class="booking-cta" id="bookingCta">
+        <div class="booking-cta-left">
+          <h2>Let's plan your event</h2>
+          <p>Tell us the details and we'll send a custom quote within 24 hours. No commitment, no pressure — just great food.</p>
+          <div class="booking-actions">
+            <span class="booking-btn-solid"><i class="fas fa-envelope"></i> Request quote</span>
+            <span class="booking-btn-outline"><i class="fas fa-calendar-alt"></i> Book a tasting</span>
+          </div>
+        </div>
+        <div class="booking-cta-right">
+          <h3><i class="fas fa-info-circle"></i> Catering info</h3>
+          <div class="booking-info-list">
+            <div class="booking-info-item">
+              <div class="booking-info-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <div class="booking-info-label">Call us</div>
+                <div class="booking-info-value">(555) 012-3456</div>
+              </div>
+            </div>
+            <div class="booking-info-item">
+              <div class="booking-info-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <div class="booking-info-label">Email</div>
+                <div class="booking-info-value">catering@deliandsandwich.com</div>
+              </div>
+            </div>
+            <div class="booking-info-item">
+              <div class="booking-info-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <div class="booking-info-label">Lead time</div>
+                <div class="booking-info-value">24 hours minimum</div>
+              </div>
+            </div>
+            <div class="booking-info-item">
+              <div class="booking-info-icon"><i class="fas fa-truck"></i></div>
+              <div>
+                <div class="booking-info-label">Delivery radius</div>
+                <div class="booking-info-value">Up to 30 miles</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ============================================================
+       FOOTER (IDENTICAL TO INDEX.HTML)
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-text-wrapper">
+            <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
+            <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
+          </span>
+        </a>
+        <p class="footer-description">
+          Building sandwich satisfaction with fresh ingredients and bold flavors
+          for every craving. Our chefs craft a fun, delicious experience where
+          every bite is made to order.
+        </p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="build your sandwich.html"><i class="fas fa-chevron-right"></i> Build Your Sandwich</a></li>
+          <li><a href="special offers.html"><i class="fas fa-chevron-right"></i> Special Offers</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="reviews.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+          <li><a href="catering order.html"><i class="fas fa-chevron-right"></i> Catering Orders</a></li>
+          <li><a href="login.html"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">Stay Updated</h3>
+        <p>
+          Get the latest menu drops, special offers, and sandwich updates
+          delivered to your inbox.
+        </p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Deli & Sandwich. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="contact.html">Privacy</a></li>
+        <li><a href="contact.html">Terms</a></li>
+        <li><a href="contact.html">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT (NAVBAR/FOOTER LOGIC — UNCHANGED)
+  ============================================================ -->
+  <script>
+    (function () {
+      const body = document.body;
+      const htmlEl = document.documentElement;
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      const darkToggleDesktop = document.getElementById('darkToggleDesktop');
+      const rtlToggleDesktop = document.getElementById('rtlToggleDesktop');
+      const darkToggleMobile = document.getElementById('darkToggleMobile');
+      const rtlToggleMobile = document.getElementById('rtlToggleMobile');
+
+      const mobileDropdownBtns = document.querySelectorAll('.mobile-nav-link[data-dropdown]');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-menu a, .mobile-order-btn');
+
+      // ---------- DARK MODE ----------
+      const DARK_KEY = 'deliDarkMode';
+
+      function applyDarkMode(isDark) {
+        const darkIcon = '<i class="fas fa-moon"></i>';
+        const lightIcon = '<i class="fas fa-sun"></i>';
+
+        if (isDark) {
+          body.classList.add('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = lightIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = lightIcon;
+        } else {
+          body.classList.remove('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = darkIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = darkIcon;
+        }
+      }
+
+      if (localStorage.getItem(DARK_KEY) === 'on') {
+        applyDarkMode(true);
+      }
+
+      function toggleDarkMode() {
+        const isDark = !body.classList.contains('dark');
+        applyDarkMode(isDark);
+        localStorage.setItem(DARK_KEY, isDark ? 'on' : 'off');
+      }
+
+      if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+      if (darkToggleMobile) darkToggleMobile.addEventListener('click', toggleDarkMode);
+
+      // ---------- RTL / LTR ----------
+      const RTL_KEY = 'deliRTL';
+
+      function applyRTL(isRTL) {
+        const rtlIcon = '<i class="fas fa-right-left"></i>';
+        const ltrIcon = '<i class="fas fa-right-left fa-flip-horizontal"></i>';
+
+        if (isRTL) {
+          htmlEl.setAttribute('dir', 'rtl');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = ltrIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = ltrIcon;
+        } else {
+          htmlEl.setAttribute('dir', 'ltr');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = rtlIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = rtlIcon;
+        }
+      }
+
+      if (localStorage.getItem(RTL_KEY) === 'on') {
+        applyRTL(true);
+      }
+
+      function toggleRTL() {
+        const isRTL = htmlEl.getAttribute('dir') !== 'rtl';
+        applyRTL(isRTL);
+        localStorage.setItem(RTL_KEY, isRTL ? 'on' : 'off');
+      }
+
+      if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+      if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', toggleRTL);
+
+      // ---------- HAMBURGER / MOBILE MENU ----------
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (this.hasAttribute('data-dropdown')) return;
+          closeMobileMenu();
+        });
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target === mobileMenu) closeMobileMenu();
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+      // ---------- MOBILE DROPDOWNS ----------
+      mobileDropdownBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const targetId = this.getAttribute('data-dropdown');
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          mobileDropdownBtns.forEach(function (otherBtn) {
+            if (otherBtn !== btn) {
+              otherBtn.classList.remove('open');
+              otherBtn.setAttribute('aria-expanded', 'false');
+              const otherId = otherBtn.getAttribute('data-dropdown');
+              const otherTarget = document.getElementById(otherId);
+              if (otherTarget) otherTarget.classList.remove('open');
+            }
+          });
+
+          const isOpen = this.classList.contains('open');
+          if (isOpen) {
+            this.classList.remove('open');
+            this.setAttribute('aria-expanded', 'false');
+            target.classList.remove('open');
+          } else {
+            this.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+            target.classList.add('open');
+          }
+        });
+      });
+
+      // ---------- ESC KEY ----------
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+    })();
+  </script>
+
+  <!-- ============================================================
+       FRAMER MOTION (Motion One) – UNIQUE PER SECTION
+  ============================================================ -->
+  <script type="module">
+    import { animate, inView, stagger } from 'https://cdn.skypack.dev/motion@10.16.2';
+
+    /* ---------- 1. HERO: overlay slides in, content staggers up ---------- */
+    const cateringHeroBg = document.querySelector('.catering-hero-bg');
+    const cateringHeroContent = document.querySelector('.catering-hero-content');
+    if (cateringHeroBg && cateringHeroContent) {
+      cateringHeroBg.style.opacity = '0';
+      cateringHeroBg.style.transform = 'scale(1.15)';
+      cateringHeroContent.style.opacity = '0';
+      cateringHeroContent.style.transform = 'translateY(40px)';
+
+      inView('#cateringHero', () => {
+        animate(cateringHeroBg, { opacity: 1, transform: 'scale(1)' }, { duration: 1.4, easing: [0.16, 1, 0.3, 1] });
+        animate(cateringHeroContent, { opacity: 1, transform: 'translateY(0px)' }, { duration: 0.9, delay: 0.3, easing: [0.16, 1, 0.3, 1] });
+      }, { threshold: 0.2 });
+    }
+
+    /* ---------- 2. STATS: numbers flip up + stagger ---------- */
+    const statBlocks = document.querySelectorAll('.stat-block');
+    if (statBlocks.length) {
+      statBlocks.forEach((block) => {
+        block.style.opacity = '0';
+        block.style.transform = 'translateY(30px) rotateX(-30deg)';
+      });
+
+      inView('#statsRibbon', () => {
+        animate('.stat-block',
+          { opacity: 1, transform: 'translateY(0px) rotateX(0deg)' },
+          { duration: 0.7, delay: stagger(0.12), easing: [0.34, 1.56, 0.64, 1] }
+        );
+      }, { threshold: 0.3 });
+    }
+
+    /* ---------- 3. PACKAGE CARDS: rise + scale ---------- */
+    const packageCards = document.querySelectorAll('.package-card');
+    if (packageCards.length) {
+      packageCards.forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(60px) scale(0.94)';
+      });
+
+      inView('#packageGrid', () => {
+        animate('.package-card',
+          { opacity: 1, transform: 'translateY(0px) scale(1)' },
+          { duration: 0.8, delay: stagger(0.15), easing: [0.2, 0.9, 0.3, 1] }
+        );
+      }, { threshold: 0.15 });
+    }
+
+    /* ---------- 4. OCCASION TILES: clip-path reveal ---------- */
+    const occasionTiles = document.querySelectorAll('.occasion-tile');
+    if (occasionTiles.length) {
+      occasionTiles.forEach((tile, i) => {
+        tile.style.opacity = '0';
+        tile.style.clipPath = i % 2 === 0
+          ? 'inset(0 100% 0 0)'
+          : 'inset(0 0 0 100%)';
+      });
+
+      inView('#occasionMosaic', () => {
+        occasionTiles.forEach((tile, i) => {
+          animate(tile,
+            { opacity: 1, clipPath: 'inset(0 0% 0 0%)' },
+            { duration: 0.9, delay: 0.15 * i, easing: [0.2, 0.9, 0.3, 1] }
+          );
+        });
+      }, { threshold: 0.2 });
+    }
+
+    /* ---------- 5. ROADMAP: dots pop in + steps stagger ---------- */
+    const roadmapSteps = document.querySelectorAll('.roadmap-step');
+    const roadmapDots = document.querySelectorAll('.roadmap-dot');
+    if (roadmapSteps.length && roadmapDots.length) {
+      roadmapSteps.forEach((step) => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(30px)';
+      });
+      roadmapDots.forEach((dot) => {
+        dot.style.transform = 'scale(0)';
+      });
+
+      inView('#roadmapWrap', () => {
+        animate('.roadmap-step',
+          { opacity: 1, transform: 'translateY(0px)' },
+          { duration: 0.6, delay: stagger(0.2), easing: [0.2, 0.9, 0.3, 1] }
+        );
+        animate('.roadmap-dot',
+          { transform: 'scale(1)' },
+          { duration: 0.5, delay: stagger(0.2), easing: [0.34, 1.56, 0.64, 1] }
+        );
+      }, { threshold: 0.25 });
+    }
+
+    /* ---------- 6. TESTIMONIAL SPOTLIGHT: fade in + slide up ---------- */
+    const testimonialSpotlight = document.getElementById('testimonialSpotlight');
+    if (testimonialSpotlight) {
+      testimonialSpotlight.style.opacity = '0';
+      testimonialSpotlight.style.transform = 'translateY(50px)';
+
+      inView('#testimonialSpotlight', () => {
+        animate(testimonialSpotlight,
+          { opacity: 1, transform: 'translateY(0px)' },
+          { duration: 0.9, easing: [0.16, 1, 0.3, 1] }
+        );
+      }, { threshold: 0.3 });
+    }
+
+    /* ---------- 7. BOOKING CTA: panes slide from opposite sides ---------- */
+    const bookingLeft = document.querySelector('.booking-cta-left');
+    const bookingRight = document.querySelector('.booking-cta-right');
+    if (bookingLeft && bookingRight) {
+      bookingLeft.style.opacity = '0';
+      bookingLeft.style.transform = 'translateX(-80px) skewX(-6deg)';
+      bookingRight.style.opacity = '0';
+      bookingRight.style.transform = 'translateX(80px) skewX(6deg)';
+
+      inView('#bookingCta', () => {
+        animate(bookingLeft, { opacity: 1, transform: 'translateX(0px) skewX(0deg)' }, { duration: 0.9, easing: [0.16, 1, 0.3, 1] });
+        animate(bookingRight, { opacity: 1, transform: 'translateX(0px) skewX(0deg)' }, { duration: 0.9, delay: 0.15, easing: [0.16, 1, 0.3, 1] });
+      }, { threshold: 0.3 });
+    }
+
+    /* Fallback: ensure everything becomes visible after a short delay */
+    setTimeout(() => {
+      document.querySelectorAll('.catering-hero-bg, .catering-hero-content, .stat-block, .package-card, .occasion-tile, .roadmap-step, .roadmap-dot, .testimonial-spotlight, .booking-cta-left, .booking-cta-right').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.clipPath = 'none';
+      });
+    }, 1600);
+  </script>
+
+  <!-- ============================================================
+       ORDER NOW / SIGN IN MODAL POPUP
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="authModalOverlay" aria-hidden="true">
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      
+      <!-- Close Button -->
+      <button class="auth-modal-close" id="authModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Header Section -->
+      <div class="auth-modal-header">
+        <div class="auth-brand-badge">
+          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="auth-brand-name">Deli & Sandwich</span>
+        </div>
+        <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
+        <p class="auth-modal-subtitle" id="modalSubtitle">Customize your sandwich & get fast delivery to your doorstep</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="auth-tabs-nav" role="tablist">
+        <button class="auth-tab-btn active" id="tabOrderBtn" data-tab="tabOrder" role="tab" aria-selected="true">
+          <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+        </button>
+        <button class="auth-tab-btn" id="tabLoginBtn" data-tab="tabLogin" role="tab" aria-selected="false">
+          <i class="fas fa-user"></i> <span>Sign In</span>
+        </button>
+        <button class="auth-tab-btn" id="tabRegisterBtn" data-tab="tabRegister" role="tab" aria-selected="false">
+          <i class="fas fa-user-plus"></i> <span>Register</span>
+        </button>
+      </div>
+
+      <!-- Tab Body -->
+      <div class="auth-modal-body">
+        
+        <!-- TAB 1: ORDER NOW -->
+        <div class="auth-tab-pane active" id="tabOrder" role="tabpanel">
+          <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+            
+            <div class="order-type-selector">
+              <label class="order-type-option active">
+                <input type="radio" name="orderType" value="delivery" checked hidden>
+                <i class="fas fa-motorcycle"></i>
+                <span>Delivery</span>
+              </label>
+              <label class="order-type-option">
+                <input type="radio" name="orderType" value="pickup" hidden>
+                <i class="fas fa-store"></i>
+                <span>Pickup</span>
+              </label>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="orderName" placeholder="John Doe" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-phone"></i> Phone Number</label>
+              <div class="input-with-icon">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="orderPhone" placeholder="+1 (555) 000-0000" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group" id="addressGroup">
+              <label><i class="fas fa-location-dot"></i> Delivery Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-map-marker-alt input-icon"></i>
+                <input type="text" id="orderAddress" placeholder="Street Address, City, Zip" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-row">
+              <div class="auth-form-group flex-1">
+                <label><i class="fas fa-bread-slice"></i> Select Sandwich</label>
+                <select id="orderItem" class="auth-input auth-select">
+                  <option value="12.99" data-name="Classic Club Sandwich">Classic Club Sandwich ($12.99)</option>
+                  <option value="14.50" data-name="Spicy Italian Sub">Spicy Italian Sub ($14.50)</option>
+                  <option value="13.25" data-name="Turkey Avocado Toast">Turkey Avocado Toast ($13.25)</option>
+                  <option value="11.99" data-name="Veggie Supreme">Veggie Supreme ($11.99)</option>
+                  <option value="15.99" data-name="Custom Gourmet Craft">Custom Gourmet Craft ($15.99)</option>
+                </select>
+              </div>
+
+              <div class="auth-form-group width-auto">
+                <label><i class="fas fa-sort-numeric-up"></i> Qty</label>
+                <div class="qty-counter">
+                  <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                  <span class="qty-val" id="qtyVal">1</span>
+                  <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-comment-alt"></i> Special Instructions (Optional)</label>
+              <textarea id="orderNotes" placeholder="Extra sauce, no onions, gluten-free bread..." rows="2" class="auth-input auth-textarea"></textarea>
+            </div>
+
+            <div class="order-price-summary">
+              <div class="summary-line"><span>Subtotal:</span> <span id="summarySubtotal">$12.99</span></div>
+              <div class="summary-line"><span>Delivery Fee:</span> <span id="summaryDelivery">$2.99</span></div>
+              <div class="summary-line total-line"><span>Total:</span> <span id="summaryTotal">$15.98</span></div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-paper-plane"></i> <span>Confirm & Place Order</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 2: SIGN IN -->
+        <div class="auth-tab-pane" id="tabLogin" role="tabpanel">
+          <form id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email or Phone</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" placeholder="yourname@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="loginPassword" placeholder="••••••••" required class="auth-input">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="remember-label">
+                <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-link" onclick="alert('Password reset link sent to your email!')">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-right-to-bracket"></i> <span>Sign In</span>
+            </button>
+
+            <div class="auth-divider">
+              <span>Or sign in with</span>
+            </div>
+
+            <div class="social-auth-grid">
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Google')">
+                <i class="fab fa-google"></i> Google
+              </button>
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Apple')">
+                <i class="fab fa-apple"></i> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 3: REGISTER -->
+        <div class="auth-tab-pane" id="tabRegister" role="tabpanel">
+          <form id="registerForm" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="regName" placeholder="Jane Smith" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="regEmail" placeholder="jane@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="regPassword" placeholder="Create password" required class="auth-input">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-user-plus"></i> <span>Create Account</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Auth Modal JS -->
+  <script src="auth-modal.js"></script>
+
+</body>
+</html>

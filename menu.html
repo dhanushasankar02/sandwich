@@ -1,0 +1,3008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deli & Sandwich · Menu</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #fdf8f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       DARK MODE
+    ============================================================ */
+    body.dark { background: #1a1612; color: #f0e8de; }
+
+    body.dark .navbar {
+      background: #241e18;
+      border-bottom-color: #3a322a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .logo-text,
+    body.dark .footer-logo-text { color: #f0e8de; }
+
+    body.dark .nav-link { color: #c9bdb0; }
+
+    body.dark .nav-link:hover,
+    body.dark .nav-link.active {
+      color: #e63946;
+      background: rgba(230, 57, 70, 0.12);
+    }
+
+    body.dark .nav-link.home-pill {
+      background: rgba(230, 57, 70, 0.15);
+      color: #e63946;
+    }
+
+    body.dark .dropdown-menu {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark .dropdown-menu a { color: #c9bdb0; }
+
+    body.dark .dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .toggle-btn {
+      border-color: #3a322a;
+      color: #c9bdb0;
+      background: #241e18;
+    }
+
+    body.dark .toggle-btn:hover {
+      background: #3a322a;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    body.dark .mobile-menu {
+      background: #241e18;
+      border-top-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link {
+      color: #c9bdb0;
+      border-bottom-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link:hover { color: #e63946; }
+
+    body.dark .mobile-dropdown-menu { background: #2c241e; }
+    body.dark .mobile-dropdown-menu a { color: #c9bdb0; }
+
+    body.dark .mobile-dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .hamburger span { background: #f0e8de; }
+
+    body.dark .footer {
+      background: #241e18;
+      border-top-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .footer-heading { color: #f0e8de; }
+    body.dark .footer-description,
+    body.dark .footer-newsletter p { color: #a89888; }
+    body.dark .footer-links a { color: #a89888; }
+    body.dark .footer-links a:hover { color: #e63946; }
+    body.dark .footer-bottom { border-top-color: #3a322a; }
+    body.dark .footer-copyright,
+    body.dark .footer-bottom-links a { color: #7a6a5c; }
+
+    body.dark .social-icon {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+    }
+
+    body.dark .newsletter-input {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .newsletter-input::placeholder { color: #7a6a5c; }
+
+    /* ============================================================
+       NAVBAR (UNCHANGED)
+    ============================================================ */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 0.6rem 2rem;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid #f0e6d8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      gap: 1rem;
+      white-space: nowrap;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-text-wrapper { display: flex; flex-direction: column; line-height: 1.15; }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    .logo-text span { color: #e63946; }
+
+    .logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+
+    .nav-menu > li { position: relative; flex-shrink: 0; }
+
+    .nav-link {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e63946;
+      background: #fdf0f0;
+    }
+
+    .nav-link i.fa-chevron-down {
+      font-size: 0.55rem;
+      transition: transform 0.2s;
+      margin-top: 2px;
+    }
+
+    .dropdown:hover .nav-link i.fa-chevron-down,
+    .dropdown:focus-within .nav-link i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .nav-link.home-pill {
+      background: #fdf0f0;
+      color: #e63946;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: #e63946;
+      color: #ffffff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 30px;
+      margin-left: 3px;
+      letter-spacing: 0.2px;
+      line-height: 1.3;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #f0e6d8;
+      padding: 0.4rem 0;
+      list-style: none;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s, background 0.3s, border-color 0.3s;
+      z-index: 200;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li { white-space: nowrap; }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    .toggle-btn i { font-size: 0.78rem; }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+    }
+
+    .order-btn:active { transform: scale(0.97); }
+    .order-btn i { font-size: 0.8rem; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1.5px solid #f0e6d8;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #2b2b2b;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      overflow-y: auto;
+      padding: 1rem 1.2rem 2rem;
+      z-index: 999;
+      transition: background 0.3s, border-color 0.3s;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .mobile-nav-list > li { border-bottom: 1px solid #f0e6d8; }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 0.2rem;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .mobile-nav-link:hover { color: #e63946; }
+
+    .mobile-nav-link .badge { margin-left: auto; margin-right: 0.5rem; }
+
+    .mobile-nav-link i.fa-chevron-down {
+      font-size: 0.7rem;
+      transition: transform 0.25s;
+      color: #888;
+    }
+
+    .mobile-nav-link.open i.fa-chevron-down { transform: rotate(180deg); }
+
+    .mobile-dropdown-menu {
+      list-style: none;
+      background: #fdf8f0;
+      border-radius: 8px;
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-dropdown-menu.open { max-height: 300px; padding: 0.3rem 0; }
+
+    .mobile-dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+      border-radius: 6px;
+    }
+
+    .mobile-dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .mobile-toggles {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mobile-toggles .toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex: 0 0 42px;
+      min-width: 42px;
+      padding: 0;
+      font-size: 1rem;
+      justify-content: center;
+    }
+
+    .mobile-order-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      margin-top: 0.8rem;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:active { transform: scale(0.97); }
+
+    /* ============================================================
+       FOOTER (UNCHANGED)
+    ============================================================ */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      padding: 3.5rem 2rem 1.5rem;
+      color: #2b2b2b;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-text-wrapper { display: flex; flex-direction: column; line-height: 1.15; }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo-text span { color: #e63946; }
+
+    .footer-logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .footer-description {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .social-icons { display: flex; gap: 0.6rem; margin-top: 0.3rem; }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e63946;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #78716c;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #e63946;
+      transform: translateX(3px);
+    }
+
+    .footer-links a i { font-size: 0.55rem; color: #e63946; }
+
+    .footer-newsletter { display: flex; flex-direction: column; }
+
+    .footer-newsletter p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form { display: flex; flex-direction: column; gap: 0.7rem; }
+
+    .newsletter-input {
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .newsletter-input::placeholder { color: #a8a29e; }
+
+    .newsletter-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .newsletter-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+      letter-spacing: 0.2px;
+      width: 100%;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .newsletter-btn:active { transform: scale(0.97); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-copyright { font-size: 0.78rem; color: #a8a29e; }
+
+    .footer-bottom-links { display: flex; gap: 1.5rem; list-style: none; }
+
+    .footer-bottom-links a {
+      text-decoration: none;
+      color: #a8a29e;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .footer-bottom-links a:hover { color: #e63946; }
+
+    /* ============================================================
+       RTL SUPPORT
+    ============================================================ */
+    [dir="rtl"] .navbar,
+    [dir="rtl"] .footer { direction: rtl; }
+
+    [dir="rtl"] .nav-menu { direction: rtl; }
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .nav-link i.fa-chevron-down { margin-top: 0; }
+    [dir="rtl"] .badge { margin-left: 0; margin-right: 3px; }
+    [dir="rtl"] .footer-links a:hover { transform: translateX(-3px); }
+    [dir="rtl"] .footer-links a i.fa-chevron-right { transform: rotate(180deg); }
+    [dir="rtl"] .mobile-nav-link { text-align: right; }
+
+    [dir="rtl"] .mobile-nav-link .badge {
+      margin-left: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-menu a { text-align: right; }
+
+    /* ============================================================
+       NAVBAR & FOOTER RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .navbar { padding: 0.55rem 1.2rem; }
+      .nav-menu { display: none; }
+      .nav-right .toggle-btn, .nav-right .order-btn { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: block; }
+      .logo-text { font-size: 1.05rem; }
+      .logo-sub { font-size: 0.5rem; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 767px) {
+      .navbar { padding: 0.5rem 0.9rem; }
+      .logo-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .logo-text { font-size: 1rem; }
+      .logo-sub { font-size: 0.48rem; }
+      .mobile-menu { top: 60px; }
+      .mobile-toggles .toggle-btn { width: 42px; height: 42px; flex: 0 0 42px; min-width: 42px; }
+      .footer { padding: 2.5rem 1.2rem 1.2rem; }
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-bottom-links { justify-content: center; }
+    }
+
+    @media (max-width: 400px) {
+      .logo-text-wrapper { display: none; }
+      .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
+      .mobile-menu { top: 56px; }
+      .mobile-nav-link { font-size: 0.9rem; padding: 0.85rem 0.2rem; }
+      .mobile-dropdown-menu a { font-size: 0.84rem; }
+    }
+
+    /* ============================================================
+       MENU PAGE — UNIQUE SECTIONS
+    ============================================================ */
+
+    .m-section {
+      width: 100%;
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    .m-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 1: MENU HERO — Dark Bistro Banner
+       Unique Motion: bannerSlide + tagGlow
+    ------------------------------------------------------------ */
+    .m-hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: #1a1612;
+      padding: 6rem 2rem;
+    }
+
+    .m-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .m-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.28;
+    }
+
+    .m-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(26,22,18,0.7) 0%, rgba(26,22,18,0.95) 100%);
+    }
+
+    .m-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .m-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(230, 57, 70, 0.15);
+      border: 1px solid #e63946;
+      color: #f4a261;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+      animation: mTagGlow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes mTagGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(230, 57, 70, 0.3); }
+      50%      { box-shadow: 0 0 40px rgba(230, 57, 70, 0.6); }
+    }
+
+    .m-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 1.2rem;
+    }
+
+    .m-hero h1 span {
+      color: #f4a261;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .m-hero p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Decorative corners */
+    .m-hero-corner {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 2px solid #e63946;
+      z-index: 2;
+    }
+
+    .m-hero-corner.tl { top: 2rem; left: 2rem; border-right: none; border-bottom: none; }
+    .m-hero-corner.tr { top: 2rem; right: 2rem; border-left: none; border-bottom: none; }
+    .m-hero-corner.bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; }
+    .m-hero-corner.br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; }
+
+    /* ------------------------------------------------------------
+       SECTION 2: CATEGORY FILTER — Pill Navigation
+       Unique Motion: pillMorph + listStagger
+    ------------------------------------------------------------ */
+    .m-categories {
+      background: #ffffff;
+      transition: background 0.3s;
+      padding: 3rem 2rem;
+    }
+
+    body.dark .m-categories { background: #1a1612; }
+
+    .m-cat-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .m-cat-header span {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #e63946;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .m-cat-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-cat-header h2 { color: #f0e8de; }
+
+    .m-cat-pills {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .m-cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.7rem 1.4rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+
+    body.dark .m-cat-pill {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #c9bdb0;
+    }
+
+    .m-cat-pill:hover {
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    .m-cat-pill.active {
+      background: #e63946;
+      border-color: #e63946;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(230, 57, 70, 0.35);
+    }
+
+    .m-cat-pill i {
+      font-size: 0.8rem;
+    }
+
+    .m-cat-pill .m-count {
+      background: rgba(255, 255, 255, 0.3);
+      color: inherit;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    .m-cat-pill.active .m-count {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 3: MENU GRID — Editorial Split Cards
+       Unique Motion: splitCardReveal (top/bottom halves)
+    ------------------------------------------------------------ */
+    .m-grid-section {
+      background: #fdf8f0;
+      transition: background 0.3s;
+    }
+
+    body.dark .m-grid-section { background: #1a1612; }
+
+    .m-grid-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .m-grid-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-grid-header h2 { color: #f0e8de; }
+
+    .m-grid-header h2 span { color: #e63946; }
+
+    .m-grid-header p {
+      font-size: 1rem;
+      color: #78716c;
+      margin-top: 0.7rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-grid-header p { color: #a89888; }
+
+    .m-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .m-card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: 1px solid #f0e6d8;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    body.dark .m-card {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .m-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(230, 57, 70, 0.15);
+    }
+
+    .m-card-img-wrap {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .m-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+
+    .m-card:hover .m-card-img-wrap img { transform: scale(1.08); }
+
+    .m-card-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      color: #e63946;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+
+    body.dark .m-card-category {
+      background: rgba(36, 30, 24, 0.95);
+    }
+
+    .m-card-heart {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      color: #e63946;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      backdrop-filter: blur(6px);
+      font-size: 0.85rem;
+    }
+
+    body.dark .m-card-heart { background: rgba(36, 30, 24, 0.95); }
+
+    .m-card-heart:hover {
+      transform: scale(1.15);
+      background: #e63946;
+      color: #fff;
+    }
+
+    .m-card-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .m-card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .m-card-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-card-body h3 { color: #f0e8de; }
+
+    .m-card-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #e63946;
+      white-space: nowrap;
+    }
+
+    .m-card-desc {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      flex: 1;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-card-desc { color: #a89888; }
+
+    .m-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f0e6d8;
+      transition: border-color 0.3s;
+    }
+
+    body.dark .m-card-meta { border-color: #3a322a; }
+
+    .m-card-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      color: #f4a261;
+      font-weight: 600;
+    }
+
+    .m-card-rating span { color: #78716c; }
+
+    body.dark .m-card-rating span { color: #a89888; }
+
+    .m-card-add {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .m-card-add:hover {
+      background: #d62828;
+      transform: translateY(-2px);
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 4: COMBOS — Horizontal Wide Feature Cards
+       Unique Motion: wideSlide + badgePulse
+    ------------------------------------------------------------ */
+    .m-combos {
+      background: #2b2b2b;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    body.dark .m-combos { background: #0f0c0a; }
+
+    .m-combos-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .m-combos-header span {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #f4a261;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .m-combos-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.8px;
+    }
+
+    .m-combos-header h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #f4a261;
+    }
+
+    .m-combos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .m-combo {
+      display: grid;
+      grid-template-columns: 280px 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 1.5rem;
+      transition: background 0.3s, transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+
+    .m-combo:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(244, 162, 97, 0.4);
+      transform: translateX(8px);
+    }
+
+    .m-combo-img {
+      width: 100%;
+      height: 180px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .m-combo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+
+    .m-combo:hover .m-combo-img img { transform: scale(1.06); }
+
+    .m-combo-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .m-combo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f4a261;
+      color: #2b2b2b;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .m-combo-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .m-combo-info p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    .m-combo-price {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .m-combo-price strong {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #f4a261;
+    }
+
+    .m-combo-price span {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: line-through;
+    }
+
+    .m-combo-price button {
+      margin-top: 0.5rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 30px;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .m-combo-price button:hover {
+      background: #d62828;
+      transform: translateY(-2px);
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 5: DIETARY BADGES — Icon Row
+       Unique Motion: iconBounceIn
+    ------------------------------------------------------------ */
+    .m-dietary {
+      background: #ffffff;
+      transition: background 0.3s;
+    }
+
+    body.dark .m-dietary { background: #1a1612; }
+
+    .m-dietary-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .m-dietary-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-dietary-header h2 { color: #f0e8de; }
+
+    .m-dietary-header h2 span { color: #e63946; }
+
+    .m-dietary-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.2rem;
+    }
+
+    .m-diet-item {
+      background: #fdf8f0;
+      border: 1px solid #f0e6d8;
+      border-radius: 16px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+
+    body.dark .m-diet-item {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .m-diet-item:hover {
+      transform: translateY(-6px);
+      border-color: #e63946;
+      box-shadow: 0 15px 30px rgba(230, 57, 70, 0.15);
+    }
+
+    .m-diet-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 0.8rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 6px 18px rgba(230, 57, 70, 0.3);
+    }
+
+    .m-diet-item strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 0.3rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-diet-item strong { color: #f0e8de; }
+
+    .m-diet-item span {
+      font-size: 0.72rem;
+      color: #78716c;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-diet-item span { color: #a89888; }
+
+    /* ------------------------------------------------------------
+       SECTION 6: CHEF SPECIAL — Full Bleed Feature
+       Unique Motion: imageSplitOpen + textLetterSpacing
+    ------------------------------------------------------------ */
+    .m-special {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+      min-height: 600px;
+      background: #1a1612;
+    }
+
+    .m-special-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .m-special-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+
+    .m-special::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(26,22,18,0.95) 0%, rgba(26,22,18,0.6) 60%, rgba(26,22,18,0.3) 100%);
+    }
+
+    .m-special-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .m-special-text {
+      color: #fff;
+    }
+
+    .m-special-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(244, 162, 97, 0.15);
+      border: 1px solid #f4a261;
+      color: #f4a261;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .m-special-text h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.2rem;
+    }
+
+    .m-special-text h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #f4a261;
+    }
+
+    .m-special-text p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .m-special-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .m-special-feature {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .m-special-feature i {
+      color: #f4a261;
+      font-size: 0.85rem;
+    }
+
+    .m-special-price-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .m-special-price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #f4a261;
+    }
+
+    .m-special-price small {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      margin-left: 0.3rem;
+    }
+
+    .m-special-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.9rem 2rem;
+      border-radius: 30px;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .m-special-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(230, 57, 70, 0.55);
+    }
+
+    .m-special-image {
+      position: relative;
+    }
+
+    .m-special-image img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+
+    .m-special-badge {
+      position: absolute;
+      top: 2rem;
+      right: -1.5rem;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #f4a261;
+      color: #2b2b2b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 15px 40px rgba(244, 162, 97, 0.5);
+      transform: rotate(-8deg);
+    }
+
+    .m-special-badge strong {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .m-special-badge span {
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 7: NUTRITION STRIP — Compact Data Row
+       Unique Motion: barGrow + numberCount
+    ------------------------------------------------------------ */
+    .m-nutrition {
+      background: #fdf8f0;
+      transition: background 0.3s;
+    }
+
+    body.dark .m-nutrition { background: #1a1612; }
+
+    .m-nutrition-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .m-nutrition-header span {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #e63946;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .m-nutrition-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-nutrition-header h2 { color: #f0e8de; }
+
+    .m-nutrition-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .m-nutrition-card {
+      background: #fff;
+      border: 1px solid #f0e6d8;
+      border-radius: 16px;
+      padding: 1.8rem 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
+    }
+
+    body.dark .m-nutrition-card {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .m-nutrition-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(230, 57, 70, 0.12);
+    }
+
+    .m-nutrition-card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .m-nutrition-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #78716c;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-nutrition-card h3 { color: #a89888; }
+
+    .m-nutrition-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -1px;
+      margin-bottom: 0.8rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .m-nutrition-value { color: #f0e8de; }
+
+    .m-nutrition-value small {
+      font-size: 0.85rem;
+      color: #a8a29e;
+      font-weight: 400;
+      margin-left: 0.3rem;
+    }
+
+    .m-nutrition-bar {
+      height: 6px;
+      background: #f0e6d8;
+      border-radius: 3px;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    body.dark .m-nutrition-bar { background: #3a322a; }
+
+    .m-nutrition-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #e63946 0%, #f4a261 100%);
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+    /* ============================================================
+       MENU PAGE RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .m-menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .m-dietary-grid { grid-template-columns: repeat(3, 1fr); }
+      .m-nutrition-grid { grid-template-columns: repeat(2, 1fr); }
+      .m-combo { grid-template-columns: 200px 1fr; }
+      .m-combo-price { grid-column: span 2; flex-direction: row; justify-content: space-between; align-items: center; text-align: left; }
+      .m-special-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .m-special-image { max-width: 480px; margin: 0 auto; }
+      .m-special-text h2 { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 767px) {
+      .m-section { padding: 3.5rem 1.2rem; }
+      .m-hero { min-height: 50vh; padding: 5rem 1.2rem; }
+      .m-hero-corner { width: 40px; height: 40px; }
+      .m-hero-corner.tl, .m-hero-corner.tr { top: 1rem; }
+      .m-hero-corner.bl, .m-hero-corner.br { bottom: 1rem; }
+      .m-hero-corner.tl, .m-hero-corner.bl { left: 1rem; }
+      .m-hero-corner.tr, .m-hero-corner.br { right: 1rem; }
+      .m-cat-pills { gap: 0.4rem; }
+      .m-cat-pill { padding: 0.6rem 1rem; font-size: 0.78rem; }
+      .m-menu-grid { grid-template-columns: 1fr; }
+      .m-grid-header h2,
+      .m-combos-header h2 { font-size: 1.8rem; }
+      .m-combo { grid-template-columns: 1fr; gap: 1rem; }
+      .m-combo-img { height: 200px; }
+      .m-combo-price { grid-column: span 1; }
+      .m-dietary-grid { grid-template-columns: repeat(2, 1fr); }
+      .m-special-inner { padding: 4rem 1.2rem; }
+      .m-special-text h2 { font-size: 1.8rem; }
+      .m-special-badge { width: 85px; height: 85px; top: 1rem; right: -0.5rem; }
+      .m-special-badge strong { font-size: 1.2rem; }
+      .m-nutrition-grid { grid-template-columns: 1fr; }
+      .m-nutrition-header h2 { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 480px) {
+      .m-dietary-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Focus states */
+    .nav-link:focus-visible,
+    .toggle-btn:focus-visible,
+    .order-btn:focus-visible,
+    .hamburger:focus-visible,
+    .mobile-nav-link:focus-visible,
+    .mobile-order-btn:focus-visible,
+    .dropdown-menu a:focus-visible,
+    .mobile-dropdown-menu a:focus-visible,
+    .newsletter-btn:focus-visible,
+    .newsletter-input:focus-visible,
+    .social-icon:focus-visible,
+    .footer-links a:focus-visible {
+      outline: 2px solid #e63946;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar { width: 6px; }
+    .mobile-menu::-webkit-scrollbar-thumb { background: #e63946; border-radius: 3px; }
+  </style>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR (UNCHANGED)
+  ============================================================ -->
+    <nav class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-text-wrapper">
+        <span class="logo-text">Deli<span>&</span>Sandwich</span>
+        <span class="logo-sub">Fresh • Tasty • Made to Order</span>
+      </span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="dropdown">
+        <a href="index.html" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="nav-link active">Menu</a></li>
+      <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="toggle-btn" id="darkToggleDesktop" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleDesktop" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+      <a href="login.html" class="order-btn">
+        <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <!-- MOBILE MENU (UNCHANGED) -->
+    <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li class="mobile-dropdown">
+        <button class="mobile-nav-link" data-dropdown="homeDropdownMobile" aria-expanded="false">
+          Home <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="mobile-dropdown-menu" id="homeDropdownMobile">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="mobile-nav-link active">Menu</a></li>
+      <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+        <div class="mobile-toggles">
+      <button class="toggle-btn" id="darkToggleMobile" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleMobile" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+    </div>
+    <a href="login.html" class="mobile-order-btn">
+      <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+    </a>
+  </div><!-- ============================================================
+       MENU PAGE CONTENT — 7 UNIQUE SECTIONS
+  ============================================================ -->
+
+  <!-- SECTION 1: MENU HERO — Dark Bistro Banner -->
+  <section class="m-hero" id="m-s1">
+
+    <div class="m-hero-bg" data-motion="m-hero-bg">
+      <img src="image/Sandwiches.jpg" alt="Deli counter">
+    </div>
+
+    <div class="m-hero-corner tl" data-motion="m-corner"></div>
+    <div class="m-hero-corner tr" data-motion="m-corner"></div>
+    <div class="m-hero-corner bl" data-motion="m-corner"></div>
+    <div class="m-hero-corner br" data-motion="m-corner"></div>
+
+    <div class="m-hero-inner">
+      <span class="m-hero-tag" data-motion="m-hero-tag">
+        <i class="fas fa-book-open"></i> The Full Menu
+      </span>
+      <h1 data-motion="m-hero-title">
+        Every bite, <span>crafted</span><br>
+        for the moment.
+      </h1>
+      <p data-motion="m-hero-desc">
+        Explore our complete selection of sandwiches, wraps, salads,
+        and sides — all made fresh, all made for you.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- SECTION 2: CATEGORY FILTER — Pill Navigation -->
+  <section class="m-categories" id="m-s2">
+    <div class="m-cat-header" data-motion="m-cat-header">
+      <span>Filter By</span>
+      <h2>Choose Your Craving</h2>
+    </div>
+
+    <div class="m-cat-pills" data-motion="m-pills">
+      <button class="m-cat-pill active" data-motion="m-pill">
+        <i class="fas fa-th-large"></i> All Items
+        <span class="m-count">24</span>
+      </button>
+      <button class="m-cat-pill" data-motion="m-pill">
+        <i class="fas fa-bread-slice"></i> Sandwiches
+        <span class="m-count">8</span>
+      </button>
+      <button class="m-cat-pill" data-motion="m-pill">
+        <i class="fas fa-hotdog"></i> Subs
+        <span class="m-count">5</span>
+      </button>
+      <button class="m-cat-pill" data-motion="m-pill">
+        <i class="fas fa-utensils"></i> Wraps
+        <span class="m-count">4</span>
+      </button>
+      <button class="m-cat-pill" data-motion="m-pill">
+        <i class="fas fa-leaf"></i> Salads
+        <span class="m-count">4</span>
+      </button>
+      <button class="m-cat-pill" data-motion="m-pill">
+        <i class="fas fa-cookie-bite"></i> Sides
+        <span class="m-count">3</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- SECTION 3: MENU GRID — Editorial Split Cards -->
+  <section class="m-grid-section m-section" id="m-s3">
+    <div class="m-container">
+      <div class="m-grid-header" data-motion="m-grid-header">
+        <h2>Fresh from <span>Our Kitchen</span></h2>
+        <p>Handcrafted daily · Always fresh · Made to order</p>
+      </div>
+
+      <div class="m-menu-grid">
+
+        <div class="m-card" data-motion="m-card">
+          <div class="m-card-img-wrap">
+            <img src="image/Classic Club.jpg" alt="Classic Club">
+            <span class="m-card-category">Sandwiches</span>
+            <button class="m-card-heart" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+          </div>
+          <div class="m-card-body">
+            <div class="m-card-title-row">
+              <h3>Classic Club</h3>
+              <span class="m-card-price">$9.99</span>
+            </div>
+            <p class="m-card-desc">Triple-stacked turkey, crispy bacon, lettuce, tomato & house mayo on toasted sourdough.</p>
+            <div class="m-card-meta">
+              <span class="m-card-rating"><i class="fas fa-star"></i> 4.9 <span>(320)</span></span>
+              <button class="m-card-add"><i class="fas fa-plus"></i> Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-card" data-motion="m-card">
+          <div class="m-card-img-wrap">
+            <img src="image/Italian Sub.jpg" alt="Italian Sub">
+            <span class="m-card-category">Subs</span>
+            <button class="m-card-heart" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+          </div>
+          <div class="m-card-body">
+            <div class="m-card-title-row">
+              <h3>Italian Sub</h3>
+              <span class="m-card-price">$10.49</span>
+            </div>
+            <p class="m-card-desc">Salami, ham, provolone, pepperoncini & zesty Italian dressing on a fresh hoagie.</p>
+            <div class="m-card-meta">
+              <span class="m-card-rating"><i class="fas fa-star"></i> 4.8 <span>(280)</span></span>
+              <button class="m-card-add"><i class="fas fa-plus"></i> Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-card" data-motion="m-card">
+          <div class="m-card-img-wrap">
+            <img src="image/Veggie Wrap.jpg" alt="Veggie Wrap">
+            <span class="m-card-category">Wraps</span>
+            <button class="m-card-heart" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+          </div>
+          <div class="m-card-body">
+            <div class="m-card-title-row">
+              <h3>Mediterranean Wrap</h3>
+              <span class="m-card-price">$8.99</span>
+            </div>
+            <p class="m-card-desc">Grilled zucchini, hummus, whipped feta, roasted peppers & fresh herbs in warm pita.</p>
+            <div class="m-card-meta">
+              <span class="m-card-rating"><i class="fas fa-star"></i> 4.7 <span>(190)</span></span>
+              <button class="m-card-add"><i class="fas fa-plus"></i> Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-card" data-motion="m-card">
+          <div class="m-card-img-wrap">
+            <img src="image/Caesar Salad.jpg" alt="Caesar Salad">
+            <span class="m-card-category">Salads</span>
+            <button class="m-card-heart" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+          </div>
+          <div class="m-card-body">
+            <div class="m-card-title-row">
+              <h3>Classic Caesar</h3>
+              <span class="m-card-price">$7.99</span>
+            </div>
+            <p class="m-card-desc">Crisp romaine, shaved parmesan, house croutons & creamy Caesar dressing.</p>
+            <div class="m-card-meta">
+              <span class="m-card-rating"><i class="fas fa-star"></i> 4.8 <span>(215)</span></span>
+              <button class="m-card-add"><i class="fas fa-plus"></i> Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-card" data-motion="m-card">
+          <div class="m-card-img-wrap">
+            <img src="image/Truffle Melt (2).jpg" alt="Truffle Melt">
+            <span class="m-card-category">Sandwiches</span>
+            <button class="m-card-heart" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+          </div>
+          <div class="m-card-body">
+            <div class="m-card-title-row">
+              <h3>Truffle Melt</h3>
+              <span class="m-card-price">$13.99</span>
+            </div>
+            <p class="m-card-desc">Slow-roasted mushrooms, aged gruyère & black truffle oil on grilled sourdough.</p>
+            <div class="m-card-meta">
+              <span class="m-card-rating"><i class="fas fa-star"></i> 5.0 <span>(450)</span></span>
+              <button class="m-card-add"><i class="fas fa-plus"></i> Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-card" data-motion="m-card">
+          <div class="m-card-img-wrap">
+            <img src="image/Nashville Hot Chicken.jpg" alt="Nashville Hot Chicken">
+            <span class="m-card-category">Sandwiches</span>
+            <button class="m-card-heart" aria-label="Add to favorites"><i class="fas fa-heart"></i></button>
+          </div>
+          <div class="m-card-body">
+            <div class="m-card-title-row">
+              <h3>Nashville Hot Chicken</h3>
+              <span class="m-card-price">$12.49</span>
+            </div>
+            <p class="m-card-desc">Buttermilk-brined chicken, cayenne-honey glaze & cooling slaw on brioche.</p>
+            <div class="m-card-meta">
+              <span class="m-card-rating"><i class="fas fa-star"></i> 4.9 <span>(380)</span></span>
+              <button class="m-card-add"><i class="fas fa-plus"></i> Add</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: COMBOS — Horizontal Wide Feature Cards -->
+  <section class="m-combos m-section" id="m-s4">
+    <div class="m-container">
+      <div class="m-combos-header" data-motion="m-combos-header">
+        <span>Save More</span>
+        <h2>Combo <em>Meals</em></h2>
+      </div>
+
+      <div class="m-combos-list">
+
+        <div class="m-combo" data-motion="m-combo">
+          <div class="m-combo-img">
+            <img src="image/The Classic Combo.jpg" alt="Classic Combo">
+          </div>
+          <div class="m-combo-info">
+            <span class="m-combo-badge"><i class="fas fa-fire"></i> Best Seller</span>
+            <h3>The Classic Combo</h3>
+            <p>Any signature sandwich + house chips + fountain drink. Everything you need, nothing you don't.</p>
+          </div>
+          <div class="m-combo-price">
+            <strong>$14.99</strong>
+            <span>$18.50</span>
+            <button>Add Combo</button>
+          </div>
+        </div>
+
+        <div class="m-combo" data-motion="m-combo">
+          <div class="m-combo-img">
+            <img src="image/Family Size.jpg" alt="Family Combo">
+          </div>
+          <div class="m-combo-info">
+            <span class="m-combo-badge"><i class="fas fa-users"></i> Family Size</span>
+            <h3>Family Feast</h3>
+            <p>Four signature sandwiches, two sides, and four drinks. Perfect for sharing with the ones you love.</p>
+          </div>
+          <div class="m-combo-price">
+            <strong>$49.99</strong>
+            <span>$68.00</span>
+            <button>Add Combo</button>
+          </div>
+        </div>
+
+        <div class="m-combo" data-motion="m-combo">
+          <div class="m-combo-img">
+            <img src="image/Lunch Break Special.jpg" alt="Lunch Combo">
+          </div>
+          <div class="m-combo-info">
+            <span class="m-combo-badge"><i class="fas fa-clock"></i> Quick Lunch</span>
+            <h3>Lunch Break Special</h3>
+            <p>Half sandwich + cup of soup + side salad. Ready in 10 minutes, perfect for busy afternoons.</p>
+          </div>
+          <div class="m-combo-price">
+            <strong>$11.99</strong>
+            <span>$15.00</span>
+            <button>Add Combo</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: DIETARY BADGES — Icon Row -->
+  <section class="m-dietary m-section" id="m-s5">
+    <div class="m-container">
+      <div class="m-dietary-header" data-motion="m-dietary-header">
+        <h2>Made for <span>Every Diet</span></h2>
+      </div>
+
+      <div class="m-dietary-grid">
+        <div class="m-diet-item" data-motion="m-diet">
+          <div class="m-diet-icon"><i class="fas fa-leaf"></i></div>
+          <strong>Vegetarian</strong>
+          <span>12 items</span>
+        </div>
+        <div class="m-diet-item" data-motion="m-diet">
+          <div class="m-diet-icon"><i class="fas fa-seedling"></i></div>
+          <strong>Vegan</strong>
+          <span>6 items</span>
+        </div>
+        <div class="m-diet-item" data-motion="m-diet">
+          <div class="m-diet-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+          <strong>Gluten-Free</strong>
+          <span>8 items</span>
+        </div>
+        <div class="m-diet-item" data-motion="m-diet">
+          <div class="m-diet-icon"><i class="fas fa-pepper-hot"></i></div>
+          <strong>Spicy</strong>
+          <span>5 items</span>
+        </div>
+        <div class="m-diet-item" data-motion="m-diet">
+          <div class="m-diet-icon"><i class="fas fa-dumbbell"></i></div>
+          <strong>High Protein</strong>
+          <span>10 items</span>
+        </div>
+        <div class="m-diet-item" data-motion="m-diet">
+          <div class="m-diet-icon"><i class="fas fa-heart"></i></div>
+          <strong>Low Calorie</strong>
+          <span>7 items</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: CHEF SPECIAL — Full Bleed Feature -->
+  <section class="m-special m-section" id="m-s6">
+
+    <div class="m-special-bg" data-motion="m-special-bg">
+      <img src="image/bg1.jpg" alt="Chef special background">
+    </div>
+
+    <div class="m-special-inner">
+      <div class="m-special-text" data-motion="m-special-text">
+        <span class="m-special-tag" data-motion="m-special-tag">
+          <i class="fas fa-crown"></i> Chef's Special
+        </span>
+        <h2 data-motion="m-special-title">
+          The <em>Midnight</em><br>
+          Italian.
+        </h2>
+        <p data-motion="m-special-desc">
+          A limited-edition creation from our head chef — layered with
+          prosciutto, burrata, fig jam, arugula, and a drizzle of aged
+          balsamic on house ciabatta.
+        </p>
+        <div class="m-special-features">
+          <span class="m-special-feature" data-motion="m-special-feature">
+            <i class="fas fa-check-circle"></i> Limited to 30 servings per day
+          </span>
+          <span class="m-special-feature" data-motion="m-special-feature">
+            <i class="fas fa-check-circle"></i> Handcrafted at your table
+          </span>
+          <span class="m-special-feature" data-motion="m-special-feature">
+            <i class="fas fa-check-circle"></i> Pairs with our house red
+          </span>
+        </div>
+        <div class="m-special-price-row">
+          <div class="m-special-price">
+            $16.99 <small>· serves 1</small>
+          </div>
+          <button class="m-special-btn">
+            <i class="fas fa-shopping-bag"></i> Order the Special
+          </button>
+        </div>
+      </div>
+
+      <div class="m-special-image" data-motion="m-special-image">
+        <img src="image/Midnight Italian.jpg" alt="Midnight Italian">
+        <div class="m-special-badge" data-motion="m-special-badge">
+          <strong>30</strong>
+          <span>per day</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 7: NUTRITION STRIP — Compact Data Row -->
+  <section class="m-nutrition m-section" id="m-s7">
+    <div class="m-container">
+      <div class="m-nutrition-header" data-motion="m-nutrition-header">
+        <span>Nutrition Facts</span>
+        <h2>Know What You Eat</h2>
+      </div>
+
+      <div class="m-nutrition-grid">
+
+        <div class="m-nutrition-card" data-motion="m-nutrition-card">
+          <div class="m-nutrition-card-icon"><i class="fas fa-fire"></i></div>
+          <h3>Calories</h3>
+          <div class="m-nutrition-value" data-motion="m-count" data-target="480">0<small>kcal</small></div>
+          <div class="m-nutrition-bar">
+            <div class="m-nutrition-bar-fill" data-motion="m-bar" data-width="65%"></div>
+          </div>
+        </div>
+
+        <div class="m-nutrition-card" data-motion="m-nutrition-card">
+          <div class="m-nutrition-card-icon"><i class="fas fa-dumbbell"></i></div>
+          <h3>Protein</h3>
+          <div class="m-nutrition-value" data-motion="m-count" data-target="32">0<small>g</small></div>
+          <div class="m-nutrition-bar">
+            <div class="m-nutrition-bar-fill" data-motion="m-bar" data-width="78%"></div>
+          </div>
+        </div>
+
+        <div class="m-nutrition-card" data-motion="m-nutrition-card">
+          <div class="m-nutrition-card-icon"><i class="fas fa-bread-slice"></i></div>
+          <h3>Carbs</h3>
+          <div class="m-nutrition-value" data-motion="m-count" data-target="42">0<small>g</small></div>
+          <div class="m-nutrition-bar">
+            <div class="m-nutrition-bar-fill" data-motion="m-bar" data-width="55%"></div>
+          </div>
+        </div>
+
+        <div class="m-nutrition-card" data-motion="m-nutrition-card">
+          <div class="m-nutrition-card-icon"><i class="fas fa-droplet"></i></div>
+          <h3>Fat</h3>
+          <div class="m-nutrition-value" data-motion="m-count" data-target="18">0<small>g</small></div>
+          <div class="m-nutrition-bar">
+            <div class="m-nutrition-bar-fill" data-motion="m-bar" data-width="40%"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+    <!-- ============================================================
+       FOOTER (IDENTICAL TO INDEX.HTML)
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-text-wrapper">
+            <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
+            <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
+          </span>
+        </a>
+        <p class="footer-description">
+          Building sandwich satisfaction with fresh ingredients and bold flavors
+          for every craving. Our chefs craft a fun, delicious experience where
+          every bite is made to order.
+        </p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="build your sandwich.html"><i class="fas fa-chevron-right"></i> Build Your Sandwich</a></li>
+          <li><a href="special offers.html"><i class="fas fa-chevron-right"></i> Special Offers</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="reviews.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+          <li><a href="catering order.html"><i class="fas fa-chevron-right"></i> Catering Orders</a></li>
+          <li><a href="login.html"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">Stay Updated</h3>
+        <p>
+          Get the latest menu drops, special offers, and sandwich updates
+          delivered to your inbox.
+        </p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Deli & Sandwich. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="contact.html">Privacy</a></li>
+        <li><a href="contact.html">Terms</a></li>
+        <li><a href="contact.html">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       FRAMER MOTION — UNIQUE ANIMATIONS FOR MENU PAGE
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      const { animate, inView } = window.Motion || {};
+
+      if (!animate || !inView) {
+        console.warn('Framer Motion not loaded.');
+        return;
+      }
+
+      /* ============================================================
+         SECTION 1: MENU HERO — Dark Bistro Banner
+         Unique Motion: bannerSlide + cornerDraw
+      ============================================================ */
+      const mHeroBg = document.querySelector('[data-motion="m-hero-bg"]');
+      const mHeroTag = document.querySelector('[data-motion="m-hero-tag"]');
+      const mHeroTitle = document.querySelector('[data-motion="m-hero-title"]');
+      const mHeroDesc = document.querySelector('[data-motion="m-hero-desc"]');
+      const mCorners = document.querySelectorAll('[data-motion="m-corner"]');
+
+      if (mHeroBg) {
+        animate(
+          mHeroBg,
+          { opacity: [0, 1], scale: [1.15, 1] },
+          { duration: 2, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+      if (mHeroTag) {
+        animate(
+          mHeroTag,
+          { opacity: [0, 1], y: [-20, 0] },
+          { duration: 0.6, delay: 0.3 }
+        );
+      }
+      if (mHeroTitle) {
+        animate(
+          mHeroTitle,
+          { opacity: [0, 1], y: [40, 0] },
+          { duration: 1, delay: 0.5 }
+        );
+      }
+      if (mHeroDesc) {
+        animate(
+          mHeroDesc,
+          { opacity: [0, 1], y: [30, 0] },
+          { duration: 0.8, delay: 0.8 }
+        );
+      }
+      mCorners.forEach(function (corner, i) {
+        animate(
+          corner,
+          { opacity: [0, 1], scale: [0.3, 1], rotate: [90, 0] },
+          { duration: 0.7, delay: 0.4 + i * 0.15 }
+        );
+      });
+
+      /* ============================================================
+         SECTION 2: CATEGORY FILTER — Pill Navigation
+         Unique Motion: pillMorph + staggerList
+      ============================================================ */
+      const mCatHeader = document.querySelector('[data-motion="m-cat-header"]');
+      const mPills = document.querySelectorAll('[data-motion="m-pill"]');
+
+      if (mCatHeader) {
+        animate(mCatHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      mPills.forEach(function (pill, i) {
+        animate(
+          pill,
+          { opacity: [0, 1], y: [30, 0], scale: [0.85, 1] },
+          { duration: 0.6, delay: 0.1 * i, easing: [0.34, 1.56, 0.64, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 3: MENU GRID
+         Unique Motion: splitCardReveal (from alternating corners)
+      ============================================================ */
+      const mGridHeader = document.querySelector('[data-motion="m-grid-header"]');
+      const mCards = document.querySelectorAll('[data-motion="m-card"]');
+
+      if (mGridHeader) {
+        animate(mGridHeader, { opacity: [0, 1], y: [25, 0] }, { duration: 0.7 });
+      }
+      mCards.forEach(function (card, i) {
+        const dir = i % 2 === 0 ? -1 : 1;
+        animate(
+          card,
+          {
+            opacity: [0, 1],
+            y: [60, 0],
+            x: [dir * 40, 0],
+            rotate: [dir * 3, 0]
+          },
+          { duration: 0.8, delay: 0.12 * i, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 4: COMBOS — Wide Feature Cards
+         Unique Motion: wideSlideFromRight + badgePulse
+      ============================================================ */
+      const mCombosHeader = document.querySelector('[data-motion="m-combos-header"]');
+      const mCombos = document.querySelectorAll('[data-motion="m-combo"]');
+
+      if (mCombosHeader) {
+        animate(mCombosHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      mCombos.forEach(function (combo, i) {
+        animate(
+          combo,
+          { opacity: [0, 1], x: [80, 0] },
+          { duration: 0.9, delay: 0.15 * i, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 5: DIETARY BADGES
+         Unique Motion: iconBounceIn
+      ============================================================ */
+      const mDietaryHeader = document.querySelector('[data-motion="m-dietary-header"]');
+      const mDiets = document.querySelectorAll('[data-motion="m-diet"]');
+
+      if (mDietaryHeader) {
+        animate(mDietaryHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      mDiets.forEach(function (item, i) {
+        animate(
+          item,
+          { opacity: [0, 1], y: [50, 0], scale: [0.6, 1] },
+          { duration: 0.7, delay: 0.08 * i, easing: [0.34, 1.56, 0.64, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 6: CHEF SPECIAL
+         Unique Motion: imageSplitOpen + textLetterSpacing
+      ============================================================ */
+      const mSpecialBg = document.querySelector('[data-motion="m-special-bg"]');
+      const mSpecialTag = document.querySelector('[data-motion="m-special-tag"]');
+      const mSpecialTitle = document.querySelector('[data-motion="m-special-title"]');
+      const mSpecialDesc = document.querySelector('[data-motion="m-special-desc"]');
+      const mSpecialFeatures = document.querySelectorAll('[data-motion="m-special-feature"]');
+      const mSpecialImage = document.querySelector('[data-motion="m-special-image"]');
+      const mSpecialBadge = document.querySelector('[data-motion="m-special-badge"]');
+
+      if (mSpecialBg) {
+        animate(mSpecialBg, { opacity: [0, 1], scale: [1.1, 1] }, { duration: 1.4 });
+      }
+      if (mSpecialTag) {
+        animate(mSpecialTag, { opacity: [0, 1], x: [-30, 0] }, { duration: 0.6, delay: 0.3 });
+      }
+      if (mSpecialTitle) {
+        animate(
+          mSpecialTitle,
+          { opacity: [0, 1], letterSpacing: ['10px', '-1.5px'] },
+          { duration: 1, delay: 0.5 }
+        );
+      }
+      if (mSpecialDesc) {
+        animate(mSpecialDesc, { opacity: [0, 1], y: [25, 0] }, { duration: 0.8, delay: 0.8 });
+      }
+      mSpecialFeatures.forEach(function (feat, i) {
+        animate(
+          feat,
+          { opacity: [0, 1], x: [-20, 0] },
+          { duration: 0.6, delay: 1 + i * 0.15 }
+        );
+      });
+      if (mSpecialImage) {
+        animate(
+          mSpecialImage,
+          { opacity: [0, 1], clipPath: ['inset(0 100% 0 0)', 'inset(0 0 0 0)'] },
+          { duration: 1.2, delay: 0.4, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+      if (mSpecialBadge) {
+        animate(
+          mSpecialBadge,
+          { opacity: [0, 1], scale: [0.3, 1], rotate: [-30, -8] },
+          { duration: 0.8, delay: 1.4, easing: [0.34, 1.56, 0.64, 1] }
+        );
+      }
+
+      /* ============================================================
+         SECTION 7: NUTRITION STRIP
+         Unique Motion: numberCount + barGrow
+      ============================================================ */
+      const mNutritionHeader = document.querySelector('[data-motion="m-nutrition-header"]');
+      const mNutritionCards = document.querySelectorAll('[data-motion="m-nutrition-card"]');
+
+      if (mNutritionHeader) {
+        animate(mNutritionHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      mNutritionCards.forEach(function (card, i) {
+        animate(
+          card,
+          { opacity: [0, 1], y: [40, 0] },
+          { duration: 0.7, delay: 0.1 * i }
+        );
+      });
+
+      // Animate numbers counting up and bars filling when in view
+      inView('.m-nutrition-grid', function () {
+        // Counters
+        document.querySelectorAll('[data-motion="m-count"]').forEach(function (el) {
+          const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          const suffix = el.querySelector('small') ? el.querySelector('small').outerHTML : '';
+          const duration = 1200;
+          const startTime = performance.now();
+
+          function tick(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.innerHTML = Math.floor(target * eased) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+            else el.innerHTML = target + suffix;
+          }
+          requestAnimationFrame(tick);
+        });
+
+        // Bars
+        document.querySelectorAll('[data-motion="m-bar"]').forEach(function (bar, i) {
+          const width = bar.getAttribute('data-width') || '50%';
+          setTimeout(function () {
+            bar.style.width = width;
+          }, 300 + i * 120);
+        });
+      }, { amount: 0.3 });
+
+      /* ============================================================
+         SCROLL REVEAL for all sections
+      ============================================================ */
+      document.querySelectorAll('.m-section, .m-hero, .m-categories, .m-combos, .m-special').forEach(function (section) {
+        inView(section, function () {
+          animate(section, { opacity: [0.9, 1] }, { duration: 0.5 });
+        }, { amount: 0.15 });
+      });
+
+    });
+  </script>
+
+  <!-- ============================================================
+       NAVBAR + FOOTER JAVASCRIPT (UNCHANGED)
+  ============================================================ -->
+  <script>
+    (function () {
+      const body = document.body;
+      const htmlEl = document.documentElement;
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      const darkToggleDesktop = document.getElementById('darkToggleDesktop');
+      const rtlToggleDesktop = document.getElementById('rtlToggleDesktop');
+      const darkToggleMobile = document.getElementById('darkToggleMobile');
+      const rtlToggleMobile = document.getElementById('rtlToggleMobile');
+
+      const mobileDropdownBtns = document.querySelectorAll('.mobile-nav-link[data-dropdown]');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-menu a, .mobile-order-btn');
+
+      // DARK MODE
+      const DARK_KEY = 'deliDarkMode';
+      function applyDarkMode(isDark) {
+        const darkIcon = '<i class="fas fa-moon"></i>';
+        const lightIcon = '<i class="fas fa-sun"></i>';
+        if (isDark) {
+          body.classList.add('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = lightIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = lightIcon;
+        } else {
+          body.classList.remove('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = darkIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = darkIcon;
+        }
+      }
+      if (localStorage.getItem(DARK_KEY) === 'on') applyDarkMode(true);
+
+      function toggleDarkMode() {
+        const isDark = !body.classList.contains('dark');
+        applyDarkMode(isDark);
+        localStorage.setItem(DARK_KEY, isDark ? 'on' : 'off');
+      }
+      if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+      if (darkToggleMobile) darkToggleMobile.addEventListener('click', toggleDarkMode);
+
+      // RTL / LTR
+      const RTL_KEY = 'deliRTL';
+      function applyRTL(isRTL) {
+        const rtlIcon = '<i class="fas fa-right-left"></i>';
+        const ltrIcon = '<i class="fas fa-right-left fa-flip-horizontal"></i>';
+        if (isRTL) {
+          htmlEl.setAttribute('dir', 'rtl');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = ltrIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = ltrIcon;
+        } else {
+          htmlEl.setAttribute('dir', 'ltr');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = rtlIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = rtlIcon;
+        }
+      }
+      if (localStorage.getItem(RTL_KEY) === 'on') applyRTL(true);
+
+      function toggleRTL() {
+        const isRTL = htmlEl.getAttribute('dir') !== 'rtl';
+        applyRTL(isRTL);
+        localStorage.setItem(RTL_KEY, isRTL ? 'on' : 'off');
+      }
+      if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+      if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', toggleRTL);
+
+      // HAMBURGER
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('open')) closeMobileMenu();
+        else openMobileMenu();
+      });
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (this.hasAttribute('data-dropdown')) return;
+          closeMobileMenu();
+        });
+      });
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target === mobileMenu) closeMobileMenu();
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) closeMobileMenu();
+      });
+
+      // MOBILE DROPDOWNS
+      mobileDropdownBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const targetId = this.getAttribute('data-dropdown');
+          const target = document.getElementById(targetId);
+          if (!target) return;
+          mobileDropdownBtns.forEach(function (otherBtn) {
+            if (otherBtn !== btn) {
+              otherBtn.classList.remove('open');
+              otherBtn.setAttribute('aria-expanded', 'false');
+              const otherId = otherBtn.getAttribute('data-dropdown');
+              const otherTarget = document.getElementById(otherId);
+              if (otherTarget) otherTarget.classList.remove('open');
+            }
+          });
+          const isOpen = this.classList.contains('open');
+          if (isOpen) {
+            this.classList.remove('open');
+            this.setAttribute('aria-expanded', 'false');
+            target.classList.remove('open');
+          } else {
+            this.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+            target.classList.add('open');
+          }
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
+      });
+    })();
+  </script>
+
+  <!-- ============================================================
+       ORDER NOW / SIGN IN MODAL POPUP
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="authModalOverlay" aria-hidden="true">
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      
+      <!-- Close Button -->
+      <button class="auth-modal-close" id="authModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Header Section -->
+      <div class="auth-modal-header">
+        <div class="auth-brand-badge">
+          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="auth-brand-name">Deli & Sandwich</span>
+        </div>
+        <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
+        <p class="auth-modal-subtitle" id="modalSubtitle">Customize your sandwich & get fast delivery to your doorstep</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="auth-tabs-nav" role="tablist">
+        <button class="auth-tab-btn active" id="tabOrderBtn" data-tab="tabOrder" role="tab" aria-selected="true">
+          <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+        </button>
+        <button class="auth-tab-btn" id="tabLoginBtn" data-tab="tabLogin" role="tab" aria-selected="false">
+          <i class="fas fa-user"></i> <span>Sign In</span>
+        </button>
+        <button class="auth-tab-btn" id="tabRegisterBtn" data-tab="tabRegister" role="tab" aria-selected="false">
+          <i class="fas fa-user-plus"></i> <span>Register</span>
+        </button>
+      </div>
+
+      <!-- Tab Body -->
+      <div class="auth-modal-body">
+        
+        <!-- TAB 1: ORDER NOW -->
+        <div class="auth-tab-pane active" id="tabOrder" role="tabpanel">
+          <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+            
+            <div class="order-type-selector">
+              <label class="order-type-option active">
+                <input type="radio" name="orderType" value="delivery" checked hidden>
+                <i class="fas fa-motorcycle"></i>
+                <span>Delivery</span>
+              </label>
+              <label class="order-type-option">
+                <input type="radio" name="orderType" value="pickup" hidden>
+                <i class="fas fa-store"></i>
+                <span>Pickup</span>
+              </label>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="orderName" placeholder="John Doe" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-phone"></i> Phone Number</label>
+              <div class="input-with-icon">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="orderPhone" placeholder="+1 (555) 000-0000" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group" id="addressGroup">
+              <label><i class="fas fa-location-dot"></i> Delivery Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-map-marker-alt input-icon"></i>
+                <input type="text" id="orderAddress" placeholder="Street Address, City, Zip" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-row">
+              <div class="auth-form-group flex-1">
+                <label><i class="fas fa-bread-slice"></i> Select Sandwich</label>
+                <select id="orderItem" class="auth-input auth-select">
+                  <option value="12.99" data-name="Classic Club Sandwich">Classic Club Sandwich ($12.99)</option>
+                  <option value="14.50" data-name="Spicy Italian Sub">Spicy Italian Sub ($14.50)</option>
+                  <option value="13.25" data-name="Turkey Avocado Toast">Turkey Avocado Toast ($13.25)</option>
+                  <option value="11.99" data-name="Veggie Supreme">Veggie Supreme ($11.99)</option>
+                  <option value="15.99" data-name="Custom Gourmet Craft">Custom Gourmet Craft ($15.99)</option>
+                </select>
+              </div>
+
+              <div class="auth-form-group width-auto">
+                <label><i class="fas fa-sort-numeric-up"></i> Qty</label>
+                <div class="qty-counter">
+                  <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                  <span class="qty-val" id="qtyVal">1</span>
+                  <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-comment-alt"></i> Special Instructions (Optional)</label>
+              <textarea id="orderNotes" placeholder="Extra sauce, no onions, gluten-free bread..." rows="2" class="auth-input auth-textarea"></textarea>
+            </div>
+
+            <div class="order-price-summary">
+              <div class="summary-line"><span>Subtotal:</span> <span id="summarySubtotal">$12.99</span></div>
+              <div class="summary-line"><span>Delivery Fee:</span> <span id="summaryDelivery">$2.99</span></div>
+              <div class="summary-line total-line"><span>Total:</span> <span id="summaryTotal">$15.98</span></div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-paper-plane"></i> <span>Confirm & Place Order</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 2: SIGN IN -->
+        <div class="auth-tab-pane" id="tabLogin" role="tabpanel">
+          <form id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email or Phone</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" placeholder="yourname@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="loginPassword" placeholder="••••••••" required class="auth-input">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="remember-label">
+                <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-link" onclick="alert('Password reset link sent to your email!')">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-right-to-bracket"></i> <span>Sign In</span>
+            </button>
+
+            <div class="auth-divider">
+              <span>Or sign in with</span>
+            </div>
+
+            <div class="social-auth-grid">
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Google')">
+                <i class="fab fa-google"></i> Google
+              </button>
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Apple')">
+                <i class="fab fa-apple"></i> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 3: REGISTER -->
+        <div class="auth-tab-pane" id="tabRegister" role="tabpanel">
+          <form id="registerForm" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="regName" placeholder="Jane Smith" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="regEmail" placeholder="jane@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="regPassword" placeholder="Create password" required class="auth-input">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-user-plus"></i> <span>Create Account</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Auth Modal JS -->
+  <script src="auth-modal.js"></script>
+
+</body>
+</html>

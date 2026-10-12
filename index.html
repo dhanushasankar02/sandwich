@@ -1,0 +1,2863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deli & Sandwich · Home</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared Auth & Order Modal CSS -->
+  <link rel="stylesheet" href="auth-modal.css">
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #fdf8f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       DARK MODE
+    ============================================================ */
+    body.dark {
+      background: #1a1612;
+      color: #f0e8de;
+    }
+
+    body.dark .navbar {
+      background: #241e18;
+      border-bottom-color: #3a322a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .logo-text,
+    body.dark .footer-logo-text {
+      color: #f0e8de;
+    }
+
+    body.dark .nav-link {
+      color: #c9bdb0;
+    }
+
+    body.dark .nav-link:hover,
+    body.dark .nav-link.active {
+      color: #e63946;
+      background: rgba(230, 57, 70, 0.12);
+    }
+
+    body.dark .nav-link.home-pill {
+      background: rgba(230, 57, 70, 0.15);
+      color: #e63946;
+    }
+
+    body.dark .dropdown-menu {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark .dropdown-menu a {
+      color: #c9bdb0;
+    }
+
+    body.dark .dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .toggle-btn {
+      border-color: #3a322a;
+      color: #c9bdb0;
+      background: #241e18;
+    }
+
+    body.dark .toggle-btn:hover {
+      background: #3a322a;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    body.dark .mobile-menu {
+      background: #241e18;
+      border-top-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link {
+      color: #c9bdb0;
+      border-bottom-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link:hover {
+      color: #e63946;
+    }
+
+    body.dark .mobile-dropdown-menu {
+      background: #2c241e;
+    }
+
+    body.dark .mobile-dropdown-menu a {
+      color: #c9bdb0;
+    }
+
+    body.dark .mobile-dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .hamburger span {
+      background: #f0e8de;
+    }
+
+    body.dark .footer {
+      background: #241e18;
+      border-top-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .footer-heading {
+      color: #f0e8de;
+    }
+
+    body.dark .footer-description,
+    body.dark .footer-newsletter p {
+      color: #a89888;
+    }
+
+    body.dark .footer-links a {
+      color: #a89888;
+    }
+
+    body.dark .footer-links a:hover {
+      color: #e63946;
+    }
+
+    body.dark .footer-bottom {
+      border-top-color: #3a322a;
+    }
+
+    body.dark .footer-copyright,
+    body.dark .footer-bottom-links a {
+      color: #7a6a5c;
+    }
+
+    body.dark .social-icon {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+    }
+
+    body.dark .newsletter-input {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .newsletter-input::placeholder {
+      color: #7a6a5c;
+    }
+
+    /* ============================================================
+       NAVBAR (UNCHANGED)
+    ============================================================ */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 0.6rem 2rem;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid #f0e6d8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      gap: 1rem;
+      white-space: nowrap;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    .logo-text span {
+      color: #e63946;
+    }
+
+    .logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+
+    .nav-menu > li {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e63946;
+      background: #fdf0f0;
+    }
+
+    .nav-link i.fa-chevron-down {
+      font-size: 0.55rem;
+      transition: transform 0.2s;
+      margin-top: 2px;
+    }
+
+    .dropdown:hover .nav-link i.fa-chevron-down,
+    .dropdown:focus-within .nav-link i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .nav-link.home-pill {
+      background: #fdf0f0;
+      color: #e63946;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: #e63946;
+      color: #ffffff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 30px;
+      margin-left: 3px;
+      letter-spacing: 0.2px;
+      line-height: 1.3;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #f0e6d8;
+      padding: 0.4rem 0;
+      list-style: none;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s, background 0.3s, border-color 0.3s;
+      z-index: 200;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li {
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    .toggle-btn i {
+      font-size: 0.78rem;
+    }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+    }
+
+    .order-btn:active {
+      transform: scale(0.97);
+    }
+
+    .order-btn i {
+      font-size: 0.8rem;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1.5px solid #f0e6d8;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #2b2b2b;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      overflow-y: auto;
+      padding: 1rem 1.2rem 2rem;
+      z-index: 999;
+      transition: background 0.3s, border-color 0.3s;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .mobile-nav-list > li {
+      border-bottom: 1px solid #f0e6d8;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 0.2rem;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #e63946;
+    }
+
+    .mobile-nav-link .badge {
+      margin-left: auto;
+      margin-right: 0.5rem;
+    }
+
+    .mobile-nav-link i.fa-chevron-down {
+      font-size: 0.7rem;
+      transition: transform 0.25s;
+      color: #888;
+    }
+
+    .mobile-nav-link.open i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-menu {
+      list-style: none;
+      background: #fdf8f0;
+      border-radius: 8px;
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-dropdown-menu.open {
+      max-height: 300px;
+      padding: 0.3rem 0;
+    }
+
+    .mobile-dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+      border-radius: 6px;
+    }
+
+    .mobile-dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .mobile-toggles {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mobile-toggles .toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex: 0 0 42px;
+      min-width: 42px;
+      padding: 0;
+      font-size: 1rem;
+      justify-content: center;
+    }
+
+    .mobile-order-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      margin-top: 0.8rem;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ============================================================
+       FOOTER (UNCHANGED)
+    ============================================================ */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      padding: 3.5rem 2rem 1.5rem;
+      color: #2b2b2b;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo-text span {
+      color: #e63946;
+    }
+
+    .footer-logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .footer-description {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e63946;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #78716c;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #e63946;
+      transform: translateX(3px);
+    }
+
+    .footer-links a i {
+      font-size: 0.55rem;
+      color: #e63946;
+    }
+
+    .footer-newsletter {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-newsletter p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .newsletter-input {
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .newsletter-input::placeholder {
+      color: #a8a29e;
+    }
+
+    .newsletter-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .newsletter-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+      letter-spacing: 0.2px;
+      width: 100%;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .newsletter-btn:active {
+      transform: scale(0.97);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-copyright {
+      font-size: 0.78rem;
+      color: #a8a29e;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-bottom-links a {
+      text-decoration: none;
+      color: #a8a29e;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #e63946;
+    }
+
+    /* ============================================================
+       RTL SUPPORT
+    ============================================================ */
+    [dir="rtl"] .navbar,
+    [dir="rtl"] .footer {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .nav-menu {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+
+    [dir="rtl"] .nav-link i.fa-chevron-down {
+      margin-top: 0;
+    }
+
+    [dir="rtl"] .badge {
+      margin-left: 0;
+      margin-right: 3px;
+    }
+
+    [dir="rtl"] .footer-links a:hover {
+      transform: translateX(-3px);
+    }
+
+    [dir="rtl"] .footer-links a i.fa-chevron-right {
+      transform: rotate(180deg);
+    }
+
+    [dir="rtl"] .mobile-nav-link {
+      text-align: right;
+    }
+
+    [dir="rtl"] .mobile-nav-link .badge {
+      margin-left: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-menu a {
+      text-align: right;
+    }
+
+    /* ============================================================
+       RESPONSIVE (Navbar & Footer only)
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .navbar { padding: 0.55rem 1.2rem; }
+      .nav-menu { display: none; }
+      .nav-right .toggle-btn, .nav-right .order-btn { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: block; }
+      .logo-text { font-size: 1.05rem; }
+      .logo-sub { font-size: 0.5rem; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 767px) {
+      .navbar { padding: 0.5rem 0.9rem; }
+      .logo-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .logo-text { font-size: 1rem; }
+      .logo-sub { font-size: 0.48rem; }
+      .mobile-menu { top: 60px; }
+      .mobile-toggles .toggle-btn { width: 42px; height: 42px; flex: 0 0 42px; min-width: 42px; }
+      .footer { padding: 2.5rem 1.2rem 1.2rem; }
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-bottom-links { justify-content: center; }
+    }
+
+    @media (max-width: 400px) {
+      .logo-text-wrapper { display: none; }
+      .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
+      .mobile-menu { top: 56px; }
+      .mobile-nav-link { font-size: 0.9rem; padding: 0.85rem 0.2rem; }
+      .mobile-dropdown-menu a { font-size: 0.84rem; }
+    }
+
+    /* ============================================================
+       MAIN CONTENT SECTIONS
+       Each section has a UNIQUE design + UNIQUE Framer Motion
+    ============================================================ */
+
+    /* Section wrapper */
+    .section {
+      width: 100%;
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 1: HERO — Split Asymmetric with Floating Cards
+       Framer Motion: containerStagger + leftSlide + rightScale
+    ------------------------------------------------------------ */
+    .s1-hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 4rem 2rem 5rem;
+      background: linear-gradient(135deg, #fffbf5 0%, #fef3e7 100%);
+      transition: background 0.3s;
+    }
+
+    body.dark .s1-hero {
+      background: linear-gradient(135deg, #1a1612 0%, #241e18 100%);
+    }
+
+    .s1-left h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      color: #2b2b2b;
+      margin-bottom: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .s1-left h1 { color: #f0e8de; }
+
+    .s1-left h1 span { color: #e63946; }
+
+    .s1-left p {
+      font-size: 1.05rem;
+      color: #78716c;
+      max-width: 480px;
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+      transition: color 0.3s;
+    }
+
+    body.dark .s1-left p { color: #a89888; }
+
+    .s1-cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .s1-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.85rem 1.8rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(230, 57, 70, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .s1-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.45);
+    }
+
+    .s1-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.85rem 1.8rem;
+      border-radius: 30px;
+      border: 2px solid #e63946;
+      background: transparent;
+      color: #e63946;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .s1-btn-outline:hover {
+      background: #e63946;
+      color: #fff;
+    }
+
+    .s1-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .s1-hero-img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 30px;
+      box-shadow: 0 25px 60px rgba(230, 57, 70, 0.2);
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    .s1-float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.8rem 1.1rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark .s1-float-card {
+      background: #2c241e;
+      color: #f0e8de;
+    }
+
+    .s1-float-card i {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #fdf0f0;
+      color: #e63946;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .s1-float-1 { top: 8%; left: -4%; }
+    .s1-float-2 { bottom: 12%; right: -4%; }
+
+    /* ------------------------------------------------------------
+       SECTION 2: FEATURED MENU — Horizontal Scroll Cards
+       Framer Motion: staggerFadeUp + cardTilt
+    ------------------------------------------------------------ */
+    .s2-menu {
+      background: #ffffff;
+      transition: background 0.3s;
+    }
+
+    body.dark .s2-menu { background: #1a1612; }
+
+    .s2-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .s2-tag {
+      display: inline-block;
+      background: #fdf0f0;
+      color: #e63946;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.35rem 1rem;
+      border-radius: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    body.dark .s2-tag {
+      background: rgba(230, 57, 70, 0.15);
+    }
+
+    .s2-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+
+    body.dark .s2-header h2 { color: #f0e8de; }
+
+    .s2-header h2 span { color: #e63946; }
+
+    .s2-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .s2-card {
+      background: #fdf8f0;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: pointer;
+      border: 1px solid #f0e6d8;
+    }
+
+    body.dark .s2-card {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .s2-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(230, 57, 70, 0.15);
+    }
+
+    .s2-card-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+
+    .s2-card-body {
+      padding: 1.2rem;
+    }
+
+    .s2-card-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2b2b2b;
+      margin-bottom: 0.3rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .s2-card-body h3 { color: #f0e8de; }
+
+    .s2-card-body p {
+      font-size: 0.82rem;
+      color: #78716c;
+      margin-bottom: 0.8rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .s2-card-body p { color: #a89888; }
+
+    .s2-card-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .s2-card-price span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #e63946;
+    }
+
+    .s2-card-price button {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: transform 0.2s;
+    }
+
+    .s2-card-price button:hover {
+      transform: scale(1.1);
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 3: BUILD YOUR SANDWICH — Step Timeline
+       Framer Motion: stepByStep (sequential delay)
+    ------------------------------------------------------------ */
+    .s3-build {
+      background: linear-gradient(180deg, #fef3e7 0%, #fffbf5 100%);
+      transition: background 0.3s;
+    }
+
+    body.dark .s3-build {
+      background: linear-gradient(180deg, #241e18 0%, #1a1612 100%);
+    }
+
+    .s3-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .s3-img-wrap {
+      position: relative;
+    }
+
+    .s3-img {
+      width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+
+    .s3-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .s3-step {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 1.2rem;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark .s3-step {
+      background: #2c241e;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .s3-step:hover {
+      transform: translateX(8px);
+    }
+
+    .s3-step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .s3-step-text h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2b2b2b;
+      margin-bottom: 0.3rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .s3-step-text h4 { color: #f0e8de; }
+
+    .s3-step-text p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      transition: color 0.3s;
+    }
+
+    body.dark .s3-step-text p { color: #a89888; }
+
+    .s3-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .s3-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+
+    body.dark .s3-header h2 { color: #f0e8de; }
+
+    .s3-header h2 span { color: #e63946; }
+
+    /* ------------------------------------------------------------
+       SECTION 4: CATERING — Bento Box Grid
+       Framer Motion: bentoScale + imageReveal
+    ------------------------------------------------------------ */
+    .s4-catering {
+      background: #ffffff;
+      transition: background 0.3s;
+    }
+
+    body.dark .s4-catering { background: #1a1612; }
+
+    .s4-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .s4-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+
+    body.dark .s4-header h2 { color: #f0e8de; }
+
+    .s4-header h2 span { color: #e63946; }
+
+    .s4-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 1.2rem;
+    }
+
+    .s4-bento-item {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .s4-bento-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
+    }
+
+    .s4-bento-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .s4-bento-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .s4-bento-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      color: #fff;
+    }
+
+    .s4-bento-overlay h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .s4-bento-overlay p {
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    .s4-bento-1 { grid-column: span 2; }
+    .s4-bento-2 { grid-column: span 1; }
+    .s4-bento-3 { grid-column: span 1; }
+    .s4-bento-4 { grid-column: span 2; }
+
+    /* ------------------------------------------------------------
+       SECTION 5: REVIEWS — Masonry Testimonials
+       Framer Motion: staggerFromEdges + cardFloat
+    ------------------------------------------------------------ */
+    .s5-reviews {
+      background: #fdf8f0;
+      transition: background 0.3s;
+    }
+
+    body.dark .s5-reviews { background: #1a1612; }
+
+    .s5-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .s5-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+
+    body.dark .s5-header h2 { color: #f0e8de; }
+
+    .s5-header h2 span { color: #e63946; }
+
+    .s5-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .s5-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      border: 1px solid #f0e6d8;
+    }
+
+    body.dark .s5-card {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .s5-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 35px rgba(230, 57, 70, 0.12);
+    }
+
+    .s5-stars {
+      color: #f4a261;
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .s5-card p {
+      font-size: 0.9rem;
+      color: #57534e;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      font-style: italic;
+      transition: color 0.3s;
+    }
+
+    body.dark .s5-card p { color: #c9bdb0; }
+
+    .s5-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .s5-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fdf0f0;
+    }
+
+    .s5-author-info h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #2b2b2b;
+      transition: color 0.3s;
+    }
+
+    body.dark .s5-author-info h4 { color: #f0e8de; }
+
+    .s5-author-info span {
+      font-size: 0.75rem;
+      color: #a8a29e;
+    }
+
+    .s5-card:nth-child(2) { margin-top: 2rem; }
+    .s5-card:nth-child(5) { margin-top: 2rem; }
+
+    /* ------------------------------------------------------------
+       SECTION 6: SPECIAL OFFERS — Diagonal Ribbon
+       Framer Motion: ribbonReveal + pulse
+    ------------------------------------------------------------ */
+    .s6-offers {
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .s6-offers::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+      animation: s6Pulse 6s ease-in-out infinite;
+    }
+
+    @keyframes s6Pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    .s6-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .s6-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .s6-text p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+      max-width: 460px;
+    }
+
+    .s6-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.9rem 2rem;
+      border-radius: 30px;
+      border: none;
+      background: #ffffff;
+      color: #e63946;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .s6-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .s6-img {
+      width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 7: NEWSLETTER / CTA — Centered Card with Rings
+       Framer Motion: ringExpand + textGlow
+    ------------------------------------------------------------ */
+    .s7-cta {
+      background: #ffffff;
+      transition: background 0.3s;
+    }
+
+    body.dark .s7-cta { background: #1a1612; }
+
+    .s7-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #fef3e7 0%, #fffbf5 100%);
+      border-radius: 30px;
+      padding: 4rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(230, 57, 70, 0.12);
+      transition: background 0.3s;
+    }
+
+    body.dark .s7-card {
+      background: linear-gradient(135deg, #241e18 0%, #1a1612 100%);
+    }
+
+    .s7-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(230, 57, 70, 0.1);
+      pointer-events: none;
+    }
+
+    .s7-ring-1 {
+      width: 300px;
+      height: 300px;
+      top: -100px;
+      right: -100px;
+    }
+
+    .s7-ring-2 {
+      width: 500px;
+      height: 500px;
+      bottom: -250px;
+      left: -150px;
+    }
+
+    .s7-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .s7-content h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+
+    body.dark .s7-content h2 { color: #f0e8de; }
+
+    .s7-content h2 span { color: #e63946; }
+
+    .s7-content p {
+      font-size: 1rem;
+      color: #78716c;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+      transition: color 0.3s;
+    }
+
+    body.dark .s7-content p { color: #a89888; }
+
+    .s7-form {
+      display: flex;
+      gap: 0.8rem;
+      max-width: 500px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .s7-input {
+      flex: 1;
+      min-width: 240px;
+      padding: 0.9rem 1.3rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: #2b2b2b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
+    }
+
+    body.dark .s7-input {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .s7-input::placeholder { color: #7a6a5c; }
+
+    .s7-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .s7-btn {
+      padding: 0.9rem 2rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(230, 57, 70, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .s7-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.45);
+    }
+
+    /* ------------------------------------------------------------
+       SECTION RESPONSIVE
+    ------------------------------------------------------------ */
+    @media (max-width: 1023px) {
+      .s1-hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+      .s1-left h1 { font-size: 2.2rem; }
+      .s1-right { order: -1; }
+      .s1-hero-img { max-width: 100%; }
+      .s1-float-1 { left: 0; }
+      .s1-float-2 { right: 0; }
+      .s2-grid { grid-template-columns: repeat(2, 1fr); }
+      .s3-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .s3-img { aspect-ratio: 16/9; }
+      .s4-bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: 180px 180px 180px; }
+      .s4-bento-1, .s4-bento-4 { grid-column: span 2; }
+      .s5-grid { grid-template-columns: repeat(2, 1fr); }
+      .s5-card:nth-child(2), .s5-card:nth-child(5) { margin-top: 0; }
+      .s6-inner { grid-template-columns: 1fr; }
+      .s6-text h2 { font-size: 2rem; }
+      .s7-card { padding: 3rem 2rem; }
+      .s7-content h2 { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 767px) {
+      .section { padding: 3.5rem 1.2rem; }
+      .s1-left h1 { font-size: 1.8rem; }
+      .s1-float-card { display: none; }
+      .s2-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .s3-header h2, .s2-header h2, .s4-header h2, .s5-header h2 { font-size: 1.6rem; }
+      .s4-bento { grid-template-columns: 1fr; grid-template-rows: repeat(4, 200px); }
+      .s4-bento-1, .s4-bento-2, .s4-bento-3, .s4-bento-4 { grid-column: span 1; }
+      .s5-grid { grid-template-columns: 1fr; }
+      .s6-text h2 { font-size: 1.6rem; }
+      .s7-content h2 { font-size: 1.5rem; }
+      .s7-form { flex-direction: column; }
+      .s7-input { min-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .s2-grid { grid-template-columns: 1fr; }
+      .s1-btn-primary, .s1-btn-outline { width: 100%; justify-content: center; }
+    }
+
+    /* ---------- FOCUS STATES ---------- */
+    .nav-link:focus-visible,
+    .toggle-btn:focus-visible,
+    .order-btn:focus-visible,
+    .hamburger:focus-visible,
+    .mobile-nav-link:focus-visible,
+    .mobile-order-btn:focus-visible,
+    .dropdown-menu a:focus-visible,
+    .mobile-dropdown-menu a:focus-visible,
+    .newsletter-btn:focus-visible,
+    .newsletter-input:focus-visible,
+    .social-icon:focus-visible,
+    .footer-links a:focus-visible {
+      outline: 2px solid #e63946;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar { width: 6px; }
+    .mobile-menu::-webkit-scrollbar-thumb { background: #e63946; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR (UNCHANGED)
+  ============================================================ -->
+    <nav class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-text-wrapper">
+        <span class="logo-text">Deli<span>&</span>Sandwich</span>
+        <span class="logo-sub">Fresh • Tasty • Made to Order</span>
+      </span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="dropdown">
+        <a href="index.html" class="nav-link active">Home <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="index.html" class="active">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="toggle-btn" id="darkToggleDesktop" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleDesktop" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+      <a href="login.html" class="order-btn">
+        <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <!-- MOBILE MENU (UNCHANGED) -->
+    <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li class="mobile-dropdown">
+        <button class="mobile-nav-link active" data-dropdown="homeDropdownMobile" aria-expanded="false">
+          Home <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="mobile-dropdown-menu" id="homeDropdownMobile">
+          <li><a href="index.html" class="active">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+        <div class="mobile-toggles">
+      <button class="toggle-btn" id="darkToggleMobile" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleMobile" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+    </div>
+    <a href="login.html" class="mobile-order-btn">
+      <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+    </a>
+  </div><!-- ============================================================
+       MAIN CONTENT — 7 UNIQUE SECTIONS
+  ============================================================ -->
+
+  <!-- SECTION 1: HERO — Split Asymmetric -->
+  <section class="s1-hero" id="s1">
+    <div class="s1-left" data-motion="s1-left">
+      <h1>Crafted <span>Fresh</span> Every Single Day</h1>
+      <p>
+        At Deli & Sandwich, we slice, stack, and serve happiness between two
+        slices of freshly baked bread. Your next favorite meal is just a bite away.
+      </p>
+      <div class="s1-cta-row">
+        <a href="menu.html" class="s1-btn-primary" style="text-decoration: none;">
+          <i class="fas fa-utensils"></i> Explore Menu
+        </a>
+        <button class="s1-btn-outline">
+          <i class="fas fa-play"></i> Watch Story
+        </button>
+      </div>
+    </div>
+    <div class="s1-right" data-motion="s1-right">
+      <img src="image/Freshly made sandwich.jpg" alt="Freshly made sandwich" class="s1-hero-img">
+      <div class="s1-float-card s1-float-1">
+        <i class="fas fa-star"></i> 4.9 Rated
+      </div>
+      <div class="s1-float-card s1-float-2">
+        <i class="fas fa-clock"></i> 15 min delivery
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: FEATURED MENU — Card Grid -->
+  <section class="s2-menu section" id="s2">
+    <div class="container">
+      <div class="s2-header" data-motion="s2-header">
+        <span class="s2-tag">Our Menu</span>
+        <h2>Featured <span>Favorites</span></h2>
+      </div>
+      <div class="s2-grid">
+        <div class="s2-card" data-motion="s2-card">
+          <img src="image/Classic Club.jpg" alt="Classic Club" class="s2-card-img">
+          <div class="s2-card-body">
+            <h3>Classic Club</h3>
+            <p>Triple stacked with turkey, bacon & fresh veggies.</p>
+            <div class="s2-card-price">
+              <span>$9.99</span>
+              <button aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="s2-card" data-motion="s2-card">
+          <img src="image/Italian Sub.jpg" alt="Italian Sub" class="s2-card-img">
+          <div class="s2-card-body">
+            <h3>Italian Sub</h3>
+            <p>Salami, ham, provolone & zesty Italian dressing.</p>
+            <div class="s2-card-price">
+              <span>$10.49</span>
+              <button aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="s2-card" data-motion="s2-card">
+          <img src="image/Veggie Wrap.jpg" alt="Veggie Wrap" class="s2-card-img">
+          <div class="s2-card-body">
+            <h3>Veggie Wrap</h3>
+            <p>Grilled veggies, hummus & feta in a soft wrap.</p>
+            <div class="s2-card-price">
+              <span>$8.99</span>
+              <button aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="s2-card" data-motion="s2-card">
+          <img src="image/Caesar Salad.jpg" alt="Caesar Salad" class="s2-card-img">
+          <div class="s2-card-body">
+            <h3>Caesar Salad</h3>
+            <p>Crisp romaine, parmesan & house-made croutons.</p>
+            <div class="s2-card-price">
+              <span>$7.99</span>
+              <button aria-label="Add to cart"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: BUILD YOUR SANDWICH — Step Timeline -->
+  <section class="s3-build section" id="s3">
+    <div class="container">
+      <div class="s3-header" data-motion="s3-header">
+        <h2>Build Your <span>Perfect Sandwich</span></h2>
+      </div>
+      <div class="s3-layout">
+        <div class="s3-img-wrap" data-motion="s3-img">
+          <img src="image/Build your sandwich.jpg" alt="Build your sandwich" class="s3-img">
+        </div>
+        <div class="s3-steps">
+          <div class="s3-step" data-motion="s3-step">
+            <div class="s3-step-num">1</div>
+            <div class="s3-step-text">
+              <h4>Choose Your Bread</h4>
+              <p>From sourdough to ciabatta, pick the perfect base for your masterpiece.</p>
+            </div>
+          </div>
+          <div class="s3-step" data-motion="s3-step">
+            <div class="s3-step-num">2</div>
+            <div class="s3-step-text">
+              <h4>Stack Your Protein</h4>
+              <p>Turkey, roast beef, chicken, tofu — pile on your favorites.</p>
+            </div>
+          </div>
+          <div class="s3-step" data-motion="s3-step">
+            <div class="s3-step-num">3</div>
+            <div class="s3-step-text">
+              <h4>Add Fresh Veggies</h4>
+              <p>Crisp lettuce, ripe tomatoes, onions, and more.</p>
+            </div>
+          </div>
+          <div class="s3-step" data-motion="s3-step">
+            <div class="s3-step-num">4</div>
+            <div class="s3-step-text">
+              <h4>Drizzle & Serve</h4>
+              <p>Finish with sauces and seasonings, then enjoy every bite.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: CATERING — Bento Box -->
+  <section class="s4-catering section" id="s4">
+    <div class="container">
+      <div class="s4-header" data-motion="s4-header">
+        <h2>Catering for <span>Every Occasion</span></h2>
+      </div>
+      <div class="s4-bento">
+        <div class="s4-bento-item s4-bento-1" data-motion="s4-bento">
+          <img src="image/Catering platter.jpg" alt="Catering platter">
+          <div class="s4-bento-overlay">
+            <div>
+              <h3>Party Platters</h3>
+              <p>Perfect for groups of 10–50</p>
+            </div>
+          </div>
+        </div>
+        <div class="s4-bento-item s4-bento-2" data-motion="s4-bento">
+          <img src="image/Lunch boxes.jpg" alt="Lunch boxes">
+          <div class="s4-bento-overlay">
+            <div>
+              <h3>Lunch Boxes</h3>
+              <p>Individually packed</p>
+            </div>
+          </div>
+        </div>
+        <div class="s4-bento-item s4-bento-3" data-motion="s4-bento">
+          <img src="image/Corporate.jpg" alt="Corporate events">
+          <div class="s4-bento-overlay">
+            <div>
+              <h3>Corporate</h3>
+              <p>Office meetings & events</p>
+            </div>
+          </div>
+        </div>
+        <div class="s4-bento-item s4-bento-4" data-motion="s4-bento">
+          <img src="image/Wedding catering.jpg" alt="Wedding catering">
+          <div class="s4-bento-overlay">
+            <div>
+              <h3>Weddings & Private Events</h3>
+              <p>Custom menus tailored to your big day</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: REVIEWS — Masonry Testimonials -->
+  <section class="s5-reviews section" id="s5">
+    <div class="container">
+      <div class="s5-header" data-motion="s5-header">
+        <h2>What Our <span>Customers Say</span></h2>
+      </div>
+      <div class="s5-grid">
+        <div class="s5-card" data-motion="s5-card">
+          <div class="s5-stars">★★★★★</div>
+          <p>"The best sandwich I've had in years. The bread is always fresh and the fillings are generous."</p>
+          <div class="s5-author">
+            <img src="image/Happy customer 1.jpg" alt="Sarah M." class="s5-avatar">
+            <div class="s5-author-info">
+              <h4>Sarah M.</h4>
+              <span>Regular Customer</span>
+            </div>
+          </div>
+        </div>
+        <div class="s5-card" data-motion="s5-card">
+          <div class="s5-stars">★★★★★</div>
+          <p>"Ordered catering for our office event and everyone loved it. Fresh, flavorful, and on time."</p>
+          <div class="s5-author">
+            <img src="image/Happy customer 2.jpg" alt="James R." class="s5-avatar">
+            <div class="s5-author-info">
+              <h4>James R.</h4>
+              <span>Office Manager</span>
+            </div>
+          </div>
+        </div>
+        <div class="s5-card" data-motion="s5-card">
+          <div class="s5-stars">★★★★★</div>
+          <p>"The build-your-own option is genius. I get exactly what I want every single time."</p>
+          <div class="s5-author">
+            <img src="image/Happy customer 3.jpg" alt="Priya K." class="s5-avatar">
+            <div class="s5-author-info">
+              <h4>Priya K.</h4>
+              <span>Food Blogger</span>
+            </div>
+          </div>
+        </div>
+        <div class="s5-card" data-motion="s5-card">
+          <div class="s5-stars">★★★★★</div>
+          <p>"Fast delivery, friendly service, and the sandwiches are always packed with care."</p>
+          <div class="s5-author">
+            <img src="image/Happy customer 4.jpg" alt="Diego L." class="s5-avatar">
+            <div class="s5-author-info">
+              <h4>Diego L.</h4>
+              <span>Local Foodie</span>
+            </div>
+          </div>
+        </div>
+        <div class="s5-card" data-motion="s5-card">
+          <div class="s5-stars">★★★★★</div>
+          <p>"I've tried almost everything on the menu and nothing has disappointed me yet. Absolute gem."</p>
+          <div class="s5-author">
+            <img src="image/Sofia Martinez.jpg" alt="Emily T." class="s5-avatar">
+            <div class="s5-author-info">
+              <h4>Emily T.</h4>
+              <span>Weekly Regular</span>
+            </div>
+          </div>
+        </div>
+        <div class="s5-card" data-motion="s5-card">
+          <div class="s5-stars">★★★★★</div>
+          <p>"Their special offers are unbeatable. Great value for the quality you get."</p>
+          <div class="s5-author">
+            <img src="image/Happy customers.jpg" alt="Marcus W." class="s5-avatar">
+            <div class="s5-author-info">
+              <h4>Marcus W.</h4>
+              <span>Deal Hunter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: SPECIAL OFFERS — Diagonal Ribbon -->
+  <section class="s6-offers section" id="s6">
+    <div class="container">
+      <div class="s6-inner">
+        <div class="s6-text" data-motion="s6-text">
+          <h2>Get 20% Off Your First Online Order</h2>
+          <p>
+            Freshly made sandwiches delivered to your door. Use code
+            <strong>FRESH20</strong> at checkout and taste the difference.
+          </p>
+          <a href="special offers.html" class="s6-btn" style="text-decoration: none;">
+            <i class="fas fa-tag"></i> Claim Offer
+          </a>
+        </div>
+        <div data-motion="s6-img">
+          <img src="image/The Signature.jpg" alt="Special offer sandwich" class="s6-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: NEWSLETTER / CTA — Centered Card -->
+  <section class="s7-cta section" id="s7">
+    <div class="container">
+      <div class="s7-card" data-motion="s7-card">
+        <div class="s7-ring s7-ring-1" data-motion="s7-ring"></div>
+        <div class="s7-ring s7-ring-2" data-motion="s7-ring"></div>
+        <div class="s7-content" data-motion="s7-content">
+          <h2>Hungry? <span>Stay in the Loop</span></h2>
+          <p>
+            Subscribe to get exclusive offers, new menu alerts, and
+            sandwich inspiration delivered straight to your inbox.
+          </p>
+          <form class="s7-form" onsubmit="event.preventDefault();">
+            <input type="email" class="s7-input" placeholder="Enter your email address" required>
+            <button type="submit" class="s7-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ============================================================
+       FOOTER (IDENTICAL TO INDEX.HTML)
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-text-wrapper">
+            <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
+            <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
+          </span>
+        </a>
+        <p class="footer-description">
+          Building sandwich satisfaction with fresh ingredients and bold flavors
+          for every craving. Our chefs craft a fun, delicious experience where
+          every bite is made to order.
+        </p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="build your sandwich.html"><i class="fas fa-chevron-right"></i> Build Your Sandwich</a></li>
+          <li><a href="special offers.html"><i class="fas fa-chevron-right"></i> Special Offers</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="reviews.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+          <li><a href="catering order.html"><i class="fas fa-chevron-right"></i> Catering Orders</a></li>
+          <li><a href="login.html"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">Stay Updated</h3>
+        <p>
+          Get the latest menu drops, special offers, and sandwich updates
+          delivered to your inbox.
+        </p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Deli & Sandwich. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="contact.html">Privacy</a></li>
+        <li><a href="contact.html">Terms</a></li>
+        <li><a href="contact.html">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       FRAMER MOTION (via CDN) + UNIQUE ANIMATIONS PER SECTION
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+  <script>
+    // Wait for Framer Motion to load
+    window.addEventListener('load', function () {
+      const { animate, inView, stagger, spring } = window.Motion || {};
+
+      // If Framer Motion isn't available, skip animations gracefully
+      if (!animate || !inView) {
+        console.warn('Framer Motion not loaded. Animations skipped.');
+        return;
+      }
+
+      /* ============================================================
+         SECTION 1: HERO — Split Asymmetric
+         Unique Motion: Left slides in from left, right scales up
+      ============================================================ */
+      const s1Left = document.querySelector('[data-motion="s1-left"]');
+      const s1Right = document.querySelector('[data-motion="s1-right"]');
+
+      if (s1Left) {
+        animate(
+          s1Left,
+          { opacity: [0, 1], x: [-60, 0] },
+          { duration: 0.9, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+      if (s1Right) {
+        animate(
+          s1Right,
+          { opacity: [0, 1], scale: [0.85, 1] },
+          { duration: 1.1, delay: 0.2, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+
+      /* ============================================================
+         SECTION 2: FEATURED MENU — Card Grid
+         Unique Motion: Stagger fade-up with slight rotation
+      ============================================================ */
+      const s2Header = document.querySelector('[data-motion="s2-header"]');
+      const s2Cards = document.querySelectorAll('[data-motion="s2-card"]');
+
+      if (s2Header) {
+        animate(
+          s2Header,
+          { opacity: [0, 1], y: [30, 0] },
+          { duration: 0.7 }
+        );
+      }
+
+      s2Cards.forEach(function (card, i) {
+        animate(
+          card,
+          { opacity: [0, 1], y: [40, 0], rotate: [-2, 0] },
+          { duration: 0.7, delay: 0.15 * i }
+        );
+      });
+
+      /* ============================================================
+         SECTION 3: BUILD YOUR SANDWICH — Step Timeline
+         Unique Motion: Sequential step reveal from right
+      ============================================================ */
+      const s3Header = document.querySelector('[data-motion="s3-header"]');
+      const s3Img = document.querySelector('[data-motion="s3-img"]');
+      const s3Steps = document.querySelectorAll('[data-motion="s3-step"]');
+
+      if (s3Header) {
+        animate(
+          s3Header,
+          { opacity: [0, 1], y: [-20, 0] },
+          { duration: 0.6 }
+        );
+      }
+      if (s3Img) {
+        animate(
+          s3Img,
+          { opacity: [0, 1], scale: [0.92, 1] },
+          { duration: 0.9, delay: 0.1 }
+        );
+      }
+      s3Steps.forEach(function (step, i) {
+        animate(
+          step,
+          { opacity: [0, 1], x: [60, 0] },
+          { duration: 0.7, delay: 0.3 + 0.2 * i }
+        );
+      });
+
+      /* ============================================================
+         SECTION 4: CATERING — Bento Box
+         Unique Motion: Scale-in with rotation from corner
+      ============================================================ */
+      const s4Header = document.querySelector('[data-motion="s4-header"]');
+      const s4Bento = document.querySelectorAll('[data-motion="s4-bento"]');
+
+      if (s4Header) {
+        animate(
+          s4Header,
+          { opacity: [0, 1], y: [25, 0] },
+          { duration: 0.6 }
+        );
+      }
+      s4Bento.forEach(function (item, i) {
+        animate(
+          item,
+          { opacity: [0, 1], scale: [0.8, 1], rotate: [-5, 0] },
+          { duration: 0.8, delay: 0.15 * i }
+        );
+      });
+
+      /* ============================================================
+         SECTION 5: REVIEWS — Masonry
+         Unique Motion: Fade-in from alternating sides with float
+      ============================================================ */
+      const s5Header = document.querySelector('[data-motion="s5-header"]');
+      const s5Cards = document.querySelectorAll('[data-motion="s5-card"]');
+
+      if (s5Header) {
+        animate(
+          s5Header,
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.6 }
+        );
+      }
+      s5Cards.forEach(function (card, i) {
+        const fromLeft = i % 2 === 0;
+        animate(
+          card,
+          {
+            opacity: [0, 1],
+            x: fromLeft ? [-40, 0] : [40, 0],
+            y: [20, 0]
+          },
+          { duration: 0.7, delay: 0.1 * i, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 6: SPECIAL OFFERS — Diagonal Ribbon
+         Unique Motion: Text slides from bottom, image zooms in
+      ============================================================ */
+      const s6Text = document.querySelector('[data-motion="s6-text"]');
+      const s6Img = document.querySelector('[data-motion="s6-img"]');
+
+      if (s6Text) {
+        animate(
+          s6Text,
+          { opacity: [0, 1], y: [60, 0] },
+          { duration: 0.9, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+      if (s6Img) {
+        animate(
+          s6Img,
+          { opacity: [0, 1], scale: [0.7, 1] },
+          { duration: 1.0, delay: 0.2, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+
+      /* ============================================================
+         SECTION 7: NEWSLETTER / CTA — Centered Card
+         Unique Motion: Card fades up, rings expand outward
+      ============================================================ */
+      const s7Card = document.querySelector('[data-motion="s7-card"]');
+      const s7Content = document.querySelector('[data-motion="s7-content"]');
+      const s7Rings = document.querySelectorAll('[data-motion="s7-ring"]');
+
+      if (s7Card) {
+        animate(
+          s7Card,
+          { opacity: [0, 1], y: [50, 0], scale: [0.95, 1] },
+          { duration: 0.9, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+      s7Rings.forEach(function (ring, i) {
+        animate(
+          ring,
+          {
+            scale: [0.5, 1.2],
+            opacity: [0, 0.6, 0]
+          },
+          {
+            duration: 3,
+            delay: 0.5 + i * 0.4,
+            repeat: Infinity,
+            easing: 'ease-out'
+          }
+        );
+      });
+      if (s7Content) {
+        animate(
+          s7Content,
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.8, delay: 0.3 }
+        );
+      }
+
+      /* ============================================================
+         SCROLL-TRIGGERED REVEALS using inView for all sections
+      ============================================================ */
+      document.querySelectorAll('.section').forEach(function (section) {
+        inView(section, function (info) {
+          // Add a subtle parallax-like effect on scroll into view
+          animate(
+            section,
+            { opacity: [0.9, 1] },
+            { duration: 0.5 }
+          );
+        }, { amount: 0.15 });
+      });
+
+    });
+  </script>
+
+  <!-- ============================================================
+       NAVBAR + FOOTER JAVASCRIPT (UNCHANGED)
+  ============================================================ -->
+  <script>
+    (function () {
+      const body = document.body;
+      const htmlEl = document.documentElement;
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      const darkToggleDesktop = document.getElementById('darkToggleDesktop');
+      const rtlToggleDesktop = document.getElementById('rtlToggleDesktop');
+      const darkToggleMobile = document.getElementById('darkToggleMobile');
+      const rtlToggleMobile = document.getElementById('rtlToggleMobile');
+
+      const mobileDropdownBtns = document.querySelectorAll('.mobile-nav-link[data-dropdown]');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-menu a, .mobile-order-btn');
+
+      // ---------- DARK MODE ----------
+      const DARK_KEY = 'deliDarkMode';
+
+      function applyDarkMode(isDark) {
+        const darkIcon = '<i class="fas fa-moon"></i>';
+        const lightIcon = '<i class="fas fa-sun"></i>';
+
+        if (isDark) {
+          body.classList.add('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = lightIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = lightIcon;
+        } else {
+          body.classList.remove('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = darkIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = darkIcon;
+        }
+      }
+
+      if (localStorage.getItem(DARK_KEY) === 'on') {
+        applyDarkMode(true);
+      }
+
+      function toggleDarkMode() {
+        const isDark = !body.classList.contains('dark');
+        applyDarkMode(isDark);
+        localStorage.setItem(DARK_KEY, isDark ? 'on' : 'off');
+      }
+
+      if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+      if (darkToggleMobile) darkToggleMobile.addEventListener('click', toggleDarkMode);
+
+      // ---------- RTL / LTR ----------
+      const RTL_KEY = 'deliRTL';
+
+      function applyRTL(isRTL) {
+        const rtlIcon = '<i class="fas fa-right-left"></i>';
+        const ltrIcon = '<i class="fas fa-right-left fa-flip-horizontal"></i>';
+
+        if (isRTL) {
+          htmlEl.setAttribute('dir', 'rtl');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = ltrIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = ltrIcon;
+        } else {
+          htmlEl.setAttribute('dir', 'ltr');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = rtlIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = rtlIcon;
+        }
+      }
+
+      if (localStorage.getItem(RTL_KEY) === 'on') {
+        applyRTL(true);
+      }
+
+      function toggleRTL() {
+        const isRTL = htmlEl.getAttribute('dir') !== 'rtl';
+        applyRTL(isRTL);
+        localStorage.setItem(RTL_KEY, isRTL ? 'on' : 'off');
+      }
+
+      if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+      if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', toggleRTL);
+
+      // ---------- HAMBURGER / MOBILE MENU ----------
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (this.hasAttribute('data-dropdown')) return;
+          closeMobileMenu();
+        });
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target === mobileMenu) closeMobileMenu();
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+      // ---------- MOBILE DROPDOWNS ----------
+      mobileDropdownBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const targetId = this.getAttribute('data-dropdown');
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          mobileDropdownBtns.forEach(function (otherBtn) {
+            if (otherBtn !== btn) {
+              otherBtn.classList.remove('open');
+              otherBtn.setAttribute('aria-expanded', 'false');
+              const otherId = otherBtn.getAttribute('data-dropdown');
+              const otherTarget = document.getElementById(otherId);
+              if (otherTarget) otherTarget.classList.remove('open');
+            }
+          });
+
+          const isOpen = this.classList.contains('open');
+          if (isOpen) {
+            this.classList.remove('open');
+            this.setAttribute('aria-expanded', 'false');
+            target.classList.remove('open');
+          } else {
+            this.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+            target.classList.add('open');
+          }
+        });
+      });
+
+      // ---------- ESC KEY ----------
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+    })();
+  </script>
+
+  <!-- ============================================================
+       ORDER NOW / SIGN IN MODAL POPUP
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="authModalOverlay" aria-hidden="true">
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      
+      <!-- Close Button -->
+      <button class="auth-modal-close" id="authModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Header Section -->
+      <div class="auth-modal-header">
+        <div class="auth-brand-badge">
+          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="auth-brand-name">Deli & Sandwich</span>
+        </div>
+        <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
+        <p class="auth-modal-subtitle" id="modalSubtitle">Customize your sandwich & get fast delivery to your doorstep</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="auth-tabs-nav" role="tablist">
+        <button class="auth-tab-btn active" id="tabOrderBtn" data-tab="tabOrder" role="tab" aria-selected="true">
+          <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+        </button>
+        <button class="auth-tab-btn" id="tabLoginBtn" data-tab="tabLogin" role="tab" aria-selected="false">
+          <i class="fas fa-user"></i> <span>Sign In</span>
+        </button>
+        <button class="auth-tab-btn" id="tabRegisterBtn" data-tab="tabRegister" role="tab" aria-selected="false">
+          <i class="fas fa-user-plus"></i> <span>Register</span>
+        </button>
+      </div>
+
+      <!-- Tab Body -->
+      <div class="auth-modal-body">
+        
+        <!-- TAB 1: ORDER NOW -->
+        <div class="auth-tab-pane active" id="tabOrder" role="tabpanel">
+          <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+            
+            <div class="order-type-selector">
+              <label class="order-type-option active">
+                <input type="radio" name="orderType" value="delivery" checked hidden>
+                <i class="fas fa-motorcycle"></i>
+                <span>Delivery</span>
+              </label>
+              <label class="order-type-option">
+                <input type="radio" name="orderType" value="pickup" hidden>
+                <i class="fas fa-store"></i>
+                <span>Pickup</span>
+              </label>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="orderName" placeholder="John Doe" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-phone"></i> Phone Number</label>
+              <div class="input-with-icon">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="orderPhone" placeholder="+1 (555) 000-0000" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group" id="addressGroup">
+              <label><i class="fas fa-location-dot"></i> Delivery Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-map-marker-alt input-icon"></i>
+                <input type="text" id="orderAddress" placeholder="Street Address, City, Zip" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-row">
+              <div class="auth-form-group flex-1">
+                <label><i class="fas fa-bread-slice"></i> Select Sandwich</label>
+                <select id="orderItem" class="auth-input auth-select">
+                  <option value="12.99" data-name="Classic Club Sandwich">Classic Club Sandwich ($12.99)</option>
+                  <option value="14.50" data-name="Spicy Italian Sub">Spicy Italian Sub ($14.50)</option>
+                  <option value="13.25" data-name="Turkey Avocado Toast">Turkey Avocado Toast ($13.25)</option>
+                  <option value="11.99" data-name="Veggie Supreme">Veggie Supreme ($11.99)</option>
+                  <option value="15.99" data-name="Custom Gourmet Craft">Custom Gourmet Craft ($15.99)</option>
+                </select>
+              </div>
+
+              <div class="auth-form-group width-auto">
+                <label><i class="fas fa-sort-numeric-up"></i> Qty</label>
+                <div class="qty-counter">
+                  <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                  <span class="qty-val" id="qtyVal">1</span>
+                  <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-comment-alt"></i> Special Instructions (Optional)</label>
+              <textarea id="orderNotes" placeholder="Extra sauce, no onions, gluten-free bread..." rows="2" class="auth-input auth-textarea"></textarea>
+            </div>
+
+            <div class="order-price-summary">
+              <div class="summary-line"><span>Subtotal:</span> <span id="summarySubtotal">$12.99</span></div>
+              <div class="summary-line"><span>Delivery Fee:</span> <span id="summaryDelivery">$2.99</span></div>
+              <div class="summary-line total-line"><span>Total:</span> <span id="summaryTotal">$15.98</span></div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-paper-plane"></i> <span>Confirm & Place Order</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 2: SIGN IN -->
+        <div class="auth-tab-pane" id="tabLogin" role="tabpanel">
+          <form id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email or Phone</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" placeholder="yourname@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="loginPassword" placeholder="••••••••" required class="auth-input">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="remember-label">
+                <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-link" onclick="alert('Password reset link sent to your email!')">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-right-to-bracket"></i> <span>Sign In</span>
+            </button>
+
+            <div class="auth-divider">
+              <span>Or sign in with</span>
+            </div>
+
+            <div class="social-auth-grid">
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Google')">
+                <i class="fab fa-google"></i> Google
+              </button>
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Apple')">
+                <i class="fab fa-apple"></i> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 3: REGISTER -->
+        <div class="auth-tab-pane" id="tabRegister" role="tabpanel">
+          <form id="registerForm" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="regName" placeholder="Jane Smith" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="regEmail" placeholder="jane@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="regPassword" placeholder="Create password" required class="auth-input">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-user-plus"></i> <span>Create Account</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Auth Modal JS -->
+  <script src="auth-modal.js"></script>
+
+</body>
+</html>

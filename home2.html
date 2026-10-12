@@ -1,0 +1,3179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deli & Sandwich · Home 2</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #fdf8f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       DARK MODE
+    ============================================================ */
+    body.dark {
+      background: #1a1612;
+      color: #f0e8de;
+    }
+
+    body.dark .navbar {
+      background: #241e18;
+      border-bottom-color: #3a322a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .logo-text,
+    body.dark .footer-logo-text { color: #f0e8de; }
+
+    body.dark .nav-link { color: #c9bdb0; }
+
+    body.dark .nav-link:hover,
+    body.dark .nav-link.active {
+      color: #e63946;
+      background: rgba(230, 57, 70, 0.12);
+    }
+
+    body.dark .nav-link.home-pill {
+      background: rgba(230, 57, 70, 0.15);
+      color: #e63946;
+    }
+
+    body.dark .dropdown-menu {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark .dropdown-menu a { color: #c9bdb0; }
+
+    body.dark .dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .toggle-btn {
+      border-color: #3a322a;
+      color: #c9bdb0;
+      background: #241e18;
+    }
+
+    body.dark .toggle-btn:hover {
+      background: #3a322a;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    body.dark .mobile-menu {
+      background: #241e18;
+      border-top-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link {
+      color: #c9bdb0;
+      border-bottom-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link:hover { color: #e63946; }
+
+    body.dark .mobile-dropdown-menu { background: #2c241e; }
+
+    body.dark .mobile-dropdown-menu a { color: #c9bdb0; }
+
+    body.dark .mobile-dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .hamburger span { background: #f0e8de; }
+
+    body.dark .footer {
+      background: #241e18;
+      border-top-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .footer-heading { color: #f0e8de; }
+
+    body.dark .footer-description,
+    body.dark .footer-newsletter p { color: #a89888; }
+
+    body.dark .footer-links a { color: #a89888; }
+
+    body.dark .footer-links a:hover { color: #e63946; }
+
+    body.dark .footer-bottom { border-top-color: #3a322a; }
+
+    body.dark .footer-copyright,
+    body.dark .footer-bottom-links a { color: #7a6a5c; }
+
+    body.dark .social-icon {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+    }
+
+    body.dark .newsletter-input {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .newsletter-input::placeholder { color: #7a6a5c; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 0.6rem 2rem;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid #f0e6d8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      gap: 1rem;
+      white-space: nowrap;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    .logo-text span { color: #e63946; }
+
+    .logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+
+    .nav-menu > li {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e63946;
+      background: #fdf0f0;
+    }
+
+    .nav-link i.fa-chevron-down {
+      font-size: 0.55rem;
+      transition: transform 0.2s;
+      margin-top: 2px;
+    }
+
+    .dropdown:hover .nav-link i.fa-chevron-down,
+    .dropdown:focus-within .nav-link i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .nav-link.home-pill {
+      background: #fdf0f0;
+      color: #e63946;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: #e63946;
+      color: #ffffff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 30px;
+      margin-left: 3px;
+      letter-spacing: 0.2px;
+      line-height: 1.3;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #f0e6d8;
+      padding: 0.4rem 0;
+      list-style: none;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s, background 0.3s, border-color 0.3s;
+      z-index: 200;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li { white-space: nowrap; }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    .toggle-btn i { font-size: 0.78rem; }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+    }
+
+    .order-btn:active { transform: scale(0.97); }
+    .order-btn i { font-size: 0.8rem; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1.5px solid #f0e6d8;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #2b2b2b;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      overflow-y: auto;
+      padding: 1rem 1.2rem 2rem;
+      z-index: 999;
+      transition: background 0.3s, border-color 0.3s;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .mobile-nav-list > li {
+      border-bottom: 1px solid #f0e6d8;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 0.2rem;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .mobile-nav-link:hover { color: #e63946; }
+
+    .mobile-nav-link .badge {
+      margin-left: auto;
+      margin-right: 0.5rem;
+    }
+
+    .mobile-nav-link i.fa-chevron-down {
+      font-size: 0.7rem;
+      transition: transform 0.25s;
+      color: #888;
+    }
+
+    .mobile-nav-link.open i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-menu {
+      list-style: none;
+      background: #fdf8f0;
+      border-radius: 8px;
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-dropdown-menu.open {
+      max-height: 300px;
+      padding: 0.3rem 0;
+    }
+
+    .mobile-dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+      border-radius: 6px;
+    }
+
+    .mobile-dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .mobile-toggles {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mobile-toggles .toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex: 0 0 42px;
+      min-width: 42px;
+      padding: 0;
+      font-size: 1rem;
+      justify-content: center;
+    }
+
+    .mobile-order-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      margin-top: 0.8rem;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:active { transform: scale(0.97); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      padding: 3.5rem 2rem 1.5rem;
+      color: #2b2b2b;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo-text span { color: #e63946; }
+
+    .footer-logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .footer-description {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e63946;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #78716c;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #e63946;
+      transform: translateX(3px);
+    }
+
+    .footer-links a i {
+      font-size: 0.55rem;
+      color: #e63946;
+    }
+
+    .footer-newsletter {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-newsletter p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .newsletter-input {
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .newsletter-input::placeholder { color: #a8a29e; }
+
+    .newsletter-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .newsletter-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+      letter-spacing: 0.2px;
+      width: 100%;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .newsletter-btn:active { transform: scale(0.97); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-copyright {
+      font-size: 0.78rem;
+      color: #a8a29e;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-bottom-links a {
+      text-decoration: none;
+      color: #a8a29e;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .footer-bottom-links a:hover { color: #e63946; }
+
+    /* ============================================================
+       RTL SUPPORT
+    ============================================================ */
+    [dir="rtl"] .navbar,
+    [dir="rtl"] .footer { direction: rtl; }
+
+    [dir="rtl"] .nav-menu { direction: rtl; }
+
+    [dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+
+    [dir="rtl"] .nav-link i.fa-chevron-down { margin-top: 0; }
+
+    [dir="rtl"] .badge {
+      margin-left: 0;
+      margin-right: 3px;
+    }
+
+    [dir="rtl"] .footer-links a:hover { transform: translateX(-3px); }
+
+    [dir="rtl"] .footer-links a i.fa-chevron-right { transform: rotate(180deg); }
+
+    [dir="rtl"] .mobile-nav-link { text-align: right; }
+
+    [dir="rtl"] .mobile-nav-link .badge {
+      margin-left: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-menu a { text-align: right; }
+
+    /* ============================================================
+       NAVBAR & FOOTER RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .navbar { padding: 0.55rem 1.2rem; }
+      .nav-menu { display: none; }
+      .nav-right .toggle-btn, .nav-right .order-btn { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: block; }
+      .logo-text { font-size: 1.05rem; }
+      .logo-sub { font-size: 0.5rem; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 767px) {
+      .navbar { padding: 0.5rem 0.9rem; }
+      .logo-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .logo-text { font-size: 1rem; }
+      .logo-sub { font-size: 0.48rem; }
+      .mobile-menu { top: 60px; }
+      .mobile-toggles .toggle-btn { width: 42px; height: 42px; flex: 0 0 42px; min-width: 42px; }
+      .footer { padding: 2.5rem 1.2rem 1.2rem; }
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-bottom-links { justify-content: center; }
+    }
+
+    @media (max-width: 400px) {
+      .logo-text-wrapper { display: none; }
+      .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
+      .mobile-menu { top: 56px; }
+      .mobile-nav-link { font-size: 0.9rem; padding: 0.85rem 0.2rem; }
+      .mobile-dropdown-menu a { font-size: 0.84rem; }
+    }
+
+    /* ============================================================
+       HOME 2 — UNIQUE SECTIONS
+    ============================================================ */
+
+    .h2-section {
+      width: 100%;
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    .h2-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 1: HERO — Cinematic Fullscreen Centered
+       Unique Motion: splitLetterReveal + grainFlicker + tickerScroll
+    ------------------------------------------------------------ */
+    .h2-hero {
+      position: relative;
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: #fdf8f0;
+      padding: 6rem 2rem 5rem;
+      transition: background 0.3s;
+    }
+
+    body.dark .h2-hero { background: #1a1612; }
+
+    /* Animated background image — heavily blurred and dimmed */
+    .h2-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .h2-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: blur(6px) saturate(0.6);
+      transform: scale(1.1);
+    }
+
+    body.dark .h2-hero-bg img {
+      opacity: 0.12;
+      filter: blur(6px) saturate(0.4);
+    }
+
+    /* Grain overlay */
+    .h2-hero-grain {
+      position: absolute;
+      inset: -50%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: h2Grain 0.6s steps(2) infinite;
+    }
+
+    body.dark .h2-hero-grain { opacity: 0.14; }
+
+    @keyframes h2Grain {
+      0%, 100% { transform: translate(0, 0); }
+      25%      { transform: translate(-2%, -1%); }
+      50%      { transform: translate(1%, 2%); }
+      75%      { transform: translate(-1%, 1%); }
+    }
+
+    /* Vignette */
+    .h2-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.15) 100%);
+      pointer-events: none;
+    }
+
+    body.dark .h2-hero::after {
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.5) 100%);
+    }
+
+    /* Content */
+    .h2-hero-inner {
+      position: relative;
+      z-index: 3;
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .h2-hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #e63946;
+      padding: 0.5rem 1.4rem;
+      border: 1px solid rgba(230, 57, 70, 0.4);
+      border-radius: 30px;
+      background: rgba(230, 57, 70, 0.06);
+      backdrop-filter: blur(6px);
+    }
+
+    .h2-hero-kicker i {
+      font-size: 0.55rem;
+      animation: h2KickerPulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes h2KickerPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.4); opacity: 0.5; }
+    }
+
+    /* Split letter title */
+    .h2-hero-title {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      color: #2b2b2b;
+      margin: 0.5rem 0;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-hero-title { color: #f0e8de; }
+
+    .h2-hero-title .h2-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .h2-hero-title .h2-letter {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+
+    .h2-hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: #e63946;
+    }
+
+    /* Divider row */
+    .h2-hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .h2-hero-divider span {
+      width: 60px;
+      height: 1px;
+      background: #e63946;
+    }
+
+    .h2-hero-divider i {
+      color: #e63946;
+      font-size: 0.7rem;
+    }
+
+    /* Subtitle */
+    .h2-hero-sub {
+      font-size: 1.05rem;
+      color: #78716c;
+      max-width: 620px;
+      line-height: 1.8;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-hero-sub { color: #a89888; }
+
+    /* CTAs */
+    .h2-hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .h2-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 2.2rem;
+      border-radius: 40px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .h2-hero-btn.filled {
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+    }
+
+    .h2-hero-btn.filled:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(230, 57, 70, 0.55);
+    }
+
+    .h2-hero-btn.ghost {
+      border: 2px solid #2b2b2b;
+      background: transparent;
+      color: #2b2b2b;
+    }
+
+    body.dark .h2-hero-btn.ghost {
+      border-color: #f0e8de;
+      color: #f0e8de;
+    }
+
+    .h2-hero-btn.ghost:hover {
+      background: #2b2b2b;
+      color: #fff;
+    }
+
+    body.dark .h2-hero-btn.ghost:hover {
+      background: #f0e8de;
+      color: #1a1612;
+    }
+
+    /* Bottom marquee strip */
+    .h2-hero-ticker {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      background: #2b2b2b;
+      color: #fff;
+      overflow: hidden;
+      padding: 0.9rem 0;
+      border-top: 2px solid #e63946;
+    }
+
+    body.dark .h2-hero-ticker { background: #0f0c0a; }
+
+    .h2-hero-ticker-track {
+      display: flex;
+      gap: 3rem;
+      width: max-content;
+      animation: h2Ticker 30s linear infinite;
+    }
+
+    .h2-hero-ticker:hover .h2-hero-ticker-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes h2Ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .h2-hero-ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .h2-hero-ticker-item i {
+      color: #f4a261;
+      font-size: 0.85rem;
+    }
+
+    /* Hero responsive */
+    @media (max-width: 1023px) {
+      .h2-hero { min-height: 85vh; padding: 5rem 1.5rem 5rem; }
+      .h2-hero-title { letter-spacing: -2px; }
+      .h2-hero-ticker { padding: 0.75rem 0; }
+    }
+
+    @media (max-width: 767px) {
+      .h2-hero { min-height: 80vh; padding: 4rem 1.2rem 4.5rem; }
+      .h2-hero-title { letter-spacing: -1px; line-height: 1; }
+      .h2-hero-sub { font-size: 0.95rem; }
+      .h2-hero-cta { flex-direction: column; width: 100%; }
+      .h2-hero-btn { width: 100%; justify-content: center; }
+      .h2-hero-kicker { font-size: 0.62rem; letter-spacing: 3px; padding: 0.4rem 1rem; }
+      .h2-hero-ticker-item { font-size: 0.7rem; letter-spacing: 1px; }
+      .h2-hero-divider span { width: 40px; }
+    }
+
+    @media (max-width: 480px) {
+      .h2-hero-title { letter-spacing: -0.5px; }
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 2: PROCESS CIRCLE — Circular Timeline
+       Framer Motion: orbitFade + ringRotate
+    ------------------------------------------------------------ */
+    .h2-process {
+      background: #ffffff;
+      transition: background 0.3s;
+    }
+
+    body.dark .h2-process { background: #1a1612; }
+
+    .h2-process-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .h2-process-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-process-header h2 { color: #f0e8de; }
+
+    .h2-process-header h2 span { color: #e63946; }
+
+    .h2-process-header p {
+      font-size: 1rem;
+      color: #78716c;
+      margin-top: 0.7rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-process-header p { color: #a89888; }
+
+    .h2-circle-wrap {
+      position: relative;
+      max-width: 700px;
+      height: 700px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .h2-circle-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px dashed #f0e6d8;
+      transition: border-color 0.3s;
+    }
+
+    body.dark .h2-circle-ring { border-color: #3a322a; }
+
+    .h2-circle-center {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(230, 57, 70, 0.4);
+      z-index: 2;
+    }
+
+    .h2-circle-center i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .h2-circle-center strong {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .h2-circle-center span {
+      font-size: 0.75rem;
+      opacity: 0.9;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .h2-circle-step {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: pointer;
+      border: 3px solid #fff;
+    }
+
+    body.dark .h2-circle-step {
+      background: #241e18;
+      border-color: #241e18;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .h2-circle-step:hover {
+      transform: scale(1.1);
+      box-shadow: 0 18px 40px rgba(230, 57, 70, 0.3);
+      border-color: #e63946;
+    }
+
+    .h2-circle-step i {
+      font-size: 1.4rem;
+      color: #e63946;
+      margin-bottom: 0.3rem;
+    }
+
+    .h2-circle-step strong {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-circle-step strong { color: #f0e8de; }
+
+    .h2-circle-step span {
+      font-size: 0.65rem;
+      color: #a8a29e;
+      letter-spacing: 0.5px;
+    }
+
+    .h2-circle-step:nth-child(3) { top: 0; left: 50%; transform: translateX(-50%); }
+    .h2-circle-step:nth-child(4) { top: 50%; right: 0; transform: translateY(-50%); }
+    .h2-circle-step:nth-child(5) { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .h2-circle-step:nth-child(6) { top: 50%; left: 0; transform: translateY(-50%); }
+
+    .h2-circle-step:nth-child(3):hover { transform: translateX(-50%) scale(1.1); }
+    .h2-circle-step:nth-child(4):hover { transform: translateY(-50%) scale(1.1); }
+    .h2-circle-step:nth-child(5):hover { transform: translateX(-50%) scale(1.1); }
+    .h2-circle-step:nth-child(6):hover { transform: translateY(-50%) scale(1.1); }
+
+    /* ------------------------------------------------------------
+       SECTION 3: SIGNATURE DISHES — Zigzag Alternating Layout
+       Framer Motion: zigzagSlide
+    ------------------------------------------------------------ */
+    .h2-signature {
+      background: linear-gradient(180deg, #fef3e7 0%, #fdf8f0 100%);
+      transition: background 0.3s;
+    }
+
+    body.dark .h2-signature {
+      background: linear-gradient(180deg, #241e18 0%, #1a1612 100%);
+    }
+
+    .h2-signature-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .h2-signature-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-signature-header h2 { color: #f0e8de; }
+
+    .h2-signature-header h2 span { color: #e63946; }
+
+    .h2-signature-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .h2-signature-item:last-child { margin-bottom: 0; }
+
+    .h2-signature-item.reverse { direction: rtl; }
+
+    .h2-signature-item.reverse > * { direction: ltr; }
+
+    .h2-signature-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+      aspect-ratio: 4/3;
+    }
+
+    .h2-signature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+
+    .h2-signature-img:hover img { transform: scale(1.05); }
+
+    .h2-signature-num {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1;
+      z-index: 2;
+    }
+
+    .h2-signature-text h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-signature-text h3 { color: #f0e8de; }
+
+    .h2-signature-text p {
+      font-size: 1rem;
+      color: #78716c;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-signature-text p { color: #a89888; }
+
+    .h2-signature-tags {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .h2-signature-tags span {
+      background: #fff;
+      color: #e63946;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      border: 1px solid #f0e6d8;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    body.dark .h2-signature-tags span {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .h2-signature-price {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .h2-signature-price strong {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #e63946;
+    }
+
+    .h2-signature-price button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: #2b2b2b;
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    body.dark .h2-signature-price button {
+      background: #f0e8de;
+      color: #1a1612;
+    }
+
+    .h2-signature-price button:hover {
+      background: #e63946;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 4: INGREDIENTS — Horizontal Scroll Marquee
+       Framer Motion: marqueeSlide
+    ------------------------------------------------------------ */
+    .h2-ingredients {
+      background: #2b2b2b;
+      color: #fff;
+      overflow: hidden;
+      padding: 5rem 0;
+    }
+
+    body.dark .h2-ingredients { background: #0f0c0a; }
+
+    .h2-ingredients-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 0 2rem;
+    }
+
+    .h2-ingredients-header span {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #f4a261;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .h2-ingredients-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.8px;
+    }
+
+    .h2-ingredients-header h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #f4a261;
+    }
+
+    .h2-marquee {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      animation: h2Marquee 40s linear infinite;
+      width: max-content;
+    }
+
+    .h2-marquee:hover { animation-play-state: paused; }
+
+    @keyframes h2Marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .h2-marquee-tile {
+      width: 240px;
+      height: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+      transition: transform 0.4s;
+      cursor: pointer;
+    }
+
+    .h2-marquee-tile:hover { transform: scale(1.05); }
+
+    .h2-marquee-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .h2-marquee-tile-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      color: #fff;
+    }
+
+    .h2-marquee-tile-label strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .h2-marquee-tile-label span {
+      font-size: 0.72rem;
+      opacity: 0.8;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 5: PRESS & AWARDS — Horizontal Cards
+       Framer Motion: cardFlipIn
+    ------------------------------------------------------------ */
+    .h2-awards {
+      background: #ffffff;
+      transition: background 0.3s;
+    }
+
+    body.dark .h2-awards { background: #1a1612; }
+
+    .h2-awards-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .h2-awards-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-awards-header h2 { color: #f0e8de; }
+
+    .h2-awards-header h2 span { color: #e63946; }
+
+    .h2-awards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .h2-award-card {
+      background: #fdf8f0;
+      border: 1px solid #f0e6d8;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.35s, box-shadow 0.35s, background 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+
+    body.dark .h2-award-card {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .h2-award-card:hover {
+      transform: translateY(-8px) rotate(-1deg);
+      box-shadow: 0 20px 40px rgba(230, 57, 70, 0.15);
+      border-color: #e63946;
+    }
+
+    .h2-award-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f4a261 0%, #e63946 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+    }
+
+    .h2-award-card strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 0.4rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-award-card strong { color: #f0e8de; }
+
+    .h2-award-card span {
+      font-size: 0.78rem;
+      color: #78716c;
+      line-height: 1.5;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-award-card span { color: #a89888; }
+
+    /* ------------------------------------------------------------
+       SECTION 6: GALLERY — Asymmetric Photo Grid
+       Framer Motion: collagePop
+    ------------------------------------------------------------ */
+    .h2-gallery {
+      background: #fdf8f0;
+      transition: background 0.3s;
+    }
+
+    body.dark .h2-gallery { background: #1a1612; }
+
+    .h2-gallery-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .h2-gallery-header span {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #e63946;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .h2-gallery-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .h2-gallery-header h2 { color: #f0e8de; }
+
+    .h2-gallery-collage {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 120px;
+      gap: 1rem;
+    }
+
+    .h2-gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .h2-gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
+      z-index: 5;
+    }
+
+    .h2-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+
+    .h2-gallery-item:hover img { transform: scale(1.1); }
+
+    .h2-gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(230, 57, 70, 0.85) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+      color: #fff;
+    }
+
+    .h2-gallery-item:hover .h2-gallery-overlay { opacity: 1; }
+
+    .h2-gallery-overlay strong {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .h2-gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .h2-gallery-item:nth-child(2) { grid-column: span 2; grid-row: span 1; }
+    .h2-gallery-item:nth-child(3) { grid-column: span 2; grid-row: span 1; }
+    .h2-gallery-item:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+    .h2-gallery-item:nth-child(5) { grid-column: span 2; grid-row: span 1; }
+    .h2-gallery-item:nth-child(6) { grid-column: span 2; grid-row: span 2; }
+    .h2-gallery-item:nth-child(7) { grid-column: span 2; grid-row: span 1; }
+    .h2-gallery-item:nth-child(8) { grid-column: span 2; grid-row: span 1; }
+
+    /* ------------------------------------------------------------
+       SECTION 7: FINAL CTA — Big Bold Bar
+       Framer Motion: barExpand
+    ------------------------------------------------------------ */
+    .h2-final {
+      background: #e63946;
+      color: #fff;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .h2-final::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      animation: h2Shine 4s ease-in-out infinite;
+    }
+
+    @keyframes h2Shine {
+      0%   { left: -100%; }
+      50%  { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .h2-final-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .h2-final-inner h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 1.2rem;
+      line-height: 1.15;
+    }
+
+    .h2-final-inner h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #f4a261;
+    }
+
+    .h2-final-inner p {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .h2-final-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .h2-final-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 2.5rem;
+      border-radius: 40px;
+      border: none;
+      background: #fff;
+      color: #e63946;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .h2-final-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .h2-final-btn.outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      box-shadow: none;
+    }
+
+    .h2-final-btn.outline:hover {
+      background: #fff;
+      color: #e63946;
+    }
+
+    /* ============================================================
+       HOME 2 — RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .h2-circle-wrap { height: 600px; }
+      .h2-circle-step { width: 110px; height: 110px; }
+      .h2-circle-center { width: 170px; height: 170px; }
+      .h2-signature-item { gap: 2.5rem; }
+      .h2-awards-grid { grid-template-columns: repeat(2, 1fr); }
+      .h2-gallery-collage { grid-auto-rows: 100px; }
+    }
+
+    @media (max-width: 767px) {
+      .h2-section { padding: 3.5rem 1.2rem; }
+      .h2-process-header h2,
+      .h2-signature-header h2,
+      .h2-ingredients-header h2,
+      .h2-awards-header h2,
+      .h2-gallery-header h2 { font-size: 1.8rem; }
+      .h2-circle-wrap { height: auto; padding: 3rem 0; flex-direction: column; }
+      .h2-circle-ring { display: none; }
+      .h2-circle-step {
+        position: static;
+        transform: none !important;
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        padding: 1rem 1.2rem;
+        flex-direction: row;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+      }
+      .h2-circle-step i { margin-bottom: 0; }
+      .h2-circle-center { margin: 0 auto 1.5rem; }
+      .h2-signature-item { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+      .h2-signature-item.reverse { direction: ltr; }
+      .h2-signature-text h3 { font-size: 1.5rem; }
+      .h2-marquee-tile { width: 180px; height: 240px; }
+      .h2-awards-grid { grid-template-columns: 1fr; }
+      .h2-gallery-collage { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
+      .h2-gallery-item:nth-child(1),
+      .h2-gallery-item:nth-child(6) { grid-column: span 2; grid-row: span 1; }
+      .h2-gallery-item:nth-child(2),
+      .h2-gallery-item:nth-child(3),
+      .h2-gallery-item:nth-child(4),
+      .h2-gallery-item:nth-child(5),
+      .h2-gallery-item:nth-child(7),
+      .h2-gallery-item:nth-child(8) { grid-column: span 1; grid-row: span 1; }
+      .h2-final-inner h2 { font-size: 2rem; }
+      .h2-final-inner p { font-size: 0.95rem; }
+      .h2-final-actions { flex-direction: column; }
+      .h2-final-btn { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .h2-gallery-collage { grid-auto-rows: 120px; }
+    }
+
+    /* Focus states */
+    .nav-link:focus-visible,
+    .toggle-btn:focus-visible,
+    .order-btn:focus-visible,
+    .hamburger:focus-visible,
+    .mobile-nav-link:focus-visible,
+    .mobile-order-btn:focus-visible,
+    .dropdown-menu a:focus-visible,
+    .mobile-dropdown-menu a:focus-visible,
+    .newsletter-btn:focus-visible,
+    .newsletter-input:focus-visible,
+    .social-icon:focus-visible,
+    .footer-links a:focus-visible {
+      outline: 2px solid #e63946;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar { width: 6px; }
+    .mobile-menu::-webkit-scrollbar-thumb { background: #e63946; border-radius: 3px; }
+  </style>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR (UNCHANGED)
+  ============================================================ -->
+    <nav class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-text-wrapper">
+        <span class="logo-text">Deli<span>&</span>Sandwich</span>
+        <span class="logo-sub">Fresh • Tasty • Made to Order</span>
+      </span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="dropdown">
+        <a href="index.html" class="nav-link active">Home <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html" class="active">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="toggle-btn" id="darkToggleDesktop" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleDesktop" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+      <a href="login.html" class="order-btn">
+        <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <!-- MOBILE MENU (UNCHANGED) -->
+    <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li class="mobile-dropdown">
+        <button class="mobile-nav-link active" data-dropdown="homeDropdownMobile" aria-expanded="false">
+          Home <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="mobile-dropdown-menu" id="homeDropdownMobile">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html" class="active">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+        <div class="mobile-toggles">
+      <button class="toggle-btn" id="darkToggleMobile" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleMobile" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+    </div>
+    <a href="login.html" class="mobile-order-btn">
+      <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+    </a>
+  </div><!-- ============================================================
+       HOME 2 CONTENT — 7 UNIQUE SECTIONS
+  ============================================================ -->
+
+  <!-- SECTION 1: HERO — Cinematic Fullscreen Centered -->
+  <section class="h2-hero" id="h2-s1">
+
+    <!-- Blurred background image -->
+    <div class="h2-hero-bg" data-motion="h2-hero-bg">
+      <img src="image/bg1.jpg" alt="Sandwich background">
+    </div>
+
+    <!-- Animated grain texture -->
+    <div class="h2-hero-grain"></div>
+
+    <!-- Centered content -->
+    <div class="h2-hero-inner">
+
+      <span class="h2-hero-kicker" data-motion="h2-kicker">
+        <i class="fas fa-circle"></i> Now Open · San Francisco
+      </span>
+
+      <h1 class="h2-hero-title" data-motion="h2-title">
+        <span class="h2-line" data-line="1">Crafted</span>
+        <span class="h2-line" data-line="2"><em>slow,</em> served</span>
+        <span class="h2-line" data-line="3">fast.</span>
+      </h1>
+
+      <div class="h2-hero-divider" data-motion="h2-divider">
+        <span></span>
+        <i class="fas fa-bread-slice"></i>
+        <span></span>
+      </div>
+
+      <p class="h2-hero-sub" data-motion="h2-sub">
+        Every sandwich is a small act of craft — from the first slice to the
+        final pinch of seasoning. Honest ingredients, bold flavors, and a
+        kitchen that never rushes what matters.
+      </p>
+
+      <div class="h2-hero-cta" data-motion="h2-cta">
+        <button class="h2-hero-btn filled">
+          <i class="fas fa-utensils"></i> Explore the Menu
+        </button>
+        <button class="h2-hero-btn ghost">
+          <i class="fas fa-map-marker-alt"></i> Find a Store
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Bottom scrolling ticker strip -->
+    <div class="h2-hero-ticker" data-motion="h2-ticker">
+      <div class="h2-hero-ticker-track">
+        <span class="h2-hero-ticker-item"><i class="fas fa-star"></i> Handcrafted Daily</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-leaf"></i> Local Ingredients</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-fire"></i> Fresh From the Oven</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-award"></i> Best in SF 2024</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-heart"></i> Loved by 2,300+</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-clock"></i> Ready in 15 min</span>
+        <!-- Duplicate set for seamless loop -->
+        <span class="h2-hero-ticker-item"><i class="fas fa-star"></i> Handcrafted Daily</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-leaf"></i> Local Ingredients</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-fire"></i> Fresh From the Oven</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-award"></i> Best in SF 2024</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-heart"></i> Loved by 2,300+</span>
+        <span class="h2-hero-ticker-item"><i class="fas fa-clock"></i> Ready in 15 min</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 2: PROCESS CIRCLE — Circular Timeline -->
+  <section class="h2-process h2-section" id="h2-s2">
+    <div class="h2-container">
+      <div class="h2-process-header" data-motion="h2-process-header">
+        <h2>How We <span>Craft</span> Every Bite</h2>
+        <p>Four steps. Zero shortcuts. Pure flavor.</p>
+      </div>
+
+      <div class="h2-circle-wrap">
+        <div class="h2-circle-ring" data-motion="h2-ring"></div>
+
+        <div class="h2-circle-center" data-motion="h2-center">
+          <i class="fas fa-bread-slice"></i>
+          <strong>The Craft</strong>
+          <span>4 Steps</span>
+        </div>
+
+        <div class="h2-circle-step" data-motion="h2-step">
+          <i class="fas fa-seedling"></i>
+          <strong>Source</strong>
+          <span>Daily fresh</span>
+        </div>
+
+        <div class="h2-circle-step" data-motion="h2-step">
+          <i class="fas fa-cut"></i>
+          <strong>Slice</strong>
+          <span>By hand</span>
+        </div>
+
+        <div class="h2-circle-step" data-motion="h2-step">
+          <i class="fas fa-layer-group"></i>
+          <strong>Stack</strong>
+          <span>With care</span>
+        </div>
+
+        <div class="h2-circle-step" data-motion="h2-step">
+          <i class="fas fa-paper-plane"></i>
+          <strong>Serve</strong>
+          <span>To you</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SIGNATURE DISHES — Zigzag Alternating Layout -->
+  <section class="h2-signature h2-section" id="h2-s3">
+    <div class="h2-container">
+      <div class="h2-signature-header" data-motion="h2-sig-header">
+        <h2>Our <span>Signatures</span></h2>
+      </div>
+
+      <!-- Item 1 -->
+      <div class="h2-signature-item" data-motion="h2-sig-item">
+        <div class="h2-signature-img" data-motion="h2-sig-img">
+          <span class="h2-signature-num">01</span>
+          <img src="image/Truffle Melt (2).jpg" alt="Truffle Melt">
+        </div>
+        <div class="h2-signature-text" data-motion="h2-sig-text">
+          <h3>The Truffle Melt</h3>
+          <p>
+            Slow-roasted mushrooms, aged gruyère, and a whisper of black
+            truffle oil on grilled sourdough. Rich, earthy, unforgettable.
+          </p>
+          <div class="h2-signature-tags">
+            <span>Vegetarian</span>
+            <span>Signature</span>
+            <span>Best Seller</span>
+          </div>
+          <div class="h2-signature-price">
+            <strong>$13.99</strong>
+            <button><i class="fas fa-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 (reversed) -->
+      <div class="h2-signature-item reverse" data-motion="h2-sig-item">
+        <div class="h2-signature-img" data-motion="h2-sig-img">
+          <span class="h2-signature-num">02</span>
+          <img src="image/Nashville Hot Chicken.jpg" alt="Nashville Hot Chicken">
+        </div>
+        <div class="h2-signature-text" data-motion="h2-sig-text">
+          <h3>Nashville Hot Chicken</h3>
+          <p>
+            Buttermilk-brined chicken, cayenne-honey glaze, pickles, and
+            cooling slaw on a toasted brioche bun. Sweet heat in every bite.
+          </p>
+          <div class="h2-signature-tags">
+            <span>Spicy</span>
+            <span>Fan Favorite</span>
+          </div>
+          <div class="h2-signature-price">
+            <strong>$12.49</strong>
+            <button><i class="fas fa-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="h2-signature-item" data-motion="h2-sig-item">
+        <div class="h2-signature-img" data-motion="h2-sig-img">
+          <span class="h2-signature-num">03</span>
+          <img src="image/Mediterranean Veggie.jpg" alt="Mediterranean Veggie">
+        </div>
+        <div class="h2-signature-text" data-motion="h2-sig-text">
+          <h3>Mediterranean Veggie</h3>
+          <p>
+            Grilled zucchini, roasted red peppers, whipped feta, and
+            zhoug on a warm pita. Bright, herby, and utterly refreshing.
+          </p>
+          <div class="h2-signature-tags">
+            <span>Vegetarian</span>
+            <span>Light</span>
+            <span>Fresh</span>
+          </div>
+          <div class="h2-signature-price">
+            <strong>$11.99</strong>
+            <button><i class="fas fa-plus"></i> Add</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: INGREDIENTS — Horizontal Scroll Marquee -->
+  <section class="h2-ingredients" id="h2-s4">
+    <div class="h2-ingredients-header" data-motion="h2-ing-header">
+      <span>What's Inside</span>
+      <h2>Real ingredients. <em>Real flavor.</em></h2>
+    </div>
+
+    <div class="h2-marquee" data-motion="h2-marquee">
+      <!-- Set 1 -->
+      <div class="h2-marquee-tile">
+        <img src="image/fresh bread.jpg" alt="Fresh bread">
+        <div class="h2-marquee-tile-label">
+          <strong>Sourdough</strong>
+          <span>Baked daily</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Heirloom Tomatoes.jpg" alt="Heirloom tomatoes">
+        <div class="h2-marquee-tile-label">
+          <strong>Heirloom Tomatoes</strong>
+          <span>Locally sourced</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Aged Gruyere.jpg" alt="Aged cheese">
+        <div class="h2-marquee-tile-label">
+          <strong>Aged Gruyère</strong>
+          <span>12-month aged</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Crisp Greens.jpg" alt="Fresh greens">
+        <div class="h2-marquee-tile-label">
+          <strong>Crisp Greens</strong>
+          <span>Farm fresh</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Premium Meats.jpg" alt="Premium meats">
+        <div class="h2-marquee-tile-label">
+          <strong>Premium Meats</strong>
+          <span>Slow-roasted</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/House Sauces.jpg" alt="House sauces">
+        <div class="h2-marquee-tile-label">
+          <strong>House Sauces</strong>
+          <span>Made in-house</span>
+        </div>
+      </div>
+
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="h2-marquee-tile">
+        <img src="image/fresh bread.jpg" alt="Fresh bread">
+        <div class="h2-marquee-tile-label">
+          <strong>Sourdough</strong>
+          <span>Baked daily</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Heirloom Tomatoes.jpg" alt="Heirloom tomatoes">
+        <div class="h2-marquee-tile-label">
+          <strong>Heirloom Tomatoes</strong>
+          <span>Locally sourced</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Aged Gruyere.jpg" alt="Aged cheese">
+        <div class="h2-marquee-tile-label">
+          <strong>Aged Gruyère</strong>
+          <span>12-month aged</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Crisp Greens.jpg" alt="Fresh greens">
+        <div class="h2-marquee-tile-label">
+          <strong>Crisp Greens</strong>
+          <span>Farm fresh</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/Premium Meats.jpg" alt="Premium meats">
+        <div class="h2-marquee-tile-label">
+          <strong>Premium Meats</strong>
+          <span>Slow-roasted</span>
+        </div>
+      </div>
+      <div class="h2-marquee-tile">
+        <img src="image/House Sauces.jpg" alt="House sauces">
+        <div class="h2-marquee-tile-label">
+          <strong>House Sauces</strong>
+          <span>Made in-house</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: PRESS & AWARDS — Horizontal Cards -->
+  <section class="h2-awards h2-section" id="h2-s5">
+    <div class="h2-container">
+      <div class="h2-awards-header" data-motion="h2-awards-header">
+        <h2>Recognized <span>& Loved</span></h2>
+      </div>
+
+      <div class="h2-awards-grid">
+        <div class="h2-award-card" data-motion="h2-award">
+          <div class="h2-award-icon"><i class="fas fa-trophy"></i></div>
+          <strong>Best Sandwich 2024</strong>
+          <span>SF Food Critics Association</span>
+        </div>
+        <div class="h2-award-card" data-motion="h2-award">
+          <div class="h2-award-icon"><i class="fas fa-star"></i></div>
+          <strong>4.9 on Google</strong>
+          <span>2,300+ verified reviews</span>
+        </div>
+        <div class="h2-award-card" data-motion="h2-award">
+          <div class="h2-award-icon"><i class="fas fa-leaf"></i></div>
+          <strong>Green Certified</strong>
+          <span>Sustainable sourcing</span>
+        </div>
+        <div class="h2-award-card" data-motion="h2-award">
+          <div class="h2-award-icon"><i class="fas fa-heart"></i></div>
+          <strong>Community Pick</strong>
+          <span>Voted by locals</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: GALLERY — Asymmetric Photo Grid -->
+  <section class="h2-gallery h2-section" id="h2-s6">
+    <div class="h2-container">
+      <div class="h2-gallery-header" data-motion="h2-gallery-header">
+        <span>Behind the Counter</span>
+        <h2>Moments from <span>Our Kitchen</span></h2>
+      </div>
+
+      <div class="h2-gallery-collage">
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/Kitchen moment.jpg" alt="Kitchen moment">
+          <div class="h2-gallery-overlay"><strong>The Daily Prep</strong></div>
+        </div>
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/Morning Bake.jpg" alt="Fresh bread">
+          <div class="h2-gallery-overlay"><strong>Morning Bake</strong></div>
+        </div>
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/Stacked Fresh.jpg" alt="Sandwich stack">
+          <div class="h2-gallery-overlay"><strong>Stacked Fresh</strong></div>
+        </div>
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/Craft in Motion.jpg" alt="Chef at work">
+          <div class="h2-gallery-overlay"><strong>Craft in Motion</strong></div>
+        </div>
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/Local Produce.jpg" alt="Local ingredients">
+          <div class="h2-gallery-overlay"><strong>Local Produce</strong></div>
+        </div>
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/The Signature.jpg" alt="Signature plate">
+          <div class="h2-gallery-overlay"><strong>The Signature</strong></div>
+        </div>
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/Warm interior.jpg" alt="Warm interior">
+          <div class="h2-gallery-overlay"><strong>Our Space</strong></div>
+        </div>
+        <div class="h2-gallery-item" data-motion="h2-gallery-item">
+          <img src="image/Happy customers.jpg" alt="Happy customers">
+          <div class="h2-gallery-overlay"><strong>Regulars</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: FINAL CTA — Big Bold Bar -->
+  <section class="h2-final" id="h2-s7">
+    <div class="h2-final-inner" data-motion="h2-final">
+      <h2 data-motion="h2-final-title">
+        Ready to taste the <em>difference?</em>
+      </h2>
+      <p data-motion="h2-final-desc">
+        Order online in seconds, or visit us in person. Fresh sandwiches
+        are waiting — and the first one's on us with code FRESH20.
+      </p>
+      <div class="h2-final-actions" data-motion="h2-final-actions">
+        <a href="login.html" class="h2-final-btn" style="text-decoration: none;">
+          <i class="fas fa-shopping-bag"></i> Order Now
+        </a>
+        <a href="contact.html" class="h2-final-btn outline" style="text-decoration: none;">
+          <i class="fas fa-map-marker-alt"></i> Find a Location
+        </a>
+      </div>
+    </div>
+  </section>
+
+    <!-- ============================================================
+       FOOTER (IDENTICAL TO INDEX.HTML)
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-text-wrapper">
+            <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
+            <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
+          </span>
+        </a>
+        <p class="footer-description">
+          Building sandwich satisfaction with fresh ingredients and bold flavors
+          for every craving. Our chefs craft a fun, delicious experience where
+          every bite is made to order.
+        </p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="build your sandwich.html"><i class="fas fa-chevron-right"></i> Build Your Sandwich</a></li>
+          <li><a href="special offers.html"><i class="fas fa-chevron-right"></i> Special Offers</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="reviews.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+          <li><a href="catering order.html"><i class="fas fa-chevron-right"></i> Catering Orders</a></li>
+          <li><a href="login.html"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">Stay Updated</h3>
+        <p>
+          Get the latest menu drops, special offers, and sandwich updates
+          delivered to your inbox.
+        </p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Deli & Sandwich. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="contact.html">Privacy</a></li>
+        <li><a href="contact.html">Terms</a></li>
+        <li><a href="contact.html">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       FRAMER MOTION — UNIQUE ANIMATIONS FOR HOME 2
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      const { animate, inView } = window.Motion || {};
+
+      if (!animate || !inView) {
+        console.warn('Framer Motion not loaded.');
+        return;
+      }
+
+      /* ============================================================
+         SECTION 1: HERO — Cinematic Fullscreen Centered
+         Unique Motion: splitLetterReveal + bgZoomSoft + tickerSlide
+      ============================================================ */
+
+      // Background soft zoom
+      const h2HeroBg = document.querySelector('[data-motion="h2-hero-bg"]');
+      if (h2HeroBg) {
+        animate(
+          h2HeroBg,
+          { opacity: [0, 1], scale: [1.15, 1] },
+          { duration: 2.4, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+
+      // Kicker badge fade in
+      const h2Kicker = document.querySelector('[data-motion="h2-kicker"]');
+      if (h2Kicker) {
+        animate(
+          h2Kicker,
+          { opacity: [0, 1], y: [-15, 0] },
+          { duration: 0.7, delay: 0.3 }
+        );
+      }
+
+      // Split-letter title reveal — each letter slides up from its line
+      const titleLines = document.querySelectorAll('.h2-hero-title .h2-line');
+      titleLines.forEach(function (line, lineIndex) {
+        // Save original HTML (preserving <em> tags)
+        if (!line.getAttribute('data-html')) {
+          line.setAttribute('data-html', line.innerHTML);
+        }
+        const originalHTML = line.getAttribute('data-html');
+
+        // Rebuild line with each character wrapped in a span
+        line.innerHTML = '';
+        const holder = document.createElement('span');
+        line.appendChild(holder);
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = originalHTML;
+
+        const chars = [];
+
+        function wrapChars(node, parent) {
+          if (node.nodeType === 3) {
+            // Text node — wrap each character
+            node.textContent.split('').forEach(function (ch) {
+              const span = document.createElement('span');
+              span.className = 'h2-letter';
+              span.textContent = ch === ' ' ? '\u00A0' : ch;
+              parent.appendChild(span);
+              chars.push(span);
+            });
+          } else {
+            // Element node (like <em>) — clone it and recurse
+            const clone = node.cloneNode(false);
+            parent.appendChild(clone);
+            node.childNodes.forEach(function (child) {
+              wrapChars(child, clone);
+            });
+          }
+        }
+
+        tempDiv.childNodes.forEach(function (child) {
+          wrapChars(child, holder);
+        });
+
+        // Animate each letter sliding up
+        chars.forEach(function (letter, i) {
+          animate(
+            letter,
+            { opacity: [0, 1], y: ['100%', '0%'] },
+            {
+              duration: 0.8,
+              delay: 0.5 + lineIndex * 0.15 + i * 0.025,
+              easing: [0.25, 0.1, 0.25, 1]
+            }
+          );
+        });
+      });
+
+      // Divider fade
+      const h2Divider = document.querySelector('[data-motion="h2-divider"]');
+      if (h2Divider) {
+        animate(
+          h2Divider,
+          { opacity: [0, 1], scaleX: [0.3, 1] },
+          { duration: 0.9, delay: 1.4 }
+        );
+      }
+
+      // Subtitle fade up
+      const h2Sub = document.querySelector('[data-motion="h2-sub"]');
+      if (h2Sub) {
+        animate(
+          h2Sub,
+          { opacity: [0, 1], y: [25, 0] },
+          { duration: 0.8, delay: 1.6 }
+        );
+      }
+
+      // CTA buttons
+      const h2Cta = document.querySelector('[data-motion="h2-cta"]');
+      if (h2Cta) {
+        animate(
+          h2Cta,
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.7, delay: 1.85 }
+        );
+      }
+
+      // Ticker strip fade-in and slide
+      const h2Ticker = document.querySelector('[data-motion="h2-ticker"]');
+      if (h2Ticker) {
+        animate(
+          h2Ticker,
+          { opacity: [0, 1], y: [30, 0] },
+          { duration: 0.9, delay: 2.1 }
+        );
+      }
+
+      /* ============================================================
+         SECTION 2: PROCESS CIRCLE
+         Unique Motion: orbitFade + ringRotate
+      ============================================================ */
+      const h2ProcessHeader = document.querySelector('[data-motion="h2-process-header"]');
+      const h2Ring = document.querySelector('[data-motion="h2-ring"]');
+      const h2Center = document.querySelector('[data-motion="h2-center"]');
+      const h2Steps = document.querySelectorAll('[data-motion="h2-step"]');
+
+      if (h2ProcessHeader) {
+        animate(h2ProcessHeader, { opacity: [0, 1], y: [-20, 0] }, { duration: 0.7 });
+      }
+      if (h2Ring) {
+        animate(
+          h2Ring,
+          { opacity: [0, 1], rotate: [0, 360] },
+          { duration: 30, repeat: Infinity, easing: 'linear' }
+        );
+      }
+      if (h2Center) {
+        animate(
+          h2Center,
+          { opacity: [0, 1], scale: [0.5, 1] },
+          { duration: 0.9, delay: 0.3 }
+        );
+      }
+      h2Steps.forEach(function (step, i) {
+        animate(
+          step,
+          { opacity: [0, 1], scale: [0.6, 1], rotate: [i % 2 === 0 ? -180 : 180, 0] },
+          { duration: 0.9, delay: 0.5 + i * 0.2 }
+        );
+      });
+
+      /* ============================================================
+         SECTION 3: SIGNATURE ZIGZAG
+         Unique Motion: zigzagSlide
+      ============================================================ */
+      const h2SigHeader = document.querySelector('[data-motion="h2-sig-header"]');
+      const h2SigItems = document.querySelectorAll('[data-motion="h2-sig-item"]');
+
+      if (h2SigHeader) {
+        animate(h2SigHeader, { opacity: [0, 1], y: [25, 0] }, { duration: 0.7 });
+      }
+      h2SigItems.forEach(function (item, i) {
+        const fromLeft = i % 2 === 0;
+        animate(
+          item,
+          {
+            opacity: [0, 1],
+            x: fromLeft ? [-80, 0] : [80, 0]
+          },
+          { duration: 0.9, delay: 0.15 * i, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 4: INGREDIENTS MARQUEE
+         Unique Motion: marqueeSlide
+      ============================================================ */
+      const h2IngHeader = document.querySelector('[data-motion="h2-ing-header"]');
+      const h2Marquee = document.querySelector('[data-motion="h2-marquee"]');
+
+      if (h2IngHeader) {
+        animate(h2IngHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.7 });
+      }
+      if (h2Marquee) {
+        animate(
+          h2Marquee,
+          { opacity: [0, 1], x: [-60, 0] },
+          { duration: 1.2, delay: 0.3 }
+        );
+      }
+
+      /* ============================================================
+         SECTION 5: PRESS & AWARDS
+         Unique Motion: cardFlipIn
+      ============================================================ */
+      const h2AwardsHeader = document.querySelector('[data-motion="h2-awards-header"]');
+      const h2Awards = document.querySelectorAll('[data-motion="h2-award"]');
+
+      if (h2AwardsHeader) {
+        animate(h2AwardsHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      h2Awards.forEach(function (card, i) {
+        animate(
+          card,
+          {
+            opacity: [0, 1],
+            y: [50, 0],
+            rotateY: [90, 0]
+          },
+          { duration: 0.8, delay: 0.15 * i, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 6: GALLERY COLLAGE
+         Unique Motion: collagePop (random scale + rotate)
+      ============================================================ */
+      const h2GalleryHeader = document.querySelector('[data-motion="h2-gallery-header"]');
+      const h2GalleryItems = document.querySelectorAll('[data-motion="h2-gallery-item"]');
+
+      if (h2GalleryHeader) {
+        animate(h2GalleryHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      h2GalleryItems.forEach(function (item, i) {
+        const rotations = [-8, 5, -4, 7, -6, 4, -3, 6];
+        animate(
+          item,
+          {
+            opacity: [0, 1],
+            scale: [0.5, 1],
+            rotate: [rotations[i % rotations.length], 0]
+          },
+          { duration: 0.8, delay: 0.1 * i, easing: [0.34, 1.56, 0.64, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 7: FINAL CTA
+         Unique Motion: barExpand
+      ============================================================ */
+      const h2Final = document.querySelector('[data-motion="h2-final"]');
+      const h2FinalTitle = document.querySelector('[data-motion="h2-final-title"]');
+      const h2FinalDesc = document.querySelector('[data-motion="h2-final-desc"]');
+      const h2FinalActions = document.querySelector('[data-motion="h2-final-actions"]');
+
+      if (h2Final) {
+        animate(
+          h2Final,
+          { opacity: [0, 1], scale: [0.9, 1] },
+          { duration: 0.9, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+      if (h2FinalTitle) {
+        animate(
+          h2FinalTitle,
+          { opacity: [0, 1], y: [40, 0] },
+          { duration: 0.8, delay: 0.2 }
+        );
+      }
+      if (h2FinalDesc) {
+        animate(
+          h2FinalDesc,
+          { opacity: [0, 1], y: [30, 0] },
+          { duration: 0.8, delay: 0.4 }
+        );
+      }
+      if (h2FinalActions) {
+        animate(
+          h2FinalActions,
+          { opacity: [0, 1], y: [20, 0] },
+          { duration: 0.7, delay: 0.6 }
+        );
+      }
+
+      /* ============================================================
+         SCROLL-TRIGGERED REVEALS for each section
+      ============================================================ */
+      document.querySelectorAll('.h2-section, .h2-hero, .h2-ingredients, .h2-final').forEach(function (section) {
+        inView(section, function () {
+          animate(section, { opacity: [0.85, 1] }, { duration: 0.5 });
+        }, { amount: 0.15 });
+      });
+
+    });
+  </script>
+
+  <!-- ============================================================
+       NAVBAR + FOOTER JAVASCRIPT (UNCHANGED)
+  ============================================================ -->
+  <script>
+    (function () {
+      const body = document.body;
+      const htmlEl = document.documentElement;
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      const darkToggleDesktop = document.getElementById('darkToggleDesktop');
+      const rtlToggleDesktop = document.getElementById('rtlToggleDesktop');
+      const darkToggleMobile = document.getElementById('darkToggleMobile');
+      const rtlToggleMobile = document.getElementById('rtlToggleMobile');
+
+      const mobileDropdownBtns = document.querySelectorAll('.mobile-nav-link[data-dropdown]');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-menu a, .mobile-order-btn');
+
+      // DARK MODE
+      const DARK_KEY = 'deliDarkMode';
+      function applyDarkMode(isDark) {
+        const darkIcon = '<i class="fas fa-moon"></i>';
+        const lightIcon = '<i class="fas fa-sun"></i>';
+        if (isDark) {
+          body.classList.add('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = lightIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = lightIcon;
+        } else {
+          body.classList.remove('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = darkIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = darkIcon;
+        }
+      }
+      if (localStorage.getItem(DARK_KEY) === 'on') applyDarkMode(true);
+
+      function toggleDarkMode() {
+        const isDark = !body.classList.contains('dark');
+        applyDarkMode(isDark);
+        localStorage.setItem(DARK_KEY, isDark ? 'on' : 'off');
+      }
+      if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+      if (darkToggleMobile) darkToggleMobile.addEventListener('click', toggleDarkMode);
+
+      // RTL / LTR
+      const RTL_KEY = 'deliRTL';
+      function applyRTL(isRTL) {
+        const rtlIcon = '<i class="fas fa-right-left"></i>';
+        const ltrIcon = '<i class="fas fa-right-left fa-flip-horizontal"></i>';
+        if (isRTL) {
+          htmlEl.setAttribute('dir', 'rtl');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = ltrIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = ltrIcon;
+        } else {
+          htmlEl.setAttribute('dir', 'ltr');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = rtlIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = rtlIcon;
+        }
+      }
+      if (localStorage.getItem(RTL_KEY) === 'on') applyRTL(true);
+
+      function toggleRTL() {
+        const isRTL = htmlEl.getAttribute('dir') !== 'rtl';
+        applyRTL(isRTL);
+        localStorage.setItem(RTL_KEY, isRTL ? 'on' : 'off');
+      }
+      if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+      if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', toggleRTL);
+
+      // HAMBURGER / MOBILE MENU
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('open')) closeMobileMenu();
+        else openMobileMenu();
+      });
+
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (this.hasAttribute('data-dropdown')) return;
+          closeMobileMenu();
+        });
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target === mobileMenu) closeMobileMenu();
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+      // MOBILE DROPDOWNS
+      mobileDropdownBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const targetId = this.getAttribute('data-dropdown');
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          mobileDropdownBtns.forEach(function (otherBtn) {
+            if (otherBtn !== btn) {
+              otherBtn.classList.remove('open');
+              otherBtn.setAttribute('aria-expanded', 'false');
+              const otherId = otherBtn.getAttribute('data-dropdown');
+              const otherTarget = document.getElementById(otherId);
+              if (otherTarget) otherTarget.classList.remove('open');
+            }
+          });
+
+          const isOpen = this.classList.contains('open');
+          if (isOpen) {
+            this.classList.remove('open');
+            this.setAttribute('aria-expanded', 'false');
+            target.classList.remove('open');
+          } else {
+            this.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+            target.classList.add('open');
+          }
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+    })();
+  </script>
+
+  <!-- ============================================================
+       ORDER NOW / SIGN IN MODAL POPUP
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="authModalOverlay" aria-hidden="true">
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      
+      <!-- Close Button -->
+      <button class="auth-modal-close" id="authModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Header Section -->
+      <div class="auth-modal-header">
+        <div class="auth-brand-badge">
+          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="auth-brand-name">Deli & Sandwich</span>
+        </div>
+        <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
+        <p class="auth-modal-subtitle" id="modalSubtitle">Customize your sandwich & get fast delivery to your doorstep</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="auth-tabs-nav" role="tablist">
+        <button class="auth-tab-btn active" id="tabOrderBtn" data-tab="tabOrder" role="tab" aria-selected="true">
+          <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+        </button>
+        <button class="auth-tab-btn" id="tabLoginBtn" data-tab="tabLogin" role="tab" aria-selected="false">
+          <i class="fas fa-user"></i> <span>Sign In</span>
+        </button>
+        <button class="auth-tab-btn" id="tabRegisterBtn" data-tab="tabRegister" role="tab" aria-selected="false">
+          <i class="fas fa-user-plus"></i> <span>Register</span>
+        </button>
+      </div>
+
+      <!-- Tab Body -->
+      <div class="auth-modal-body">
+        
+        <!-- TAB 1: ORDER NOW -->
+        <div class="auth-tab-pane active" id="tabOrder" role="tabpanel">
+          <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+            
+            <div class="order-type-selector">
+              <label class="order-type-option active">
+                <input type="radio" name="orderType" value="delivery" checked hidden>
+                <i class="fas fa-motorcycle"></i>
+                <span>Delivery</span>
+              </label>
+              <label class="order-type-option">
+                <input type="radio" name="orderType" value="pickup" hidden>
+                <i class="fas fa-store"></i>
+                <span>Pickup</span>
+              </label>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="orderName" placeholder="John Doe" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-phone"></i> Phone Number</label>
+              <div class="input-with-icon">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="orderPhone" placeholder="+1 (555) 000-0000" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group" id="addressGroup">
+              <label><i class="fas fa-location-dot"></i> Delivery Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-map-marker-alt input-icon"></i>
+                <input type="text" id="orderAddress" placeholder="Street Address, City, Zip" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-row">
+              <div class="auth-form-group flex-1">
+                <label><i class="fas fa-bread-slice"></i> Select Sandwich</label>
+                <select id="orderItem" class="auth-input auth-select">
+                  <option value="12.99" data-name="Classic Club Sandwich">Classic Club Sandwich ($12.99)</option>
+                  <option value="14.50" data-name="Spicy Italian Sub">Spicy Italian Sub ($14.50)</option>
+                  <option value="13.25" data-name="Turkey Avocado Toast">Turkey Avocado Toast ($13.25)</option>
+                  <option value="11.99" data-name="Veggie Supreme">Veggie Supreme ($11.99)</option>
+                  <option value="15.99" data-name="Custom Gourmet Craft">Custom Gourmet Craft ($15.99)</option>
+                </select>
+              </div>
+
+              <div class="auth-form-group width-auto">
+                <label><i class="fas fa-sort-numeric-up"></i> Qty</label>
+                <div class="qty-counter">
+                  <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                  <span class="qty-val" id="qtyVal">1</span>
+                  <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-comment-alt"></i> Special Instructions (Optional)</label>
+              <textarea id="orderNotes" placeholder="Extra sauce, no onions, gluten-free bread..." rows="2" class="auth-input auth-textarea"></textarea>
+            </div>
+
+            <div class="order-price-summary">
+              <div class="summary-line"><span>Subtotal:</span> <span id="summarySubtotal">$12.99</span></div>
+              <div class="summary-line"><span>Delivery Fee:</span> <span id="summaryDelivery">$2.99</span></div>
+              <div class="summary-line total-line"><span>Total:</span> <span id="summaryTotal">$15.98</span></div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-paper-plane"></i> <span>Confirm & Place Order</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 2: SIGN IN -->
+        <div class="auth-tab-pane" id="tabLogin" role="tabpanel">
+          <form id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email or Phone</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" placeholder="yourname@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="loginPassword" placeholder="••••••••" required class="auth-input">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="remember-label">
+                <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-link" onclick="alert('Password reset link sent to your email!')">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-right-to-bracket"></i> <span>Sign In</span>
+            </button>
+
+            <div class="auth-divider">
+              <span>Or sign in with</span>
+            </div>
+
+            <div class="social-auth-grid">
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Google')">
+                <i class="fab fa-google"></i> Google
+              </button>
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Apple')">
+                <i class="fab fa-apple"></i> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 3: REGISTER -->
+        <div class="auth-tab-pane" id="tabRegister" role="tabpanel">
+          <form id="registerForm" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="regName" placeholder="Jane Smith" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="regEmail" placeholder="jane@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="regPassword" placeholder="Create password" required class="auth-input">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-user-plus"></i> <span>Create Account</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Auth Modal JS -->
+  <script src="auth-modal.js"></script>
+
+</body>
+</html>

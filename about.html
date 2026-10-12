@@ -1,0 +1,2959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deli & Sandwich · About Us</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #fdf8f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       DARK MODE
+    ============================================================ */
+    body.dark { background: #1a1612; color: #f0e8de; }
+
+    body.dark .navbar {
+      background: #241e18;
+      border-bottom-color: #3a322a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .logo-text,
+    body.dark .footer-logo-text { color: #f0e8de; }
+
+    body.dark .nav-link { color: #c9bdb0; }
+
+    body.dark .nav-link:hover,
+    body.dark .nav-link.active {
+      color: #e63946;
+      background: rgba(230, 57, 70, 0.12);
+    }
+
+    body.dark .nav-link.home-pill {
+      background: rgba(230, 57, 70, 0.15);
+      color: #e63946;
+    }
+
+    body.dark .dropdown-menu {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark .dropdown-menu a { color: #c9bdb0; }
+
+    body.dark .dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .toggle-btn {
+      border-color: #3a322a;
+      color: #c9bdb0;
+      background: #241e18;
+    }
+
+    body.dark .toggle-btn:hover {
+      background: #3a322a;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    body.dark .mobile-menu {
+      background: #241e18;
+      border-top-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link {
+      color: #c9bdb0;
+      border-bottom-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link:hover { color: #e63946; }
+    body.dark .mobile-dropdown-menu { background: #2c241e; }
+    body.dark .mobile-dropdown-menu a { color: #c9bdb0; }
+
+    body.dark .mobile-dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .hamburger span { background: #f0e8de; }
+
+    body.dark .footer {
+      background: #241e18;
+      border-top-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .footer-heading { color: #f0e8de; }
+    body.dark .footer-description,
+    body.dark .footer-newsletter p { color: #a89888; }
+    body.dark .footer-links a { color: #a89888; }
+    body.dark .footer-links a:hover { color: #e63946; }
+    body.dark .footer-bottom { border-top-color: #3a322a; }
+    body.dark .footer-copyright,
+    body.dark .footer-bottom-links a { color: #7a6a5c; }
+
+    body.dark .social-icon {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+    }
+
+    body.dark .newsletter-input {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .newsletter-input::placeholder { color: #7a6a5c; }
+
+    /* ============================================================
+       NAVBAR (UNCHANGED)
+    ============================================================ */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 0.6rem 2rem;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid #f0e6d8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      gap: 1rem;
+      white-space: nowrap;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-text-wrapper { display: flex; flex-direction: column; line-height: 1.15; }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    .logo-text span { color: #e63946; }
+
+    .logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+
+    .nav-menu > li { position: relative; flex-shrink: 0; }
+
+    .nav-link {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e63946;
+      background: #fdf0f0;
+    }
+
+    .nav-link i.fa-chevron-down {
+      font-size: 0.55rem;
+      transition: transform 0.2s;
+      margin-top: 2px;
+    }
+
+    .dropdown:hover .nav-link i.fa-chevron-down,
+    .dropdown:focus-within .nav-link i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .nav-link.home-pill {
+      background: #fdf0f0;
+      color: #e63946;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: #e63946;
+      color: #ffffff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 30px;
+      margin-left: 3px;
+      letter-spacing: 0.2px;
+      line-height: 1.3;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #f0e6d8;
+      padding: 0.4rem 0;
+      list-style: none;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s, background 0.3s, border-color 0.3s;
+      z-index: 200;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li { white-space: nowrap; }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    .toggle-btn i { font-size: 0.78rem; }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+    }
+
+    .order-btn:active { transform: scale(0.97); }
+    .order-btn i { font-size: 0.8rem; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1.5px solid #f0e6d8;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #2b2b2b;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      overflow-y: auto;
+      padding: 1rem 1.2rem 2rem;
+      z-index: 999;
+      transition: background 0.3s, border-color 0.3s;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .mobile-nav-list > li { border-bottom: 1px solid #f0e6d8; }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 0.2rem;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .mobile-nav-link:hover { color: #e63946; }
+    .mobile-nav-link .badge { margin-left: auto; margin-right: 0.5rem; }
+
+    .mobile-nav-link i.fa-chevron-down {
+      font-size: 0.7rem;
+      transition: transform 0.25s;
+      color: #888;
+    }
+
+    .mobile-nav-link.open i.fa-chevron-down { transform: rotate(180deg); }
+
+    .mobile-dropdown-menu {
+      list-style: none;
+      background: #fdf8f0;
+      border-radius: 8px;
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-dropdown-menu.open { max-height: 300px; padding: 0.3rem 0; }
+
+    .mobile-dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+      border-radius: 6px;
+    }
+
+    .mobile-dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .mobile-toggles {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mobile-toggles .toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex: 0 0 42px;
+      min-width: 42px;
+      padding: 0;
+      font-size: 1rem;
+      justify-content: center;
+    }
+
+    .mobile-order-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      margin-top: 0.8rem;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:active { transform: scale(0.97); }
+
+    /* ============================================================
+       FOOTER (UNCHANGED)
+    ============================================================ */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      padding: 3.5rem 2rem 1.5rem;
+      color: #2b2b2b;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-text-wrapper { display: flex; flex-direction: column; line-height: 1.15; }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo-text span { color: #e63946; }
+
+    .footer-logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .footer-description {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .social-icons { display: flex; gap: 0.6rem; margin-top: 0.3rem; }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e63946;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #78716c;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #e63946;
+      transform: translateX(3px);
+    }
+
+    .footer-links a i { font-size: 0.55rem; color: #e63946; }
+
+    .footer-newsletter { display: flex; flex-direction: column; }
+
+    .footer-newsletter p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form { display: flex; flex-direction: column; gap: 0.7rem; }
+
+    .newsletter-input {
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .newsletter-input::placeholder { color: #a8a29e; }
+
+    .newsletter-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .newsletter-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+      letter-spacing: 0.2px;
+      width: 100%;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .newsletter-btn:active { transform: scale(0.97); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-copyright { font-size: 0.78rem; color: #a8a29e; }
+
+    .footer-bottom-links { display: flex; gap: 1.5rem; list-style: none; }
+
+    .footer-bottom-links a {
+      text-decoration: none;
+      color: #a8a29e;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .footer-bottom-links a:hover { color: #e63946; }
+
+    /* ============================================================
+       RTL SUPPORT
+    ============================================================ */
+    [dir="rtl"] .navbar,
+    [dir="rtl"] .footer { direction: rtl; }
+
+    [dir="rtl"] .nav-menu { direction: rtl; }
+    [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+    [dir="rtl"] .nav-link i.fa-chevron-down { margin-top: 0; }
+    [dir="rtl"] .badge { margin-left: 0; margin-right: 3px; }
+    [dir="rtl"] .footer-links a:hover { transform: translateX(-3px); }
+    [dir="rtl"] .footer-links a i.fa-chevron-right { transform: rotate(180deg); }
+    [dir="rtl"] .mobile-nav-link { text-align: right; }
+
+    [dir="rtl"] .mobile-nav-link .badge {
+      margin-left: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-menu a { text-align: right; }
+
+    /* ============================================================
+       NAVBAR & FOOTER RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .navbar { padding: 0.55rem 1.2rem; }
+      .nav-menu { display: none; }
+      .nav-right .toggle-btn, .nav-right .order-btn { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: block; }
+      .logo-text { font-size: 1.05rem; }
+      .logo-sub { font-size: 0.5rem; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 767px) {
+      .navbar { padding: 0.5rem 0.9rem; }
+      .logo-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .logo-text { font-size: 1rem; }
+      .logo-sub { font-size: 0.48rem; }
+      .mobile-menu { top: 60px; }
+      .mobile-toggles .toggle-btn { width: 42px; height: 42px; flex: 0 0 42px; min-width: 42px; }
+      .footer { padding: 2.5rem 1.2rem 1.2rem; }
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-bottom-links { justify-content: center; }
+    }
+
+    @media (max-width: 400px) {
+      .logo-text-wrapper { display: none; }
+      .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
+      .mobile-menu { top: 56px; }
+      .mobile-nav-link { font-size: 0.9rem; padding: 0.85rem 0.2rem; }
+      .mobile-dropdown-menu a { font-size: 0.84rem; }
+    }
+
+    /* ============================================================
+       ABOUT PAGE — UNIQUE SECTIONS
+    ============================================================ */
+
+    .a-section {
+      width: 100%;
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    .a-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 1: ABOUT HERO — Split with Giant Number
+       Unique Motion: numberScaleIn + contentFadeFromBelow
+    ------------------------------------------------------------ */
+    .a-hero {
+      position: relative;
+      min-height: 85vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      background: #fdf8f0;
+      transition: background 0.3s;
+    }
+
+    body.dark .a-hero { background: #1a1612; }
+
+    .a-hero-left {
+      padding: 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .a-hero-est {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e63946;
+      margin-bottom: 1.5rem;
+    }
+
+    .a-hero-est::before {
+      content: '';
+      width: 40px;
+      height: 2px;
+      background: #e63946;
+    }
+
+    .a-hero-left h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      color: #2b2b2b;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-hero-left h1 { color: #f0e8de; }
+
+    .a-hero-left h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #e63946;
+    }
+
+    .a-hero-left p {
+      font-size: 1.02rem;
+      color: #78716c;
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 2rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-hero-left p { color: #a89888; }
+
+    .a-hero-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .a-hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .a-hero-stat strong {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #e63946;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .a-hero-stat span {
+      font-size: 0.75rem;
+      color: #78716c;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-hero-stat span { color: #a89888; }
+
+    .a-hero-right {
+      position: relative;
+      overflow: hidden;
+      background: #1a1612;
+    }
+
+    .a-hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+    }
+
+    .a-hero-giant-number {
+      position: absolute;
+      bottom: -3rem;
+      right: -1rem;
+      font-size: 18rem;
+      font-weight: 700;
+      line-height: 1;
+      color: rgba(230, 57, 70, 0.15);
+      z-index: 3;
+      pointer-events: none;
+      letter-spacing: -10px;
+    }
+
+    .a-hero-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      background: #e63946;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      z-index: 4;
+      box-shadow: 0 20px 40px rgba(230, 57, 70, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .a-hero-badge i {
+      font-size: 1.6rem;
+    }
+
+    .a-hero-badge strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .a-hero-badge span {
+      font-size: 0.72rem;
+      opacity: 0.9;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 2: OUR STORY — Magazine Column Layout
+       Unique Motion: columnDrop (staggered column reveal)
+    ------------------------------------------------------------ */
+    .a-story {
+      background: #ffffff;
+      transition: background 0.3s;
+    }
+
+    body.dark .a-story { background: #1a1612; }
+
+    .a-story-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .a-story-header span {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #e63946;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .a-story-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-story-header h2 { color: #f0e8de; }
+
+    .a-story-header h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #e63946;
+    }
+
+    .a-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .a-story-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .a-story-col img {
+      width: 100%;
+      height: 380px;
+      border-radius: 16px;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .a-story-col img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .a-story-col p {
+      font-size: 0.95rem;
+      color: #57534e;
+      line-height: 1.8;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-story-col p { color: #c9bdb0; }
+
+    .a-story-col p:first-letter {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #e63946;
+      float: left;
+      line-height: 1;
+      margin: 0 8px 0 0;
+      font-family: 'Georgia', serif;
+    }
+
+    .a-story-quote {
+      background: #fdf8f0;
+      border-left: 4px solid #e63946;
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
+      border-radius: 8px;
+      font-style: italic;
+      font-size: 1rem;
+      color: #2b2b2b;
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark .a-story-quote {
+      background: #241e18;
+      color: #f0e8de;
+    }
+
+    .a-story-quote::before {
+      content: '\201C';
+      font-family: 'Georgia', serif;
+      font-size: 3rem;
+      color: #e63946;
+      line-height: 0;
+      position: relative;
+      top: 0.4rem;
+      margin-right: 0.3rem;
+    }
+
+    .a-story-signature {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f0e6d8;
+      transition: border-color 0.3s;
+    }
+
+    body.dark .a-story-signature { border-color: #3a322a; }
+
+    .a-story-signature img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #e63946;
+    }
+
+    .a-story-sig-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-story-sig-text strong { color: #f0e8de; }
+
+    .a-story-sig-text span {
+      font-size: 0.75rem;
+      color: #a8a29e;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 3: VALUES — Orbit / Concentric Rings
+       Unique Motion: orbitRing + valueFadeIn
+    ------------------------------------------------------------ */
+    .a-values {
+      background: #fdf8f0;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+
+    body.dark .a-values { background: #1a1612; }
+
+    .a-values-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .a-values-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-values-header h2 { color: #f0e8de; }
+
+    .a-values-header h2 span { color: #e63946; }
+
+    .a-values-header p {
+      font-size: 1rem;
+      color: #78716c;
+      margin-top: 0.7rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-values-header p { color: #a89888; }
+
+    .a-values-orbit {
+      position: relative;
+      max-width: 900px;
+      height: 520px;
+      margin: 0 auto;
+    }
+
+    .a-orbit-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      border: 2px dashed #f0e6d8;
+      transform: translate(-50%, -50%);
+      transition: border-color 0.3s;
+    }
+
+    body.dark .a-orbit-ring { border-color: #3a322a; }
+
+    .a-orbit-ring.r1 { width: 240px; height: 240px; }
+    .a-orbit-ring.r2 { width: 440px; height: 440px; }
+    .a-orbit-ring.r3 { width: 640px; height: 640px; }
+
+    .a-orbit-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(230, 57, 70, 0.45);
+      z-index: 5;
+    }
+
+    .a-orbit-center i {
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .a-orbit-center strong {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .a-orbit-center span {
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .a-value-node {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      width: 240px;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+
+    body.dark .a-value-node {
+      background: #241e18;
+      border-color: #241e18;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .a-value-node:hover {
+      transform: scale(1.08);
+      box-shadow: 0 20px 45px rgba(230, 57, 70, 0.25);
+      border-color: #e63946;
+    }
+
+    .a-value-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .a-value-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-value-text strong { color: #f0e8de; }
+
+    .a-value-text span {
+      font-size: 0.7rem;
+      color: #a8a29e;
+    }
+
+    /* Position value nodes around the rings */
+    .a-value-node.n1 { top: 6%; left: 50%; transform: translateX(-50%); }
+    .a-value-node.n2 { top: 32%; right: 0; }
+    .a-value-node.n3 { bottom: 6%; left: 50%; transform: translateX(-50%); }
+    .a-value-node.n4 { top: 32%; left: 0; }
+
+    /* ------------------------------------------------------------
+       SECTION 4: TEAM — Diagonal Photo Row
+       Unique Motion: diagonalReveal + imageTilt
+    ------------------------------------------------------------ */
+    .a-team {
+      background: #ffffff;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+
+    body.dark .a-team { background: #1a1612; }
+
+    .a-team-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .a-team-header span {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #e63946;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .a-team-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-team-header h2 { color: #f0e8de; }
+
+    .a-team-header h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #e63946;
+    }
+
+    .a-team-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .a-team-member {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .a-team-member:nth-child(2) { margin-top: 3rem; }
+    .a-team-member:nth-child(4) { margin-top: 3rem; }
+
+    .a-team-photo {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .a-team-member:hover .a-team-photo {
+      transform: scale(1.03) rotate(-1deg);
+      box-shadow: 0 25px 50px rgba(230, 57, 70, 0.2);
+    }
+
+    .a-team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+
+    .a-team-member:hover .a-team-photo img { transform: scale(1.08); }
+
+    .a-team-role-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(230, 57, 70, 0.95);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+
+    .a-team-info {
+      padding-top: 1.2rem;
+      text-align: left;
+    }
+
+    .a-team-info strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 0.2rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-team-info strong { color: #f0e8de; }
+
+    .a-team-info span {
+      font-size: 0.78rem;
+      color: #a8a29e;
+    }
+
+    .a-team-info p {
+      font-size: 0.82rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-top: 0.6rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-team-info p { color: #a89888; }
+
+    /* ------------------------------------------------------------
+       SECTION 5: TIMELINE — Horizontal Scroll Journey
+       Unique Motion: timelineDraw + dotPop
+    ------------------------------------------------------------ */
+    .a-timeline {
+      background: linear-gradient(180deg, #fef3e7 0%, #fdf8f0 100%);
+      transition: background 0.3s;
+    }
+
+    body.dark .a-timeline {
+      background: linear-gradient(180deg, #241e18 0%, #1a1612 100%);
+    }
+
+    .a-timeline-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .a-timeline-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-timeline-header h2 { color: #f0e8de; }
+
+    .a-timeline-header h2 span { color: #e63946; }
+
+    .a-timeline-track {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      padding: 3rem 0;
+    }
+
+    .a-timeline-line {
+      position: absolute;
+      top: 60px;
+      left: 5%;
+      right: 5%;
+      height: 3px;
+      background: #f0e6d8;
+      border-radius: 3px;
+      z-index: 0;
+      transition: background 0.3s;
+    }
+
+    body.dark .a-timeline-line { background: #3a322a; }
+
+    .a-timeline-line-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #e63946 0%, #f4a261 100%);
+      border-radius: 3px;
+      width: 0;
+      transition: width 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .a-timeline-item {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .a-timeline-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid #e63946;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+      transition: background 0.3s;
+    }
+
+    body.dark .a-timeline-dot { background: #241e18; }
+
+    .a-timeline-year {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #e63946;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .a-timeline-item strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 0.4rem;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-timeline-item strong { color: #f0e8de; }
+
+    .a-timeline-item p {
+      font-size: 0.8rem;
+      color: #78716c;
+      line-height: 1.6;
+      max-width: 180px;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-timeline-item p { color: #a89888; }
+
+    /* ------------------------------------------------------------
+       SECTION 6: PRESS QUOTES — Diagonal Stacked Cards
+       Unique Motion: cardCascade + quoteMarkDraw
+    ------------------------------------------------------------ */
+    .a-press {
+      background: #ffffff;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+
+    body.dark .a-press { background: #1a1612; }
+
+    .a-press-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .a-press-header span {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #e63946;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .a-press-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.8px;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-press-header h2 { color: #f0e8de; }
+
+    .a-press-stack {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      perspective: 1200px;
+    }
+
+    .a-press-card {
+      background: #fdf8f0;
+      border: 1px solid #f0e6d8;
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      transition: transform 0.4s, box-shadow 0.4s, background 0.3s, border-color 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark .a-press-card {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .a-press-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -1.5rem;
+      right: 1rem;
+      font-family: 'Georgia', serif;
+      font-size: 8rem;
+      color: rgba(230, 57, 70, 0.1);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .a-press-card:hover {
+      transform: translateY(-10px) rotate(1deg);
+      box-shadow: 0 25px 50px rgba(230, 57, 70, 0.15);
+      border-color: #e63946;
+    }
+
+    .a-press-source {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .a-press-source-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .a-press-source-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-press-source-name { color: #f0e8de; }
+
+    .a-press-quote {
+      font-size: 0.95rem;
+      color: #57534e;
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s;
+    }
+
+    body.dark .a-press-quote { color: #c9bdb0; }
+
+    .a-press-date {
+      font-size: 0.72rem;
+      color: #a8a29e;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* ------------------------------------------------------------
+       SECTION 7: JOIN US CTA — Split Banner with Diagonal
+       Unique Motion: bannerSkewIn + ctaScale
+    ------------------------------------------------------------ */
+    .a-join {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      background: #1a1612;
+    }
+
+    .a-join-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .a-join-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+
+    .a-join::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(120deg, rgba(26,22,18,0.95) 0%, rgba(26,22,18,0.75) 55%, rgba(230,57,70,0.35) 100%);
+    }
+
+    .a-join-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      width: 100%;
+    }
+
+    .a-join-content {
+      max-width: 620px;
+      color: #fff;
+    }
+
+    .a-join-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(244, 162, 97, 0.15);
+      border: 1px solid #f4a261;
+      color: #f4a261;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .a-join-content h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .a-join-content h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #f4a261;
+    }
+
+    .a-join-content p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .a-join-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .a-join-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      border: none;
+      background: #e63946;
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(230, 57, 70, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .a-join-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(230, 57, 70, 0.55);
+    }
+
+    .a-join-btn.ghost {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .a-join-btn.ghost:hover {
+      background: #fff;
+      color: #e63946;
+      border-color: #fff;
+    }
+
+    /* ============================================================
+       ABOUT PAGE RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .a-hero { grid-template-columns: 1fr; min-height: auto; }
+      .a-hero-right { min-height: 400px; }
+      .a-hero-giant-number { font-size: 12rem; }
+      .a-story-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .a-story-col:nth-child(1) { grid-column: span 2; }
+      .a-story-col:nth-child(1) img { max-height: 320px; }
+      .a-values-orbit { height: 480px; }
+      .a-orbit-ring.r3 { width: 500px; height: 500px; }
+      .a-orbit-ring.r2 { width: 360px; height: 360px; }
+      .a-value-node { width: 200px; padding: 0.8rem 1rem; }
+      .a-value-node.n1 { top: 0; }
+      .a-value-node.n3 { bottom: 0; }
+      .a-team-row { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .a-team-member:nth-child(2),
+      .a-team-member:nth-child(4) { margin-top: 2rem; }
+      .a-timeline-track { grid-template-columns: repeat(3, 1fr); gap: 2rem 1rem; }
+      .a-timeline-line { display: none; }
+      .a-press-stack { grid-template-columns: 1fr; }
+      .a-join-content h2 { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 767px) {
+      .a-section { padding: 3.5rem 1.2rem; }
+      .a-hero-left { padding: 4rem 1.5rem; }
+      .a-hero-left h1 { letter-spacing: -1px; }
+      .a-hero-giant-number { font-size: 8rem; bottom: -1rem; right: -0.5rem; }
+      .a-hero-badge { padding: 0.7rem 1rem; left: 1rem; bottom: 1rem; }
+      .a-hero-badge i { font-size: 1.2rem; }
+      .a-story-header h2,
+      .a-values-header h2,
+      .a-team-header h2,
+      .a-timeline-header h2,
+      .a-press-header h2 { font-size: 1.8rem; }
+      .a-story-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .a-story-col:nth-child(1) { grid-column: span 1; }
+      .a-values-orbit { height: auto; padding: 2rem 0; }
+      .a-orbit-ring { display: none; }
+      .a-orbit-center {
+        position: static;
+        transform: none;
+        margin: 0 auto 2rem;
+      }
+      .a-value-node {
+        position: static;
+        transform: none !important;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      .a-team-row { grid-template-columns: 1fr; }
+      .a-team-member:nth-child(2),
+      .a-team-member:nth-child(4) { margin-top: 0; }
+      .a-timeline-track { grid-template-columns: 1fr 1fr; }
+      .a-join-content h2 { font-size: 1.8rem; }
+      .a-join-actions { flex-direction: column; }
+      .a-join-btn { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .a-timeline-track { grid-template-columns: 1fr; }
+      .a-hero-stats { gap: 1.2rem; }
+      .a-hero-stat strong { font-size: 1.5rem; }
+    }
+
+    /* Focus states */
+    .nav-link:focus-visible,
+    .toggle-btn:focus-visible,
+    .order-btn:focus-visible,
+    .hamburger:focus-visible,
+    .mobile-nav-link:focus-visible,
+    .mobile-order-btn:focus-visible,
+    .dropdown-menu a:focus-visible,
+    .mobile-dropdown-menu a:focus-visible,
+    .newsletter-btn:focus-visible,
+    .newsletter-input:focus-visible,
+    .social-icon:focus-visible,
+    .footer-links a:focus-visible {
+      outline: 2px solid #e63946;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar { width: 6px; }
+    .mobile-menu::-webkit-scrollbar-thumb { background: #e63946; border-radius: 3px; }
+  </style>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR (UNCHANGED)
+  ============================================================ -->
+    <nav class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-text-wrapper">
+        <span class="logo-text">Deli<span>&</span>Sandwich</span>
+        <span class="logo-sub">Fresh • Tasty • Made to Order</span>
+      </span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="dropdown">
+        <a href="index.html" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+      <li><a href="about.html" class="nav-link active">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="toggle-btn" id="darkToggleDesktop" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleDesktop" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+      <a href="login.html" class="order-btn">
+        <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <!-- MOBILE MENU (UNCHANGED) -->
+    <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li class="mobile-dropdown">
+        <button class="mobile-nav-link" data-dropdown="homeDropdownMobile" aria-expanded="false">
+          Home <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="mobile-dropdown-menu" id="homeDropdownMobile">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
+      <li><a href="about.html" class="mobile-nav-link active">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+        <div class="mobile-toggles">
+      <button class="toggle-btn" id="darkToggleMobile" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleMobile" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+    </div>
+    <a href="login.html" class="mobile-order-btn">
+      <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+    </a>
+  </div><!-- ============================================================
+       ABOUT PAGE CONTENT — 7 UNIQUE SECTIONS
+  ============================================================ -->
+
+  <!-- SECTION 1: ABOUT HERO — Split with Giant Number -->
+  <section class="a-hero" id="a-s1">
+
+    <div class="a-hero-left">
+      <span class="a-hero-est" data-motion="a-est">Est. 2018 · San Francisco</span>
+      <h1 data-motion="a-hero-title">
+        We don't just <em>make</em><br>
+        sandwiches. We<br>
+        build little rituals.
+      </h1>
+      <p data-motion="a-hero-desc">
+        From the first loaf of sourdough we baked in a tiny Mission
+        district kitchen, to the nine neighborhood shops we run today —
+        everything at Deli & Sandwich starts and ends with the same
+        obsessive question: <em>what would make this bite unforgettable?</em>
+      </p>
+      <div class="a-hero-stats" data-motion="a-hero-stats">
+        <div class="a-hero-stat">
+          <strong>7+</strong>
+          <span>Years crafting</span>
+        </div>
+        <div class="a-hero-stat">
+          <strong>2.3M</strong>
+          <span>Sandwiches served</span>
+        </div>
+        <div class="a-hero-stat">
+          <strong>9</strong>
+          <span>Locations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="a-hero-right" data-motion="a-hero-right">
+      <img src="image/Kitchen moment.jpg" alt="Our kitchen at work">
+      <div class="a-hero-giant-number" data-motion="a-giant-num">18</div>
+      <div class="a-hero-badge" data-motion="a-hero-badge">
+        <i class="fas fa-award"></i>
+        <div>
+          <strong>Best in SF</strong>
+          <span>Food Critics 2024</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 2: OUR STORY — Magazine Column Layout -->
+  <section class="a-story a-section" id="a-s2">
+    <div class="a-container">
+      <div class="a-story-header" data-motion="a-story-header">
+        <span>Our Story</span>
+        <h2>A kitchen built on <em>stubbornness</em></h2>
+      </div>
+
+      <div class="a-story-grid">
+
+        <div class="a-story-col" data-motion="a-story-col">
+          <img src="image/fresh bread.jpg" alt="Fresh artisan bread">
+        </div>
+
+        <div class="a-story-col" data-motion="a-story-col">
+          <p>
+            The first Deli & Sandwich was a 400-square-foot storefront with a
+            secondhand oven, a chalkboard menu, and a line of regulars who
+            showed up before we even had a sign. We had one rule back then,
+            and we still have it today: if it isn't worth slowing down for,
+            it doesn't leave the kitchen.
+          </p>
+          <p>
+            That meant rethinking every part of the process — sourcing
+            bread from a baker two blocks away, curing our own pastrami,
+            roasting our own peppers, and refusing to serve anything we
+            wouldn't proudly hand to our own families.
+          </p>
+          <div class="a-story-quote" data-motion="a-quote">
+            The best sandwich is the one you think about the next day.
+          </div>
+        </div>
+
+        <div class="a-story-col" data-motion="a-story-col">
+          <img src="image/Craft in Motion.jpg" alt="Chef at work in kitchen">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: VALUES — Orbit / Concentric Rings -->
+  <section class="a-values a-section" id="a-s3">
+    <div class="a-container">
+      <div class="a-values-header" data-motion="a-values-header">
+        <h2>What We <span>Stand For</span></h2>
+        <p>The values behind every sandwich we make</p>
+      </div>
+
+      <div class="a-values-orbit" data-motion="a-orbit">
+        <div class="a-orbit-ring r1" data-motion="a-ring"></div>
+        <div class="a-orbit-ring r2" data-motion="a-ring"></div>
+        <div class="a-orbit-ring r3" data-motion="a-ring"></div>
+
+        <div class="a-orbit-center" data-motion="a-orbit-center">
+          <i class="fas fa-heart"></i>
+          <strong>Our Values</strong>
+          <span>Core Four</span>
+        </div>
+
+        <div class="a-value-node n1" data-motion="a-value">
+          <div class="a-value-icon"><i class="fas fa-leaf"></i></div>
+          <div class="a-value-text">
+            <strong>Fresh, Always</strong>
+            <span>Sourced daily, never frozen</span>
+          </div>
+        </div>
+
+        <div class="a-value-node n2" data-motion="a-value">
+          <div class="a-value-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <div class="a-value-text">
+            <strong>Made with Care</strong>
+            <span>Handcrafted every order</span>
+          </div>
+        </div>
+
+        <div class="a-value-node n3" data-motion="a-value">
+          <div class="a-value-icon"><i class="fas fa-users"></i></div>
+          <div class="a-value-text">
+            <strong>Community First</strong>
+            <span>Locally sourced, locally loved</span>
+          </div>
+        </div>
+
+        <div class="a-value-node n4" data-motion="a-value">
+          <div class="a-value-icon"><i class="fas fa-seedling"></i></div>
+          <div class="a-value-text">
+            <strong>Sustainable</strong>
+            <span>Zero waste kitchen since 2022</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: TEAM — Diagonal Photo Row -->
+  <section class="a-team a-section" id="a-s4">
+    <div class="a-container">
+      <div class="a-team-header" data-motion="a-team-header">
+        <span>The People</span>
+        <h2>The hands behind <em>every bite</em></h2>
+      </div>
+
+      <div class="a-team-row">
+
+        <div class="a-team-member" data-motion="a-team-member">
+          <div class="a-team-photo">
+            <span class="a-team-role-badge">Founder</span>
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80" alt="Marco Delgado">
+          </div>
+          <div class="a-team-info">
+            <strong>Marco Delgado</strong>
+            <span>Founder & Head Chef</span>
+            <p>The one who started it all in a tiny Mission kitchen. Still tastes every new recipe.</p>
+          </div>
+        </div>
+
+        <div class="a-team-member" data-motion="a-team-member">
+          <div class="a-team-photo">
+            <span class="a-team-role-badge">Baker</span>
+            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=500&q=80" alt="Elena Rossi">
+          </div>
+          <div class="a-team-info">
+            <strong>Elena Rossi</strong>
+            <span>Head Baker</span>
+            <p>Arrives at 3 AM to bake the sourdough that holds every sandwich together.</p>
+          </div>
+        </div>
+
+        <div class="a-team-member" data-motion="a-team-member">
+          <div class="a-team-photo">
+            <span class="a-team-role-badge">Chef</span>
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="James Park">
+          </div>
+          <div class="a-team-info">
+            <strong>James Park</strong>
+            <span>Executive Chef</span>
+            <p>Designs our seasonal specials. Obsessed with balancing textures and acids.</p>
+          </div>
+        </div>
+
+        <div class="a-team-member" data-motion="a-team-member">
+          <div class="a-team-photo">
+            <span class="a-team-role-badge">Ops</span>
+            <img src="image/Sofia Martinez.jpg" alt="Sofia Martinez">
+          </div>
+          <div class="a-team-info">
+            <strong>Sofia Martinez</strong>
+            <span>Operations Lead</span>
+            <p>Keeps all nine shops running smooth. Believes hospitality is a craft.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: TIMELINE — Horizontal Scroll Journey -->
+  <section class="a-timeline a-section" id="a-s5">
+    <div class="a-container">
+      <div class="a-timeline-header" data-motion="a-timeline-header">
+        <h2>Seven years, <span>one obsession</span></h2>
+      </div>
+
+      <div class="a-timeline-track" data-motion="a-timeline">
+        <div class="a-timeline-line">
+          <div class="a-timeline-line-fill" data-motion="a-timeline-fill"></div>
+        </div>
+
+        <div class="a-timeline-item" data-motion="a-timeline-item">
+          <div class="a-timeline-dot"></div>
+          <div class="a-timeline-year">2018</div>
+          <strong>The First Loaf</strong>
+          <p>Opened a 400 sq ft shop in the Mission with one oven and a chalkboard menu.</p>
+        </div>
+
+        <div class="a-timeline-item" data-motion="a-timeline-item">
+          <div class="a-timeline-dot"></div>
+          <div class="a-timeline-year">2020</div>
+          <strong>Kept Cooking</strong>
+          <p>Delivered sandwiches to frontline workers through the pandemic, no charge.</p>
+        </div>
+
+        <div class="a-timeline-item" data-motion="a-timeline-item">
+          <div class="a-timeline-dot"></div>
+          <div class="a-timeline-year">2022</div>
+          <strong>Zero Waste</strong>
+          <p>Rebuilt our kitchen around sustainability. Nothing goes to landfill now.</p>
+        </div>
+
+        <div class="a-timeline-item" data-motion="a-timeline-item">
+          <div class="a-timeline-dot"></div>
+          <div class="a-timeline-year">2024</div>
+          <strong>Best in SF</strong>
+          <p>Named Best Sandwich Shop by the SF Food Critics Association.</p>
+        </div>
+
+        <div class="a-timeline-item" data-motion="a-timeline-item">
+          <div class="a-timeline-dot"></div>
+          <div class="a-timeline-year">2026</div>
+          <strong>Nine & Counting</strong>
+          <p>Nine neighborhood shops, over 2.3 million sandwiches served, same recipe book.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: PRESS QUOTES — Diagonal Stacked Cards -->
+  <section class="a-press a-section" id="a-s6">
+    <div class="a-container">
+      <div class="a-press-header" data-motion="a-press-header">
+        <span>In the Press</span>
+        <h2>What the <span>critics</span> are saying</h2>
+      </div>
+
+      <div class="a-press-stack">
+
+        <div class="a-press-card" data-motion="a-press-card">
+          <div class="a-press-source">
+            <div class="a-press-source-icon"><i class="fas fa-newspaper"></i></div>
+            <div class="a-press-source-name">SF Chronicle</div>
+          </div>
+          <p class="a-press-quote">
+            "Deli & Sandwich isn't just making food — they're making
+            a case for why every neighborhood deserves a shop like this."
+          </p>
+          <span class="a-press-date">March 2024</span>
+        </div>
+
+        <div class="a-press-card" data-motion="a-press-card">
+          <div class="a-press-source">
+            <div class="a-press-source-icon"><i class="fas fa-utensils"></i></div>
+            <div class="a-press-source-name">Bon Appétit</div>
+          </div>
+          <p class="a-press-quote">
+            "The Truffle Melt is worth a cross-town trip. The rest of the
+            menu is worth crossing the country for."
+          </p>
+          <span class="a-press-date">January 2024</span>
+        </div>
+
+        <div class="a-press-card" data-motion="a-press-card">
+          <div class="a-press-source">
+            <div class="a-press-source-icon"><i class="fas fa-star"></i></div>
+            <div class="a-press-source-name">Eater SF</div>
+          </div>
+          <p class="a-press-quote">
+            "There's a generosity to every plate that feels rare in
+            modern dining. You leave full, but also somehow lighter."
+          </p>
+          <span class="a-press-date">September 2023</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: JOIN US CTA — Split Banner with Diagonal -->
+  <section class="a-join a-section" id="a-s7">
+
+    <div class="a-join-bg" data-motion="a-join-bg">
+      <img src="image/Warm interior.jpg" alt="Join us background">
+    </div>
+
+    <div class="a-join-inner">
+      <div class="a-join-content" data-motion="a-join-content">
+        <span class="a-join-tag" data-motion="a-join-tag">
+          <i class="fas fa-hand-peace"></i> Come Say Hi
+        </span>
+        <h2 data-motion="a-join-title">
+          The best stories start<br>
+          with a <em>sandwich</em>.
+        </h2>
+        <p data-motion="a-join-desc">
+          Whether you're a first-timer or a regular who knows the staff
+          by name, there's always a seat for you at Deli & Sandwich.
+          Stop by any of our nine locations, or order online and let us
+          come to you.
+        </p>
+        <div class="a-join-actions" data-motion="a-join-actions">
+          <button class="a-join-btn">
+            <i class="fas fa-map-marker-alt"></i> Find a Location
+          </button>
+          <button class="a-join-btn ghost">
+            <i class="fas fa-envelope"></i> Say Hello
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       FOOTER (UNCHANGED)
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-text-wrapper">
+            <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
+            <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
+          </span>
+        </a>
+        <p class="footer-description">
+          Building sandwich satisfaction with fresh ingredients and bold flavors
+          for every craving. Our chefs craft a fun, delicious experience where
+          every bite is made to order.
+        </p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="build your sandwich.html"><i class="fas fa-chevron-right"></i> Build Your Sandwich</a></li>
+          <li><a href="special offers.html"><i class="fas fa-chevron-right"></i> Special Offers</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="reviews.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+          <li><a href="catering order.html"><i class="fas fa-chevron-right"></i> Catering Orders</a></li>
+          <li><a href="login.html"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">Stay Updated</h3>
+        <p>
+          Get the latest menu drops, special offers, and sandwich updates
+          delivered to your inbox.
+        </p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Deli & Sandwich. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       FRAMER MOTION — UNIQUE ANIMATIONS FOR ABOUT PAGE
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      const { animate, inView } = window.Motion || {};
+
+      if (!animate || !inView) {
+        console.warn('Framer Motion not loaded.');
+        return;
+      }
+
+      /* ============================================================
+         SECTION 1: ABOUT HERO — Split with Giant Number
+         Unique Motion: numberScaleIn + contentFadeFromBelow
+      ============================================================ */
+      const aEst = document.querySelector('[data-motion="a-est"]');
+      const aHeroTitle = document.querySelector('[data-motion="a-hero-title"]');
+      const aHeroDesc = document.querySelector('[data-motion="a-hero-desc"]');
+      const aHeroStats = document.querySelector('[data-motion="a-hero-stats"]');
+      const aHeroRight = document.querySelector('[data-motion="a-hero-right"]');
+      const aGiantNum = document.querySelector('[data-motion="a-giant-num"]');
+      const aHeroBadge = document.querySelector('[data-motion="a-hero-badge"]');
+
+      if (aEst) {
+        animate(aEst, { opacity: [0, 1], x: [-20, 0] }, { duration: 0.6, delay: 0.2 });
+      }
+      if (aHeroTitle) {
+        animate(aHeroTitle, { opacity: [0, 1], y: [50, 0] }, { duration: 1, delay: 0.35 });
+      }
+      if (aHeroDesc) {
+        animate(aHeroDesc, { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.6 });
+      }
+      if (aHeroStats) {
+        animate(aHeroStats, { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, delay: 0.85 });
+      }
+      if (aHeroRight) {
+        animate(
+          aHeroRight,
+          { opacity: [0, 1], scale: [0.95, 1] },
+          { duration: 1, delay: 0.3 }
+        );
+      }
+      if (aGiantNum) {
+        animate(
+          aGiantNum,
+          { opacity: [0, 0.15], scale: [1.5, 1], rotate: [-15, 0] },
+          { duration: 1.4, delay: 0.5, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      }
+      if (aHeroBadge) {
+        animate(
+          aHeroBadge,
+          { opacity: [0, 1], y: [30, 0], scale: [0.8, 1] },
+          { duration: 0.8, delay: 1.1 }
+        );
+      }
+
+      /* ============================================================
+         SECTION 2: OUR STORY — Magazine Column Layout
+         Unique Motion: columnDrop (staggered column reveal)
+      ============================================================ */
+      const aStoryHeader = document.querySelector('[data-motion="a-story-header"]');
+      const aStoryCols = document.querySelectorAll('[data-motion="a-story-col"]');
+      const aQuote = document.querySelector('[data-motion="a-quote"]');
+
+      if (aStoryHeader) {
+        animate(aStoryHeader, { opacity: [0, 1], y: [25, 0] }, { duration: 0.7 });
+      }
+      aStoryCols.forEach(function (col, i) {
+        animate(
+          col,
+          { opacity: [0, 1], y: [60, 0] },
+          { duration: 0.9, delay: 0.15 * i, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+      if (aQuote) {
+        animate(
+          aQuote,
+          { opacity: [0, 1], x: [-20, 0], scaleX: [0.9, 1] },
+          { duration: 0.8, delay: 0.6 }
+        );
+      }
+
+      /* ============================================================
+         SECTION 3: VALUES — Orbit / Concentric Rings
+         Unique Motion: orbitRing + valueFadeIn
+      ============================================================ */
+      const aValuesHeader = document.querySelector('[data-motion="a-values-header"]');
+      const aOrbitCenter = document.querySelector('[data-motion="a-orbit-center"]');
+      const aRings = document.querySelectorAll('[data-motion="a-ring"]');
+      const aValues = document.querySelectorAll('[data-motion="a-value"]');
+
+      if (aValuesHeader) {
+        animate(aValuesHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      aRings.forEach(function (ring, i) {
+        animate(
+          ring,
+          { opacity: [0, 1], scale: [0.5, 1], rotate: [0, 180] },
+          { duration: 1.4, delay: 0.2 + i * 0.2, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+      if (aOrbitCenter) {
+        animate(
+          aOrbitCenter,
+          { opacity: [0, 1], scale: [0.4, 1] },
+          { duration: 0.9, delay: 0.8, easing: [0.34, 1.56, 0.64, 1] }
+        );
+      }
+      aValues.forEach(function (val, i) {
+        animate(
+          val,
+          { opacity: [0, 1], scale: [0.7, 1] },
+          { duration: 0.7, delay: 1.1 + i * 0.15 }
+        );
+      });
+
+      /* ============================================================
+         SECTION 4: TEAM — Diagonal Photo Row
+         Unique Motion: diagonalReveal + imageTilt
+      ============================================================ */
+      const aTeamHeader = document.querySelector('[data-motion="a-team-header"]');
+      const aTeamMembers = document.querySelectorAll('[data-motion="a-team-member"]');
+
+      if (aTeamHeader) {
+        animate(aTeamHeader, { opacity: [0, 1], y: [25, 0] }, { duration: 0.7 });
+      }
+      aTeamMembers.forEach(function (member, i) {
+        const dir = i % 2 === 0 ? -1 : 1;
+        animate(
+          member,
+          {
+            opacity: [0, 1],
+            y: [60, 0],
+            rotate: [dir * 5, 0]
+          },
+          { duration: 0.9, delay: 0.15 * i, easing: [0.34, 1.56, 0.64, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 5: TIMELINE — Horizontal Scroll Journey
+         Unique Motion: timelineDraw + dotPop
+      ============================================================ */
+      const aTimelineHeader = document.querySelector('[data-motion="a-timeline-header"]');
+      const aTimelineItems = document.querySelectorAll('[data-motion="a-timeline-item"]');
+      const aTimelineFill = document.querySelector('[data-motion="a-timeline-fill"]');
+
+      if (aTimelineHeader) {
+        animate(aTimelineHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+
+      // Animate timeline items with a delay + draw the line fill when in view
+      inView('.a-timeline-track', function () {
+        aTimelineItems.forEach(function (item, i) {
+          animate(
+            item,
+            { opacity: [0, 1], y: [40, 0] },
+            { duration: 0.6, delay: 0.2 * i }
+          );
+        });
+        if (aTimelineFill) {
+          setTimeout(function () {
+            aTimelineFill.style.width = '100%';
+          }, 400);
+        }
+      }, { amount: 0.3 });
+
+      /* ============================================================
+         SECTION 6: PRESS QUOTES — Diagonal Stacked Cards
+         Unique Motion: cardCascade + quoteMarkDraw
+      ============================================================ */
+      const aPressHeader = document.querySelector('[data-motion="a-press-header"]');
+      const aPressCards = document.querySelectorAll('[data-motion="a-press-card"]');
+
+      if (aPressHeader) {
+        animate(aPressHeader, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
+      }
+      aPressCards.forEach(function (card, i) {
+        const dir = i % 2 === 0 ? -1 : 1;
+        animate(
+          card,
+          {
+            opacity: [0, 1],
+            x: [dir * 60, 0],
+            y: [40, 0],
+            rotate: [dir * 3, 0]
+          },
+          { duration: 0.9, delay: 0.2 * i, easing: [0.25, 0.1, 0.25, 1] }
+        );
+      });
+
+      /* ============================================================
+         SECTION 7: JOIN US CTA — Split Banner
+         Unique Motion: bannerSkewIn + ctaScale
+      ============================================================ */
+      const aJoinBg = document.querySelector('[data-motion="a-join-bg"]');
+      const aJoinTag = document.querySelector('[data-motion="a-join-tag"]');
+      const aJoinTitle = document.querySelector('[data-motion="a-join-title"]');
+      const aJoinDesc = document.querySelector('[data-motion="a-join-desc"]');
+      const aJoinActions = document.querySelector('[data-motion="a-join-actions"]');
+
+      if (aJoinBg) {
+        animate(aJoinBg, { opacity: [0, 1], scale: [1.1, 1] }, { duration: 1.6 });
+      }
+      if (aJoinTag) {
+        animate(aJoinTag, { opacity: [0, 1], x: [-30, 0] }, { duration: 0.6, delay: 0.3 });
+      }
+      if (aJoinTitle) {
+        animate(
+          aJoinTitle,
+          { opacity: [0, 1], y: [40, 0], skewY: [5, 0] },
+          { duration: 1, delay: 0.5 }
+        );
+      }
+      if (aJoinDesc) {
+        animate(aJoinDesc, { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.8 });
+      }
+      if (aJoinActions) {
+        animate(aJoinActions, { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, delay: 1 });
+      }
+
+      /* ============================================================
+         SCROLL REVEAL for all sections
+      ============================================================ */
+      document.querySelectorAll('.a-section, .a-hero, .a-join').forEach(function (section) {
+        inView(section, function () {
+          animate(section, { opacity: [0.9, 1] }, { duration: 0.5 });
+        }, { amount: 0.15 });
+      });
+
+    });
+  </script>
+
+  <!-- ============================================================
+       NAVBAR + FOOTER JAVASCRIPT (UNCHANGED)
+  ============================================================ -->
+  <script>
+    (function () {
+      const body = document.body;
+      const htmlEl = document.documentElement;
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      const darkToggleDesktop = document.getElementById('darkToggleDesktop');
+      const rtlToggleDesktop = document.getElementById('rtlToggleDesktop');
+      const darkToggleMobile = document.getElementById('darkToggleMobile');
+      const rtlToggleMobile = document.getElementById('rtlToggleMobile');
+
+      const mobileDropdownBtns = document.querySelectorAll('.mobile-nav-link[data-dropdown]');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-menu a, .mobile-order-btn');
+
+      // DARK MODE
+      const DARK_KEY = 'deliDarkMode';
+      function applyDarkMode(isDark) {
+        const darkIcon = '<i class="fas fa-moon"></i>';
+        const lightIcon = '<i class="fas fa-sun"></i>';
+        if (isDark) {
+          body.classList.add('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = lightIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = lightIcon;
+        } else {
+          body.classList.remove('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = darkIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = darkIcon;
+        }
+      }
+      if (localStorage.getItem(DARK_KEY) === 'on') applyDarkMode(true);
+
+      function toggleDarkMode() {
+        const isDark = !body.classList.contains('dark');
+        applyDarkMode(isDark);
+        localStorage.setItem(DARK_KEY, isDark ? 'on' : 'off');
+      }
+      if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+      if (darkToggleMobile) darkToggleMobile.addEventListener('click', toggleDarkMode);
+
+      // RTL / LTR
+      const RTL_KEY = 'deliRTL';
+      function applyRTL(isRTL) {
+        const rtlIcon = '<i class="fas fa-right-left"></i>';
+        const ltrIcon = '<i class="fas fa-right-left fa-flip-horizontal"></i>';
+        if (isRTL) {
+          htmlEl.setAttribute('dir', 'rtl');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = ltrIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = ltrIcon;
+        } else {
+          htmlEl.setAttribute('dir', 'ltr');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = rtlIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = rtlIcon;
+        }
+      }
+      if (localStorage.getItem(RTL_KEY) === 'on') applyRTL(true);
+
+      function toggleRTL() {
+        const isRTL = htmlEl.getAttribute('dir') !== 'rtl';
+        applyRTL(isRTL);
+        localStorage.setItem(RTL_KEY, isRTL ? 'on' : 'off');
+      }
+      if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+      if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', toggleRTL);
+
+      // HAMBURGER
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('open')) closeMobileMenu();
+        else openMobileMenu();
+      });
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (this.hasAttribute('data-dropdown')) return;
+          closeMobileMenu();
+        });
+      });
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target === mobileMenu) closeMobileMenu();
+      });
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) closeMobileMenu();
+      });
+
+      // MOBILE DROPDOWNS
+      mobileDropdownBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const targetId = this.getAttribute('data-dropdown');
+          const target = document.getElementById(targetId);
+          if (!target) return;
+          mobileDropdownBtns.forEach(function (otherBtn) {
+            if (otherBtn !== btn) {
+              otherBtn.classList.remove('open');
+              otherBtn.setAttribute('aria-expanded', 'false');
+              const otherId = otherBtn.getAttribute('data-dropdown');
+              const otherTarget = document.getElementById(otherId);
+              if (otherTarget) otherTarget.classList.remove('open');
+            }
+          });
+          const isOpen = this.classList.contains('open');
+          if (isOpen) {
+            this.classList.remove('open');
+            this.setAttribute('aria-expanded', 'false');
+            target.classList.remove('open');
+          } else {
+            this.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+            target.classList.add('open');
+          }
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
+      });
+    })();
+  </script>
+
+  <!-- ============================================================
+       ORDER NOW / SIGN IN MODAL POPUP
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="authModalOverlay" aria-hidden="true">
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      
+      <!-- Close Button -->
+      <button class="auth-modal-close" id="authModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Header Section -->
+      <div class="auth-modal-header">
+        <div class="auth-brand-badge">
+          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="auth-brand-name">Deli & Sandwich</span>
+        </div>
+        <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
+        <p class="auth-modal-subtitle" id="modalSubtitle">Customize your sandwich & get fast delivery to your doorstep</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="auth-tabs-nav" role="tablist">
+        <button class="auth-tab-btn active" id="tabOrderBtn" data-tab="tabOrder" role="tab" aria-selected="true">
+          <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+        </button>
+        <button class="auth-tab-btn" id="tabLoginBtn" data-tab="tabLogin" role="tab" aria-selected="false">
+          <i class="fas fa-user"></i> <span>Sign In</span>
+        </button>
+        <button class="auth-tab-btn" id="tabRegisterBtn" data-tab="tabRegister" role="tab" aria-selected="false">
+          <i class="fas fa-user-plus"></i> <span>Register</span>
+        </button>
+      </div>
+
+      <!-- Tab Body -->
+      <div class="auth-modal-body">
+        
+        <!-- TAB 1: ORDER NOW -->
+        <div class="auth-tab-pane active" id="tabOrder" role="tabpanel">
+          <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+            
+            <div class="order-type-selector">
+              <label class="order-type-option active">
+                <input type="radio" name="orderType" value="delivery" checked hidden>
+                <i class="fas fa-motorcycle"></i>
+                <span>Delivery</span>
+              </label>
+              <label class="order-type-option">
+                <input type="radio" name="orderType" value="pickup" hidden>
+                <i class="fas fa-store"></i>
+                <span>Pickup</span>
+              </label>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="orderName" placeholder="John Doe" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-phone"></i> Phone Number</label>
+              <div class="input-with-icon">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="orderPhone" placeholder="+1 (555) 000-0000" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group" id="addressGroup">
+              <label><i class="fas fa-location-dot"></i> Delivery Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-map-marker-alt input-icon"></i>
+                <input type="text" id="orderAddress" placeholder="Street Address, City, Zip" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-row">
+              <div class="auth-form-group flex-1">
+                <label><i class="fas fa-bread-slice"></i> Select Sandwich</label>
+                <select id="orderItem" class="auth-input auth-select">
+                  <option value="12.99" data-name="Classic Club Sandwich">Classic Club Sandwich ($12.99)</option>
+                  <option value="14.50" data-name="Spicy Italian Sub">Spicy Italian Sub ($14.50)</option>
+                  <option value="13.25" data-name="Turkey Avocado Toast">Turkey Avocado Toast ($13.25)</option>
+                  <option value="11.99" data-name="Veggie Supreme">Veggie Supreme ($11.99)</option>
+                  <option value="15.99" data-name="Custom Gourmet Craft">Custom Gourmet Craft ($15.99)</option>
+                </select>
+              </div>
+
+              <div class="auth-form-group width-auto">
+                <label><i class="fas fa-sort-numeric-up"></i> Qty</label>
+                <div class="qty-counter">
+                  <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                  <span class="qty-val" id="qtyVal">1</span>
+                  <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-comment-alt"></i> Special Instructions (Optional)</label>
+              <textarea id="orderNotes" placeholder="Extra sauce, no onions, gluten-free bread..." rows="2" class="auth-input auth-textarea"></textarea>
+            </div>
+
+            <div class="order-price-summary">
+              <div class="summary-line"><span>Subtotal:</span> <span id="summarySubtotal">$12.99</span></div>
+              <div class="summary-line"><span>Delivery Fee:</span> <span id="summaryDelivery">$2.99</span></div>
+              <div class="summary-line total-line"><span>Total:</span> <span id="summaryTotal">$15.98</span></div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-paper-plane"></i> <span>Confirm & Place Order</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 2: SIGN IN -->
+        <div class="auth-tab-pane" id="tabLogin" role="tabpanel">
+          <form id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email or Phone</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" placeholder="yourname@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="loginPassword" placeholder="••••••••" required class="auth-input">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="remember-label">
+                <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-link" onclick="alert('Password reset link sent to your email!')">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-right-to-bracket"></i> <span>Sign In</span>
+            </button>
+
+            <div class="auth-divider">
+              <span>Or sign in with</span>
+            </div>
+
+            <div class="social-auth-grid">
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Google')">
+                <i class="fab fa-google"></i> Google
+              </button>
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Apple')">
+                <i class="fab fa-apple"></i> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 3: REGISTER -->
+        <div class="auth-tab-pane" id="tabRegister" role="tabpanel">
+          <form id="registerForm" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="regName" placeholder="Jane Smith" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="regEmail" placeholder="jane@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="regPassword" placeholder="Create password" required class="auth-input">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-user-plus"></i> <span>Create Account</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Auth Modal JS -->
+  <script src="auth-modal.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,3884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews · Deli & Sandwich Shop</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #fdf8f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       DARK MODE
+    ============================================================ */
+    body.dark {
+      background: #1a1612;
+      color: #f0e8de;
+    }
+
+    body.dark .navbar {
+      background: #241e18;
+      border-bottom-color: #3a322a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .logo-text,
+    body.dark .footer-logo-text {
+      color: #f0e8de;
+    }
+
+    body.dark .nav-link {
+      color: #c9bdb0;
+    }
+
+    body.dark .nav-link:hover,
+    body.dark .nav-link.active {
+      color: #e63946;
+      background: rgba(230, 57, 70, 0.12);
+    }
+
+    body.dark .nav-link.home-pill {
+      background: rgba(230, 57, 70, 0.15);
+      color: #e63946;
+    }
+
+    body.dark .dropdown-menu {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    body.dark .dropdown-menu a {
+      color: #c9bdb0;
+    }
+
+    body.dark .dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .toggle-btn {
+      border-color: #3a322a;
+      color: #c9bdb0;
+      background: #241e18;
+    }
+
+    body.dark .toggle-btn:hover {
+      background: #3a322a;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    body.dark .mobile-menu {
+      background: #241e18;
+      border-top-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link {
+      color: #c9bdb0;
+      border-bottom-color: #3a322a;
+    }
+
+    body.dark .mobile-nav-link:hover {
+      color: #e63946;
+    }
+
+    body.dark .mobile-dropdown-menu {
+      background: #2c241e;
+    }
+
+    body.dark .mobile-dropdown-menu a {
+      color: #c9bdb0;
+    }
+
+    body.dark .mobile-dropdown-menu a:hover {
+      background: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .hamburger span {
+      background: #f0e8de;
+    }
+
+    body.dark .footer {
+      background: #241e18;
+      border-top-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .footer-heading {
+      color: #f0e8de;
+    }
+
+    body.dark .footer-description,
+    body.dark .footer-newsletter p {
+      color: #a89888;
+    }
+
+    body.dark .footer-links a {
+      color: #a89888;
+    }
+
+    body.dark .footer-links a:hover {
+      color: #e63946;
+    }
+
+    body.dark .footer-bottom {
+      border-top-color: #3a322a;
+    }
+
+    body.dark .footer-copyright,
+    body.dark .footer-bottom-links a {
+      color: #7a6a5c;
+    }
+
+    body.dark .social-icon {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #e63946;
+    }
+
+    body.dark .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+    }
+
+    body.dark .newsletter-input {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #f0e8de;
+    }
+
+    body.dark .newsletter-input::placeholder {
+      color: #7a6a5c;
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      padding: 0.6rem 2rem;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid #f0e6d8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      gap: 1rem;
+      white-space: nowrap;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+      transition: color 0.3s;
+    }
+
+    .logo-text span {
+      color: #e63946;
+    }
+
+    .logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    /* ---------- DESKTOP MENU ---------- */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: nowrap;
+      overflow: visible;
+    }
+
+    .nav-menu > li {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #4a4a4a;
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      transition: color 0.15s, background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e63946;
+      background: #fdf0f0;
+    }
+
+    .nav-link i.fa-chevron-down {
+      font-size: 0.55rem;
+      transition: transform 0.2s;
+      margin-top: 2px;
+    }
+
+    .dropdown:hover .nav-link i.fa-chevron-down,
+    .dropdown:focus-within .nav-link i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .nav-link.home-pill {
+      background: #fdf0f0;
+      color: #e63946;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: #e63946;
+      color: #ffffff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 30px;
+      margin-left: 3px;
+      letter-spacing: 0.2px;
+      line-height: 1.3;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* ---------- DROPDOWN ---------- */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 180px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid #f0e6d8;
+      padding: 0.4rem 0;
+      list-style: none;
+      margin: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s, background 0.3s, border-color 0.3s;
+      z-index: 200;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li {
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    /* ---------- RIGHT SIDE ---------- */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    .toggle-btn i {
+      font-size: 0.78rem;
+    }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      white-space: nowrap;
+      letter-spacing: 0.2px;
+    }
+
+    .order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+    }
+
+    .order-btn:active {
+      transform: scale(0.97);
+    }
+
+    .order-btn i {
+      font-size: 0.8rem;
+    }
+
+    /* ---------- HAMBURGER ---------- */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1.5px solid #f0e6d8;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .hamburger:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #2b2b2b;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ---------- MOBILE MENU ---------- */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      overflow-y: auto;
+      padding: 1rem 1.2rem 2rem;
+      z-index: 999;
+      transition: background 0.3s, border-color 0.3s;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .mobile-nav-list > li {
+      border-bottom: 1px solid #f0e6d8;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 0.2rem;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #e63946;
+    }
+
+    .mobile-nav-link .badge {
+      margin-left: auto;
+      margin-right: 0.5rem;
+    }
+
+    .mobile-nav-link i.fa-chevron-down {
+      font-size: 0.7rem;
+      transition: transform 0.25s;
+      color: #888;
+    }
+
+    .mobile-nav-link.open i.fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-menu {
+      list-style: none;
+      background: #fdf8f0;
+      border-radius: 8px;
+      margin: 0 0 0.5rem 0;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-dropdown-menu.open {
+      max-height: 300px;
+      padding: 0.3rem 0;
+    }
+
+    .mobile-dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      color: #4a4a4a;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.12s, color 0.12s;
+      border-radius: 6px;
+    }
+
+    .mobile-dropdown-menu a:hover {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    .mobile-toggles {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mobile-toggles .toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex: 0 0 42px;
+      min-width: 42px;
+      padding: 0;
+      font-size: 1rem;
+      justify-content: center;
+    }
+
+    .mobile-order-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      margin-top: 0.8rem;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.45);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .mobile-order-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ============================================================
+       MAIN CONTENT – REVIEWS PAGE
+    ============================================================ */
+    .reviews-page {
+      flex: 1;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    .review-section {
+      margin-bottom: 5rem;
+      position: relative;
+    }
+
+    /* ============================================================
+       SECTION 1 – HERO RATING SPOTLIGHT
+    ============================================================ */
+    .hero-rating {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      border-radius: 60px;
+      overflow: hidden;
+      border: 3px solid #e6d5c0;
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.2);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      min-height: 460px;
+    }
+
+    body.dark .hero-rating {
+      border-color: #4d3e32;
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-rating-score {
+      background: linear-gradient(160deg, #b45f3b 0%, #8b4a2e 100%);
+      padding: 3.5rem 3rem;
+      color: #fff7ed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark .hero-rating-score {
+      background: linear-gradient(160deg, #8b4a2e 0%, #6b3822 100%);
+    }
+
+    .hero-rating-score::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-rating-score .score-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-rating-score .score-number {
+      font-size: 6rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -4px;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-rating-score .score-stars {
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      color: #ffd9b3;
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-rating-score .score-count {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-rating-image {
+      position: relative;
+      min-height: 460px;
+    }
+
+    .hero-rating-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-rating-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(139, 74, 46, 0.4) 0%, transparent 40%);
+      z-index: 1;
+    }
+
+    .hero-rating-image .floating-chip {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      color: #2e241e;
+      padding: 0.9rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+
+    body.dark .hero-rating-image .floating-chip {
+      background: rgba(43, 34, 28, 0.95);
+      color: #f7ede3;
+    }
+
+    .hero-rating-image .floating-chip i {
+      color: #b45f3b;
+    }
+
+    body.dark .hero-rating-image .floating-chip i {
+      color: #d48c5e;
+    }
+
+    /* ============================================================
+       SECTION 2 – RATING BARS BREAKDOWN
+    ============================================================ */
+    .rating-breakdown {
+      background: #ffffff;
+      border-radius: 48px;
+      padding: 3rem 3rem;
+      border: 1px solid #f0e2d4;
+      box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.08);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    body.dark .rating-breakdown {
+      background: #2b221c;
+      border-color: #4d3e32;
+      box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.6);
+    }
+
+    .rating-breakdown-left h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #2e241e;
+      margin-bottom: 0.8rem;
+      line-height: 1.15;
+    }
+
+    body.dark .rating-breakdown-left h2 {
+      color: #f7ede3;
+    }
+
+    .rating-breakdown-left p {
+      font-size: 1rem;
+      color: #3d2e24;
+      opacity: 0.75;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    body.dark .rating-breakdown-left p {
+      color: #cbb9a8;
+    }
+
+    .rating-breakdown-left .breakdown-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fdf0e6;
+      color: #b45f3b;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid #f0dcc9;
+    }
+
+    body.dark .rating-breakdown-left .breakdown-badge {
+      background: #33281f;
+      border-color: #4d3e32;
+      color: #d48c5e;
+    }
+
+    .rating-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .rating-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .rating-bar-row .bar-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #2e241e;
+      width: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    body.dark .rating-bar-row .bar-label {
+      color: #f7ede3;
+    }
+
+    .rating-bar-row .bar-label i {
+      color: #d48c5e;
+      font-size: 0.75rem;
+    }
+
+    .rating-bar-track {
+      flex: 1;
+      height: 12px;
+      background: #f0e6d8;
+      border-radius: 30px;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    body.dark .rating-bar-track {
+      background: #3a322a;
+    }
+
+    .rating-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #d48c5e, #b45f3b);
+      border-radius: 30px;
+      transition: width 0.6s ease;
+    }
+
+    .rating-bar-row .bar-percent {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #b45f3b;
+      width: 45px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    body.dark .rating-bar-row .bar-percent {
+      color: #d48c5e;
+    }
+
+    /* ============================================================
+       SECTION 3 – FEATURED REVIEWS (spotlight cards)
+    ============================================================ */
+    .featured-reviews {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 1.8rem;
+      align-items: stretch;
+    }
+
+    .featured-review-main {
+      background: linear-gradient(155deg, #2e241e 0%, #3d2e24 100%);
+      border-radius: 40px;
+      padding: 3rem 2.8rem;
+      color: #fff7ed;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 420px;
+      transition: background 0.3s;
+    }
+
+    body.dark .featured-review-main {
+      background: linear-gradient(155deg, #1a1613 0%, #2b221c 100%);
+    }
+
+    .featured-review-main::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(212, 140, 94, 0.1);
+    }
+
+    .featured-review-main .main-quote-icon {
+      font-size: 5rem;
+      color: #d48c5e;
+      line-height: 0.8;
+      font-family: Georgia, serif;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-review-main blockquote {
+      font-size: 1.45rem;
+      line-height: 1.6;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-review-main .main-review-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .featured-review-main .main-review-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .featured-review-main .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff7ed;
+      font-weight: 800;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .featured-review-main .author-info strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff7ed;
+    }
+
+    .featured-review-main .author-info span {
+      font-size: 0.82rem;
+      color: #d48c5e;
+      font-weight: 500;
+    }
+
+    .featured-review-main .main-stars {
+      color: #d48c5e;
+      font-size: 1rem;
+      letter-spacing: 3px;
+    }
+
+    .featured-review-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .side-review-card {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      border: 1px solid #f0e2d4;
+      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.08);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark .side-review-card {
+      background: #2b221c;
+      border-color: #4d3e32;
+      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .side-review-card .side-stars {
+      color: #d48c5e;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .side-review-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #3d2e24;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+
+    body.dark .side-review-card p {
+      color: #d9cbbc;
+    }
+
+    .side-review-card .side-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-top: 1px dashed #f0e2d4;
+      padding-top: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    body.dark .side-review-card .side-author {
+      border-color: #4d3e32;
+    }
+
+    .side-review-card .side-author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff7ed;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .side-review-card .side-author-info strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #2e241e;
+    }
+
+    body.dark .side-review-card .side-author-info strong {
+      color: #f7ede3;
+    }
+
+    .side-review-card .side-author-info span {
+      font-size: 0.75rem;
+      color: #b45f3b;
+      font-weight: 500;
+    }
+
+    body.dark .side-review-card .side-author-info span {
+      color: #d48c5e;
+    }
+
+    /* ============================================================
+       SECTION 4 – REVIEW WALL (masonry grid)
+    ============================================================ */
+    .review-wall {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .wall-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 1.6rem;
+      border: 1px solid #f0e2d4;
+      box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.06);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    body.dark .wall-card {
+      background: #2b221c;
+      border-color: #4d3e32;
+      box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .wall-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -14px rgba(180, 95, 59, 0.2);
+    }
+
+    .wall-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wall-card-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff7ed;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .wall-card-meta strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #2e241e;
+    }
+
+    body.dark .wall-card-meta strong {
+      color: #f7ede3;
+    }
+
+    .wall-card-meta span {
+      font-size: 0.72rem;
+      color: #b45f3b;
+      font-weight: 500;
+    }
+
+    body.dark .wall-card-meta span {
+      color: #d48c5e;
+    }
+
+    .wall-card-stars {
+      color: #d48c5e;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+    }
+
+    .wall-card p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #3d2e24;
+      opacity: 0.9;
+    }
+
+    body.dark .wall-card p {
+      color: #d9cbbc;
+    }
+
+    .wall-card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #fdf0e6;
+      color: #b45f3b;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      align-self: flex-start;
+      letter-spacing: 0.3px;
+      margin-top: 0.3rem;
+    }
+
+    body.dark .wall-card-tag {
+      background: #33281f;
+      color: #d48c5e;
+    }
+
+    /* ============================================================
+       SECTION 5 – REVIEWER SPOTLIGHT GALLERY (portrait cards)
+    ============================================================ */
+    .reviewer-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .reviewer-card {
+      background: #ffffff;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid #f0e2d4;
+      box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.dark .reviewer-card {
+      background: #2b221c;
+      border-color: #4d3e32;
+      box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    .reviewer-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px -16px rgba(180, 95, 59, 0.25);
+    }
+
+    .reviewer-photo {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviewer-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .reviewer-card:hover .reviewer-photo img {
+      transform: scale(1.08);
+    }
+
+    .reviewer-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(46, 36, 30, 0.6) 0%, transparent 50%);
+    }
+
+    .reviewer-quote {
+      padding: 1.5rem 1.4rem 1.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      flex: 1;
+    }
+
+    .reviewer-quote .reviewer-quote-text {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #3d2e24;
+      font-style: italic;
+      flex: 1;
+    }
+
+    body.dark .reviewer-quote .reviewer-quote-text {
+      color: #d9cbbc;
+    }
+
+    .reviewer-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.7rem;
+      border-top: 1px dashed #f0e2d4;
+      transition: border-color 0.3s;
+    }
+
+    body.dark .reviewer-name {
+      border-color: #4d3e32;
+    }
+
+    .reviewer-name strong {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2e241e;
+    }
+
+    body.dark .reviewer-name strong {
+      color: #f7ede3;
+    }
+
+    .reviewer-name .reviewer-stars {
+      color: #d48c5e;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    /* ============================================================
+       SECTION 6 – CUSTOMER PHOTO MOMENTS (image strip)
+    ============================================================ */
+    .photo-moments {
+      background: #2e241e;
+      border-radius: 48px;
+      padding: 3rem 2.5rem;
+      color: #fff7ed;
+      border: 2px solid #b45f3b;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    body.dark .photo-moments {
+      background: #1a1613;
+    }
+
+    .photo-moments-head {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .photo-moments-head h2 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .photo-moments-head p {
+      color: #d9cbbc;
+      font-size: 0.95rem;
+    }
+
+    .photo-moments-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .photo-moment {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      cursor: default;
+    }
+
+    .photo-moment img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .photo-moment:hover img {
+      transform: scale(1.1);
+    }
+
+    .photo-moment::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(46, 36, 30, 0.85) 0%, transparent 55%);
+      transition: background 0.3s;
+    }
+
+    .photo-moment-tag {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff7ed;
+    }
+
+    .photo-moment-tag i {
+      color: #d48c5e;
+      font-size: 0.9rem;
+    }
+
+    /* ============================================================
+       SECTION 7 – WRITE A REVIEW (INTERACTIVE FORM)
+    ============================================================ */
+    .write-review {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      border-radius: 44px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.22);
+      transition: box-shadow 0.3s;
+    }
+
+    body.dark .write-review {
+      box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.85);
+    }
+
+    .write-review-left {
+      background: linear-gradient(150deg, #b45f3b 0%, #874328 100%);
+      padding: 3.5rem 3rem;
+      color: #fff7ed;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    body.dark .write-review-left {
+      background: linear-gradient(150deg, #874328 0%, #5e2c19 100%);
+    }
+
+    .write-review-left::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+
+    .write-review-left .write-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff7ed;
+      padding: 0.45rem 1.15rem;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      width: fit-content;
+      position: relative;
+      z-index: 1;
+    }
+
+    .write-review-left h2 {
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .write-review-left p {
+      font-size: 0.98rem;
+      opacity: 0.92;
+      margin-bottom: 2rem;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    .write-perks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-bottom: 2.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .write-perk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+
+    .write-perk-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: #ffe8d6;
+      flex-shrink: 0;
+    }
+
+    .write-perk-info strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.15rem;
+    }
+
+    .write-perk-info span {
+      display: block;
+      font-size: 0.82rem;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+
+    .write-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      position: relative;
+      z-index: 1;
+    }
+
+    .write-btn-google {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff7ed;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      padding: 0.65rem 1.4rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .write-btn-google:hover {
+      background: #ffffff;
+      color: #874328;
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .write-rating-summary {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
+
+    .write-rating-summary .stars {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #fef08a;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .write-rating-summary .count {
+      font-size: 0.76rem;
+      opacity: 0.8;
+    }
+
+    /* Right column: form */
+    .write-review-right {
+      background: #271f1a;
+      padding: 3.2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    body.dark .write-review-right {
+      background: #191411;
+    }
+
+    .review-form-header {
+      margin-bottom: 1.4rem;
+    }
+
+    .review-form-header h3 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #fff7ed;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .review-form-header h3 i {
+      color: #f59e0b;
+    }
+
+    .review-form-header p {
+      font-size: 0.86rem;
+      color: #bfaea0;
+    }
+
+    /* Star Rating Picker */
+    .star-rating-picker {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1rem 1.3rem;
+      margin-bottom: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      transition: border-color 0.25s;
+    }
+
+    .star-rating-picker:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    .stars-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      padding: 0.15rem;
+      transition: transform 0.18s, color 0.18s;
+      line-height: 1;
+    }
+
+    .star-btn:hover {
+      transform: scale(1.22);
+    }
+
+    .star-btn.active,
+    .star-btn.hover {
+      color: #f59e0b;
+      filter: drop-shadow(0 2px 6px rgba(245, 158, 11, 0.45));
+    }
+
+    .rating-text-feedback {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #f3d49b;
+    }
+
+    /* Interactive Form */
+    .interactive-review-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .form-grid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #e5d7cc;
+      letter-spacing: 0.3px;
+    }
+
+    .form-field-group label .opt-tag {
+      font-weight: 400;
+      color: #bfaea0;
+      font-size: 0.72rem;
+    }
+
+    .input-with-icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-with-icon i {
+      position: absolute;
+      left: 1rem;
+      color: #c98a58;
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+
+    [dir="rtl"] .input-with-icon i {
+      left: auto;
+      right: 1rem;
+    }
+
+    .input-with-icon input,
+    .input-with-icon select,
+    .input-with-icon textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.75rem 1rem 0.75rem 2.4rem;
+      color: #fff7ed;
+      font-family: inherit;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    [dir="rtl"] .input-with-icon input,
+    [dir="rtl"] .input-with-icon select,
+    [dir="rtl"] .input-with-icon textarea {
+      padding: 0.75rem 2.4rem 0.75rem 1rem;
+    }
+
+    .input-with-icon input::placeholder,
+    .input-with-icon textarea::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .input-with-icon select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27%23c98a58%27%3E%3Cpath%20d%3D%27M7%2010l5%205%205-5z%27%2F%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      background-size: 1.1rem;
+    }
+
+    [dir="rtl"] .input-with-icon select {
+      background-position: left 0.8rem center;
+    }
+
+    .input-with-icon select option {
+      background: #271f1a;
+      color: #fff7ed;
+    }
+
+    .input-with-icon input:focus,
+    .input-with-icon select:focus,
+    .input-with-icon textarea:focus {
+      border-color: #f59e0b;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
+    }
+
+    .textarea-icon {
+      align-items: flex-start;
+    }
+
+    .textarea-icon i {
+      top: 0.9rem;
+    }
+
+    .textarea-icon textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .label-with-count {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .char-count {
+      font-size: 0.72rem;
+      color: #a89688;
+    }
+
+    /* Recommend pill toggle */
+    .recommend-toggle-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .rec-btn {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 0.65rem 0.6rem;
+      color: #c7b8ad;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+
+    .rec-btn:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #fff7ed;
+    }
+
+    .rec-btn.active {
+      background: rgba(245, 158, 11, 0.16);
+      border-color: #f59e0b;
+      color: #fbbf24;
+    }
+
+    /* Submit Button */
+    .submit-review-action {
+      background: linear-gradient(135deg, #e63946 0%, #c1272d 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 14px;
+      padding: 0.95rem 1.6rem;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      box-shadow: 0 8px 24px -6px rgba(230, 57, 70, 0.45);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      margin-top: 0.3rem;
+    }
+
+    .submit-review-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(230, 57, 70, 0.6);
+      background: linear-gradient(135deg, #f03e4c 0%, #ce2d34 100%);
+    }
+
+    .submit-review-action:active {
+      transform: translateY(0);
+    }
+
+    /* Success State */
+    .review-success-state {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2.2rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .success-icon-badge {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.5);
+    }
+
+    .review-success-state h4 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff7ed;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-success-state p {
+      font-size: 0.9rem;
+      color: #c9b9ab;
+      line-height: 1.55;
+      max-width: 420px;
+      margin-bottom: 1.5rem;
+    }
+
+    .submitted-review-preview {
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1.2rem 1.4rem;
+      width: 100%;
+      max-width: 440px;
+      text-align: left;
+      margin-bottom: 1.6rem;
+    }
+
+    [dir="rtl"] .submitted-review-preview {
+      text-align: right;
+    }
+
+    .preview-stars {
+      color: #f59e0b;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 3px;
+    }
+
+    .preview-quote {
+      font-size: 0.92rem;
+      color: #fff7ed;
+      font-style: italic;
+      margin-bottom: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .preview-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .preview-name {
+      font-weight: 700;
+      color: #f3d49b;
+    }
+
+    .preview-tag {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .success-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-write-another {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      color: #fff7ed;
+      padding: 0.75rem 1.4rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+
+    .btn-write-another:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-view-wall {
+      background: linear-gradient(135deg, #e63946 0%, #c1272d 100%);
+      color: #ffffff;
+      padding: 0.75rem 1.4rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-view-wall:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.45);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #f0e6d8;
+      padding: 3.5rem 2rem 1.5rem;
+      color: #2b2b2b;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+      flex-shrink: 0;
+    }
+
+    .footer-logo-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .footer-logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo-text span {
+      color: #e63946;
+    }
+
+    .footer-logo-sub {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #e63946;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .footer-description {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e63946;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-icon:hover {
+      background: #e63946;
+      border-color: #e63946;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #78716c;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #e63946;
+      transform: translateX(3px);
+    }
+
+    .footer-links a i {
+      font-size: 0.55rem;
+      color: #e63946;
+    }
+
+    .footer-newsletter {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-newsletter p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .newsletter-input {
+      padding: 0.7rem 1.1rem;
+      border-radius: 30px;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.85rem;
+      color: #2b2b2b;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .newsletter-input::placeholder {
+      color: #a8a29e;
+    }
+
+    .newsletter-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .newsletter-btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+      letter-spacing: 0.2px;
+      width: 100%;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(230, 57, 70, 0.5);
+    }
+
+    .newsletter-btn:active {
+      transform: scale(0.97);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-copyright {
+      font-size: 0.78rem;
+      color: #a8a29e;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-bottom-links a {
+      text-decoration: none;
+      color: #a8a29e;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #e63946;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .navbar {
+        padding: 0.55rem 1.2rem;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-right .toggle-btn,
+      .nav-right .order-btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .logo-text {
+        font-size: 1.05rem;
+      }
+
+      .logo-sub {
+        font-size: 0.5rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .hero-rating {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-rating-image {
+        min-height: 300px;
+      }
+
+      .rating-breakdown {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .featured-reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .review-wall {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .reviewer-gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .photo-moments-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .write-review {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .navbar {
+        padding: 0.5rem 0.9rem;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .logo-sub {
+        font-size: 0.48rem;
+      }
+
+      .mobile-menu {
+        top: 60px;
+      }
+
+      .reviews-page {
+        padding: 1rem 1rem 3rem;
+      }
+
+      .mobile-toggles .toggle-btn {
+        flex: 1 1 100%;
+        min-width: unset;
+      }
+
+      .footer {
+        padding: 2.5rem 1.2rem 1.2rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom-links {
+        justify-content: center;
+      }
+
+      .hero-rating-score {
+        padding: 2.2rem 1.6rem;
+      }
+
+      .hero-rating-score .score-number {
+        font-size: 4.5rem;
+      }
+
+      .rating-breakdown {
+        padding: 2rem 1.5rem;
+      }
+
+      .featured-review-main {
+        padding: 2rem 1.6rem;
+      }
+
+      .featured-review-main blockquote {
+        font-size: 1.15rem;
+      }
+
+      .review-wall {
+        grid-template-columns: 1fr;
+      }
+
+      .reviewer-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-moments {
+        padding: 2rem 1.5rem;
+      }
+
+      .photo-moments-head h2 {
+        font-size: 1.7rem;
+      }
+
+      .write-review-left,
+      .write-review-right {
+        padding: 2.2rem 1.8rem;
+      }
+
+      .write-review-left h2 {
+        font-size: 1.8rem;
+      }
+
+      .form-grid-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .logo-text-wrapper {
+        display: none;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+      }
+
+      .mobile-menu {
+        top: 56px;
+      }
+
+      .mobile-nav-link {
+        font-size: 0.9rem;
+        padding: 0.85rem 0.2rem;
+      }
+
+      .mobile-dropdown-menu a {
+        font-size: 0.84rem;
+      }
+    }
+
+    /* ---------- FOCUS STATES ---------- */
+    .nav-link:focus-visible,
+    .toggle-btn:focus-visible,
+    .order-btn:focus-visible,
+    .hamburger:focus-visible,
+    .mobile-nav-link:focus-visible,
+    .mobile-order-btn:focus-visible,
+    .dropdown-menu a:focus-visible,
+    .mobile-dropdown-menu a:focus-visible,
+    .newsletter-btn:focus-visible,
+    .newsletter-input:focus-visible,
+    .social-icon:focus-visible,
+    .footer-links a:focus-visible {
+      outline: 2px solid #e63946;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .mobile-menu::-webkit-scrollbar-thumb {
+      background: #e63946;
+      border-radius: 3px;
+    }
+
+    /* ============================================================
+       RTL SUPPORT
+    ============================================================ */
+    [dir="rtl"] .navbar,
+    [dir="rtl"] .footer {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .nav-menu {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+
+    [dir="rtl"] .nav-link i.fa-chevron-down {
+      margin-top: 0;
+    }
+
+    [dir="rtl"] .badge {
+      margin-left: 0;
+      margin-right: 3px;
+    }
+
+    [dir="rtl"] .footer-links a:hover {
+      transform: translateX(-3px);
+    }
+
+    [dir="rtl"] .footer-links a i.fa-chevron-right {
+      transform: rotate(180deg);
+    }
+
+    [dir="rtl"] .mobile-nav-link {
+      text-align: right;
+    }
+
+    [dir="rtl"] .mobile-nav-link .badge {
+      margin-left: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-menu a {
+      text-align: right;
+    }
+  </style>
+  <link rel="stylesheet" href="auth-modal.css">
+</head>
+<body>
+
+    <!-- ============================================================
+       NAVBAR (IDENTICAL TO INDEX.HTML)
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-text-wrapper">
+        <span class="logo-text">Deli<span>&</span>Sandwich</span>
+        <span class="logo-sub">Fresh • Tasty • Made to Order</span>
+      </span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="dropdown">
+        <a href="index.html" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="nav-link active">Reviews</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="toggle-btn" id="darkToggleDesktop" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleDesktop" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+      <a href="login.html" class="order-btn">
+        <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <!-- MOBILE MENU (IDENTICAL TO INDEX.HTML) -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li class="mobile-dropdown">
+        <button class="mobile-nav-link" data-dropdown="homeDropdownMobile" aria-expanded="false">
+          Home <i class="fas fa-chevron-down"></i>
+        </button>
+        <ul class="mobile-dropdown-menu" id="homeDropdownMobile">
+          <li><a href="index.html">Home 1 (Classic)</a></li>
+          <li><a href="home2.html">Home 2 (Modern)</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
+      <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
+      <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
+      <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
+      <li><a href="reviews.html" class="mobile-nav-link active">Reviews</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+    </ul>
+        <div class="mobile-toggles">
+      <button class="toggle-btn" id="darkToggleMobile" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggleMobile" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+    </div>
+    <a href="login.html" class="mobile-order-btn">
+      <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+    </a>
+  </div><!-- ============================================================
+       MAIN CONTENT – 7 UNIQUE REVIEWS SECTIONS
+  ============================================================ -->
+  <main class="reviews-page">
+
+    <!-- ========== SECTION 1 – HERO RATING SPOTLIGHT ========== -->
+    <section class="review-section" id="section1">
+      <div class="hero-rating" id="heroRating">
+        <div class="hero-rating-score">
+          <div class="score-label">Overall Rating</div>
+          <div class="score-number">4.9</div>
+          <div class="score-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <div class="score-count">Based on 2,847 verified reviews</div>
+        </div>
+        <div class="hero-rating-image">
+          <img src="image/Happy customers.jpg" alt="Happy customers enjoying deli sandwiches">
+          <div class="hero-rating-image-overlay"></div>
+          <div class="floating-chip">
+            <i class="fas fa-shield-check"></i> 100% verified buyers
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 2 – RATING BARS BREAKDOWN ========== -->
+    <section class="review-section" id="section2">
+      <div class="rating-breakdown" id="ratingBreakdown">
+        <div class="rating-breakdown-left">
+          <h2>What people are saying</h2>
+          <p>Real ratings, real experiences. Every review below comes from a verified customer who ordered at one of our locations.</p>
+          <div class="breakdown-badge">
+            <i class="fas fa-chart-simple"></i> Updated daily
+          </div>
+        </div>
+        <div class="rating-bars" id="ratingBars">
+          <div class="rating-bar-row">
+            <span class="bar-label">5 <i class="fas fa-star"></i></span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width: 87%"></div>
+            </div>
+            <span class="bar-percent">87%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="bar-label">4 <i class="fas fa-star"></i></span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width: 9%"></div>
+            </div>
+            <span class="bar-percent">9%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="bar-label">3 <i class="fas fa-star"></i></span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width: 3%"></div>
+            </div>
+            <span class="bar-percent">3%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="bar-label">2 <i class="fas fa-star"></i></span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width: 1%"></div>
+            </div>
+            <span class="bar-percent">1%</span>
+          </div>
+          <div class="rating-bar-row">
+            <span class="bar-label">1 <i class="fas fa-star"></i></span>
+            <div class="rating-bar-track">
+              <div class="rating-bar-fill" style="width: 0%"></div>
+            </div>
+            <span class="bar-percent">0%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 3 – FEATURED REVIEWS ========== -->
+    <section class="review-section" id="section3">
+      <div class="featured-reviews" id="featuredReviews">
+        <div class="featured-review-main">
+          <div class="main-quote-icon">&ldquo;</div>
+          <blockquote>
+            I've eaten at delis across three continents, and this place is genuinely in my top three. The bread is baked in-house, the meat is sliced to order, and the staff remembers my name. It's the little things.
+          </blockquote>
+          <div class="main-review-footer">
+            <div class="main-review-author">
+              <div class="author-avatar">E</div>
+              <div class="author-info">
+                <strong>Elena Vasquez</strong>
+                <span>Food blogger · @ElenaEats</span>
+              </div>
+            </div>
+            <div class="main-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <div class="featured-review-side">
+          <div class="side-review-card">
+            <div class="side-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>The Spicy Italian is unreal. I drive 20 minutes past three other sandwich shops just to eat here. No regrets.</p>
+            <div class="side-author">
+              <div class="side-author-avatar">D</div>
+              <div class="side-author-info">
+                <strong>Daniel Park</strong>
+                <span>Regular since 2021</span>
+              </div>
+            </div>
+          </div>
+          <div class="side-review-card">
+            <div class="side-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>Catered our office lunch for 60 people. Delivered early, everything labeled, and the food was still warm. Absolute pros.</p>
+            <div class="side-author">
+              <div class="side-author-avatar">A</div>
+              <div class="side-author-info">
+                <strong>Amara Okafor</strong>
+                <span>Office Manager</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 4 – REVIEW WALL (masonry grid) ========== -->
+    <section class="review-section" id="section4">
+      <div class="review-wall" id="reviewWall">
+        <div class="wall-card">
+          <div class="wall-card-header">
+            <div class="wall-card-avatar">R</div>
+            <div class="wall-card-meta">
+              <strong>Rosa Delgado</strong>
+              <span>Verified buyer</span>
+            </div>
+          </div>
+          <div class="wall-card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>The Veggie Delight changed my mind about vegetarian sandwiches. The hummus is clearly house-made and the sprouts are always fresh.</p>
+          <div class="wall-card-tag"><i class="fas fa-leaf"></i> Veggie Delight</div>
+        </div>
+
+        <div class="wall-card">
+          <div class="wall-card-header">
+            <div class="wall-card-avatar">T</div>
+            <div class="wall-card-meta">
+              <strong>Tom Reyes</strong>
+              <span>Verified buyer</span>
+            </div>
+          </div>
+          <div class="wall-card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>Ordered the Double deal for me and my kid. Two sandwiches, two sides, two drinks, plus a free cookie — unbeatable value.</p>
+          <div class="wall-card-tag"><i class="fas fa-tag"></i> Double Deal</div>
+        </div>
+
+        <div class="wall-card">
+          <div class="wall-card-header">
+            <div class="wall-card-avatar">M</div>
+            <div class="wall-card-meta">
+              <strong>Mia Chen</strong>
+              <span>Verified buyer</span>
+            </div>
+          </div>
+          <div class="wall-card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>That welcome 30% code got me in the door, but the Classic Club is what keeps me coming back every week. Best lunch spot in town.</p>
+          <div class="wall-card-tag"><i class="fas fa-percent"></i> SANDWICH20</div>
+        </div>
+
+        <div class="wall-card">
+          <div class="wall-card-header">
+            <div class="wall-card-avatar">J</div>
+            <div class="wall-card-meta">
+              <strong>Jerome Wallace</strong>
+              <span>Verified buyer</span>
+            </div>
+          </div>
+          <div class="wall-card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>Build-your-own sandwich tool on the site is genius. I built mine, walked in, and it was ready. Zero waiting. 10/10.</p>
+          <div class="wall-card-tag"><i class="fas fa-tools"></i> Build Your Own</div>
+        </div>
+
+        <div class="wall-card">
+          <div class="wall-card-header">
+            <div class="wall-card-avatar">S</div>
+            <div class="wall-card-meta">
+              <strong>Sofia Bellini</strong>
+              <span>Verified buyer</span>
+            </div>
+          </div>
+          <div class="wall-card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>I've tried every sandwich on the menu. If I had to pick one forever, it'd be the Roast Beef on sourdough with the chipotle mayo. Perfection.</p>
+          <div class="wall-card-tag"><i class="fas fa-crown"></i> Roast Beef</div>
+        </div>
+
+        <div class="wall-card">
+          <div class="wall-card-header">
+            <div class="wall-card-avatar">K</div>
+            <div class="wall-card-meta">
+              <strong>Kwame Asante</strong>
+              <span>Verified buyer</span>
+            </div>
+          </div>
+          <div class="wall-card-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>Catered my daughter's graduation party for 80 guests. The team handled everything — setup, serving, cleanup. Guests are still talking about it.</p>
+          <div class="wall-card-tag"><i class="fas fa-glass-cheers"></i> Catering</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 5 – REVIEWER SPOTLIGHT GALLERY ========== -->
+    <section class="review-section" id="section5">
+      <div class="reviewer-gallery" id="reviewerGallery">
+        <div class="reviewer-card">
+          <div class="reviewer-photo">
+            <img src="image/Happy customer 1.jpg" alt="Happy customer 1">
+          </div>
+          <div class="reviewer-quote">
+            <div class="reviewer-quote-text">"The freshest sandwich I've had in years. You can taste the care in every bite."</div>
+            <div class="reviewer-name">
+              <strong>Nadia R.</strong>
+              <div class="reviewer-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviewer-card">
+          <div class="reviewer-photo">
+            <img src="image/Happy customer 2.jpg" alt="Happy customer 2">
+          </div>
+          <div class="reviewer-quote">
+            <div class="reviewer-quote-text">"My office orders from here every Friday. Never had a single complaint. Not once."</div>
+            <div class="reviewer-name">
+              <strong>Liam O.</strong>
+              <div class="reviewer-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviewer-card">
+          <div class="reviewer-photo">
+            <img src="image/Happy customer 3.jpg" alt="Happy customer 3">
+          </div>
+          <div class="reviewer-quote">
+            <div class="reviewer-quote-text">"Came for the sandwiches, stayed for the people. The staff here is the best in the city."</div>
+            <div class="reviewer-name">
+              <strong>Hana K.</strong>
+              <div class="reviewer-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviewer-card">
+          <div class="reviewer-photo">
+            <img src="image/Happy customer 4.jpg" alt="Happy customer 4">
+          </div>
+          <div class="reviewer-quote">
+            <div class="reviewer-quote-text">"Whether it's lunch or catering, they always over-deliver. Consistent excellence."</div>
+            <div class="reviewer-name">
+              <strong>Ben A.</strong>
+              <div class="reviewer-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 6 – CUSTOMER PHOTO MOMENTS ========== -->
+    <section class="review-section" id="section6">
+      <div class="photo-moments" id="photoMoments">
+        <div class="photo-moments-head">
+          <h2>Customer moments</h2>
+          <p>Real photos shared by real customers. Tag us to be featured.</p>
+        </div>
+        <div class="photo-moments-strip" id="photoMomentsStrip">
+          <div class="photo-moment">
+            <img src="image/Kitchen moment.jpg" alt="Customer moment 1">
+            <div class="photo-moment-tag"><i class="fab fa-instagram"></i> @sandwich_lover</div>
+          </div>
+          <div class="photo-moment">
+            <img src="image/Morning Bake.jpg" alt="Customer moment 2">
+            <div class="photo-moment-tag"><i class="fab fa-instagram"></i> @dailydeli</div>
+          </div>
+          <div class="photo-moment">
+            <img src="image/Stacked Fresh.jpg" alt="Customer moment 3">
+            <div class="photo-moment-tag"><i class="fab fa-instagram"></i> @lunchgoals</div>
+          </div>
+          <div class="photo-moment">
+            <img src="image/Craft in Motion.jpg" alt="Customer moment 4">
+            <div class="photo-moment-tag"><i class="fab fa-instagram"></i> @cateringqueen</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 7 – WRITE A REVIEW (INTERACTIVE FORM) ========== -->
+    <section class="review-section" id="section7">
+      <div class="write-review" id="writeReview">
+        
+        <!-- Left Side: Community Perks & Google Reviews -->
+        <div class="write-review-left">
+          <div>
+            <div class="write-label"><i class="fas fa-pen-fancy"></i> Share your story</div>
+            <h2>Loved every bite? Tell us your story!</h2>
+            <p>Your honest feedback helps our artisan kitchen craft better sandwiches and helps future foodies discover their next favorite meal.</p>
+            
+            <div class="write-perks-list">
+              <div class="write-perk-item">
+                <div class="write-perk-icon"><i class="fas fa-certificate"></i></div>
+                <div class="write-perk-info">
+                  <strong>100% Verified Community</strong>
+                  <span>Your review posts live on our community review wall.</span>
+                </div>
+              </div>
+              <div class="write-perk-item">
+                <div class="write-perk-icon"><i class="fas fa-gift"></i></div>
+                <div class="write-perk-info">
+                  <strong>Earn 50 Sandwich Points</strong>
+                  <span>Get loyalty points credited for discounts on future orders.</span>
+                </div>
+              </div>
+              <div class="write-perk-item">
+                <div class="write-perk-icon"><i class="fas fa-bolt"></i></div>
+                <div class="write-perk-info">
+                  <strong>Takes Under 60 Seconds</strong>
+                  <span>Quick rating, pick what you ate, and hit submit!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="write-actions">
+            <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="write-btn-google">
+              <i class="fab fa-google"></i> Review on Google
+            </a>
+            <div class="write-rating-summary">
+              <span class="stars"><i class="fas fa-star"></i> 4.9 / 5.0</span>
+              <span class="count">Based on 2,400+ reviews</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Interactive Review Submission Form -->
+        <div class="write-review-right">
+          
+          <!-- Active Form View -->
+          <div class="review-form-wrapper" id="reviewFormWrapper">
+            <div class="review-form-header">
+              <h3><i class="fas fa-star-half-stroke"></i> Write a review</h3>
+              <p>Click the stars below to rate your experience:</p>
+            </div>
+
+            <!-- Interactive Star Picker -->
+            <div class="star-rating-picker" id="starRatingPicker">
+              <div class="stars-row" id="starsRow" role="radiogroup" aria-label="Rating from 1 to 5 stars">
+                <button type="button" class="star-btn" data-value="1" aria-label="1 star"><i class="fas fa-star"></i></button>
+                <button type="button" class="star-btn" data-value="2" aria-label="2 stars"><i class="fas fa-star"></i></button>
+                <button type="button" class="star-btn" data-value="3" aria-label="3 stars"><i class="fas fa-star"></i></button>
+                <button type="button" class="star-btn" data-value="4" aria-label="4 stars"><i class="fas fa-star"></i></button>
+                <button type="button" class="star-btn active" data-value="5" aria-label="5 stars"><i class="fas fa-star"></i></button>
+              </div>
+              <span class="rating-text-feedback" id="ratingFeedbackText">5.0 — Outstanding! Loved every bite!</span>
+              <input type="hidden" id="selectedRating" value="5">
+            </div>
+
+            <form class="interactive-review-form" id="interactiveReviewForm" novalidate>
+              <div class="form-grid-row">
+                <div class="form-field-group">
+                  <label for="reviewName">Your Name</label>
+                  <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="reviewName" placeholder="e.g. Maya Lin" required>
+                  </div>
+                </div>
+
+                <div class="form-field-group">
+                  <label for="reviewItem">What did you order?</label>
+                  <div class="input-with-icon">
+                    <i class="fas fa-bread-slice"></i>
+                    <select id="reviewItem" required>
+                      <option value="" disabled selected>Select sandwich / item</option>
+                      <option value="Classic Club Sandwich">Classic Club Sandwich</option>
+                      <option value="Pastrami on Rye Special">Pastrami on Rye Special</option>
+                      <option value="Artisan Smoked Turkey">Artisan Smoked Turkey</option>
+                      <option value="Veggie Avocado Crunch">Veggie Avocado Crunch</option>
+                      <option value="Caprese Pesto Ciabatta">Caprese Pesto Ciabatta</option>
+                      <option value="Build Your Own Sandwich">Build Your Own Sandwich</option>
+                      <option value="Catering Box / Platter">Catering Box / Platter</option>
+                      <option value="Chef's Daily Special">Chef's Daily Special</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-row">
+                <div class="form-field-group">
+                  <label for="reviewEmail">Email Address <span class="opt-tag">(for 50 reward pts)</span></label>
+                  <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="reviewEmail" placeholder="you@example.com">
+                  </div>
+                </div>
+
+                <div class="form-field-group">
+                  <label>Recommend to friends?</label>
+                  <div class="recommend-toggle-group">
+                    <button type="button" class="rec-btn active" data-rec="yes">
+                      <i class="fas fa-thumbs-up"></i> Yes, definitely
+                    </button>
+                    <button type="button" class="rec-btn" data-rec="maybe">
+                      <i class="fas fa-hand-holding-heart"></i> Likely
+                    </button>
+                  </div>
+                  <input type="hidden" id="reviewRecommend" value="yes">
+                </div>
+              </div>
+
+              <div class="form-field-group">
+                <div class="label-with-count">
+                  <label for="reviewText">Your Review</label>
+                  <span class="char-count" id="charCount">0 / 250</span>
+                </div>
+                <div class="input-with-icon textarea-icon">
+                  <i class="fas fa-comment-dots"></i>
+                  <textarea id="reviewText" rows="3" maxlength="250" placeholder="How was the flavor, fresh bread, toppings, and service? Tell us what stood out..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="submit-review-action" id="submitReviewBtn">
+                <span class="btn-text"><i class="fas fa-paper-plane"></i> Submit Review</span>
+                <span class="btn-loader" style="display:none;"><i class="fas fa-spinner fa-spin"></i> Submitting...</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Success Celebration State -->
+          <div class="review-success-state" id="reviewSuccessState" style="display: none;">
+            <div class="success-icon-badge">
+              <i class="fas fa-circle-check"></i>
+            </div>
+            <h4 id="successReviewerTitle">Thank you for your review!</h4>
+            <p id="successReviewerMsg">Your feedback has been verified and added to our live customer wall. We've credited 50 loyalty points to your profile!</p>
+
+            <div class="submitted-review-preview">
+              <div class="preview-stars" id="previewStars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p class="preview-quote" id="previewQuote">"Fresh bread, generous stacks, and friendly staff. Hands down the best deli in the area!"</p>
+              <div class="preview-footer">
+                <span class="preview-name" id="previewName">Maya Lin</span>
+                <span class="preview-tag" id="previewTag"><i class="fas fa-bread-slice"></i> Classic Club Sandwich</span>
+              </div>
+            </div>
+
+            <div class="success-actions">
+              <button type="button" class="btn-write-another" id="btnWriteAnother">
+                <i class="fas fa-rotate-left"></i> Submit Another Review
+              </button>
+              <a href="#section4" class="btn-view-wall">
+                <i class="fas fa-arrow-up"></i> View on Review Wall
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ============================================================
+       FOOTER (IDENTICAL TO INDEX.HTML)
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-text-wrapper">
+            <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
+            <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
+          </span>
+        </a>
+        <p class="footer-description">
+          Building sandwich satisfaction with fresh ingredients and bold flavors
+          for every craving. Our chefs craft a fun, delicious experience where
+          every bite is made to order.
+        </p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
+          <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="build your sandwich.html"><i class="fas fa-chevron-right"></i> Build Your Sandwich</a></li>
+          <li><a href="special offers.html"><i class="fas fa-chevron-right"></i> Special Offers</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Support</h3>
+        <ul class="footer-links">
+          <li><a href="reviews.html"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+          <li><a href="catering order.html"><i class="fas fa-chevron-right"></i> Catering Orders</a></li>
+          <li><a href="login.html"><i class="fas fa-chevron-right"></i> Order Now</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">Stay Updated</h3>
+        <p>
+          Get the latest menu drops, special offers, and sandwich updates
+          delivered to your inbox.
+        </p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Deli & Sandwich. All rights reserved.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="contact.html">Privacy</a></li>
+        <li><a href="contact.html">Terms</a></li>
+        <li><a href="contact.html">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT (NAVBAR/FOOTER LOGIC — UNCHANGED)
+  ============================================================ -->
+  <script>
+    (function () {
+      const body = document.body;
+      const htmlEl = document.documentElement;
+
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      const darkToggleDesktop = document.getElementById('darkToggleDesktop');
+      const rtlToggleDesktop = document.getElementById('rtlToggleDesktop');
+      const darkToggleMobile = document.getElementById('darkToggleMobile');
+      const rtlToggleMobile = document.getElementById('rtlToggleMobile');
+
+      const mobileDropdownBtns = document.querySelectorAll('.mobile-nav-link[data-dropdown]');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-menu a, .mobile-order-btn');
+
+      // ---------- DARK MODE ----------
+      const DARK_KEY = 'deliDarkMode';
+
+      function applyDarkMode(isDark) {
+        const darkIcon = '<i class="fas fa-moon"></i>';
+        const lightIcon = '<i class="fas fa-sun"></i>';
+
+        if (isDark) {
+          body.classList.add('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = lightIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = lightIcon;
+        } else {
+          body.classList.remove('dark');
+          if (darkToggleDesktop) darkToggleDesktop.innerHTML = darkIcon;
+          if (darkToggleMobile) darkToggleMobile.innerHTML = darkIcon;
+        }
+      }
+
+      if (localStorage.getItem(DARK_KEY) === 'on') {
+        applyDarkMode(true);
+      }
+
+      function toggleDarkMode() {
+        const isDark = !body.classList.contains('dark');
+        applyDarkMode(isDark);
+        localStorage.setItem(DARK_KEY, isDark ? 'on' : 'off');
+      }
+
+      if (darkToggleDesktop) darkToggleDesktop.addEventListener('click', toggleDarkMode);
+      if (darkToggleMobile) darkToggleMobile.addEventListener('click', toggleDarkMode);
+
+      // ---------- RTL / LTR ----------
+      const RTL_KEY = 'deliRTL';
+
+      function applyRTL(isRTL) {
+        const rtlIcon = '<i class="fas fa-right-left"></i>';
+        const ltrIcon = '<i class="fas fa-right-left fa-flip-horizontal"></i>';
+
+        if (isRTL) {
+          htmlEl.setAttribute('dir', 'rtl');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = ltrIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = ltrIcon;
+        } else {
+          htmlEl.setAttribute('dir', 'ltr');
+          if (rtlToggleDesktop) rtlToggleDesktop.innerHTML = rtlIcon;
+          if (rtlToggleMobile) rtlToggleMobile.innerHTML = rtlIcon;
+        }
+      }
+
+      if (localStorage.getItem(RTL_KEY) === 'on') {
+        applyRTL(true);
+      }
+
+      function toggleRTL() {
+        const isRTL = htmlEl.getAttribute('dir') !== 'rtl';
+        applyRTL(isRTL);
+        localStorage.setItem(RTL_KEY, isRTL ? 'on' : 'off');
+      }
+
+      if (rtlToggleDesktop) rtlToggleDesktop.addEventListener('click', toggleRTL);
+      if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', toggleRTL);
+
+      // ---------- HAMBURGER / MOBILE MENU ----------
+      function openMobileMenu() {
+        mobileMenu.classList.add('open');
+        hamburger.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      mobileNavLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (this.hasAttribute('data-dropdown')) return;
+          closeMobileMenu();
+        });
+      });
+
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target === mobileMenu) closeMobileMenu();
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024 && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+      // ---------- MOBILE DROPDOWNS ----------
+      mobileDropdownBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const targetId = this.getAttribute('data-dropdown');
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          mobileDropdownBtns.forEach(function (otherBtn) {
+            if (otherBtn !== btn) {
+              otherBtn.classList.remove('open');
+              otherBtn.setAttribute('aria-expanded', 'false');
+              const otherId = otherBtn.getAttribute('data-dropdown');
+              const otherTarget = document.getElementById(otherId);
+              if (otherTarget) otherTarget.classList.remove('open');
+            }
+          });
+
+          const isOpen = this.classList.contains('open');
+          if (isOpen) {
+            this.classList.remove('open');
+            this.setAttribute('aria-expanded', 'false');
+            target.classList.remove('open');
+          } else {
+            this.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+            target.classList.add('open');
+          }
+        });
+      });
+
+      // ---------- INTERACTIVE REVIEW SUBMISSION FORM (SECTION 7) ----------
+      const starBtns = document.querySelectorAll('.star-btn');
+      const selectedRatingInput = document.getElementById('selectedRating');
+      const ratingFeedbackText = document.getElementById('ratingFeedbackText');
+      const charCountEl = document.getElementById('charCount');
+      const reviewTextEl = document.getElementById('reviewText');
+      const recBtns = document.querySelectorAll('.rec-btn');
+      const reviewRecommendInput = document.getElementById('reviewRecommend');
+      const reviewForm = document.getElementById('interactiveReviewForm');
+      const reviewFormWrapper = document.getElementById('reviewFormWrapper');
+      const reviewSuccessState = document.getElementById('reviewSuccessState');
+      const submitBtn = document.getElementById('submitReviewBtn');
+      const btnWriteAnother = document.getElementById('btnWriteAnother');
+
+      const ratingDescriptions = {
+        1: '1.0 — Disappointed, did not meet expectations',
+        2: '2.0 — Could be better, room for improvement',
+        3: '3.0 — Average, fair sandwich experience',
+        4: '4.0 — Really good! Fresh & tasty sandwich',
+        5: '5.0 — Outstanding! Loved every single bite!'
+      };
+
+      function updateStarDisplay(rating) {
+        starBtns.forEach(btn => {
+          const val = parseInt(btn.getAttribute('data-value'), 10);
+          btn.classList.toggle('active', val <= rating);
+        });
+      }
+
+      starBtns.forEach(btn => {
+        const val = parseInt(btn.getAttribute('data-value'), 10);
+
+        btn.addEventListener('mouseenter', () => {
+          starBtns.forEach(b => {
+            const bVal = parseInt(b.getAttribute('data-value'), 10);
+            b.classList.toggle('hover', bVal <= val);
+          });
+          if (ratingFeedbackText) {
+            ratingFeedbackText.textContent = ratingDescriptions[val] || (val + '.0 Rating');
+          }
+        });
+
+        btn.addEventListener('mouseleave', () => {
+          starBtns.forEach(b => b.classList.remove('hover'));
+          const cur = parseInt(selectedRatingInput ? selectedRatingInput.value : 5, 10);
+          if (ratingFeedbackText) {
+            ratingFeedbackText.textContent = ratingDescriptions[cur] || (cur + '.0 Rating');
+          }
+        });
+
+        btn.addEventListener('click', () => {
+          if (selectedRatingInput) selectedRatingInput.value = val;
+          updateStarDisplay(val);
+          if (ratingFeedbackText) {
+            ratingFeedbackText.textContent = ratingDescriptions[val] || (val + '.0 Rating');
+          }
+        });
+      });
+
+      // Recommend toggle
+      recBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+          recBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          if (reviewRecommendInput) {
+            reviewRecommendInput.value = this.getAttribute('data-rec');
+          }
+        });
+      });
+
+      // Character counter
+      if (reviewTextEl && charCountEl) {
+        reviewTextEl.addEventListener('input', function () {
+          charCountEl.textContent = `${this.value.length} / 250`;
+        });
+      }
+
+      // Form submission
+      if (reviewForm) {
+        reviewForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          const nameInput = document.getElementById('reviewName');
+          const itemSelect = document.getElementById('reviewItem');
+          const textInput = document.getElementById('reviewText');
+          const ratingVal = parseInt(selectedRatingInput ? selectedRatingInput.value : 5, 10);
+
+          if (!nameInput.value.trim() || !itemSelect.value || !textInput.value.trim()) {
+            if (!nameInput.value.trim()) nameInput.focus();
+            else if (!itemSelect.value) itemSelect.focus();
+            else textInput.focus();
+            return;
+          }
+
+          // Show loading
+          if (submitBtn) {
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoader = submitBtn.querySelector('.btn-loader');
+            if (btnText) btnText.style.display = 'none';
+            if (btnLoader) btnLoader.style.display = 'inline-flex';
+            submitBtn.disabled = true;
+          }
+
+          setTimeout(() => {
+            // Update success preview
+            const successTitle = document.getElementById('successReviewerTitle');
+            const previewStars = document.getElementById('previewStars');
+            const previewQuote = document.getElementById('previewQuote');
+            const previewName = document.getElementById('previewName');
+            const previewTag = document.getElementById('previewTag');
+
+            if (successTitle) successTitle.textContent = `Thank you, ${nameInput.value.trim()}!`;
+            if (previewQuote) previewQuote.textContent = `"${textInput.value.trim()}"`;
+            if (previewName) previewName.textContent = nameInput.value.trim();
+            if (previewTag) previewTag.innerHTML = `<i class="fas fa-bread-slice"></i> ${itemSelect.value}`;
+
+            if (previewStars) {
+              let starsHtml = '';
+              for (let i = 1; i <= 5; i++) {
+                starsHtml += i <= ratingVal ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+              }
+              previewStars.innerHTML = starsHtml;
+            }
+
+            // Also dynamically prepend the review to the review wall in Section 4!
+            const reviewWall = document.getElementById('reviewWall');
+            if (reviewWall) {
+              const newCard = document.createElement('div');
+              newCard.className = 'wall-card';
+              newCard.style.border = '2px solid #f59e0b';
+              newCard.style.boxShadow = '0 12px 30px rgba(245, 158, 11, 0.2)';
+
+              let starsIcons = '';
+              for (let i = 1; i <= 5; i++) {
+                starsIcons += i <= ratingVal ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+              }
+
+              const initial = nameInput.value.trim().charAt(0).toUpperCase() || 'U';
+
+              newCard.innerHTML = `
+                <div class="wall-card-header">
+                  <div class="wall-card-avatar" style="background:#f59e0b;color:#fff;">${initial}</div>
+                  <div class="wall-card-meta">
+                    <strong>${nameInput.value.trim()} <span style="font-size:0.7rem;background:rgba(245,158,11,0.2);color:#d97706;padding:2px 6px;border-radius:10px;margin-left:4px;">Just added!</span></strong>
+                    <span>Verified customer</span>
+                  </div>
+                </div>
+                <div class="wall-card-stars">
+                  ${starsIcons}
+                </div>
+                <p>${textInput.value.trim()}</p>
+                <div class="wall-card-tag"><i class="fas fa-bread-slice"></i> ${itemSelect.value}</div>
+              `;
+
+              reviewWall.prepend(newCard);
+            }
+
+            // Switch view
+            if (reviewFormWrapper) reviewFormWrapper.style.display = 'none';
+            if (reviewSuccessState) reviewSuccessState.style.display = 'flex';
+
+            if (submitBtn) {
+              const btnText = submitBtn.querySelector('.btn-text');
+              const btnLoader = submitBtn.querySelector('.btn-loader');
+              if (btnText) btnText.style.display = 'inline-flex';
+              if (btnLoader) btnLoader.style.display = 'none';
+              submitBtn.disabled = false;
+            }
+          }, 450);
+        });
+      }
+
+      // Reset form
+      if (btnWriteAnother) {
+        btnWriteAnother.addEventListener('click', function () {
+          if (reviewForm) reviewForm.reset();
+          if (selectedRatingInput) selectedRatingInput.value = '5';
+          updateStarDisplay(5);
+          if (ratingFeedbackText) ratingFeedbackText.textContent = ratingDescriptions[5];
+          if (charCountEl) charCountEl.textContent = '0 / 250';
+          recBtns.forEach((b, i) => b.classList.toggle('active', i === 0));
+          if (reviewRecommendInput) reviewRecommendInput.value = 'yes';
+
+          if (reviewSuccessState) reviewSuccessState.style.display = 'none';
+          if (reviewFormWrapper) reviewFormWrapper.style.display = 'block';
+        });
+      }
+
+      // ---------- ESC KEY ----------
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          closeMobileMenu();
+        }
+      });
+
+    })();
+  </script>
+
+  <!-- ============================================================
+       FRAMER MOTION (Motion One) – UNIQUE PER SECTION (7 SECTIONS)
+  ============================================================ -->
+  <script type="module">
+    import { animate, inView, stagger } from 'https://cdn.skypack.dev/motion@10.16.2';
+
+    /* ---------- 1. HERO RATING: score scales in, image slides from right (unique) ---------- */
+    const heroScore = document.querySelector('.hero-rating-score');
+    const heroImage = document.querySelector('.hero-rating-image');
+    if (heroScore && heroImage) {
+      heroScore.style.opacity = '0';
+      heroScore.style.transform = 'scale(0.85) rotate(-2deg)';
+      heroImage.style.opacity = '0';
+      heroImage.style.transform = 'translateX(60px)';
+
+      inView('#heroRating', () => {
+        animate(heroScore, { opacity: 1, transform: 'scale(1) rotate(0deg)' }, { duration: 0.9, easing: [0.34, 1.56, 0.64, 1] });
+        animate(heroImage, { opacity: 1, transform: 'translateX(0px)' }, { duration: 1, delay: 0.15, easing: [0.16, 1, 0.3, 1] });
+      }, { threshold: 0.2 });
+    }
+
+    /* ---------- 2. RATING BARS: bars grow from 0 with stagger (unique) ---------- */
+    const ratingBars = document.querySelectorAll('.rating-bar-fill');
+    if (ratingBars.length) {
+      ratingBars.forEach((bar) => {
+        bar.style.width = '0%';
+        bar.dataset.targetWidth = bar.style.width;
+      });
+
+      inView('#ratingBreakdown', () => {
+        const targetWidths = ['87%', '9%', '3%', '1%', '0%'];
+        ratingBars.forEach((bar, i) => {
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.width = targetWidths[i];
+          }, i * 100);
+        });
+
+        // Animate breakdown container
+        const breakdown = document.getElementById('ratingBreakdown');
+        breakdown.style.opacity = '0';
+        breakdown.style.transform = 'translateY(30px)';
+        animate(breakdown, { opacity: 1, transform: 'translateY(0px)' }, { duration: 0.8, easing: [0.2, 0.9, 0.3, 1] });
+      }, { threshold: 0.3 });
+    }
+
+    /* ---------- 3. FEATURED REVIEWS: main card scales, side cards slide from right (unique) ---------- */
+    const featuredMain = document.querySelector('.featured-review-main');
+    const sideCards = document.querySelectorAll('.side-review-card');
+    if (featuredMain && sideCards.length) {
+      featuredMain.style.opacity = '0';
+      featuredMain.style.transform = 'scale(0.9) rotate(-2deg)';
+      sideCards.forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(50px)';
+      });
+
+      inView('#featuredReviews', () => {
+        animate(featuredMain, { opacity: 1, transform: 'scale(1) rotate(0deg)' }, { duration: 0.9, easing: [0.16, 1, 0.3, 1] });
+        sideCards.forEach((card, i) => {
+          animate(card, { opacity: 1, transform: 'translateX(0px)' }, { duration: 0.7, delay: 0.2 + i * 0.15, easing: [0.2, 0.9, 0.3, 1] });
+        });
+      }, { threshold: 0.2 });
+    }
+
+    /* ---------- 4. REVIEW WALL: cards flip in from 3D (unique) ---------- */
+    const wallCards = document.querySelectorAll('.wall-card');
+    if (wallCards.length) {
+      wallCards.forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'perspective(800px) rotateY(-25deg) translateX(-30px)';
+      });
+
+      inView('#reviewWall', () => {
+        animate('.wall-card',
+          { opacity: 1, transform: 'perspective(800px) rotateY(0deg) translateX(0px)' },
+          { duration: 0.8, delay: stagger(0.12), easing: [0.2, 0.9, 0.3, 1] }
+        );
+      }, { threshold: 0.15 });
+    }
+
+    /* ---------- 5. REVIEWER GALLERY: photos zoom + cards rise with stagger (unique) ---------- */
+    const reviewerCards = document.querySelectorAll('.reviewer-card');
+    if (reviewerCards.length) {
+      reviewerCards.forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = `translateY(${40 + i * 10}px) scale(0.95)`;
+      });
+
+      inView('#reviewerGallery', () => {
+        animate('.reviewer-card',
+          { opacity: 1, transform: 'translateY(0px) scale(1)' },
+          { duration: 0.8, delay: stagger(0.15), easing: [0.34, 1.56, 0.64, 1] }
+        );
+      }, { threshold: 0.15 });
+    }
+
+    /* ---------- 6. PHOTO MOMENTS: tiles expand from center with clip-path (unique) ---------- */
+    const photoMoments = document.querySelectorAll('.photo-moment');
+    if (photoMoments.length) {
+      photoMoments.forEach((moment) => {
+        moment.style.opacity = '0';
+        moment.style.clipPath = 'circle(0% at 50% 50%)';
+      });
+
+      inView('#photoMoments', () => {
+        photoMoments.forEach((moment, i) => {
+          animate(moment,
+            { opacity: 1, clipPath: 'circle(75% at 50% 50%)' },
+            { duration: 0.9, delay: i * 0.15, easing: [0.2, 0.9, 0.3, 1] }
+          );
+        });
+
+        // Header fades in
+        const head = document.querySelector('.photo-moments-head');
+        head.style.opacity = '0';
+        head.style.transform = 'translateY(-20px)';
+        animate(head, { opacity: 1, transform: 'translateY(0px)' }, { duration: 0.7, easing: [0.2, 0.9, 0.3, 1] });
+      }, { threshold: 0.2 });
+    }
+
+    /* ---------- 7. WRITE REVIEW CTA: panes drop in from top/bottom (unique) ---------- */
+    const writeLeft = document.querySelector('.write-review-left');
+    const writeRight = document.querySelector('.write-review-right');
+    if (writeLeft && writeRight) {
+      writeLeft.style.opacity = '0';
+      writeLeft.style.transform = 'translateY(-60px)';
+      writeRight.style.opacity = '0';
+      writeRight.style.transform = 'translateY(60px)';
+
+      inView('#writeReview', () => {
+        animate(writeLeft, { opacity: 1, transform: 'translateY(0px)' }, { duration: 0.9, easing: [0.16, 1, 0.3, 1] });
+        animate(writeRight, { opacity: 1, transform: 'translateY(0px)' }, { duration: 0.9, delay: 0.15, easing: [0.16, 1, 0.3, 1] });
+      }, { threshold: 0.3 });
+    }
+
+    /* Fallback: ensure everything becomes visible after a short delay */
+    setTimeout(() => {
+      document.querySelectorAll('.hero-rating-score, .hero-rating-image, .rating-breakdown, .featured-review-main, .side-review-card, .wall-card, .reviewer-card, .photo-moment, .photo-moments-head, .write-review-left, .write-review-right').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.clipPath = 'none';
+      });
+    }, 1600);
+  </script>
+
+  <!-- ============================================================
+       ORDER NOW / SIGN IN MODAL POPUP
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="authModalOverlay" aria-hidden="true">
+    <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      
+      <!-- Close Button -->
+      <button class="auth-modal-close" id="authModalClose" aria-label="Close Modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Header Section -->
+      <div class="auth-modal-header">
+        <div class="auth-brand-badge">
+          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="auth-brand-name">Deli & Sandwich</span>
+        </div>
+        <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
+        <p class="auth-modal-subtitle" id="modalSubtitle">Customize your sandwich & get fast delivery to your doorstep</p>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="auth-tabs-nav" role="tablist">
+        <button class="auth-tab-btn active" id="tabOrderBtn" data-tab="tabOrder" role="tab" aria-selected="true">
+          <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+        </button>
+        <button class="auth-tab-btn" id="tabLoginBtn" data-tab="tabLogin" role="tab" aria-selected="false">
+          <i class="fas fa-user"></i> <span>Sign In</span>
+        </button>
+        <button class="auth-tab-btn" id="tabRegisterBtn" data-tab="tabRegister" role="tab" aria-selected="false">
+          <i class="fas fa-user-plus"></i> <span>Register</span>
+        </button>
+      </div>
+
+      <!-- Tab Body -->
+      <div class="auth-modal-body">
+        
+        <!-- TAB 1: ORDER NOW -->
+        <div class="auth-tab-pane active" id="tabOrder" role="tabpanel">
+          <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+            
+            <div class="order-type-selector">
+              <label class="order-type-option active">
+                <input type="radio" name="orderType" value="delivery" checked hidden>
+                <i class="fas fa-motorcycle"></i>
+                <span>Delivery</span>
+              </label>
+              <label class="order-type-option">
+                <input type="radio" name="orderType" value="pickup" hidden>
+                <i class="fas fa-store"></i>
+                <span>Pickup</span>
+              </label>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="orderName" placeholder="John Doe" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-phone"></i> Phone Number</label>
+              <div class="input-with-icon">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" id="orderPhone" placeholder="+1 (555) 000-0000" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group" id="addressGroup">
+              <label><i class="fas fa-location-dot"></i> Delivery Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-map-marker-alt input-icon"></i>
+                <input type="text" id="orderAddress" placeholder="Street Address, City, Zip" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-row">
+              <div class="auth-form-group flex-1">
+                <label><i class="fas fa-bread-slice"></i> Select Sandwich</label>
+                <select id="orderItem" class="auth-input auth-select">
+                  <option value="12.99" data-name="Classic Club Sandwich">Classic Club Sandwich ($12.99)</option>
+                  <option value="14.50" data-name="Spicy Italian Sub">Spicy Italian Sub ($14.50)</option>
+                  <option value="13.25" data-name="Turkey Avocado Toast">Turkey Avocado Toast ($13.25)</option>
+                  <option value="11.99" data-name="Veggie Supreme">Veggie Supreme ($11.99)</option>
+                  <option value="15.99" data-name="Custom Gourmet Craft">Custom Gourmet Craft ($15.99)</option>
+                </select>
+              </div>
+
+              <div class="auth-form-group width-auto">
+                <label><i class="fas fa-sort-numeric-up"></i> Qty</label>
+                <div class="qty-counter">
+                  <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                  <span class="qty-val" id="qtyVal">1</span>
+                  <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-comment-alt"></i> Special Instructions (Optional)</label>
+              <textarea id="orderNotes" placeholder="Extra sauce, no onions, gluten-free bread..." rows="2" class="auth-input auth-textarea"></textarea>
+            </div>
+
+            <div class="order-price-summary">
+              <div class="summary-line"><span>Subtotal:</span> <span id="summarySubtotal">$12.99</span></div>
+              <div class="summary-line"><span>Delivery Fee:</span> <span id="summaryDelivery">$2.99</span></div>
+              <div class="summary-line total-line"><span>Total:</span> <span id="summaryTotal">$15.98</span></div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-paper-plane"></i> <span>Confirm & Place Order</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- TAB 2: SIGN IN -->
+        <div class="auth-tab-pane" id="tabLogin" role="tabpanel">
+          <form id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email or Phone</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="loginEmail" placeholder="yourname@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="loginPassword" placeholder="••••••••" required class="auth-input">
+                <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-options-row">
+              <label class="remember-label">
+                <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-link" onclick="alert('Password reset link sent to your email!')">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-right-to-bracket"></i> <span>Sign In</span>
+            </button>
+
+            <div class="auth-divider">
+              <span>Or sign in with</span>
+            </div>
+
+            <div class="social-auth-grid">
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Google')">
+                <i class="fab fa-google"></i> Google
+              </button>
+              <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Apple')">
+                <i class="fab fa-apple"></i> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TAB 3: REGISTER -->
+        <div class="auth-tab-pane" id="tabRegister" role="tabpanel">
+          <form id="registerForm" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+            <div class="auth-form-group">
+              <label><i class="fas fa-user"></i> Full Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="regName" placeholder="Jane Smith" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-envelope"></i> Email Address</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="regEmail" placeholder="jane@domain.com" required class="auth-input">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label><i class="fas fa-lock"></i> Password</label>
+              <div class="input-with-icon">
+                <i class="fas fa-lock input-icon"></i>
+                <input type="password" id="regPassword" placeholder="Create password" required class="auth-input">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-submit-btn">
+              <i class="fas fa-user-plus"></i> <span>Create Account</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Auth Modal JS -->
+  <script src="auth-modal.js"></script>
+
+</body>
+</html>

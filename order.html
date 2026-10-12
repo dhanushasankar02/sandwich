@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deli & Sandwich · Order Now</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Shared Auth Modal & Form CSS -->
+  <link rel="stylesheet" href="auth-modal.css">
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background: #fdf8f0;
+      color: #2b2b2b;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* DARK MODE */
+    body.dark {
+      background: #1a1612;
+      color: #f0e8de;
+    }
+
+    /* TOP RIGHT TOGGLES */
+    .auth-top-toggles {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.5rem;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    [dir="rtl"] .auth-top-toggles {
+      right: auto;
+      left: 1.5rem;
+    }
+
+    .toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1.5px solid #f0e6d8;
+      background: #ffffff;
+      color: #4a4a4a;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      flex-shrink: 0;
+    }
+
+    .toggle-btn:hover {
+      background: #fdf0f0;
+      border-color: #e63946;
+      color: #e63946;
+    }
+
+    body.dark .toggle-btn {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #c9bdb0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark .toggle-btn:hover {
+      background: #3a322a;
+      color: #e63946;
+      border-color: #e63946;
+    }
+
+    /* PAGE CONTENT - STANDALONE CARD SECTION */
+    .page-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.25rem;
+      min-height: 100vh;
+      background: radial-gradient(circle at top right, rgba(230, 57, 70, 0.08), transparent 50%),
+                  radial-gradient(circle at bottom left, rgba(244, 162, 97, 0.08), transparent 50%);
+    }
+
+    .standalone-card-container {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .standalone-card-container .auth-modal-card {
+      position: relative;
+      transform: none !important;
+      max-height: none;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px #f0e6d8;
+    }
+
+    body.dark .standalone-card-container .auth-modal-card {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px #3a322a;
+    }
+
+    .standalone-card-container .auth-modal-close {
+      display: none;
+    }
+
+    .auth-brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .auth-brand-badge:hover {
+      transform: translateY(-2px);
+    }
+
+    .auth-simple-footer {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #78716c;
+      text-align: center;
+    }
+
+    body.dark .auth-simple-footer {
+      color: #a89888;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN STANDALONE AUTH & ORDER CONTAINER -->
+  <main class="page-wrapper">
+
+    <!-- TOP RIGHT TOGGLES -->
+    <div class="auth-top-toggles">
+      <button class="toggle-btn" id="darkToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="toggle-btn" id="rtlToggle" aria-label="Toggle text direction" title="Toggle text direction"><i class="fas fa-right-left"></i></button>
+    </div>
+
+    <div class="standalone-card-container">
+      <div class="auth-modal-card">
+        
+        <!-- HEADER -->
+        <div class="auth-modal-header">
+          <div class="auth-brand-badge">
+            <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+            <span class="auth-brand-name">Deli & Sandwich</span>
+          </div>
+          <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
+          <p class="auth-modal-subtitle" id="modalSubtitle">Customize your sandwich & get fast delivery to your doorstep</p>
+        </div>
+
+        <!-- TABS NAV -->
+        <div class="auth-tabs-nav" role="tablist">
+          <button class="auth-tab-btn active" id="tabOrderBtn" data-tab="tabOrder" role="tab" aria-selected="true">
+            <i class="fas fa-shopping-bag"></i> <span>Order Now</span>
+          </button>
+          <button class="auth-tab-btn" id="tabLoginBtn" data-tab="tabLogin" role="tab" aria-selected="false">
+            <i class="fas fa-user"></i> <span>Sign In</span>
+          </button>
+          <button class="auth-tab-btn" id="tabRegisterBtn" data-tab="tabRegister" role="tab" aria-selected="false">
+            <i class="fas fa-user-plus"></i> <span>Register</span>
+          </button>
+        </div>
+
+        <!-- TAB BODY -->
+        <div class="auth-modal-body">
+          
+          <!-- TAB 1: ORDER NOW -->
+          <div class="auth-tab-pane active" id="tabOrder" role="tabpanel">
+            <form id="orderForm" onsubmit="event.preventDefault(); handleOrderSubmit();">
+              
+              <div class="order-type-selector">
+                <label class="order-type-option active">
+                  <input type="radio" name="orderType" value="delivery" checked hidden>
+                  <i class="fas fa-motorcycle"></i>
+                  <span>Delivery</span>
+                </label>
+                <label class="order-type-option">
+                  <input type="radio" name="orderType" value="pickup" hidden>
+                  <i class="fas fa-store"></i>
+                  <span>Pickup</span>
+                </label>
+              </div>
+
+              <div class="auth-form-group">
+                <label><i class="fas fa-user"></i> Full Name</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-user input-icon"></i>
+                  <input type="text" id="orderName" placeholder="John Doe" required class="auth-input">
+                </div>
+              </div>
+
+              <div class="auth-form-group">
+                <label><i class="fas fa-phone"></i> Phone Number</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-phone input-icon"></i>
+                  <input type="tel" id="orderPhone" placeholder="+1 (555) 000-0000" required class="auth-input">
+                </div>
+              </div>
+
+              <div class="auth-form-group" id="addressGroup">
+                <label><i class="fas fa-location-dot"></i> Delivery Address</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-map-marker-alt input-icon"></i>
+                  <input type="text" id="orderAddress" placeholder="Street Address, City, Zip" required class="auth-input">
+                </div>
+              </div>
+
+              <div class="auth-form-row">
+                <div class="auth-form-group flex-1">
+                  <label><i class="fas fa-bread-slice"></i> Select Sandwich</label>
+                  <select id="orderItem" class="auth-input auth-select">
+                    <option value="12.99" data-name="Classic Club Sandwich">Classic Club Sandwich ($12.99)</option>
+                    <option value="14.50" data-name="Spicy Italian Sub">Spicy Italian Sub ($14.50)</option>
+                    <option value="13.25" data-name="Turkey Avocado Toast">Turkey Avocado Toast ($13.25)</option>
+                    <option value="11.99" data-name="Veggie Supreme">Veggie Supreme ($11.99)</option>
+                    <option value="15.99" data-name="Custom Gourmet Craft">Custom Gourmet Craft ($15.99)</option>
+                  </select>
+                </div>
+
+                <div class="auth-form-group width-auto">
+                  <label><i class="fas fa-sort-numeric-up"></i> Qty</label>
+                  <div class="qty-counter">
+                    <button type="button" class="qty-btn" id="qtyMinus">-</button>
+                    <span class="qty-val" id="qtyVal">1</span>
+                    <button type="button" class="qty-btn" id="qtyPlus">+</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="auth-form-group">
+                <label><i class="fas fa-comment-alt"></i> Special Instructions (Optional)</label>
+                <textarea id="orderNotes" placeholder="Extra sauce, no onions, gluten-free bread..." rows="2" class="auth-input auth-textarea"></textarea>
+              </div>
+
+              <div class="order-price-summary">
+                <div class="summary-line"><span>Subtotal:</span> <span id="summarySubtotal">$12.99</span></div>
+                <div class="summary-line"><span>Delivery Fee:</span> <span id="summaryDelivery">$2.99</span></div>
+                <div class="summary-line total-line"><span>Total:</span> <span id="summaryTotal">$15.98</span></div>
+              </div>
+
+              <button type="submit" class="auth-submit-btn">
+                <i class="fas fa-paper-plane"></i> <span>Confirm & Place Order</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- TAB 2: SIGN IN -->
+          <div class="auth-tab-pane" id="tabLogin" role="tabpanel">
+            <form id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+              <div class="auth-form-group">
+                <label><i class="fas fa-envelope"></i> Email or Phone</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-envelope input-icon"></i>
+                  <input type="email" id="loginEmail" placeholder="yourname@domain.com" required class="auth-input">
+                </div>
+              </div>
+
+              <div class="auth-form-group">
+                <label><i class="fas fa-lock"></i> Password</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-lock input-icon"></i>
+                  <input type="password" id="loginPassword" placeholder="••••••••" required class="auth-input">
+                  <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPassword', this)">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="auth-options-row">
+                <label class="remember-label">
+                  <input type="checkbox" id="rememberMe"> <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-link" onclick="alert('Password reset link sent to your email!')">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="auth-submit-btn">
+                <i class="fas fa-right-to-bracket"></i> <span>Sign In</span>
+              </button>
+
+              <div class="auth-divider">
+                <span>Or sign in with</span>
+              </div>
+
+              <div class="social-auth-grid">
+                <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Google')">
+                  <i class="fab fa-google"></i> Google
+                </button>
+                <button type="button" class="social-auth-btn" onclick="handleSocialLogin('Apple')">
+                  <i class="fab fa-apple"></i> Apple
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- TAB 3: REGISTER -->
+          <div class="auth-tab-pane" id="tabRegister" role="tabpanel">
+            <form id="registerForm" onsubmit="event.preventDefault(); handleRegisterSubmit();">
+              <div class="auth-form-group">
+                <label><i class="fas fa-user"></i> Full Name</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-user input-icon"></i>
+                  <input type="text" id="regName" placeholder="Jane Smith" required class="auth-input">
+                </div>
+              </div>
+
+              <div class="auth-form-group">
+                <label><i class="fas fa-envelope"></i> Email Address</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-envelope input-icon"></i>
+                  <input type="email" id="regEmail" placeholder="jane@domain.com" required class="auth-input">
+                </div>
+              </div>
+
+              <div class="auth-form-group">
+                <label><i class="fas fa-lock"></i> Password</label>
+                <div class="input-with-icon">
+                  <i class="fas fa-lock input-icon"></i>
+                  <input type="password" id="regPassword" placeholder="Create password" required class="auth-input">
+                </div>
+              </div>
+
+              <button type="submit" class="auth-submit-btn">
+                <i class="fas fa-user-plus"></i> <span>Create Account</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="auth-simple-footer">© 2026 Deli & Sandwich · Fresh • Tasty • Made to Order</p>
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Shared Auth Modal JS -->
+  <script src="auth-modal.js"></script>
+
+  <!-- Dark Mode / RTL inline helper -->
+  <script>
+    const DARK_KEY = 'deliDarkMode';
+    const RTL_KEY = 'deliRTL';
+
+    function applyDarkMode(isDark) {
+      const darkToggle = document.getElementById('darkToggle');
+      if (isDark) {
+        document.body.classList.add('dark');
+        if (darkToggle) darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        document.body.classList.remove('dark');
+        if (darkToggle) darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+    }
+    if (localStorage.getItem(DARK_KEY) === 'on') applyDarkMode(true);
+
+    document.getElementById('darkToggle')?.addEventListener('click', function() {
+      const isDark = !document.body.classList.contains('dark');
+      applyDarkMode(isDark);
+      localStorage.setItem(DARK_KEY, isDark ? 'on' : 'off');
+    });
+
+    document.getElementById('rtlToggle')?.addEventListener('click', function() {
+      const isRTL = document.documentElement.getAttribute('dir') !== 'rtl';
+      document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      localStorage.setItem(RTL_KEY, isRTL ? 'on' : 'off');
+    });
+  </script>
+</body>
+</html>
