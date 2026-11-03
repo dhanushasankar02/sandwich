@@ -198,7 +198,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: nowrap;
-      padding: 0.6rem 2rem;
+      padding: 0.75rem clamp(1.5rem, 4vw, 3.5rem);
       background: #ffffff;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
       border-bottom: 1px solid #f0e6d8;
@@ -218,6 +218,18 @@
       flex-shrink: 0;
     }
 
+    
+    .logo-icon img, .footer-logo-icon img, .logo-mark-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .logo:hover .logo-icon, .footer-logo:hover .footer-logo-icon {
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 6px 16px rgba(230, 57, 70, 0.45);
+    }
+    
     .logo-icon {
       width: 42px;
       height: 42px;
@@ -654,7 +666,8 @@
     }
 
     .footer-container {
-      max-width: 1200px;
+      max-width:  1320px;
+      padding: 0 clamp(1.5rem, 4vw, 3.5rem);
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
@@ -960,7 +973,17 @@
     }
 
     @media (max-width: 400px) {
-      .logo-text-wrapper { display: none; }
+      .logo-text-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      .logo-text {
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      .logo-sub {
+        display: none;
+      }
       .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; }
       .mobile-menu { top: 56px; }
       .mobile-nav-link { font-size: 0.9rem; padding: 0.85rem 0.2rem; }
@@ -975,12 +998,13 @@
     /* Section wrapper */
     .section {
       width: 100%;
-      padding: 5rem 2rem;
+      padding:  5rem clamp(1.5rem, 4vw, 3.5rem);
       position: relative;
     }
 
     .container {
-      max-width: 1200px;
+      max-width:  1240px;
+      padding: 0 0.5rem;
       margin: 0 auto;
       width: 100%;
     }
@@ -994,7 +1018,13 @@
       grid-template-columns: 1.1fr 1fr;
       gap: 3rem;
       align-items: center;
-      padding: 4rem 2rem 5rem;
+      padding:  3.5rem clamp(2rem, 4.5vw, 4rem) 4.5rem;
+      min-height: 540px;
+      max-width: 1320px;
+      margin: 1.5rem auto 3rem;
+      border-radius: 40px;
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.07);
+      border: 2px solid #f0e6d8;
       background: linear-gradient(135deg, #fffbf5 0%, #fef3e7 100%);
       transition: background 0.3s;
     }
@@ -1481,6 +1511,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+      align-items: stretch;
     }
 
     .s5-card {
@@ -1490,6 +1521,10 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
       transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
       border: 1px solid #f0e6d8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
 
     body.dark .s5-card {
@@ -1516,6 +1551,9 @@
       margin-bottom: 1.2rem;
       font-style: italic;
       transition: color 0.3s;
+      flex: 1 1 auto;
+      display: flex;
+      align-items: flex-start;
     }
 
     body.dark .s5-card p { color: #c9bdb0; }
@@ -1524,6 +1562,7 @@
       display: flex;
       align-items: center;
       gap: 0.8rem;
+      margin-top: auto;
     }
 
     .s5-avatar {
@@ -1548,8 +1587,8 @@
       color: #a8a29e;
     }
 
-    .s5-card:nth-child(2) { margin-top: 2rem; }
-    .s5-card:nth-child(5) { margin-top: 2rem; }
+    .s5-card:nth-child(2) { margin-top: 0; }
+    .s5-card:nth-child(5) { margin-top: 0; }
 
     /* ------------------------------------------------------------
        SECTION 6: SPECIAL OFFERS — Diagonal Ribbon
@@ -1840,7 +1879,7 @@
     <nav class="navbar" id="navbar">
 
     <a href="index.html" class="logo">
-      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
       <span class="logo-text-wrapper">
         <span class="logo-text">Deli<span>&</span>Sandwich</span>
         <span class="logo-sub">Fresh • Tasty • Made to Order</span>
@@ -1855,12 +1894,12 @@
           <li><a href="home2.html">Home 2 (Modern)</a></li>
         </ul>
       </li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="menu.html" class="nav-link">Menu</a></li>
       <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
       <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
       <li><a href="catering order.html" class="nav-link">Catering</a></li>
       <li><a href="reviews.html" class="nav-link">Reviews</a></li>
-      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 
@@ -1892,12 +1931,12 @@
           <li><a href="home2.html">Home 2 (Modern)</a></li>
         </ul>
       </li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
       <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
       <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
       <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
       <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
       <li><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
-      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
       <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
     </ul>
         <div class="mobile-toggles">
@@ -2212,7 +2251,7 @@
     <div class="footer-container">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">
-          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
           <span class="footer-logo-text-wrapper">
             <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
             <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
@@ -2668,7 +2707,7 @@
       <!-- Header Section -->
       <div class="auth-modal-header">
         <div class="auth-brand-badge">
-          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
           <span class="auth-brand-name">Deli & Sandwich</span>
         </div>
         <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>

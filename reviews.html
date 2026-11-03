@@ -196,7 +196,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: nowrap;
-      padding: 0.6rem 2rem;
+      padding: 0.75rem clamp(1.5rem, 4vw, 3.5rem);
       background: #ffffff;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
       border-bottom: 1px solid #f0e6d8;
@@ -216,6 +216,18 @@
       flex-shrink: 0;
     }
 
+    
+    .logo-icon img, .footer-logo-icon img, .logo-mark-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .logo:hover .logo-icon, .footer-logo:hover .footer-logo-icon {
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 6px 16px rgba(230, 57, 70, 0.45);
+    }
+    
     .logo-icon {
       width: 42px;
       height: 42px;
@@ -653,7 +665,7 @@
       width: 100%;
       max-width: 1320px;
       margin: 0 auto;
-      padding: 2rem 2rem 4rem;
+      padding:  2rem clamp(1.5rem, 4vw, 3.5rem) 4rem;
     }
 
     .review-section {
@@ -672,27 +684,29 @@
       border: 3px solid #e6d5c0;
       box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.2);
       transition: border-color 0.3s, box-shadow 0.3s;
-      min-height: 460px;
+      min-height: 540px;
     }
 
     body.dark .hero-rating {
-      border-color: #4d3e32;
+      border-color: #3a322a;
       box-shadow: 0 24px 60px -18px rgba(0, 0, 0, 0.9);
     }
 
     .hero-rating-score {
-      background: linear-gradient(160deg, #b45f3b 0%, #8b4a2e 100%);
+      background: linear-gradient(160deg, #e63946 0%, #d62828 100%);
       padding: 3.5rem 3rem;
-      color: #fff7ed;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      min-height: 540px;
       justify-content: center;
       position: relative;
       overflow: hidden;
     }
 
     body.dark .hero-rating-score {
-      background: linear-gradient(160deg, #8b4a2e 0%, #6b3822 100%);
+      background: linear-gradient(160deg, #d62828 0%, #a71d2a 100%);
     }
 
     .hero-rating-score::before {
@@ -730,7 +744,7 @@
     .hero-rating-score .score-stars {
       font-size: 1.4rem;
       letter-spacing: 4px;
-      color: #ffd9b3;
+      color: #f4a261;
       margin-bottom: 1.2rem;
       position: relative;
       z-index: 1;
@@ -745,7 +759,7 @@
 
     .hero-rating-image {
       position: relative;
-      min-height: 460px;
+      min-height: 540px;
     }
 
     .hero-rating-image img {
@@ -759,7 +773,7 @@
     .hero-rating-image-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(139, 74, 46, 0.4) 0%, transparent 40%);
+      background: linear-gradient(90deg, rgba(230, 57, 70, 0.4) 0%, transparent 40%);
       z-index: 1;
     }
 
@@ -768,7 +782,7 @@
       bottom: 2rem;
       right: 2rem;
       background: rgba(255, 255, 255, 0.95);
-      color: #2e241e;
+      color: #2b2b2b;
       padding: 0.9rem 1.5rem;
       border-radius: 40px;
       font-weight: 700;
@@ -782,15 +796,15 @@
 
     body.dark .hero-rating-image .floating-chip {
       background: rgba(43, 34, 28, 0.95);
-      color: #f7ede3;
+      color: #f0e8de;
     }
 
     .hero-rating-image .floating-chip i {
-      color: #b45f3b;
+      color: #e63946;
     }
 
     body.dark .hero-rating-image .floating-chip i {
-      color: #d48c5e;
+      color: #f4a261;
     }
 
     /* ============================================================
@@ -811,25 +825,25 @@
 
     body.dark .rating-breakdown {
       background: #2b221c;
-      border-color: #4d3e32;
+      border-color: #3a322a;
       box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.6);
     }
 
     .rating-breakdown-left h2 {
       font-size: 2.4rem;
       font-weight: 800;
-      color: #2e241e;
+      color: #2b2b2b;
       margin-bottom: 0.8rem;
       line-height: 1.15;
     }
 
     body.dark .rating-breakdown-left h2 {
-      color: #f7ede3;
+      color: #f0e8de;
     }
 
     .rating-breakdown-left p {
       font-size: 1rem;
-      color: #3d2e24;
+      color: #2b2b2b;
       opacity: 0.75;
       line-height: 1.7;
       margin-bottom: 1.5rem;
@@ -843,8 +857,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: #fdf0e6;
-      color: #b45f3b;
+      background: #fdf0f0;
+      color: #e63946;
       padding: 0.5rem 1.2rem;
       border-radius: 30px;
       font-size: 0.8rem;
@@ -853,9 +867,9 @@
     }
 
     body.dark .rating-breakdown-left .breakdown-badge {
-      background: #33281f;
-      border-color: #4d3e32;
-      color: #d48c5e;
+      background: #241e18;
+      border-color: #3a322a;
+      color: #f4a261;
     }
 
     .rating-bars {
@@ -873,7 +887,7 @@
     .rating-bar-row .bar-label {
       font-size: 0.85rem;
       font-weight: 600;
-      color: #2e241e;
+      color: #2b2b2b;
       width: 40px;
       flex-shrink: 0;
       display: flex;
@@ -882,11 +896,11 @@
     }
 
     body.dark .rating-bar-row .bar-label {
-      color: #f7ede3;
+      color: #f0e8de;
     }
 
     .rating-bar-row .bar-label i {
-      color: #d48c5e;
+      color: #f4a261;
       font-size: 0.75rem;
     }
 
@@ -905,7 +919,7 @@
 
     .rating-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #d48c5e, #b45f3b);
+      background: linear-gradient(90deg, #f4a261, #e63946);
       border-radius: 30px;
       transition: width 0.6s ease;
     }
@@ -913,14 +927,14 @@
     .rating-bar-row .bar-percent {
       font-size: 0.85rem;
       font-weight: 700;
-      color: #b45f3b;
+      color: #e63946;
       width: 45px;
       text-align: right;
       flex-shrink: 0;
     }
 
     body.dark .rating-bar-row .bar-percent {
-      color: #d48c5e;
+      color: #f4a261;
     }
 
     /* ============================================================
@@ -934,10 +948,10 @@
     }
 
     .featured-review-main {
-      background: linear-gradient(155deg, #2e241e 0%, #3d2e24 100%);
+      background: linear-gradient(155deg, #2e241e 0%, #2b2b2b 100%);
       border-radius: 40px;
       padding: 3rem 2.8rem;
-      color: #fff7ed;
+      color: #ffffff;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -959,12 +973,12 @@
       width: 240px;
       height: 240px;
       border-radius: 50%;
-      background: rgba(212, 140, 94, 0.1);
+      background: rgba(244, 162, 97, 0.1);
     }
 
     .featured-review-main .main-quote-icon {
       font-size: 5rem;
-      color: #d48c5e;
+      color: #f4a261;
       line-height: 0.8;
       font-family: Georgia, serif;
       font-weight: 700;
@@ -1002,11 +1016,11 @@
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      background: linear-gradient(135deg, #e63946, #f4a261);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff7ed;
+      color: #ffffff;
       font-weight: 800;
       font-size: 1.3rem;
       flex-shrink: 0;
@@ -1016,17 +1030,17 @@
       display: block;
       font-size: 1rem;
       font-weight: 700;
-      color: #fff7ed;
+      color: #ffffff;
     }
 
     .featured-review-main .author-info span {
       font-size: 0.82rem;
-      color: #d48c5e;
+      color: #f4a261;
       font-weight: 500;
     }
 
     .featured-review-main .main-stars {
-      color: #d48c5e;
+      color: #f4a261;
       font-size: 1rem;
       letter-spacing: 3px;
     }
@@ -1052,12 +1066,12 @@
 
     body.dark .side-review-card {
       background: #2b221c;
-      border-color: #4d3e32;
+      border-color: #3a322a;
       box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.5);
     }
 
     .side-review-card .side-stars {
-      color: #d48c5e;
+      color: #f4a261;
       font-size: 0.9rem;
       letter-spacing: 2px;
       margin-bottom: 0.8rem;
@@ -1066,7 +1080,7 @@
     .side-review-card p {
       font-size: 0.95rem;
       line-height: 1.7;
-      color: #3d2e24;
+      color: #2b2b2b;
       font-style: italic;
       margin-bottom: 1.2rem;
       flex: 1;
@@ -1086,18 +1100,18 @@
     }
 
     body.dark .side-review-card .side-author {
-      border-color: #4d3e32;
+      border-color: #3a322a;
     }
 
     .side-review-card .side-author-avatar {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      background: linear-gradient(135deg, #e63946, #f4a261);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff7ed;
+      color: #ffffff;
       font-weight: 700;
       font-size: 0.95rem;
       flex-shrink: 0;
@@ -1107,21 +1121,21 @@
       display: block;
       font-size: 0.88rem;
       font-weight: 700;
-      color: #2e241e;
+      color: #2b2b2b;
     }
 
     body.dark .side-review-card .side-author-info strong {
-      color: #f7ede3;
+      color: #f0e8de;
     }
 
     .side-review-card .side-author-info span {
       font-size: 0.75rem;
-      color: #b45f3b;
+      color: #e63946;
       font-weight: 500;
     }
 
     body.dark .side-review-card .side-author-info span {
-      color: #d48c5e;
+      color: #f4a261;
     }
 
     /* ============================================================
@@ -1147,13 +1161,13 @@
 
     body.dark .wall-card {
       background: #2b221c;
-      border-color: #4d3e32;
+      border-color: #3a322a;
       box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.5);
     }
 
     .wall-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px -14px rgba(180, 95, 59, 0.2);
+      box-shadow: 0 20px 40px -14px rgba(230, 57, 70, 0.2);
     }
 
     .wall-card-header {
@@ -1166,11 +1180,11 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      background: linear-gradient(135deg, #e63946, #f4a261);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff7ed;
+      color: #ffffff;
       font-weight: 700;
       font-size: 1rem;
       flex-shrink: 0;
@@ -1180,25 +1194,25 @@
       display: block;
       font-size: 0.9rem;
       font-weight: 700;
-      color: #2e241e;
+      color: #2b2b2b;
     }
 
     body.dark .wall-card-meta strong {
-      color: #f7ede3;
+      color: #f0e8de;
     }
 
     .wall-card-meta span {
       font-size: 0.72rem;
-      color: #b45f3b;
+      color: #e63946;
       font-weight: 500;
     }
 
     body.dark .wall-card-meta span {
-      color: #d48c5e;
+      color: #f4a261;
     }
 
     .wall-card-stars {
-      color: #d48c5e;
+      color: #f4a261;
       font-size: 0.82rem;
       letter-spacing: 1.5px;
     }
@@ -1206,7 +1220,7 @@
     .wall-card p {
       font-size: 0.88rem;
       line-height: 1.65;
-      color: #3d2e24;
+      color: #2b2b2b;
       opacity: 0.9;
     }
 
@@ -1218,8 +1232,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: #fdf0e6;
-      color: #b45f3b;
+      background: #fdf0f0;
+      color: #e63946;
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
       font-size: 0.7rem;
@@ -1230,8 +1244,8 @@
     }
 
     body.dark .wall-card-tag {
-      background: #33281f;
-      color: #d48c5e;
+      background: #241e18;
+      color: #f4a261;
     }
 
     /* ============================================================
@@ -1256,13 +1270,13 @@
 
     body.dark .reviewer-card {
       background: #2b221c;
-      border-color: #4d3e32;
+      border-color: #3a322a;
       box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.6);
     }
 
     .reviewer-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 24px 48px -16px rgba(180, 95, 59, 0.25);
+      box-shadow: 0 24px 48px -16px rgba(230, 57, 70, 0.25);
     }
 
     .reviewer-photo {
@@ -1300,7 +1314,7 @@
     .reviewer-quote .reviewer-quote-text {
       font-size: 0.88rem;
       line-height: 1.6;
-      color: #3d2e24;
+      color: #2b2b2b;
       font-style: italic;
       flex: 1;
     }
@@ -1319,21 +1333,21 @@
     }
 
     body.dark .reviewer-name {
-      border-color: #4d3e32;
+      border-color: #3a322a;
     }
 
     .reviewer-name strong {
       font-size: 0.85rem;
       font-weight: 700;
-      color: #2e241e;
+      color: #2b2b2b;
     }
 
     body.dark .reviewer-name strong {
-      color: #f7ede3;
+      color: #f0e8de;
     }
 
     .reviewer-name .reviewer-stars {
-      color: #d48c5e;
+      color: #f4a261;
       font-size: 0.75rem;
       letter-spacing: 1px;
     }
@@ -1342,11 +1356,11 @@
        SECTION 6 – CUSTOMER PHOTO MOMENTS (image strip)
     ============================================================ */
     .photo-moments {
-      background: #2e241e;
+      background: #e63946;
       border-radius: 48px;
       padding: 3rem 2.5rem;
-      color: #fff7ed;
-      border: 2px solid #b45f3b;
+      color: #ffffff;
+      border: 2px solid #e63946;
       transition: background 0.3s, border-color 0.3s;
     }
 
@@ -1414,11 +1428,11 @@
       gap: 0.5rem;
       font-size: 0.75rem;
       font-weight: 700;
-      color: #fff7ed;
+      color: #ffffff;
     }
 
     .photo-moment-tag i {
-      color: #d48c5e;
+      color: #f4a261;
       font-size: 0.9rem;
     }
 
@@ -1439,9 +1453,9 @@
     }
 
     .write-review-left {
-      background: linear-gradient(150deg, #b45f3b 0%, #874328 100%);
+      background: linear-gradient(150deg, #e63946 0%, #874328 100%);
       padding: 3.5rem 3rem;
-      color: #fff7ed;
+      color: #ffffff;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -1470,7 +1484,7 @@
       align-items: center;
       gap: 0.5rem;
       background: rgba(255, 255, 255, 0.16);
-      color: #fff7ed;
+      color: #ffffff;
       padding: 0.45rem 1.15rem;
       border-radius: 30px;
       font-size: 0.78rem;
@@ -1559,7 +1573,7 @@
 
     .write-btn-google {
       background: rgba(255, 255, 255, 0.14);
-      color: #fff7ed;
+      color: #ffffff;
       border: 1.5px solid rgba(255, 255, 255, 0.4);
       padding: 0.65rem 1.4rem;
       border-radius: 30px;
@@ -1622,7 +1636,7 @@
     .review-form-header h3 {
       font-size: 1.55rem;
       font-weight: 800;
-      color: #fff7ed;
+      color: #ffffff;
       margin-bottom: 0.3rem;
       display: flex;
       align-items: center;
@@ -1747,7 +1761,7 @@
       border: 1.5px solid rgba(255, 255, 255, 0.12);
       border-radius: 12px;
       padding: 0.75rem 1rem 0.75rem 2.4rem;
-      color: #fff7ed;
+      color: #ffffff;
       font-family: inherit;
       font-size: 0.88rem;
       transition: all 0.2s ease;
@@ -1780,7 +1794,7 @@
 
     .input-with-icon select option {
       background: #271f1a;
-      color: #fff7ed;
+      color: #ffffff;
     }
 
     .input-with-icon input:focus,
@@ -1841,7 +1855,7 @@
 
     .rec-btn:hover {
       border-color: rgba(245, 158, 11, 0.4);
-      color: #fff7ed;
+      color: #ffffff;
     }
 
     .rec-btn.active {
@@ -1915,7 +1929,7 @@
     .review-success-state h4 {
       font-size: 1.5rem;
       font-weight: 800;
-      color: #fff7ed;
+      color: #ffffff;
       margin-bottom: 0.5rem;
     }
 
@@ -1952,7 +1966,7 @@
 
     .preview-quote {
       font-size: 0.92rem;
-      color: #fff7ed;
+      color: #ffffff;
       font-style: italic;
       margin-bottom: 0.8rem;
       line-height: 1.45;
@@ -1995,7 +2009,7 @@
     .btn-write-another {
       background: rgba(255, 255, 255, 0.08);
       border: 1.5px solid rgba(255, 255, 255, 0.2);
-      color: #fff7ed;
+      color: #ffffff;
       padding: 0.75rem 1.4rem;
       border-radius: 12px;
       font-family: inherit;
@@ -2045,7 +2059,8 @@
     }
 
     .footer-container {
-      max-width: 1200px;
+      max-width:  1320px;
+      padding: 0 clamp(1.5rem, 4vw, 3.5rem);
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
@@ -2452,6 +2467,14 @@
 
     @media (max-width: 400px) {
       .logo-text-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      .logo-text {
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      .logo-sub {
         display: none;
       }
 
@@ -2560,7 +2583,7 @@
   <nav class="navbar" id="navbar">
 
     <a href="index.html" class="logo">
-      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
       <span class="logo-text-wrapper">
         <span class="logo-text">Deli<span>&</span>Sandwich</span>
         <span class="logo-sub">Fresh • Tasty • Made to Order</span>
@@ -2575,12 +2598,12 @@
           <li><a href="home2.html">Home 2 (Modern)</a></li>
         </ul>
       </li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="menu.html" class="nav-link">Menu</a></li>
       <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
       <li><a href="special offers.html" class="nav-link">Special Offers</a></li>
       <li><a href="catering order.html" class="nav-link">Catering</a></li>
       <li><a href="reviews.html" class="nav-link active">Reviews</a></li>
-      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 
@@ -2612,12 +2635,12 @@
           <li><a href="home2.html">Home 2 (Modern)</a></li>
         </ul>
       </li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
       <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
       <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
       <li><a href="special offers.html" class="mobile-nav-link">Special Offers</a></li>
       <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
       <li><a href="reviews.html" class="mobile-nav-link active">Reviews</a></li>
-      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
       <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
     </ul>
         <div class="mobile-toggles">
@@ -3115,7 +3138,7 @@
     <div class="footer-container">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">
-          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
           <span class="footer-logo-text-wrapper">
             <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
             <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
@@ -3689,7 +3712,7 @@
       <!-- Header Section -->
       <div class="auth-modal-header">
         <div class="auth-brand-badge">
-          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
           <span class="auth-brand-name">Deli & Sandwich</span>
         </div>
         <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>

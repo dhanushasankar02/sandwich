@@ -196,7 +196,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: nowrap;
-      padding: 0.6rem 2rem;
+      padding: 0.75rem clamp(1.5rem, 4vw, 3.5rem);
       background: #ffffff;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
       border-bottom: 1px solid #f0e6d8;
@@ -216,6 +216,18 @@
       flex-shrink: 0;
     }
 
+    
+    .logo-icon img, .footer-logo-icon img, .logo-mark-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .logo:hover .logo-icon, .footer-logo:hover .footer-logo-icon {
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 6px 16px rgba(230, 57, 70, 0.45);
+    }
+    
     .logo-icon {
       width: 42px;
       height: 42px;
@@ -653,7 +665,7 @@
       width: 100%;
       max-width: 1320px;
       margin: 0 auto;
-      padding: 2rem 2rem 4rem;
+      padding:  2rem clamp(1.5rem, 4vw, 3.5rem) 4rem;
     }
 
     .offers-section {
@@ -661,77 +673,177 @@
       position: relative;
     }
 
+    
+    
     /* ============================================================
-       SECTION 1 – HERO SANDWICH BOARD
+       SPECIAL OFFERS REDESIGN - HIGH CONVERTING, COHESIVE & ACCESSIBLE
     ============================================================ */
+    .offers-page {
+      flex: 1;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding:  2rem clamp(1.5rem, 4vw, 3.5rem) 4rem;
+    }
+
+    .offers-section {
+      margin-bottom: 4.5rem;
+      position: relative;
+    }
+
+    .section-header-wrap {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 2.8rem;
+    }
+
+    .section-subtitle-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e63946;
+      background: #fdf0f0;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+
+    body.dark .section-subtitle-pill {
+      background: rgba(230, 57, 70, 0.15);
+      color: #f4a261;
+    }
+
+    .section-header-wrap h2 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #2b2b2b;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.5px;
+    }
+
+    body.dark .section-header-wrap h2 {
+      color: #f0e8de;
+    }
+
+    .section-header-wrap p {
+      font-size: 1.05rem;
+      color: #78716c;
+      line-height: 1.6;
+    }
+
+    body.dark .section-header-wrap p {
+      color: #a89888;
+    }
+
+    /* ---------- HERO SECTION (Consistent 540px Height) ---------- */
     .hero-board {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
       gap: 2.5rem;
-      background: #fff3e6;
-      border-radius: 60px;
-      padding: 2.8rem 2.5rem;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
-      border: 2px solid #e6d5c0;
+      background: linear-gradient(135deg, #fffbf5 0%, #fef3e7 100%);
+      border-radius: 40px;
+      padding: 3rem;
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.08);
+      border: 2px solid #f0e6d8;
+      min-height: 540px;
       transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
 
     body.dark .hero-board {
-      background: #2b221c;
-      border-color: #4d3e32;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+      background: linear-gradient(135deg, #1a1612 0%, #241e18 100%);
+      border-color: #3a322a;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
     }
 
     .hero-board-text {
-      flex: 1 1 320px;
-      padding: 0.5rem;
+      flex: 1 1 480px;
     }
 
     .hero-board-text .badge-offer {
-      display: inline-block;
-      background: #b45f3b;
-      color: #fff7ed;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #e63946;
+      color: #ffffff;
       font-weight: 700;
-      padding: 0.4rem 1.4rem;
-      border-radius: 40px;
-      letter-spacing: 1px;
       font-size: 0.8rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-bottom: 1.8rem;
-      box-shadow: 0 4px 8px rgba(180, 95, 59, 0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
     }
 
     .hero-board-text h1 {
-      font-size: 3.4rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      color: #2e241e;
+      color: #2b2b2b;
+      line-height: 1.12;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1px;
     }
 
     body.dark .hero-board-text h1 {
-      color: #f7ede3;
+      color: #f0e8de;
     }
 
     .hero-board-text h1 span {
-      background: linear-gradient(135deg, #b45f3b, #d48c5e);
+      background: linear-gradient(135deg, #e63946 0%, #f4a261 100%);
       -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
-      color: transparent;
     }
 
     .hero-board-text p {
-      font-size: 1.2rem;
-      opacity: 0.85;
-      margin-bottom: 2rem;
-      max-width: 480px;
-      color: #3d2e24;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
+      max-width: 500px;
+      color: #78716c;
     }
 
     body.dark .hero-board-text p {
-      color: #d9cbbc;
+      color: #a89888;
+    }
+
+    .hero-stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #2b2b2b;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f0e6d8;
+    }
+
+    body.dark .hero-stat-chip {
+      background: #241e18;
+      color: #f0e8de;
+      border-color: #3a322a;
+    }
+
+    .hero-stat-chip i {
+      color: #e63946;
+      font-size: 1rem;
     }
 
     .hero-board-buttons {
@@ -741,791 +853,1440 @@
     }
 
     .hero-btn-primary {
-      background: #2e241e;
-      color: #fff7ed;
-      padding: 0.8rem 2rem;
-      border-radius: 40px;
-      font-weight: 600;
-      cursor: default;
+      background: #e63946;
+      color: #ffffff !important;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(230, 57, 70, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .hero-btn-primary:hover {
+      background: #d62828;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(230, 57, 70, 0.45);
     }
 
     .hero-btn-secondary {
       background: transparent;
-      border: 2px solid #b45f3b;
-      color: #2e241e;
-      padding: 0.8rem 2rem;
-      border-radius: 40px;
+      border: 2px solid #e63946;
+      color: #e63946 !important;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
       font-weight: 600;
-      cursor: default;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
     }
 
-    body.dark .hero-btn-secondary {
-      color: #f7ede3;
+    .hero-btn-secondary:hover {
+      background: #fdf0f0;
+      transform: translateY(-2px);
+    }
+
+    body.dark .hero-btn-secondary:hover {
+      background: rgba(230, 57, 70, 0.15);
+    }
+
+    .hero-board-visual {
+      flex: 1 1 380px;
+      max-width: 480px;
+      position: relative;
     }
 
     .hero-board-image {
-      flex: 1 1 340px;
-      max-width: 440px;
-      height: 350px;
-      max-height: 350px;
-      border-radius: 36px;
+      width: 100%;
+      height: 420px;
+      max-height: 420px;
+      border-radius: 32px;
       overflow: hidden;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
-      border: 3px solid #e6d5c0;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      border: 3px solid #f0e6d8;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+      position: relative;
     }
 
     body.dark .hero-board-image {
-      border-color: #4d3e32;
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+      border-color: #3a322a;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
     }
 
     .hero-board-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 60%;
-      transition: transform 0.4s;
-      display: block;
+      object-position: center;
+      transition: transform 0.5s ease;
     }
 
     .hero-board-image:hover img {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
-    /* ============================================================
-       SECTION 2 – SANDWICH CARDS
-    ============================================================ */
-    .sandwich-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem 0;
-    }
-
-    .sandwich-card {
-      flex: 1 1 260px;
-      max-width: 300px;
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 2rem 1.5rem;
-      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.1);
-      border: 1px solid #f0e2d4;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    }
-
-    body.dark .sandwich-card {
-      background: #2b221c;
-      border-color: #4d3e32;
-      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
-    }
-
-    .sandwich-card::after {
-      content: '';
+    .hero-floating-pill {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: #b45f3b;
-      opacity: 0.7;
-    }
-
-    .sandwich-card i {
-      font-size: 2.8rem;
-      color: #b45f3b;
-      margin-bottom: 1rem;
-    }
-
-    body.dark .sandwich-card i {
-      color: #d48c5e;
-    }
-
-    .sandwich-card h3 {
-      font-size: 1.8rem;
+      bottom: -15px;
+      left: 20px;
+      background: #ffffff;
+      padding: 0.75rem 1.4rem;
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      border: 1px solid #f0e6d8;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #2e241e;
+      color: #2b2b2b;
+      z-index: 2;
     }
 
-    body.dark .sandwich-card h3 {
-      color: #f7ede3;
+    body.dark .hero-floating-pill {
+      background: #241e18;
+      border-color: #3a322a;
+      color: #f0e8de;
     }
 
-    .sandwich-card .price-tag {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #b45f3b;
-      margin: 0.8rem 0 1rem;
+    .hero-floating-pill i {
+      color: #e63946;
+      font-size: 1.1rem;
     }
 
-    body.dark .sandwich-card .price-tag {
-      color: #d48c5e;
-    }
-
-    .sandwich-card p {
-      opacity: 0.8;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #3d2e24;
-    }
-
-    body.dark .sandwich-card p {
-      color: #cbb9a8;
-    }
-
-    /* ============================================================
-       SECTION 3 – COMBO STRIP
-    ============================================================ */
-    .combo-strip {
+    /* ---------- FILTER TABS ---------- */
+    .filter-bar-container {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      background: #e9d9c9;
-      border-radius: 100px;
-      padding: 1.8rem 3rem;
-      gap: 2rem;
-      border: 2px dashed #b45f3b;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    body.dark .combo-strip {
-      background: #2e251e;
-      border-color: #b45f3b;
-    }
-
-    .combo-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex: 1 1 180px;
-    }
-
-    .combo-icon {
-      width: 58px;
-      height: 58px;
-      background: #b45f3b;
-      color: #fff7ed;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      box-shadow: 0 6px 12px rgba(180, 95, 59, 0.3);
-      font-weight: 700;
+      margin-bottom: 3rem;
     }
 
-    .combo-text h4 {
+    .filter-tabs {
+      display: inline-flex;
+      background: #ffffff;
+      padding: 0.4rem;
+      border-radius: 60px;
+      border: 1px solid #f0e6d8;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    body.dark .filter-tabs {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .filter-btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: #78716c;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    body.dark .filter-btn {
+      color: #a89888;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #e63946;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+    }
+
+    .filter-btn .count-badge {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 0.15rem 0.55rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+
+    .filter-btn:not(.active) .count-badge {
+      background: #fdf0f0;
+      color: #e63946;
+    }
+
+    body.dark .filter-btn:not(.active) .count-badge {
+      background: rgba(230, 57, 70, 0.15);
+      color: #f4a261;
+    }
+
+    /* ---------- 1. DIGITAL COUPON VOUCHERS ---------- */
+    .coupons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .coupon-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 2px dashed #f4a261;
+      padding: 1.8rem;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    body.dark .coupon-card {
+      background: #241e18;
+      border-color: #e63946;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .coupon-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(230, 57, 70, 0.15);
+    }
+
+    .coupon-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+    }
+
+    .coupon-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #e63946;
+      background: #fdf0f0;
+      padding: 0.35rem 0.9rem;
+      border-radius: 30px;
+    }
+
+    body.dark .coupon-badge {
+      background: rgba(230, 57, 70, 0.15);
+      color: #f4a261;
+    }
+
+    .coupon-discount-val {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #e63946;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .coupon-title {
       font-size: 1.25rem;
       font-weight: 700;
-      color: #2e241e;
+      color: #2b2b2b;
+      margin-bottom: 0.5rem;
     }
 
-    body.dark .combo-text h4 {
-      color: #f7ede3;
+    body.dark .coupon-title {
+      color: #f0e8de;
     }
 
-    .combo-text p {
+    .coupon-desc {
       font-size: 0.9rem;
-      opacity: 0.7;
-      color: #3d2e24;
+      color: #78716c;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
     }
 
-    body.dark .combo-text p {
-      color: #cbb9a8;
+    body.dark .coupon-desc {
+      color: #a89888;
     }
 
-    /* ============================================================
-       SECTION 4 – DEAL COMPARISON
-    ============================================================ */
-    .deal-duo {
+    .coupon-terms-box {
+      background: #fdf8f0;
+      border: 1px solid #f0e6d8;
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.4rem;
+      font-size: 0.8rem;
+      color: #57534e;
+    }
+
+    body.dark .coupon-terms-box {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #a89888;
+    }
+
+    .coupon-terms-box strong {
+      display: block;
+      color: #2b2b2b;
+      font-size: 0.78rem;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    body.dark .coupon-terms-box strong {
+      color: #f0e8de;
+    }
+
+    .coupon-terms-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .coupon-terms-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .coupon-terms-list li i {
+      color: #e63946;
+      font-size: 0.75rem;
+    }
+
+    .coupon-action-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .coupon-code-pill {
+      flex: 1;
+      background: #fdf0f0;
+      border: 1.5px dashed #e63946;
+      color: #e63946;
+      font-family: monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.65rem 1rem;
+      border-radius: 12px;
+      text-align: center;
+      letter-spacing: 1.2px;
+    }
+
+    body.dark .coupon-code-pill {
+      background: rgba(230, 57, 70, 0.12);
+      border-color: #f4a261;
+      color: #f4a261;
+    }
+
+    .copy-coupon-btn {
+      background: #e63946;
+      color: #ffffff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .copy-coupon-btn:hover {
+      background: #d62828;
+      transform: scale(1.02);
+    }
+
+    .copy-coupon-btn.copied {
+      background: #2a9d8f;
+    }
+
+    /* ---------- 2. AVAILABLE DEALS & COMBOS GRID ---------- */
+    .deals-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2rem;
-      align-items: stretch;
     }
 
     .deal-card {
       background: #ffffff;
-      border-radius: 36px;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1.5px solid #f0e6d8;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
-      border: 1px solid #f0e2d4;
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     body.dark .deal-card {
-      background: #2b221c;
-      border-color: #4d3e32;
-      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    .deal-card.highlight {
-      border: 3px solid #b45f3b;
-      background: #fffaf4;
+    .deal-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(230, 57, 70, 0.15);
+    }
+
+    .deal-card-visual {
+      height: 220px;
       position: relative;
+      overflow: hidden;
     }
 
-    body.dark .deal-card.highlight {
-      background: #332a22;
-      border-color: #d48c5e;
+    .deal-card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
 
-    .deal-card .tag {
-      background: #b45f3b;
-      color: #fff7ed;
-      padding: 0.3rem 1.2rem;
-      border-radius: 30px;
+    .deal-card:hover .deal-card-visual img {
+      transform: scale(1.06);
+    }
+
+    .deal-badge-ribbon {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #e63946;
+      color: #ffffff;
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      align-self: flex-start;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 4px 8px rgba(180, 95, 59, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 0.35rem 0.9rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    .deal-card h3 {
-      font-size: 2.2rem;
+    .deal-savings-ribbon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #f4a261;
+      color: #2b2b2b;
+      font-size: 0.75rem;
       font-weight: 800;
-      margin-bottom: 0.8rem;
-      color: #2e241e;
+      padding: 0.35rem 0.85rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    body.dark .deal-card h3 {
-      color: #f7ede3;
-    }
-
-    .deal-card .price {
-      font-size: 2.6rem;
-      font-weight: 800;
-      color: #b45f3b;
-      margin-bottom: 1.8rem;
-    }
-
-    body.dark .deal-card .price {
-      color: #d48c5e;
-    }
-
-    .deal-card ul {
-      list-style: none;
-      margin-bottom: 2rem;
+    .deal-card-body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
       flex: 1;
+      justify-content: space-between;
     }
 
-    .deal-card li {
-      margin-bottom: 0.9rem;
+    .deal-pricing-row {
       display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      color: #3d2e24;
-      font-size: 0.98rem;
-    }
-
-    body.dark .deal-card li {
-      color: #d9cbbc;
-    }
-
-    .deal-card li i {
-      color: #b45f3b;
-      width: 1.2rem;
-    }
-
-    body.dark .deal-card li i {
-      color: #d48c5e;
-    }
-
-    .deal-card .deal-btn {
-      background: #2e241e;
-      color: #fff7ed;
-      border: none;
-      padding: 1rem 1.5rem;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: default;
-      text-align: center;
-      transition: background 0.2s;
-      letter-spacing: 0.5px;
-      font-family: inherit;
-    }
-
-    body.dark .deal-card .deal-btn {
-      background: #b45f3b;
-      color: #0a0a0a;
-    }
-
-    /* ============================================================
-       SECTION 5 – VOUCHER STRIP
-    ============================================================ */
-    .voucher-strip {
-      display: flex;
-      flex-wrap: wrap;
-      background: #b45f3b;
-      border-radius: 28px;
-      overflow: hidden;
-      color: #fff7ed;
-      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    body.dark .voucher-strip {
-      background: #8b4a2e;
-      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7);
-    }
-
-    .voucher-left {
-      flex: 1 1 200px;
-      background: #2e241e;
-      color: #fff7ed;
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      transition: background 0.3s;
-    }
-
-    body.dark .voucher-left {
-      background: #1a1613;
-    }
-
-    .voucher-left h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
+      align-items: baseline;
+      gap: 0.6rem;
       margin-bottom: 0.5rem;
-      letter-spacing: 1px;
     }
 
-    .voucher-left .big {
-      font-size: 3.8rem;
+    .deal-price-now {
+      font-size: 1.9rem;
       font-weight: 900;
-      line-height: 1;
-      letter-spacing: -2px;
-      color: #d48c5e;
+      color: #e63946;
     }
 
-    .voucher-right {
-      flex: 2 1 340px;
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: #b45f3b;
-      transition: background 0.3s;
-    }
-
-    body.dark .voucher-right {
-      background: #8b4a2e;
-    }
-
-    .voucher-right p {
+    .deal-price-was {
       font-size: 1.1rem;
-      opacity: 0.95;
-      margin-bottom: 1.2rem;
-      color: #fff7ed;
+      color: #a8a29e;
+      text-decoration: line-through;
+      font-weight: 500;
     }
 
-    .voucher-code {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px dashed #fff7ed;
-      padding: 0.9rem 1.8rem;
-      border-radius: 40px;
-      font-family: monospace;
-      font-size: 1.4rem;
-      letter-spacing: 3px;
-      font-weight: 700;
-      color: #fff7ed;
-      display: inline-block;
-      align-self: flex-start;
-    }
-
-    /* ============================================================
-       SECTION 6 – MASONRY ICONS
-    ============================================================ */
-    .deli-masonry {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .masonry-item {
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 2rem 1.2rem;
-      text-align: center;
-      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.05);
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-      border: 1px solid #f0e2d4;
-    }
-
-    body.dark .masonry-item {
-      background: #2b221c;
-      border-color: #4d3e32;
-      box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
-    }
-
-    .masonry-item:nth-child(2) {
-      grid-row: span 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .masonry-item i {
-      font-size: 2.6rem;
-      color: #b45f3b;
-      margin-bottom: 0.8rem;
-    }
-
-    body.dark .masonry-item i {
-      color: #d48c5e;
-    }
-
-    .masonry-item h4 {
+    .deal-card-title {
       font-size: 1.3rem;
       font-weight: 700;
-      margin-bottom: 0.3rem;
-      color: #2e241e;
+      color: #2b2b2b;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
     }
 
-    body.dark .masonry-item h4 {
-      color: #f7ede3;
+    body.dark .deal-card-title {
+      color: #f0e8de;
     }
 
-    .masonry-item p {
-      font-size: 0.9rem;
-      opacity: 0.75;
-      color: #3d2e24;
+    .deal-card-desc {
+      font-size: 0.92rem;
+      color: #78716c;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
     }
 
-    body.dark .masonry-item p {
-      color: #cbb9a8;
+    body.dark .deal-card-desc {
+      color: #a89888;
     }
 
-    /* ============================================================
-       SECTION 7 – CTA SLAB
-    ============================================================ */
-    .cta-slab {
-      background: #2e241e;
-      color: #fff7ed;
-      border-radius: 48px;
-      padding: 4rem 3rem;
+    .deal-inclusions-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.88rem;
+      color: #44403c;
+    }
+
+    body.dark .deal-inclusions-list {
+      color: #d6cfc7;
+    }
+
+    .deal-inclusions-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .deal-inclusions-list li i {
+      color: #2a9d8f;
+      font-size: 0.85rem;
+    }
+
+    .deal-terms-pill {
+      background: #fdf8f0;
+      border-left: 3px solid #e63946;
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: #57534e;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      line-height: 1.4;
+    }
+
+    body.dark .deal-terms-pill {
+      background: #1a1612;
+      color: #a89888;
+    }
+
+    .deal-terms-pill i {
+      color: #e63946;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .deal-order-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: #e63946;
+      color: #ffffff !important;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 0.85rem 1.4rem;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+    }
+
+    .deal-order-btn:hover {
+      background: #d62828;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(230, 57, 70, 0.35);
+    }
+
+    /* ---------- 3. 3-STEP COMBO BUILDER STRIP ---------- */
+    .combo-builder-slab {
+      background: linear-gradient(135deg, #fffbf5 0%, #fef3e7 100%);
+      border: 2px dashed #f0e6d8;
+      border-radius: 32px;
+      padding: 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+      gap: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      margin-bottom: 4.5rem;
+    }
+
+    body.dark .combo-builder-slab {
+      background: linear-gradient(135deg, #1a1612 0%, #241e18 100%);
+      border-color: #3a322a;
+    }
+
+    .combo-step-unit {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex: 1 1 240px;
+    }
+
+    .combo-step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #e63946;
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(230, 57, 70, 0.3);
+    }
+
+    .combo-step-info h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 0.25rem;
+    }
+
+    body.dark .combo-step-info h4 {
+      color: #f0e8de;
+    }
+
+    .combo-step-info p {
+      font-size: 0.88rem;
+      color: #78716c;
+    }
+
+    body.dark .combo-step-info p {
+      color: #a89888;
+    }
+
+    .combo-divider-arrow {
+      color: #f4a261;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .combo-divider-arrow { display: none; }
+    }
+
+    /* ---------- 4. PROMOTIONAL PACKAGES & COMPARISON ---------- */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .package-card {
+      background: #ffffff;
+      border-radius: 32px;
+      border: 2px solid #f0e6d8;
+      padding: 2.4rem 2.2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    body.dark .package-card {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .package-card.highlighted {
+      border-color: #e63946;
+      box-shadow: 0 16px 40px rgba(230, 57, 70, 0.18);
+      transform: scale(1.02);
+    }
+
+    .package-popular-tag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #e63946, #f4a261);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.35rem 1.2rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+      white-space: nowrap;
+    }
+
+    .package-header {
+      margin-bottom: 1.5rem;
       text-align: center;
-      background-image: radial-gradient(circle at 10% 20%, rgba(212, 140, 94, 0.25) 0%, transparent 35%),
-                        radial-gradient(circle at 90% 80%, rgba(180, 95, 59, 0.2) 0%, transparent 40%);
+    }
+
+    .package-tier-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #e63946;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .package-name {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #2b2b2b;
+      margin-bottom: 0.6rem;
+    }
+
+    body.dark .package-name {
+      color: #f0e8de;
+    }
+
+    .package-price-wrap {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .package-price {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #2b2b2b;
+    }
+
+    body.dark .package-price {
+      color: #ffffff;
+    }
+
+    .package-savings-chip {
+      display: inline-block;
+      background: #fdf0f0;
+      color: #e63946;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.25rem 0.85rem;
+      border-radius: 20px;
+    }
+
+    body.dark .package-savings-chip {
+      background: rgba(230, 57, 70, 0.15);
+      color: #f4a261;
+    }
+
+    .package-servings-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      color: #78716c;
+      margin-top: 0.4rem;
+    }
+
+    body.dark .package-servings-badge {
+      color: #a89888;
+    }
+
+    .package-features-list {
+      list-style: none;
+      padding: 1.2rem 0;
+      margin: 1.2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #44403c;
+      border-top: 1px solid #f0e6d8;
+      border-bottom: 1px solid #f0e6d8;
+    }
+
+    body.dark .package-features-list {
+      color: #d6cfc7;
+      border-color: #3a322a;
+    }
+
+    .package-features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+
+    .package-features-list li i {
+      color: #2a9d8f;
+      margin-top: 3px;
+    }
+
+    .package-terms-note {
+      font-size: 0.82rem;
+      color: #57534e;
+      line-height: 1.45;
+      margin-bottom: 1.4rem;
+      text-align: center;
+      background: #fdf8f0;
+      padding: 0.6rem 0.9rem;
+      border-radius: 10px;
+      border: 1px solid #f0e6d8;
+    }
+
+    body.dark .package-terms-note {
+      background: #1a1612;
+      border-color: #3a322a;
+      color: #a89888;
+    }
+
+    /* Comparison Table */
+    .compare-table-wrapper {
+      background: #ffffff;
+      border-radius: 28px;
+      border: 1.5px solid #f0e6d8;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      overflow-x: auto;
+      padding: 1rem;
+    }
+
+    body.dark .compare-table-wrapper {
+      background: #241e18;
+      border-color: #3a322a;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 1.15rem 1.4rem;
+      border-bottom: 1px solid #f0e6d8;
+    }
+
+    body.dark .compare-table th,
+    body.dark .compare-table td {
+      border-color: #3a322a;
+    }
+
+    .compare-table th {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      background: #fffbf5;
+    }
+
+    body.dark .compare-table th {
+      background: #1a1612;
+      color: #f0e8de;
+    }
+
+    .compare-table th.highlight-col,
+    .compare-table td.highlight-col {
+      background: #fdf0f0;
+      font-weight: 600;
+      color: #2b2b2b;
+    }
+
+    body.dark .compare-table th.highlight-col,
+    body.dark .compare-table td.highlight-col {
+      background: rgba(230, 57, 70, 0.08);
+      color: #f0e8de;
+    }
+
+    .compare-table td i.fa-check-circle {
+      color: #2a9d8f;
+      font-size: 1.1rem;
+    }
+
+    .compare-table td i.fa-times-circle {
+      color: #a8a29e;
+      font-size: 1.1rem;
+    }
+
+    /* ---------- 5. PERKS & SERVICE GUARANTEES STRIP ---------- */
+    .perks-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .perk-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      border: 1px solid #f0e6d8;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    body.dark .perk-card {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .perk-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(230, 57, 70, 0.12);
+      border-color: #f4a261;
+    }
+
+    .perk-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #fdf0f0;
+      color: #e63946;
+      font-size: 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    body.dark .perk-icon {
+      background: rgba(230, 57, 70, 0.15);
+      color: #f4a261;
+    }
+
+    .perk-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 0.35rem;
+    }
+
+    body.dark .perk-card h4 {
+      color: #f0e8de;
+    }
+
+    .perk-card p {
+      font-size: 0.85rem;
+      color: #78716c;
+      line-height: 1.4;
+    }
+
+    body.dark .perk-card p {
+      color: #a89888;
+    }
+
+    /* ---------- 6. TERMS & FAQ ACCORDION ---------- */
+    .terms-accordion {
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .accordion-item {
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #f0e6d8;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    body.dark .accordion-item {
+      background: #241e18;
+      border-color: #3a322a;
+    }
+
+    .accordion-header {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 1.3rem 1.6rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+
+    body.dark .accordion-header {
+      color: #f0e8de;
+    }
+
+    .accordion-header:hover {
+      color: #e63946;
+    }
+
+    .accordion-header i {
+      transition: transform 0.3s ease;
+      color: #e63946;
+    }
+
+    .accordion-item.active .accordion-header i {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 1.6rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #78716c;
+    }
+
+    body.dark .accordion-content {
+      color: #a89888;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 200px;
+      padding: 0 1.6rem 1.4rem;
+    }
+
+    /* ---------- 7. VIP REWARDS BANNER ---------- */
+    .vip-banner {
+      background: linear-gradient(135deg, #2b2b2b 0%, #1a1612 100%);
+      border-radius: 36px;
+      padding: 3.5rem 3rem;
+      color: #ffffff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      border: 1px solid #3a322a;
+    }
+
+    .vip-text {
+      flex: 1 1 450px;
+    }
+
+    .vip-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #e63946;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 1rem;
+    }
+
+    /* ---------- 7. CTA SLAB (SANDWICH CLUB — DECREASED LABEL SIZE) ---------- */
+    .cta-slab {
+      background: #241e18;
+      color: #fff7ed;
+      border-radius: 28px;
+      padding: 2.2rem 2rem;
+      text-align: center;
+      background-image: radial-gradient(circle at 10% 20%, rgba(244, 162, 97, 0.15) 0%, transparent 35%),
+                        radial-gradient(circle at 90% 80%, rgba(230, 57, 70, 0.15) 0%, transparent 40%);
       position: relative;
       overflow: hidden;
-      border: 2px solid #b45f3b;
+      border: 1px solid #3a322a;
+      max-width: 780px;
+      margin: 0 auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
       transition: background 0.3s, border-color 0.3s;
     }
 
     body.dark .cta-slab {
-      background: #1a1613;
-      border-color: #b45f3b;
-      background-image: radial-gradient(circle at 10% 20%, rgba(212, 140, 94, 0.3) 0%, transparent 45%),
-                        radial-gradient(circle at 90% 80%, rgba(180, 95, 59, 0.25) 0%, transparent 50%);
+      background: #1e1914;
+      border-color: #3a322a;
     }
 
-    .cta-slab h2 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-      color: #fff7ed;
+    .cta-slab h2,
+    .cta-slab .cta-label {
+      font-size: 1.45rem; /* Decreased label size: balanced & proportional */
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
     }
 
     .cta-slab p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 500px;
-      margin: 0 auto 2rem;
+      font-size: 0.92rem;
+      opacity: 0.92;
+      max-width: 480px;
+      margin: 0 auto 1.3rem;
       color: #f0e6dd;
+      line-height: 1.6;
     }
 
     .cta-slab .btn-gold {
-      background: #d48c5e;
-      color: #2e241e;
+      background: #f4a261;
+      color: #1a1612;
       border: none;
-      padding: 1rem 2.8rem;
+      padding: 0.7rem 2.2rem;
       border-radius: 40px;
       font-weight: 700;
-      font-size: 1rem;
-      cursor: default;
-      transition: background 0.2s;
-      letter-spacing: 0.5px;
-      font-family: inherit;
-    }
-
-    /* ============================================================
-       SECTION 8 – IMAGE + TEXT SPLIT (NEW)
-    ============================================================ */
-    .split-image-text {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 3rem;
-      background: #ffffff;
-      border-radius: 48px;
-      padding: 2.5rem;
-      border: 1px solid #f0e2d4;
-      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.08);
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-    }
-
-    body.dark .split-image-text {
-      background: #2b221c;
-      border-color: #4d3e32;
-      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
-    }
-
-    .split-image-text.reverse {
-      flex-direction: row-reverse;
-    }
-
-    .split-image {
-      flex: 1 1 280px;
-      border-radius: 36px;
-      overflow: hidden;
-      position: relative;
-      min-height: 260px;
-    }
-
-    .split-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      min-height: 260px;
-      transition: transform 0.5s;
-    }
-
-    .split-image:hover img {
-      transform: scale(1.05);
-    }
-
-    .split-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 36px;
-      box-shadow: inset 0 0 0 2px rgba(180, 95, 59, 0.3);
-      pointer-events: none;
-    }
-
-    .split-text {
-      flex: 1 1 300px;
-      padding: 0.5rem;
-    }
-
-    .split-text .split-tag {
-      display: inline-block;
-      background: #b45f3b;
-      color: #fff7ed;
-      padding: 0.3rem 1rem;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .split-text h2 {
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: #2e241e;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    body.dark .split-text h2 {
-      color: #f7ede3;
-    }
-
-    .split-text h2 span {
-      color: #b45f3b;
-    }
-
-    body.dark .split-text h2 span {
-      color: #d48c5e;
-    }
-
-    .split-text p {
-      color: #3d2e24;
-      font-size: 1.05rem;
-      opacity: 0.85;
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-    }
-
-    body.dark .split-text p {
-      color: #d9cbbc;
-    }
-
-    .split-features {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .split-feature {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      color: #3d2e24;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    body.dark .split-feature {
-      color: #d9cbbc;
-    }
-
-    .split-feature i {
-      color: #b45f3b;
-      font-size: 1rem;
-      width: 20px;
-      text-align: center;
-    }
-
-    body.dark .split-feature i {
-      color: #d48c5e;
-    }
-
-    .split-btn {
-      background: #b45f3b;
-      color: #fff7ed;
-      border: none;
-      padding: 0.85rem 2rem;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: default;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
       letter-spacing: 0.3px;
       font-family: inherit;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(244, 162, 97, 0.25);
+    }
+
+    .cta-slab .btn-gold:hover {
+      background: #e63946;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.35);
+    }
+
+    .vip-text h2 {
+      font-size: 1.45rem; /* Decreased label size */
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .vip-text p {
+      font-size: 1rem;
+      color: #d6cfc7;
+      line-height: 1.5;
+    }
+
+    .vip-action {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .vip-input {
+      padding: 0.9rem 1.4rem;
+      border-radius: 50px;
+      border: 1px solid #57534e;
+      background: #241e18;
+      color: #ffffff;
+      font-size: 0.95rem;
+      min-width: 260px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .vip-input:focus {
+      border-color: #e63946;
+    }
+
+    .vip-submit-btn {
+      background: #e63946;
+      color: #ffffff;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .vip-submit-btn:hover {
+      background: #d62828;
+      transform: translateY(-2px);
     }
 
     /* ============================================================
-       SECTION 9 – TESTIMONIAL / QUOTE CARDS (NEW)
+       RESPONSIVE
     ============================================================ */
-    .quote-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+    @media (max-width: 1023px) {
+      .navbar {
+        padding: 0.55rem 1.2rem;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-right .toggle-btn,
+      .nav-right .order-btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .logo-text {
+        font-size: 1.05rem;
+      }
+
+      .logo-sub {
+        font-size: 0.5rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .hero-board-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .deal-duo {
+        grid-template-columns: 1fr;
+      }
+
+      .deli-masonry {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .masonry-item:nth-child(2) {
+        grid-row: span 1;
+      }
+
+      .combo-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 40px;
+        padding: 2rem;
+      }
+
+      .voucher-strip {
+        flex-direction: column;
+      }
+
+      .cta-slab h2,
+      .cta-slab .cta-label {
+        font-size: 1.25rem; /* Decreased mobile label size */
+      }
+      .cta-slab {
+        padding: 1.8rem 1.2rem;
+      }
+
+      .quote-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .split-image-text.reverse {
+        flex-direction: row;
+      }
     }
 
-    .quote-card {
-      background: #ffffff;
-      border-radius: 32px;
-      padding: 2.2rem 1.8rem;
-      border: 1px solid #f0e2d4;
-      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.08);
-      position: relative;
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
+    @media (max-width: 767px) {
+      .navbar {
+        padding: 0.5rem 0.9rem;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      .logo-sub {
+        font-size: 0.48rem;
+      }
+
+      .mobile-menu {
+        top: 60px;
+      }
+
+      .offers-page {
+        padding: 1rem 1rem 3rem;
+      }
+
+      .mobile-toggles .toggle-btn {
+        flex: 1 1 100%;
+        min-width: unset;
+      }
+
+      .footer {
+        padding: 2.5rem 1.2rem 1.2rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom-links {
+        justify-content: center;
+      }
+
+      .hero-board {
+        padding: 1.5rem;
+      }
+
+      .hero-board-image {
+        max-width: 100%;
+        height: 260px;
+        max-height: 260px;
+      }
+
+      .deli-masonry {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .split-image-text,
+      .split-image-text.reverse {
+        flex-direction: column;
+      }
+
+      .split-text h2 {
+        font-size: 1.8rem;
+      }
     }
 
-    body.dark .quote-card {
-      background: #2b221c;
-      border-color: #4d3e32;
-      box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.5);
+    @media (max-width: 400px) {
+      .logo-text-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      .logo-text {
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      .logo-sub {
+        display: none;
+      }
+
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+      }
+
+      .mobile-menu {
+        top: 56px;
+      }
+
+      .mobile-nav-link {
+        font-size: 0.9rem;
+        padding: 0.85rem 0.2rem;
+      }
+
+      .mobile-dropdown-menu a {
+        font-size: 0.84rem;
+      }
     }
 
-    .quote-card .quote-mark {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.5rem;
-      font-size: 3rem;
-      color: #b45f3b;
-      opacity: 0.15;
-      font-family: Georgia, serif;
-      line-height: 1;
+    /* ---------- FOCUS STATES ---------- */
+    .nav-link:focus-visible,
+    .toggle-btn:focus-visible,
+    .order-btn:focus-visible,
+    .hamburger:focus-visible,
+    .mobile-nav-link:focus-visible,
+    .mobile-order-btn:focus-visible,
+    .dropdown-menu a:focus-visible,
+    .mobile-dropdown-menu a:focus-visible,
+    .newsletter-btn:focus-visible,
+    .newsletter-input:focus-visible,
+    .social-icon:focus-visible,
+    .footer-links a:focus-visible {
+      outline: 2px solid #e63946;
+      outline-offset: 2px;
+      border-radius: 6px;
     }
 
-    body.dark .quote-card .quote-mark {
-      color: #d48c5e;
-      opacity: 0.2;
+    .mobile-menu::-webkit-scrollbar {
+      width: 6px;
     }
 
-    .quote-card .quote-avatar {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #b45f3b, #d48c5e);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff7ed;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 6px 14px rgba(180, 95, 59, 0.3);
-    }
-
-    .quote-card .quote-stars {
-      color: #d48c5e;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
-
-    .quote-card p {
-      color: #3d2e24;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      font-style: italic;
-      opacity: 0.9;
-      flex: 1;
-      margin-bottom: 1.2rem;
-    }
-
-    body.dark .quote-card p {
-      color: #d9cbbc;
-    }
-
-    .quote-card .quote-author {
-      border-top: 1px solid #f0e2d4;
-      padding-top: 1rem;
-      transition: border-color 0.3s;
-    }
-
-    body.dark .quote-card .quote-author {
-      border-color: #4d3e32;
-    }
-
-    .quote-card .quote-author strong {
-      display: block;
-      color: #2e241e;
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-
-    body.dark .quote-card .quote-author strong {
-      color: #f7ede3;
-    }
-
-    .quote-card .quote-author span {
-      color: #b45f3b;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    body.dark .quote-card .quote-author span {
-      color: #d48c5e;
+    .mobile-menu::-webkit-scrollbar-thumb {
+      background: #e63946;
+      border-radius: 3px;
     }
 
     /* ============================================================
-       FOOTER
+       RTL SUPPORT
+    ============================================================ */
+    [dir="rtl"] .navbar,
+    [dir="rtl"] .footer {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .nav-menu {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .dropdown-menu {
+      left: auto;
+      right: 0;
+    }
+
+    [dir="rtl"] .nav-link i.fa-chevron-down {
+      margin-top: 0;
+    }
+
+    [dir="rtl"] .badge {
+      margin-left: 0;
+      margin-right: 3px;
+    }
+
+    [dir="rtl"] .footer-links a:hover {
+      transform: translateX(-3px);
+    }
+
+    [dir="rtl"] .footer-links a i.fa-chevron-right {
+      transform: rotate(180deg);
+    }
+
+    [dir="rtl"] .mobile-nav-link {
+      text-align: right;
+    }
+
+    [dir="rtl"] .mobile-nav-link .badge {
+      margin-left: 0;
+      margin-right: auto;
+      margin-left: 0.5rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-menu a {
+      text-align: right;
+    }
+  
+    }
+
+    /* ============================================================
+       FOOTER (UNCHANGED)
     ============================================================ */
     .footer {
       background: #ffffff;
@@ -1536,7 +2297,8 @@
     }
 
     .footer-container {
-      max-width: 1200px;
+      max-width:  1320px;
+      padding: 0 clamp(1.5rem, 4vw, 3.5rem);
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
@@ -1766,218 +2528,6 @@
     }
 
     /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 1023px) {
-      .navbar {
-        padding: 0.55rem 1.2rem;
-      }
-
-      .nav-menu {
-        display: none;
-      }
-
-      .nav-right .toggle-btn,
-      .nav-right .order-btn {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .mobile-menu {
-        display: none;
-      }
-
-      .mobile-menu.open {
-        display: block;
-      }
-
-      .logo-text {
-        font-size: 1.05rem;
-      }
-
-      .logo-sub {
-        font-size: 0.5rem;
-      }
-
-      .footer-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-
-      .hero-board-text h1 {
-        font-size: 2.5rem;
-      }
-
-      .deal-duo {
-        grid-template-columns: 1fr;
-      }
-
-      .deli-masonry {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .masonry-item:nth-child(2) {
-        grid-row: span 1;
-      }
-
-      .combo-strip {
-        flex-direction: column;
-        align-items: flex-start;
-        border-radius: 40px;
-        padding: 2rem;
-      }
-
-      .voucher-strip {
-        flex-direction: column;
-      }
-
-      .cta-slab h2 {
-        font-size: 2.2rem;
-      }
-
-      .quote-cards {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .split-image-text.reverse {
-        flex-direction: row;
-      }
-    }
-
-    @media (max-width: 767px) {
-      .navbar {
-        padding: 0.5rem 0.9rem;
-      }
-
-      .logo-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-      }
-
-      .logo-text {
-        font-size: 1rem;
-      }
-
-      .logo-sub {
-        font-size: 0.48rem;
-      }
-
-      .mobile-menu {
-        top: 60px;
-      }
-
-      .offers-page {
-        padding: 1rem 1rem 3rem;
-      }
-
-      .mobile-toggles .toggle-btn {
-        flex: 1 1 100%;
-        min-width: unset;
-      }
-
-      .footer {
-        padding: 2.5rem 1.2rem 1.2rem;
-      }
-
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-bottom-links {
-        justify-content: center;
-      }
-
-      .hero-board {
-        padding: 1.5rem;
-      }
-
-      .hero-board-image {
-        max-width: 100%;
-        height: 260px;
-        max-height: 260px;
-      }
-
-      .deli-masonry {
-        grid-template-columns: 1fr;
-      }
-
-      .quote-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .split-image-text,
-      .split-image-text.reverse {
-        flex-direction: column;
-      }
-
-      .split-text h2 {
-        font-size: 1.8rem;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .logo-text-wrapper {
-        display: none;
-      }
-
-      .logo-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 1.1rem;
-      }
-
-      .mobile-menu {
-        top: 56px;
-      }
-
-      .mobile-nav-link {
-        font-size: 0.9rem;
-        padding: 0.85rem 0.2rem;
-      }
-
-      .mobile-dropdown-menu a {
-        font-size: 0.84rem;
-      }
-    }
-
-    /* ---------- FOCUS STATES ---------- */
-    .nav-link:focus-visible,
-    .toggle-btn:focus-visible,
-    .order-btn:focus-visible,
-    .hamburger:focus-visible,
-    .mobile-nav-link:focus-visible,
-    .mobile-order-btn:focus-visible,
-    .dropdown-menu a:focus-visible,
-    .mobile-dropdown-menu a:focus-visible,
-    .newsletter-btn:focus-visible,
-    .newsletter-input:focus-visible,
-    .social-icon:focus-visible,
-    .footer-links a:focus-visible {
-      outline: 2px solid #e63946;
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
-
-    .mobile-menu::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .mobile-menu::-webkit-scrollbar-thumb {
-      background: #e63946;
-      border-radius: 3px;
-    }
-
-    /* ============================================================
        RTL SUPPORT
     ============================================================ */
     [dir="rtl"] .navbar,
@@ -2024,7 +2574,23 @@
     [dir="rtl"] .mobile-dropdown-menu a {
       text-align: right;
     }
-  </style>
+
+    /* ============================================================
+       RESPONSIVE (Navbar & Footer only)
+    ============================================================ */
+    @media (max-width: 1023px) {
+      .navbar { padding: 0.55rem 1.2rem; }
+      .nav-menu { display: none; }
+      .nav-right .toggle-btn, .nav-right .order-btn { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: block; }
+      .logo-text { font-size: 1.05rem; }
+      .logo-sub { font-size: 0.5rem; }
+      .footer-container { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+</style>
   <link rel="stylesheet" href="auth-modal.css">
 </head>
 <body>
@@ -2035,7 +2601,7 @@
   <nav class="navbar" id="navbar">
 
     <a href="index.html" class="logo">
-      <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+      <span class="logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
       <span class="logo-text-wrapper">
         <span class="logo-text">Deli<span>&</span>Sandwich</span>
         <span class="logo-sub">Fresh • Tasty • Made to Order</span>
@@ -2050,12 +2616,12 @@
           <li><a href="home2.html">Home 2 (Modern)</a></li>
         </ul>
       </li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="menu.html" class="nav-link">Menu</a></li>
       <li><a href="build your sandwich.html" class="nav-link">Build Sandwich</a></li>
       <li><a href="special offers.html" class="nav-link active">Special Offers</a></li>
       <li><a href="catering order.html" class="nav-link">Catering</a></li>
       <li><a href="reviews.html" class="nav-link">Reviews</a></li>
-      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 
@@ -2087,12 +2653,12 @@
           <li><a href="home2.html">Home 2 (Modern)</a></li>
         </ul>
       </li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
       <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
       <li><a href="build your sandwich.html" class="mobile-nav-link">Build Sandwich</a></li>
       <li><a href="special offers.html" class="mobile-nav-link active">Special Offers</a></li>
       <li><a href="catering order.html" class="mobile-nav-link">Catering</a></li>
       <li><a href="reviews.html" class="mobile-nav-link">Reviews</a></li>
-      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
       <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
     </ul>
         <div class="mobile-toggles">
@@ -2105,221 +2671,622 @@
   </div><!-- ============================================================
        MAIN CONTENT – 9 UNIQUE SECTIONS
   ============================================================ -->
-  <main class="offers-page">
+      <main class="offers-page">
 
-    <!-- ========== SECTION 1 – HERO SANDWICH BOARD ========== -->
-    <section class="offers-section" id="section1">
+    <!-- ========== HERO SANDWICH BOARD (540px Consistent Height) ========== -->
+    <section class="offers-section" id="heroOffers">
       <div class="hero-board" id="heroBoard">
         <div class="hero-board-text">
-          <div class="badge-offer">fresh & local</div>
+          <div class="badge-offer"><i class="fas fa-tags"></i> FRESH & LOCAL &bull; EXCLUSIVE OFFERS</div>
           <h1>Stacked <span>deals</span> on every bite</h1>
-          <p>From pastrami to veggie — exclusive deli offers you won't find on any other page.</p>
+          <p>
+            From pastrami to veggie &mdash; exclusive deli offers you won't find on any other page. 
+            Compare combo packages, unlock instant digital coupons, and review verified terms upfront.
+          </p>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat-chip">
+              <i class="fas fa-fire"></i>
+              <span><strong>Up to 30% Off</strong> Daily Specials</span>
+            </div>
+            <div class="hero-stat-chip">
+              <i class="fas fa-shield-halved"></i>
+              <span><strong>Clear Terms</strong> No Hidden Minimums</span>
+            </div>
+            <div class="hero-stat-chip">
+              <i class="fas fa-bolt"></i>
+              <span><strong>Instant Copy</strong> 1-Click Codes</span>
+            </div>
+          </div>
+
           <div class="hero-board-buttons">
-            <a href="login.html" class="hero-btn-primary" style="text-decoration: none;">Order now</a>
-            <a href="menu.html" class="hero-btn-secondary" style="text-decoration: none;">See menu</a>
+            <a href="#dealsGridSection" class="hero-btn-primary">
+              <i class="fas fa-shopping-bag"></i> Order Now
+            </a>
+            <a href="menu.html" class="hero-btn-secondary">
+              <i class="fas fa-book-open"></i> See Menu
+            </a>
           </div>
         </div>
-        <div class="hero-board-image">
-          <img src="image/Fresh deli sandwich board.jpg" alt="Fresh deli sandwich board">
-        </div>
-      </div>
-    </section>
 
-    <!-- ========== SECTION 2 – SANDWICH CARDS ========== -->
-    <section class="offers-section" id="section2">
-      <div class="sandwich-grid" id="sandwichGrid">
-        <div class="sandwich-card" id="sandwich1">
-          <i class="fas fa-bread-slice"></i>
-          <h3>Classic Club</h3>
-          <div class="price-tag">$12.99</div>
-          <p>Triple-decker with turkey, bacon, lettuce, tomato & house mayo.</p>
-        </div>
-        <div class="sandwich-card" id="sandwich2">
-          <i class="fas fa-pepper-hot"></i>
-          <h3>Spicy Italian</h3>
-          <div class="price-tag">$13.49</div>
-          <p>Salami, capicola, provolone, hot peppers & olive oil.</p>
-        </div>
-        <div class="sandwich-card" id="sandwich3">
-          <i class="fas fa-leaf"></i>
-          <h3>Veggie Delight</h3>
-          <div class="price-tag">$11.99</div>
-          <p>Avocado, cucumber, sprouts, hummus & mixed greens.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== SECTION 3 – COMBO STRIP ========== -->
-    <section class="offers-section" id="section3">
-      <div class="combo-strip" id="comboStrip">
-        <div class="combo-item">
-          <div class="combo-icon">1</div>
-          <div class="combo-text">
-            <h4>Pick a sandwich</h4>
-            <p>Any classic or premium</p>
+        <div class="hero-board-visual">
+          <div class="hero-board-image">
+            <img src="image/The Classic Combo.jpg" alt="Stacked gourmet deli sandwich with fresh lettuce and heirloom tomatoes">
           </div>
-        </div>
-        <div class="combo-item">
-          <div class="combo-icon">2</div>
-          <div class="combo-text">
-            <h4>Add a side</h4>
-            <p>Chips, salad or soup</p>
-          </div>
-        </div>
-        <div class="combo-item">
-          <div class="combo-icon">3</div>
-          <div class="combo-text">
-            <h4>Grab a drink</h4>
-            <p>Fountain soda or iced tea</p>
+          <div class="hero-floating-pill">
+            <i class="fas fa-star"></i>
+            <span>Top Rated Value: <strong>The Double &bull; Save $10.00</strong></span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== SECTION 4 – DEAL COMPARISON ========== -->
-    <section class="offers-section" id="section4">
-      <div class="deal-duo" id="dealDuo">
-        <div class="deal-card" id="dealBasic">
-          <div class="tag">LUNCH BOX</div>
-          <h3>Single</h3>
-          <div class="price">$14</div>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> 1 sandwich (classic)</li>
-            <li><i class="fas fa-check-circle"></i> 1 side</li>
-            <li><i class="fas fa-check-circle"></i> 1 drink</li>
-            <li><i class="fas fa-check-circle"></i> Pickup only</li>
-          </ul>
-          <div class="deal-btn">Choose Single</div>
+    <!-- ========== CATEGORY FILTER BAR ========== -->
+    <div class="filter-bar-container">
+      <div class="filter-tabs" role="tablist">
+        <button class="filter-btn active" data-filter="all">
+          <i class="fas fa-layer-group"></i> All Offers <span class="count-badge">10</span>
+        </button>
+        <button class="filter-btn" data-filter="deals">
+          <i class="fas fa-bread-slice"></i> Sandwich Deals <span class="count-badge">3</span>
+        </button>
+        <button class="filter-btn" data-filter="packages">
+          <i class="fas fa-boxes-stacked"></i> Meal Packages <span class="count-badge">3</span>
+        </button>
+        <button class="filter-btn" data-filter="coupons">
+          <i class="fas fa-ticket-simple"></i> Discount Coupons <span class="count-badge">3</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== SECTION 1: AVAILABLE SANDWICH DEALS ========== -->
+    <section class="offers-section offer-category-block" id="dealsGridSection" data-category="deals">
+      <div class="section-header-wrap">
+        <span class="section-subtitle-pill"><i class="fas fa-fire"></i> Featured Specials</span>
+        <h2>Available Sandwich Deals</h2>
+        <p>Hand-crafted deli signatures with freshly sliced ingredients, bundled savings, and clear terms.</p>
+      </div>
+
+      <div class="deals-grid">
+        <!-- Deal 1: Classic Club -->
+        <div class="deal-card">
+          <div class="deal-card-visual">
+            <img src="image/Classic Club.jpg" alt="Classic Club sandwich with roasted turkey, bacon, lettuce, and tomato">
+            <span class="deal-badge-ribbon">Lunch Special</span>
+            <span class="deal-savings-ribbon">Save $3.51</span>
+          </div>
+          <div class="deal-card-body">
+            <div>
+              <div class="deal-pricing-row">
+                <span class="deal-price-now">$12.99</span>
+                <span class="deal-price-was">$16.50</span>
+              </div>
+              <h3 class="deal-card-title">Classic Club</h3>
+              <p class="deal-card-desc">Triple-decker stacked with roasted oven-turkey, crispy bacon, crisp lettuce, tomato & house garlic herb mayo on toasted sourdough.</p>
+              
+              <ul class="deal-inclusions-list">
+                <li><i class="fas fa-check-circle"></i> Roasted turkey breast & smoked bacon</li>
+                <li><i class="fas fa-check-circle"></i> Hand-cut sea salt kettle chips included</li>
+                <li><i class="fas fa-check-circle"></i> Choice of fountain soda or fresh iced tea</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="deal-terms-pill">
+                <i class="fas fa-clock"></i> <span><strong>Applicable Terms:</strong> Mon&ndash;Fri 11am&ndash;3pm &bull; Valid for dine-in & pickup</span>
+              </div>
+              <a href="login.html" class="deal-order-btn">
+                <span>Order Classic Club</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="deal-card highlight" id="dealPremium">
-          <div class="tag">BEST VALUE</div>
-          <h3>Double</h3>
-          <div class="price">$24</div>
-          <ul>
-            <li><i class="fas fa-check-circle"></i> 2 sandwiches (any)</li>
-            <li><i class="fas fa-check-circle"></i> 2 sides</li>
-            <li><i class="fas fa-check-circle"></i> 2 drinks</li>
-            <li><i class="fas fa-check-circle"></i> Free delivery</li>
-            <li><i class="fas fa-check-circle"></i> Free cookie</li>
-          </ul>
-          <div class="deal-btn">Choose Double</div>
+
+        <!-- Deal 2: Spicy Italian -->
+        <div class="deal-card">
+          <div class="deal-card-visual">
+            <img src="image/Italian Sub.jpg" alt="Spicy Italian sub with salami, capicola, provolone, and hot peppers">
+            <span class="deal-badge-ribbon" style="background: #e63946;">Spicy Favorite</span>
+            <span class="deal-savings-ribbon">Save $4.01</span>
+          </div>
+          <div class="deal-card-body">
+            <div>
+              <div class="deal-pricing-row">
+                <span class="deal-price-now">$13.49</span>
+                <span class="deal-price-was">$17.50</span>
+              </div>
+              <h3 class="deal-card-title">Spicy Italian</h3>
+              <p class="deal-card-desc">Genoa salami, spicy capicola, melted provolone cheese, hot cherry peppers & herb-infused extra virgin olive oil on warm Italian baguette.</p>
+              
+              <ul class="deal-inclusions-list">
+                <li><i class="fas fa-check-circle"></i> Premium Italian cold cuts & melted provolone</li>
+                <li><i class="fas fa-check-circle"></i> House deli slaw or crunchy pickle spear</li>
+                <li><i class="fas fa-check-circle"></i> Choice of cold beverage</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="deal-terms-pill">
+                <i class="fas fa-clock"></i> <span><strong>Applicable Terms:</strong> Daily all day &bull; Available dine-in, takeout & delivery</span>
+              </div>
+              <a href="login.html" class="deal-order-btn">
+                <span>Order Spicy Italian</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deal 3: Veggie Delight -->
+        <div class="deal-card">
+          <div class="deal-card-visual">
+            <img src="image/Mediterranean Veggie.jpg" alt="Veggie Delight sandwich with avocado, cucumber, sprouts, and hummus">
+            <span class="deal-badge-ribbon" style="background: #2a9d8f;">100% Vegetarian</span>
+            <span class="deal-savings-ribbon">Save $3.51</span>
+          </div>
+          <div class="deal-card-body">
+            <div>
+              <div class="deal-pricing-row">
+                <span class="deal-price-now">$11.99</span>
+                <span class="deal-price-was">$15.50</span>
+              </div>
+              <h3 class="deal-card-title">Veggie Delight</h3>
+              <p class="deal-card-desc">Ripe Hass avocado, crisp English cucumber, clover sprouts, house garlic hummus & organic mixed greens on 9-grain seeded bread.</p>
+              
+              <ul class="deal-inclusions-list">
+                <li><i class="fas fa-check-circle"></i> Fresh avocado, sprouts & house hummus</li>
+                <li><i class="fas fa-check-circle"></i> Mini garden salad with lemon vinaigrette</li>
+                <li><i class="fas fa-check-circle"></i> Sparkling mineral water or organic juice</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="deal-terms-pill">
+                <i class="fas fa-clock"></i> <span><strong>Applicable Terms:</strong> Daily all day &bull; Vegan cheese substitution at no charge</span>
+              </div>
+              <a href="login.html" class="deal-order-btn">
+                <span>Order Veggie Delight</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== SECTION 5 – VOUCHER STRIP ========== -->
-    <section class="offers-section" id="section5">
-      <div class="voucher-strip" id="voucherStrip">
-        <div class="voucher-left">
-          <h3>DELI DEAL</h3>
-          <div class="big">20%</div>
-          <p style="font-weight: 600; margin-top: 0.5rem; font-size: 0.9rem;">OFF ANY SANDWICH</p>
+    <!-- ========== SECTION 2: 3-STEP COMBO BUILDER STRIP ========== -->
+    <div class="combo-builder-slab">
+      <div class="combo-step-unit">
+        <div class="combo-step-num">1</div>
+        <div class="combo-step-info">
+          <h4>Pick a sandwich</h4>
+          <p>Any classic, gourmet or sub</p>
         </div>
-        <div class="voucher-right">
-          <p>Use code at checkout. Valid for dine-in or takeout.</p>
-          <div class="voucher-code">SANDWICH20</div>
+      </div>
+      <div class="combo-divider-arrow"><i class="fas fa-chevron-right"></i></div>
+      <div class="combo-step-unit">
+        <div class="combo-step-num">2</div>
+        <div class="combo-step-info">
+          <h4>Add a side</h4>
+          <p>Kettle chips, deli salad or soup</p>
+        </div>
+      </div>
+      <div class="combo-divider-arrow"><i class="fas fa-chevron-right"></i></div>
+      <div class="combo-step-unit">
+        <div class="combo-step-num">3</div>
+        <div class="combo-step-info">
+          <h4>Grab a drink</h4>
+          <p>Fountain soda, iced tea or water</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SECTION 3: PROMOTIONAL PACKAGES & COMPARISON ========== -->
+    <section class="offers-section offer-category-block" id="packageCompareSection" data-category="packages">
+      <div class="section-header-wrap">
+        <span class="section-subtitle-pill"><i class="fas fa-boxes-stacked"></i> Value Bundles</span>
+        <h2>Promotional Packages & Side-by-Side Comparison</h2>
+        <p>Easily understand and compare bundle options. Perfect for solo dining, couples, families, and team lunches.</p>
+      </div>
+
+      <!-- 3 Tier Package Cards -->
+      <div class="packages-grid">
+        <!-- Package 1: Single -->
+        <div class="package-card">
+          <div>
+            <div class="package-header">
+              <span class="package-tier-label">Lunch Box Tier</span>
+              <h3 class="package-name">Single</h3>
+              <div class="package-price-wrap">
+                <span class="package-price">$14</span>
+              </div>
+              <span class="package-savings-chip">Great Midday Value</span>
+              <div class="package-servings-badge"><i class="fas fa-user"></i> Serves 1 Person</div>
+            </div>
+
+            <ul class="package-features-list">
+              <li><i class="fas fa-check-circle"></i> 1 Sandwich (Classic selection)</li>
+              <li><i class="fas fa-check-circle"></i> 1 Side (Kettle chips or deli salad)</li>
+              <li><i class="fas fa-check-circle"></i> 1 Drink (Fountain drink or iced tea)</li>
+              <li><i class="fas fa-check-circle"></i> Eco-friendly carryout box with napkins</li>
+              <li><i class="fas fa-times-circle" style="color: #a8a29e;"></i> Dessert not included</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="package-terms-note">
+              <strong>Applicable Terms:</strong> Pickup & in-store only &bull; Valid Mon&ndash;Fri 11am&ndash;3pm &bull; No minimum boxes
+            </div>
+            <a href="login.html" class="deal-order-btn" style="background: #2b2b2b;">
+              Choose Single Box
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 2: Double (Highlighted) -->
+        <div class="package-card highlighted">
+          <span class="package-popular-tag"><i class="fas fa-crown"></i> Best Value &bull; Customer Favorite</span>
+          <div>
+            <div class="package-header" style="margin-top: 0.5rem;">
+              <span class="package-tier-label">Duo Feast Tier</span>
+              <h3 class="package-name">Double</h3>
+              <div class="package-price-wrap">
+                <span class="package-price">$24</span>
+              </div>
+              <span class="package-savings-chip">Save $10.00 (30% Off Regular $34)</span>
+              <div class="package-servings-badge"><i class="fas fa-user-group"></i> Serves 2 People</div>
+            </div>
+
+            <ul class="package-features-list">
+              <li><i class="fas fa-check-circle"></i> 2 Sandwiches (Any classic or signature)</li>
+              <li><i class="fas fa-check-circle"></i> 2 Sides (Chips, deli slaw or potato salad)</li>
+              <li><i class="fas fa-check-circle"></i> 2 Drinks of your choice</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Free Cookie included</strong></li>
+              <li><i class="fas fa-check-circle"></i> <strong>Free Delivery included</strong></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="package-terms-note">
+              <strong>Applicable Terms:</strong> Valid all day, 7 days a week &bull; Free delivery within 5 miles &bull; Dine-in, pickup & delivery
+            </div>
+            <a href="login.html" class="deal-order-btn">
+              Choose Double Deal
+            </a>
+          </div>
+        </div>
+
+        <!-- Package 3: Family / Group -->
+        <div class="package-card">
+          <div>
+            <div class="package-header">
+              <span class="package-tier-label">Group Feast Tier</span>
+              <h3 class="package-name">Family & Office</h3>
+              <div class="package-price-wrap">
+                <span class="package-price">$54</span>
+              </div>
+              <span class="package-savings-chip">Save $18.00 (25% Off Regular $72)</span>
+              <div class="package-servings-badge"><i class="fas fa-users"></i> Serves 4&ndash;6 People</div>
+            </div>
+
+            <ul class="package-features-list">
+              <li><i class="fas fa-check-circle"></i> 4 Full Sandwiches (Halved into 8 portions)</li>
+              <li><i class="fas fa-check-circle"></i> 1 Large Shared Gourmet Salad Bowl</li>
+              <li><i class="fas fa-check-circle"></i> 4 Bags of Sea Salt Kettle Chips</li>
+              <li><i class="fas fa-check-circle"></i> 4 Canned Beverages</li>
+              <li><i class="fas fa-check-circle"></i> 4 Fresh-Baked Artisan Cookies</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="package-terms-note">
+              <strong>Applicable Terms:</strong> Valid 7 days a week &bull; 1-hour advance notice recommended &bull; Free delivery included
+            </div>
+            <a href="login.html" class="deal-order-btn" style="background: #2b2b2b;">
+              Choose Family Bundle
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="compare-table-wrapper">
+        <table class="compare-table" aria-label="Promotional Packages Comparison Table">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 28%;">Package Feature</th>
+              <th scope="col" style="width: 24%;">Single ($14)</th>
+              <th scope="col" class="highlight-col" style="width: 24%;"><i class="fas fa-crown" style="color: #e63946;"></i> Double ($24) &bull; Best Value</th>
+              <th scope="col" style="width: 24%;">Family & Office ($54)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Number of Servings</strong></td>
+              <td>1 Person</td>
+              <td class="highlight-col"><strong>2 Persons</strong></td>
+              <td>4 to 6 Persons</td>
+            </tr>
+            <tr>
+              <td><strong>Sandwiches Included</strong></td>
+              <td>1 Sandwich (Classic selection)</td>
+              <td class="highlight-col"><strong>2 Any Sandwiches (Any selection)</strong></td>
+              <td>4 Full Sandwiches (8 Halves)</td>
+            </tr>
+            <tr>
+              <td><strong>Sides Included</strong></td>
+              <td>1 Side (Chips or Deli Salad)</td>
+              <td class="highlight-col"><strong>2 Sides of Choice</strong></td>
+              <td>1 Large Salad Bowl + 4 Chips</td>
+            </tr>
+            <tr>
+              <td><strong>Beverages Included</strong></td>
+              <td>1 Beverage</td>
+              <td class="highlight-col"><strong>2 Beverages</strong></td>
+              <td>4 Beverages</td>
+            </tr>
+            <tr>
+              <td><strong>Free Cookie Perk</strong></td>
+              <td><i class="fas fa-times-circle"></i> Not included</td>
+              <td class="highlight-col"><i class="fas fa-check-circle"></i> <strong>1 Free Cookie Included</strong></td>
+              <td><i class="fas fa-check-circle"></i> 4 Free Cookies Included</td>
+            </tr>
+            <tr>
+              <td><strong>Delivery Service</strong></td>
+              <td>Pickup & Dine-in Only</td>
+              <td class="highlight-col"><strong style="color: #2a9d8f;"><i class="fas fa-truck"></i> FREE Delivery Included</strong></td>
+              <td><strong style="color: #2a9d8f;"><i class="fas fa-truck"></i> FREE Delivery Included</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Direct Savings</strong></td>
+              <td>Standard Midday Value</td>
+              <td class="highlight-col"><strong style="color: #e63946;">Save $10.00 (30% Off)</strong></td>
+              <td><strong style="color: #e63946;">Save $18.00 (25% Off)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Applicable Terms</strong></td>
+              <td>Mon&ndash;Fri 11am&ndash;3pm &bull; Pickup only</td>
+              <td class="highlight-col"><strong>Daily, all day &bull; Dine-in, pickup or delivery</strong></td>
+              <td>Daily all day &bull; 1-hour notice recommended</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 4: DIGITAL COUPON CODES ========== -->
+    <section class="offers-section offer-category-block" id="couponsSection" data-category="coupons">
+      <div class="section-header-wrap">
+        <span class="section-subtitle-pill"><i class="fas fa-ticket-simple"></i> Instant Savings</span>
+        <h2>Digital Coupons & Discount Codes</h2>
+        <p>Copy any promo code below with one click. Clear applicable terms and expiration dates stated on each voucher.</p>
+      </div>
+
+      <div class="coupons-grid">
+        <!-- Coupon 1: SANDWICH20 -->
+        <div class="coupon-card">
+          <div>
+            <div class="coupon-top">
+              <span class="coupon-badge">DELI DEAL &bull; 20% OFF</span>
+              <i class="fas fa-scissors" style="color: #f4a261;"></i>
+            </div>
+            <div class="coupon-discount-val">20% OFF</div>
+            <h3 class="coupon-title">Off Any Sandwich</h3>
+            <p class="coupon-desc">Use code at checkout to take 20% off any specialty, classic, or custom sandwich.</p>
+            
+            <div class="coupon-terms-box">
+              <strong><i class="fas fa-info-circle"></i> Applicable Terms:</strong>
+              <ul class="coupon-terms-list">
+                <li><i class="fas fa-check"></i> Valid for dine-in, pickup, or online order</li>
+                <li><i class="fas fa-check"></i> Min. spend: $15.00 before tax</li>
+                <li><i class="fas fa-check"></i> Limit: 1 redemption per customer order</li>
+                <li><i class="fas fa-check"></i> Expiry: Valid through Sunday midnight</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="coupon-action-row">
+            <span class="coupon-code-pill" id="code1">SANDWICH20</span>
+            <button class="copy-coupon-btn" onclick="copyCode('SANDWICH20', this)">
+              <i class="fas fa-copy"></i> <span>Copy Code</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Coupon 2: LUNCHPAIR5 -->
+        <div class="coupon-card">
+          <div>
+            <div class="coupon-top">
+              <span class="coupon-badge">LUNCH SPECIAL &bull; $5 OFF</span>
+              <i class="fas fa-scissors" style="color: #f4a261;"></i>
+            </div>
+            <div class="coupon-discount-val">$5.00 OFF</div>
+            <h3 class="coupon-title">Any Combo Pairing</h3>
+            <p class="coupon-desc">Save $5 instantly when pairing any sandwich with a side and craft drink.</p>
+            
+            <div class="coupon-terms-box">
+              <strong><i class="fas fa-info-circle"></i> Applicable Terms:</strong>
+              <ul class="coupon-terms-list">
+                <li><i class="fas fa-check"></i> Valid hours: Mon&ndash;Fri, 11:00 AM &ndash; 3:00 PM</li>
+                <li><i class="fas fa-check"></i> Min. spend: $20.00</li>
+                <li><i class="fas fa-check"></i> Valid on: In-store and online pickup</li>
+                <li><i class="fas fa-check"></i> Expiry: Weekly ongoing promotion</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="coupon-action-row">
+            <span class="coupon-code-pill" id="code2">LUNCHPAIR5</span>
+            <button class="copy-coupon-btn" onclick="copyCode('LUNCHPAIR5', this)">
+              <i class="fas fa-copy"></i> <span>Copy Code</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Coupon 3: FREEDELIV25 -->
+        <div class="coupon-card">
+          <div>
+            <div class="coupon-top">
+              <span class="coupon-badge">DELIVERY PERK</span>
+              <i class="fas fa-scissors" style="color: #f4a261;"></i>
+            </div>
+            <div class="coupon-discount-val">FREE DELIV</div>
+            <h3 class="coupon-title">On Orders Over $25</h3>
+            <p class="coupon-desc">Free direct delivery to your home or office on any qualifying order over $25.</p>
+            
+            <div class="coupon-terms-box">
+              <strong><i class="fas fa-info-circle"></i> Applicable Terms:</strong>
+              <ul class="coupon-terms-list">
+                <li><i class="fas fa-check"></i> Automatically unlocked on orders $25+</li>
+                <li><i class="fas fa-check"></i> Valid within 5-mile delivery radius</li>
+                <li><i class="fas fa-check"></i> Valid 7 days a week for lunch & dinner</li>
+                <li><i class="fas fa-check"></i> Expiry: Everyday customer perk</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="coupon-action-row">
+            <span class="coupon-code-pill" id="code3">FREEDELIV25</span>
+            <button class="copy-coupon-btn" onclick="copyCode('FREEDELIV25', this)">
+              <i class="fas fa-copy"></i> <span>Copy Code</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== SECTION 6 – MASONRY ICONS ========== -->
-    <section class="offers-section" id="section6">
-      <div class="deli-masonry" id="deliMasonry">
-        <div class="masonry-item">
-          <i class="fas fa-truck"></i>
+    <!-- ========== SECTION 5: DELI PERKS & SERVICE GUARANTEES ========== -->
+    <section class="offers-section" id="perksSection">
+      <div class="section-header-wrap">
+        <span class="section-subtitle-pill"><i class="fas fa-award"></i> The Deli Promise</span>
+        <h2>Why Customers Love Ordering Here</h2>
+        <p>Beyond our daily discounts, enjoy verified service standards on every order.</p>
+      </div>
+
+      <div class="perks-strip">
+        <div class="perk-card">
+          <div class="perk-icon"><i class="fas fa-truck"></i></div>
           <h4>Free Delivery</h4>
-          <p>On orders over $25</p>
+          <p>On all qualifying orders over $25</p>
         </div>
-        <div class="masonry-item">
-          <i class="fas fa-clock"></i>
+
+        <div class="perk-card">
+          <div class="perk-icon"><i class="fas fa-clock"></i></div>
           <h4>Fresh Daily</h4>
-          <p>Baked every morning</p>
+          <p>Artisan bread baked fresh every morning</p>
         </div>
-        <div class="masonry-item">
-          <i class="fas fa-utensils"></i>
+
+        <div class="perk-card">
+          <div class="perk-icon"><i class="fas fa-utensils"></i></div>
           <h4>Dine-In</h4>
-          <p>Cozy seating available</p>
+          <p>Cozy seating and outdoor patio available</p>
         </div>
-        <div class="masonry-item">
-          <i class="fas fa-gift"></i>
+
+        <div class="perk-card">
+          <div class="perk-icon"><i class="fas fa-gift"></i></div>
           <h4>Catering</h4>
-          <p>Party platters ready</p>
+          <p>Party platters and corporate boxes ready</p>
         </div>
-        <div class="masonry-item">
-          <i class="fas fa-percent"></i>
-          <h4>Loyalty</h4>
-          <p>Earn points every visit</p>
+
+        <div class="perk-card">
+          <div class="perk-icon"><i class="fas fa-percent"></i></div>
+          <h4>Loyalty Rewards</h4>
+          <p>Earn points on every visit and dollar spent</p>
         </div>
       </div>
     </section>
 
-    <!-- ========== SECTION 7 – CTA SLAB ========== -->
+    <!-- ========== SECTION 6: PROMOTION TERMS & FAQ ACCORDION ========== -->
+    <section class="offers-section" id="termsFaqSection">
+      <div class="section-header-wrap">
+        <span class="section-subtitle-pill"><i class="fas fa-circle-question"></i> Transparent Policies</span>
+        <h2>Promotion Terms & Redemption Guidelines</h2>
+        <p>Everything you need to know about combining offers, code redemptions, and ordering policies.</p>
+      </div>
+
+      <div class="terms-accordion">
+        <div class="accordion-item active">
+          <button class="accordion-header" type="button" aria-expanded="true">
+            <span>How do I redeem digital coupon codes online?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Click the "Copy Code" button on any voucher card above to copy it to your clipboard. 
+              During checkout on our online ordering portal, paste the code into the "Promo Code" box and 
+              click "Apply". Your discount will be calculated and reflected immediately before payment.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button" aria-expanded="false">
+            <span>Can promotional offers and coupons be combined?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Only one promotional discount code can be applied per order. However, special package pricing 
+              (such as the Double $24 deal or Family Bundle) is automatically applied as item bundles 
+              and does not require a coupon code, meaning you can still redeem eligible reward vouchers at checkout.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button" aria-expanded="false">
+            <span>What are the lunch combo eligible hours?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Our Classic Lunch Specials and Single $14 Lunch Box are active Monday through Friday between 
+              11:00 AM and 3:00 PM local time. Evening and weekend orders can take full advantage of our Double $24 deal, 
+              Family Bundle, and 20% Off coupon codes.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button" aria-expanded="false">
+            <span>Do special offer purchases earn Deli Rewards points?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Yes! All special offers and discounted orders earn full loyalty points based on the subtotal paid. 
+              Sign in before placing your order to ensure points are credited to your Deli Rewards profile instantly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 7: CTA SLAB (SANDWICH CLUB) ========== -->
     <section class="offers-section" id="section7">
       <div class="cta-slab" id="ctaSlab">
-        <h2>Hungry for a deal?</h2>
+        <h2 class="cta-label">Hungry for a deal?</h2>
         <p>Join our sandwich club and get exclusive weekly offers.</p>
-        <div class="btn-gold">Join the club</div>
+        <button type="button" class="btn-gold" onclick="openOrderModal('deal')">Join the club</button>
       </div>
     </section>
 
-    <!-- ========== SECTION 8 – IMAGE + TEXT SPLIT (NEW) ========== -->
-    <section class="offers-section" id="section8">
-      <div class="split-image-text" id="splitImageText">
-        <div class="split-image">
-          <img src="image/Fresh deli ingredients.jpg" alt="Fresh deli ingredients">
+    <!-- ========== SECTION 8: VIP DELI CLUB REWARDS BANNER ========== -->
+    <section class="offers-section" id="vipSection">
+      <div class="vip-banner">
+        <div class="vip-text">
+          <span class="vip-tag"><i class="fas fa-gift"></i> VIP Deli Perks</span>
+          <h2>Want secret weekly offers sent to your inbox?</h2>
+          <p>Join the Deli Club today and receive a $5.00 welcome coupon code instantly, plus exclusive flash deal alerts every Tuesday.</p>
         </div>
-        <div class="split-text">
-          <div class="split-tag">fresh ingredients</div>
-          <h2>Quality you can <span>taste</span></h2>
-          <p>We source locally whenever possible. Our bread is baked in-house daily, and our meats are sliced fresh to order — never pre-packaged.</p>
-          <div class="split-features">
-            <div class="split-feature"><i class="fas fa-check-circle"></i> Artisan bread baked daily</div>
-            <div class="split-feature"><i class="fas fa-check-circle"></i> Premium meats & cheeses</div>
-            <div class="split-feature"><i class="fas fa-check-circle"></i> Farm-fresh vegetables</div>
-            <div class="split-feature"><i class="fas fa-check-circle"></i> House-made sauces & spreads</div>
-          </div>
-          <div class="split-btn">Learn more</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== SECTION 9 – TESTIMONIAL / QUOTE CARDS (NEW) ========== -->
-    <section class="offers-section" id="section9">
-      <div class="quote-cards" id="quoteCards">
-        <div class="quote-card">
-          <div class="quote-mark">&ldquo;</div>
-          <div class="quote-avatar">S</div>
-          <div class="quote-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p>The Double deal is unbeatable. Two massive sandwiches, sides, drinks, AND a free cookie — my lunch is sorted for the week.</p>
-          <div class="quote-author">
-            <strong>Sarah Mitchell</strong>
-            <span>Regular since 2022</span>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="quote-mark">&ldquo;</div>
-          <div class="quote-avatar">J</div>
-          <div class="quote-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p>That Spicy Italian is a masterpiece. The hot peppers, the olive oil, the fresh bread — I've been coming back every Friday for a year.</p>
-          <div class="quote-author">
-            <strong>James Ortega</strong>
-            <span>Sandwich enthusiast</span>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="quote-mark">&ldquo;</div>
-          <div class="quote-avatar">P</div>
-          <div class="quote-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <p>The SANDWICH20 code saved me 20% on my first order. Now I'm hooked. The Veggie Delight is my go-to when I want something lighter.</p>
-          <div class="quote-author">
-            <strong>Priya Nair</strong>
-            <span>New customer</span>
-          </div>
-        </div>
+        <form class="vip-action" onsubmit="event.preventDefault(); showVipToast();">
+          <input type="email" class="vip-input" placeholder="Enter your email address" required aria-label="Email address for VIP offers">
+          <button type="submit" class="vip-submit-btn">Get $5 Coupon</button>
+        </form>
       </div>
     </section>
 
   </main>
+
+
 
     <!-- ============================================================
        FOOTER (IDENTICAL TO INDEX.HTML)
@@ -2328,7 +3295,7 @@
     <div class="footer-container">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo">
-          <span class="footer-logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="footer-logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
           <span class="footer-logo-text-wrapper">
             <span class="footer-logo-text">Deli<span>&</span>Sandwich</span>
             <span class="footer-logo-sub">Fresh • Tasty • Made to Order</span>
@@ -2557,177 +3524,58 @@
   <!-- ============================================================
        FRAMER MOTION (Motion One) – UNIQUE PER SECTION (9 SECTIONS)
   ============================================================ -->
-  <script type="module">
-    import { animate, inView, stagger } from 'https://cdn.skypack.dev/motion@10.16.2';
-
-    /* ---------- 1. HERO: text slides from left, image scales up ---------- */
-    const heroText = document.querySelector('.hero-board-text');
-    const heroImage = document.querySelector('.hero-board-image');
-    if (heroText && heroImage) {
-      heroText.style.opacity = '0';
-      heroText.style.transform = 'translateX(-40px)';
-      heroImage.style.opacity = '0';
-      heroImage.style.transform = 'scale(0.92)';
-
-      inView('#heroBoard', () => {
-        animate(heroText, { opacity: 1, transform: 'translateX(0px)' }, { duration: 0.8, easing: [0.2, 0.8, 0.2, 1] });
-        animate(heroImage, { opacity: 1, transform: 'scale(1)' }, { duration: 0.9, delay: 0.1, easing: [0.2, 0.8, 0.2, 1] });
-      }, { threshold: 0.3 });
-    }
-
-    /* ---------- 2. SANDWICH CARDS: staggered pop + hover lift ---------- */
-    const sandwichCards = document.querySelectorAll('.sandwich-card');
-    if (sandwichCards.length) {
-      sandwichCards.forEach((card) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px) scale(0.96)';
+  <script>
+    // Accordion Toggle Logic
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.closest('.accordion-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) {
+          item.classList.add('active');
+        }
       });
+    });
 
-      inView('#sandwichGrid', () => {
-        animate('.sandwich-card',
-          { opacity: 1, transform: 'translateY(0px) scale(1)' },
-          { duration: 0.6, delay: stagger(0.15), easing: [0.2, 0.8, 0.2, 1] }
-        );
-      }, { threshold: 0.2 });
-
-      sandwichCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          animate(card, { transform: 'translateY(-6px) scale(1.02)' }, { duration: 0.2 });
+    // 1-Click Coupon Code Copy
+    function copyCoupon(code, btn) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+          showCopyFeedback(btn);
+        }).catch(() => {
+          fallbackCopy(code, btn);
         });
-        card.addEventListener('mouseleave', () => {
-          animate(card, { transform: 'translateY(0px) scale(1)' }, { duration: 0.2 });
-        });
-      });
+      } else {
+        fallbackCopy(code, btn);
+      }
     }
 
-    /* ---------- 3. COMBO STRIP: slide from right + stagger ---------- */
-    const comboItems = document.querySelectorAll('.combo-item');
-    if (comboItems.length) {
-      comboItems.forEach((item, i) => {
-        item.style.opacity = '0';
-        item.style.transform = `translateX(${60 + i * 20}px)`;
-      });
-
-      inView('#comboStrip', () => {
-        animate('.combo-item',
-          { opacity: 1, transform: 'translateX(0px)' },
-          { duration: 0.7, delay: stagger(0.2), easing: [0.3, 0.9, 0.3, 1] }
-        );
-      }, { threshold: 0.3 });
+    function fallbackCopy(code, btn) {
+      const temp = document.createElement('textarea');
+      temp.value = code;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      document.body.removeChild(temp);
+      showCopyFeedback(btn);
     }
 
-    /* ---------- 4. DEAL CARDS: fade up + scale with slight rotation ---------- */
-    const dealBasic = document.getElementById('dealBasic');
-    const dealPremium = document.getElementById('dealPremium');
-    if (dealBasic && dealPremium) {
-      dealBasic.style.opacity = '0';
-      dealBasic.style.transform = 'translateY(40px) scale(0.96)';
-      dealPremium.style.opacity = '0';
-      dealPremium.style.transform = 'translateY(40px) scale(0.96) rotate(1deg)';
-
-      inView('#dealDuo', () => {
-        animate(dealBasic, { opacity: 1, transform: 'translateY(0px) scale(1)' }, { duration: 0.7, easing: [0.2, 0.9, 0.3, 1] });
-        animate(dealPremium, { opacity: 1, transform: 'translateY(0px) scale(1) rotate(0deg)' }, { duration: 0.7, delay: 0.15, easing: [0.2, 0.9, 0.3, 1] });
-      }, { threshold: 0.3 });
+    function showCopyFeedback(btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      btn.style.background = '#2a9d8f';
+      btn.style.color = '#ffffff';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 2000);
     }
 
-    /* ---------- 5. VOUCHER STRIP: rotate in + slide up ---------- */
-    const voucherStrip = document.getElementById('voucherStrip');
-    if (voucherStrip) {
-      voucherStrip.style.opacity = '0';
-      voucherStrip.style.transform = 'rotate(-3deg) translateY(40px)';
-
-      inView('#voucherStrip', () => {
-        animate(voucherStrip, { opacity: 1, transform: 'rotate(0deg) translateY(0px)' }, { duration: 0.8, easing: [0.1, 0.9, 0.2, 1] });
-      }, { threshold: 0.3 });
+    // VIP Toast Logic
+    function showVipToast() {
+      alert('Thank you for joining! Your $5.00 coupon code has been sent to your inbox.');
     }
-
-    /* ---------- 6. MASONRY ICONS: scale from 0.8 + stagger ---------- */
-    const masonryItems = document.querySelectorAll('.masonry-item');
-    if (masonryItems.length) {
-      masonryItems.forEach((item) => {
-        item.style.opacity = '0';
-        item.style.transform = 'scale(0.85)';
-      });
-
-      inView('#deliMasonry', () => {
-        animate('.masonry-item',
-          { opacity: 1, transform: 'scale(1)' },
-          { duration: 0.5, delay: stagger(0.1), easing: [0.2, 0.8, 0.2, 1] }
-        );
-      }, { threshold: 0.2 });
-    }
-
-    /* ---------- 7. CTA SLAB: fade + letter spacing + scale ---------- */
-    const ctaSlab = document.getElementById('ctaSlab');
-    if (ctaSlab) {
-      ctaSlab.style.opacity = '0';
-      ctaSlab.style.letterSpacing = '2px';
-      ctaSlab.style.transform = 'scale(0.98)';
-
-      inView('#ctaSlab', () => {
-        animate(ctaSlab, { opacity: 1, letterSpacing: '0px', transform: 'scale(1)' }, { duration: 0.9, easing: [0.25, 0.9, 0.3, 1] });
-      }, { threshold: 0.4 });
-    }
-
-    const ctaBtn = document.querySelector('.cta-slab .btn-gold');
-    if (ctaBtn) {
-      ctaBtn.addEventListener('mouseenter', () => {
-        animate(ctaBtn, { scale: 1.05, backgroundColor: '#e09c6b' }, { duration: 0.2 });
-      });
-      ctaBtn.addEventListener('mouseleave', () => {
-        animate(ctaBtn, { scale: 1, backgroundColor: '#d48c5e' }, { duration: 0.2 });
-      });
-    }
-
-    /* ---------- 8. SPLIT IMAGE + TEXT: image slides from left, text fades up ---------- */
-    const splitImage = document.querySelector('.split-image');
-    const splitText = document.querySelector('.split-text');
-    if (splitImage && splitText) {
-      splitImage.style.opacity = '0';
-      splitImage.style.transform = 'translateX(-50px) scale(0.95)';
-      splitText.style.opacity = '0';
-      splitText.style.transform = 'translateY(30px)';
-
-      inView('#splitImageText', () => {
-        animate(splitImage, { opacity: 1, transform: 'translateX(0px) scale(1)' }, { duration: 0.8, easing: [0.2, 0.9, 0.3, 1] });
-        animate(splitText, { opacity: 1, transform: 'translateY(0px)' }, { duration: 0.7, delay: 0.2, easing: [0.2, 0.9, 0.3, 1] });
-      }, { threshold: 0.3 });
-    }
-
-    /* ---------- 9. QUOTE CARDS: scale + rotate in with stagger (unique) ---------- */
-    const quoteCards = document.querySelectorAll('.quote-card');
-    if (quoteCards.length) {
-      quoteCards.forEach((card, i) => {
-        card.style.opacity = '0';
-        card.style.transform = `scale(0.9) rotate(${i % 2 === 0 ? -3 : 3}deg) translateY(40px)`;
-      });
-
-      inView('#quoteCards', () => {
-        animate('.quote-card',
-          { opacity: 1, transform: 'scale(1) rotate(0deg) translateY(0px)' },
-          { duration: 0.7, delay: stagger(0.15), easing: [0.2, 0.9, 0.3, 1] }
-        );
-      }, { threshold: 0.2 });
-
-      // Subtle hover float
-      quoteCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          animate(card, { transform: 'translateY(-6px)' }, { duration: 0.25 });
-        });
-        card.addEventListener('mouseleave', () => {
-          animate(card, { transform: 'translateY(0px)' }, { duration: 0.25 });
-        });
-      });
-    }
-
-    /* Fallback: ensure everything becomes visible after a short delay */
-    setTimeout(() => {
-      document.querySelectorAll('.hero-board-text, .hero-board-image, .sandwich-card, .combo-item, .deal-card, .voucher-strip, .masonry-item, .cta-slab, .split-image, .split-text, .quote-card').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-    }, 1400);
   </script>
 
   <!-- ============================================================
@@ -2744,7 +3592,7 @@
       <!-- Header Section -->
       <div class="auth-modal-header">
         <div class="auth-brand-badge">
-          <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+          <span class="logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
           <span class="auth-brand-name">Deli & Sandwich</span>
         </div>
         <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>
@@ -2934,6 +3782,89 @@
 
   <!-- Shared Auth Modal JS -->
   <script src="auth-modal.js"></script>
+
+
+  <!-- Interactive Script for Special Offers Page -->
+  <script>
+    // Copy code to clipboard with visual toast
+    function copyCode(code, btnEl) {
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = btnEl.innerHTML;
+        btnEl.classList.add('copied');
+        btnEl.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+        
+        // Show floating toast
+        const toastContainer = document.getElementById('toastContainer');
+        if (toastContainer) {
+          const toast = document.createElement('div');
+          toast.className = 'toast toast-success show';
+          toast.innerHTML = '<i class="fas fa-check-circle"></i> Coupon code <strong>' + code + '</strong> copied to clipboard!';
+          toastContainer.appendChild(toast);
+          setTimeout(() => {
+            toast.remove();
+          }, 3500);
+        }
+
+        setTimeout(() => {
+          btnEl.classList.remove('copied');
+          btnEl.innerHTML = originalText;
+        }, 2500);
+      }).catch(err => {
+        alert('Copied code: ' + code);
+      });
+    }
+
+    // VIP Signup Toast
+    function showVipToast() {
+      const toastContainer = document.getElementById('toastContainer');
+      if (toastContainer) {
+        const toast = document.createElement('div');
+        toast.className = 'toast toast-success show';
+        toast.innerHTML = '<i class="fas fa-gift"></i> Welcome to VIP Perks! Your $5 coupon code is <strong>WELCOME5</strong>';
+        toastContainer.appendChild(toast);
+        setTimeout(() => {
+          toast.remove();
+        }, 5000);
+      }
+    }
+
+    // Category Filter Buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.offer-category-block').forEach(section => {
+          if (filter === 'all' || section.getAttribute('data-category') === filter) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Accordion Toggle
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle current
+        if (!isActive) {
+          item.classList.add('active');
+          header.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

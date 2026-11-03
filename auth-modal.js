@@ -277,13 +277,40 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       attachButtonTriggers();
+      setupDesktopDropdown();
       updatePrices();
       handleUrlHash();
     });
   } else {
     attachButtonTriggers();
+      setupDesktopDropdown();
     updatePrices();
     handleUrlHash();
+  }
+
+
+  // Desktop Home Dropdown Click / Touch Toggle (1024px+)
+  function setupDesktopDropdown() {
+    const homeDropdown = document.getElementById('homeDropdown');
+    if (!homeDropdown) return;
+    const dropdownParent = homeDropdown.closest('.dropdown');
+    if (!dropdownParent) return;
+
+    homeDropdown.addEventListener('click', function (e) {
+      if (window.innerWidth >= 1024) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdownParent.classList.toggle('open');
+        homeDropdown.setAttribute('aria-expanded', dropdownParent.classList.contains('open'));
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!dropdownParent.contains(e.target)) {
+        dropdownParent.classList.remove('open');
+        homeDropdown.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
 })();

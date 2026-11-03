@@ -161,7 +161,19 @@
     body.dark .auth-simple-footer {
       color: #a89888;
     }
-  </style>
+  
+    .logo-icon img, .footer-logo-icon img, .logo-mark-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .logo:hover .logo-icon, .footer-logo:hover .footer-logo-icon {
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 6px 16px rgba(230, 57, 70, 0.45);
+    }
+    
+</style>
 </head>
 <body>
 
@@ -180,7 +192,7 @@
         <!-- HEADER -->
         <div class="auth-modal-header">
           <div class="auth-brand-badge">
-            <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+            <span class="logo-icon"><img src="favicon.svg" alt="Deli &amp; Sandwich Logo" class="logo-mark-img"></span>
             <span class="auth-brand-name">Deli & Sandwich</span>
           </div>
           <h2 id="modalTitle" class="auth-modal-title">Order Fresh Sandwiches</h2>

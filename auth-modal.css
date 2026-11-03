@@ -720,3 +720,197 @@ a.mobile-order-btn {
   color: #ffffff !important;
 }
 
+
+
+/* ============================================================
+   RESPONSIVE / 360px VIEWPORT OVERFLOW FIX
+   ============================================================ */
+@media (max-width: 480px) {
+  .auth-modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .auth-modal-card {
+    border-radius: 18px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .auth-modal-header {
+    padding: 1.25rem 1rem 0.8rem;
+  }
+
+  .auth-modal-title {
+    font-size: 1.2rem;
+  }
+
+  .auth-modal-subtitle {
+    font-size: 0.78rem;
+  }
+
+  .auth-tabs-nav {
+    margin: 0.75rem 0.75rem 0;
+    padding: 0.25rem;
+    gap: 3px;
+    box-sizing: border-box;
+  }
+
+  .auth-tab-btn {
+    padding: 0.45rem 0.25rem;
+    font-size: 0.72rem;
+    gap: 3px;
+    letter-spacing: -0.2px;
+    box-sizing: border-box;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .auth-tab-btn i {
+    font-size: 0.72rem;
+  }
+
+  .auth-modal-body {
+    padding: 1rem 0.75rem 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .order-type-toggle {
+    padding: 0.25rem;
+    gap: 4px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+  }
+
+  .order-type-btn {
+    padding: 0.45rem 0.35rem;
+    font-size: 0.75rem;
+    gap: 4px;
+    flex: 1 1 0;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .auth-form-group {
+    margin-bottom: 0.9rem;
+  }
+
+  .auth-input, .auth-select {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .order-price-summary {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .social-auth-grid {
+    gap: 0.5rem;
+  }
+
+  .social-auth-btn {
+    padding: 0.55rem 0.4rem;
+    font-size: 0.78rem;
+    gap: 5px;
+  }
+
+  .auth-options-row {
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+}
+
+
+/* ============================================================
+   NAVBAR 1024px RESPONSIVE ALIGNMENT & HOME DROPDOWN FIX
+   ============================================================ */
+.dropdown {
+  position: relative;
+}
+
+/* Hover bridge so mouse movement never loses hover */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown.open .dropdown-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+  display: block !important;
+}
+
+.dropdown:hover .nav-link i.fa-chevron-down,
+.dropdown:focus-within .nav-link i.fa-chevron-down,
+.dropdown.open .nav-link i.fa-chevron-down {
+  transform: rotate(180deg) !important;
+}
+
+@media (min-width: 1024px) and (max-width: 1240px) {
+  .navbar {
+    padding: 0.55rem 1rem !important;
+    gap: 0.4rem !important;
+  }
+  .logo-sub {
+    display: none !important;
+  }
+  .logo-text {
+    font-size: 1.05rem !important;
+  }
+  .logo-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .nav-menu {
+    gap: 0.15rem !important;
+    align-items: center !important;
+  }
+  .nav-link {
+    font-size: 0.78rem !important;
+    padding: 0.42rem 0.52rem !important;
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+  }
+  .nav-right {
+    gap: 0.35rem !important;
+  }
+  .toggle-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.8rem !important;
+  }
+  .order-btn {
+    padding: 0.42rem 0.85rem !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* ============================================================
+   BRAND NAME VISIBLE AT 360px FIX
+   ============================================================ */
+@media (max-width: 400px) {
+  .logo-text-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .logo-text {
+    font-size: 0.95rem !important;
+    white-space: nowrap !important;
+  }
+  .logo-sub {
+    display: none !important;
+  }
+}

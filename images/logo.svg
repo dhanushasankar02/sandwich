@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Brand Gradient: Deli Crimson to Warm Apricot -->
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e63946"/>
+      <stop offset="100%" stop-color="#f4a261"/>
+    </linearGradient>
+
+    <!-- Top Bun Golden Toast Gradient -->
+    <linearGradient id="bunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffebaa"/>
+      <stop offset="50%" stop-color="#f6ba5d"/>
+      <stop offset="100%" stop-color="#d9822b"/>
+    </linearGradient>
+
+    <!-- Bottom Bun Gradient -->
+    <linearGradient id="bottomBunGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f6ba5d"/>
+      <stop offset="100%" stop-color="#c9701d"/>
+    </linearGradient>
+
+    <!-- Tomato Gradient -->
+    <linearGradient id="tomatoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef233c"/>
+      <stop offset="100%" stop-color="#ba181b"/>
+    </linearGradient>
+
+    <!-- Melted Cheddar Gradient -->
+    <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffea79"/>
+      <stop offset="100%" stop-color="#ff9e00"/>
+    </linearGradient>
+
+    <!-- Deli Patty / Roast Beef Layer Gradient -->
+    <linearGradient id="meatGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7d4421"/>
+      <stop offset="100%" stop-color="#4d240e"/>
+    </linearGradient>
+
+    <!-- Crisp Lettuce Gradient -->
+    <linearGradient id="lettuceGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#70e000"/>
+      <stop offset="50%" stop-color="#38b000"/>
+      <stop offset="100%" stop-color="#1b6302"/>
+    </linearGradient>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Brand Badge (Matches .logo-icon in navbar) -->
+  <circle cx="32" cy="32" r="30" fill="url(#brandGrad)"/>
+  <!-- Crisp inner highlight ring for high-contrast on all light & dark browser tabs -->
+  <circle cx="32" cy="32" r="29.25" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- Gourmet Layered Sandwich Icon -->
+  <g filter="url(#shadow)">
+    <!-- 1. Bottom Bun -->
+    <path d="M 16 42 C 16 40 18 39.5 20 39.5 L 44 39.5 C 46 39.5 48 40 48 42 C 48 46.5 41 48 32 48 C 23 48 16 46.5 16 42 Z" fill="url(#bottomBunGrad)" stroke="#9c4e09" stroke-width="0.75"/>
+
+    <!-- 2. Savory Patty / Deli Meat -->
+    <rect x="14" y="36.5" width="36" height="4.5" rx="2.25" fill="url(#meatGrad)"/>
+
+    <!-- 3. Melted Cheddar Slice with Delicious Pointed Drip -->
+    <path d="M 14 34.5 L 50 34.5 L 48 37 L 39 37 L 33 42.5 L 27 37 L 16 37 Z" fill="url(#cheeseGrad)"/>
+
+    <!-- 4. Fresh Crisp Lettuce Leaf with Wavy Ruffles -->
+    <path d="M 12 32 C 14.5 29.5 17.5 33 21 31 C 24 29 27 32.5 30 31 C 33 29.5 36 32.5 39 31 C 42 29.5 45 32.5 48.5 30.5 C 51 30 52.5 32 51.5 33.5 C 49 35.5 15 35.5 12 32 Z" fill="url(#lettuceGrad)"/>
+
+    <!-- 5. Fresh Tomato Slices -->
+    <rect x="17" y="28" width="13" height="3.2" rx="1.6" fill="url(#tomatoGrad)"/>
+    <rect x="34" y="28" width="13" height="3.2" rx="1.6" fill="url(#tomatoGrad)"/>
+
+    <!-- 6. Golden Toasted Top Bun Dome -->
+    <path d="M 14.5 28 C 14.5 18.5 21.5 15.5 32 15.5 C 42.5 15.5 49.5 18.5 49.5 28 C 49.5 29 48 29.5 46.5 29.5 L 17.5 29.5 C 16 29.5 14.5 29 14.5 28 Z" fill="url(#bunGrad)" stroke="#a85910" stroke-width="0.75"/>
+
+    <!-- 7. White Sesame Seeds -->
+    <ellipse cx="25" cy="21" rx="1.1" ry="0.65" fill="#fffdf5" transform="rotate(-15 25 21)"/>
+    <ellipse cx="32" cy="19" rx="1.1" ry="0.65" fill="#fffdf5"/>
+    <ellipse cx="39" cy="21.5" rx="1.1" ry="0.65" fill="#fffdf5" transform="rotate(20 39 21.5)"/>
+    <ellipse cx="28.5" cy="24.5" rx="1" ry="0.55" fill="#fffdf5" transform="rotate(10 28.5 24.5)"/>
+    <ellipse cx="35.5" cy="24.5" rx="1" ry="0.55" fill="#fffdf5" transform="rotate(-10 35.5 24.5)"/>
+  </g>
+</svg>
